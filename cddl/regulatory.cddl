@@ -1,0 +1,52 @@
+; RSDGGS Regulatory Database — CDDL schema
+; Mirrors draft §8.1 band-entry definition.
+; String-typed enums are used so cddlc emits proper Rust enum variants.
+
+power-reference = "erp" / "eirp" / "conducted"
+
+modulation-type = "fsk" / "gfsk" / "lora" / "dsss" / "ofdm" / "ook" / "bpsk" / "any"
+
+channel-entry = {
+  cf-khz: uint,
+  bw-khz: uint,
+}
+
+; @capacity 16
+channels-list = [* channel-entry]
+
+; @capacity 8
+modulation-list = [* modulation-type]
+
+band-entry = {
+  band-id:         uint,
+  authority:       tstr,
+  citation:        tstr,
+  freq-lo-khz:     uint,
+  freq-hi-khz:     uint,
+  power-mw:        uint,
+  power-ref:       power-reference,
+  ? duty-cycle:    float,
+  ? dwell-s:       float,
+  lbt:             bool,
+  hop-required:    bool,
+  ? min-hop-set:   uint,
+  ? channels:      channels-list,
+  ? modulation:    modulation-list,
+  ? whitespace-db: tstr,
+  available:       bool,
+  exception:       bool,
+}
+
+; @capacity 32
+band-list = [* band-entry]
+
+; Regulatory entries for one face on one body
+face-regulatory = {
+  body:  tstr,
+  face:  uint,
+  bands: band-list,
+}
+
+; Complete regulatory database (all bodies × faces with entries)
+; @capacity 144
+regulatory-db = [* face-regulatory]

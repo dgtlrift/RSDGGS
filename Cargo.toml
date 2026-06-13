@@ -1,0 +1,18 @@
+[package]
+name    = "rsdggs"
+version = "0.1.0"
+edition = "2024"
+build   = "build.rs"
+
+[dependencies]
+libm     = "0.2"
+minicbor = { version = ">=2", features = ["derive", "alloc"] }
+
+[dev-dependencies]
+approx = "0.5"
+
+# cddlc generates #[cfg(feature = "no-std")] guards for standalone-crate use.
+# When the output is include!()'d into this crate the feature is undeclared,
+# triggering unexpected_cfgs.  Declare it as an expected value to silence the lint.
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(feature, values("no-std"))'] }

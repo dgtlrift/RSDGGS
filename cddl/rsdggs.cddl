@@ -1,0 +1,43 @@
+; RSDGGS index — CBOR message representations
+; Covers the decoded index structure, raw wire format, and lookup types.
+; Draft §5.1 / §5.3
+
+; Celestial body selector (upper nibble of octet 0, bits 63-60)
+body-selector = "earth" / "moon" / "mars"
+
+; Subdivision level sequence: each entry is 0..3 (child index), up to 26 deep.
+; @capacity 26
+subdivision-levels = [* uint]
+
+; Decoded RSDGGS index for CBOR messaging
+; face: 0..11, triangle: 0..4, levels: each 0..3
+rsdggs-index = {
+  body:       body-selector,
+  face:       uint,
+  ? triangle: uint,
+  ? levels:   subdivision-levels,
+}
+
+; Raw wire-format index — 1 to 8 octets (§5.1 MSB-first bit layout)
+; Note: .size range constraint omitted pending cddlc parser fix; validated at runtime.
+rsdggs-wire = bstr
+
+; Geographic bounding box in degrees
+bounding-cell = {
+  lat-min: float64,
+  lat-max: float64,
+  lon-min: float64,
+  lon-max: float64,
+}
+
+; Regulatory lookup request
+lookup-request = {
+  index:   rsdggs-index,
+  band-id: uint,
+}
+
+; Regulatory lookup response
+lookup-response = {
+  index: rsdggs-index,
+  cell:  bounding-cell,
+}
