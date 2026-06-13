@@ -19,6 +19,10 @@ This crate provides:
 
 ---
 
+## Flatend Dodecahedron Projection of Regulatory Bodies
+![Image of flattend Dodecahedron with maximal ITU-R Regions captured to a face](images/rsdggs_net_page1.png)
+---
+
 ## Wire Format
 
 The RSDGGS wire value is a 64-bit big-endian unsigned integer packed MSB-first:
