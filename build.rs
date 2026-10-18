@@ -40,7 +40,7 @@ fn main() {
 
 fn run_cddlc(cddlc: &str, schema: &str, out_dir: &Path) {
     let status = Command::new(cddlc)
-        .args([schema, "--lang", "rust", "--output"])
+        .args(["generate", schema, "--lang", "rust", "--output"])
         .arg(out_dir)
         .status()
         .unwrap_or_else(|e| {
