@@ -31,10 +31,10 @@ impl RsdggsIndex {
     /// Octet length of the encoded index (1–8).
     pub fn depth_octets(&self) -> usize {
         // Octet 0 = body+face. Triangle + levels fill subsequent bits.
-        // 3-bit triangle + 2*n level bits, packed from bit 55 downward.
+        // 4-bit triangle + 2*n level bits, packed from bit 55 downward.
         // Minimum bits needed beyond octet 0:
         let payload_bits = if self.triangle.is_some() {
-            3 + 2 * self.levels.len()
+            crate::wire::TRIANGLE_BITS + 2 * self.levels.len()
         } else {
             0
         };

@@ -4,15 +4,27 @@ use crate::{
     Error,
 };
 
+/// Width of the triangle selector, the first field after octet 0 (draft §5.1).
+///
+/// Four bits (values 0–4 used, 5–15 reserved) keep every 2-bit level within one
+/// octet, so truncating a cell is simply dropping trailing octets.
+pub const TRIANGLE_BITS: usize = 4;
+
+/// Number of subdivision levels carried by an index of `depth` octets (1–8):
+/// 0, 2, 6, 10, 14, 18, 22, 26.
+pub const fn levels_for_depth(depth: usize) -> usize {
+    if depth < 2 { 0 } else { ((depth - 1) * 8 - TRIANGLE_BITS) / 2 }
+}
+
 /// Pack an [`RsdggsIndex`] into a big-endian 64-bit wire value.
 ///
-/// Bits below the last significant level are left as zero (reserved).
+/// Bits beyond the last significant level are zero.
 pub fn to_wire(idx: &RsdggsIndex) -> u64 {
     let mut w = BitWriter::new();
     w.write(idx.body as u64, 4);
     w.write(idx.face as u64, 4);
     if let Some(tri) = idx.triangle {
-        w.write(tri as u64, 3);
+        w.write(tri as u64, TRIANGLE_BITS as u8);
         for &level in &idx.levels {
             w.write(level as u64, 2);
         }
@@ -26,8 +38,7 @@ pub fn to_wire(idx: &RsdggsIndex) -> u64 {
 /// Unpack a 64-bit wire value into an [`RsdggsIndex`] at the given octet depth (1–8).
 ///
 /// Only the first `depth` octets of `value` are decoded; bits beyond that are ignored.
-/// If `depth` is 8 (the default), all 64 bits are consumed — the final bit is reserved
-/// and expected to be zero.
+/// Every bit of those octets is significant.
 pub fn from_wire(value: u64, depth: usize) -> Result<RsdggsIndex, Error> {
     if depth < 1 || depth > 8 {
         return Err(Error::InvalidDepth(depth));
@@ -37,15 +48,19 @@ pub fn from_wire(value: u64, depth: usize) -> Result<RsdggsIndex, Error> {
 
     let body = Body::try_from(r.read(4)? as u8)?;
     let face = r.read(4)? as u8;
+    if face > 11 {
+        return Err(Error::InvalidFace(face));
+    }
 
     if depth == 1 {
         return Ok(RsdggsIndex { body, face, triangle: None, levels: vec![] });
     }
 
-    let tri = r.read(3)? as u8;
-    // Each additional octet beyond the first yields 8 bits; 3 are used for
-    // the triangle selector, leaving pairs for subdivision levels.
-    let num_levels = ((depth - 1) * 8 - 3) / 2;
+    let tri = r.read(TRIANGLE_BITS as u8)? as u8;
+    if tri > 4 {
+        return Err(Error::InvalidTriangle(tri));
+    }
+    let num_levels = levels_for_depth(depth);
     let mut levels = Vec::with_capacity(num_levels);
     for _ in 0..num_levels {
         levels.push(r.read(2)? as u8);
@@ -63,7 +78,7 @@ pub fn truncate(idx: &RsdggsIndex, depth: usize) -> RsdggsIndex {
     if depth == 1 {
         return RsdggsIndex { body: idx.body, face: idx.face, triangle: None, levels: vec![] };
     }
-    let num_levels = ((depth - 1) * 8 - 3) / 2;
+    let num_levels = levels_for_depth(depth);
     RsdggsIndex {
         body:     idx.body,
         face:     idx.face,
