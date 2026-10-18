@@ -30,10 +30,11 @@ The RSDGGS wire value is a 64-bit big-endian unsigned integer packed MSB-first:
 ```
 Bit  63–60   Body selector   (4 bits)  0x0=Earth, 0x1=Moon, 0x2=Mars
 Bit  59–56   Face            (4 bits)  0–11
-Bit  55–53   Triangle        (3 bits)  0–4  (omitted at depth 1)
-Bit  52– 7   Subdivision     (2 bits × up to 26 levels)
-Bit      0   Reserved        (1 bit)   must be zero
+Bit  55–52   Triangle        (4 bits)  0–4; 5–15 reserved  (omitted at depth 1)
+Bit  51– 0   Subdivision     (2 bits × up to 26 levels)
 ```
+
+Every field ends on a nibble boundary: octet 1 holds the triangle and levels 1–2, and each later octet holds four levels.  Truncating an index to fewer octets is therefore just dropping trailing octets, and the hex form reads one field per digit after the face.
 
 Octet depth (1–8) determines how many bits are significant.  Depth 1 encodes body+face only (continental resolution).  Depth 8 encodes all 26 subdivision levels (~centimeter resolution).
 
@@ -149,7 +150,7 @@ cargo run -- encode <lat> <lon> [--depth N] [--truncate N]
 cargo run -- decode <value>     [--depth N] [--truncate N]
 ```
 
-`<value>` accepts decimal (`146230399339593728`) or `0x`-prefixed hex (`0x020783c600000000`).
+`<value>` accepts decimal (`145172793707724800`) or `0x`-prefixed hex (`0x0203c1e300000000`).
 
 `--depth N` (1–8, default 8) sets octet precision for encode, or declares how many
 octets of a decoded wire value are significant.
@@ -175,8 +176,8 @@ when that resolution is too coarse for reliable regulatory determination.
    Levels   : [0, 3, 3, 0, 0, 1, 3, 2, 0, 3]  (10 steps)
 
  Wire Value
-   Hex     : 0x020783c600000000
-   Decimal : 146230399339593728
+   Hex     : 0x0203c1e300000000
+   Decimal : 145172793707724800
 
  Bounding Cell
    Latitude  :   38.98079° – 39.01768°  (span 0.0369° / ~4.1 km)
@@ -397,8 +398,8 @@ cargo test
 cargo run -- encode 51.5 -0.1 --depth 6
 
 # Decode a wire value (hex or decimal)
-cargo run -- decode 0x014327184d057230
+cargo run -- decode 0x012193e7ce5e497d
 
 # Decode with known depth and truncation
-cargo run -- decode 0x014327184d057230 --depth 7 --truncate 4
+cargo run -- decode 0x012193e7ce5e497d --depth 7 --truncate 4
 ```

@@ -120,11 +120,7 @@ pub fn encode(lat_deg: f64, lon_deg: f64, depth: usize) -> Result<RsdggsIndex, E
     let tri = assign_triangle(face, p);
     let (mut apex, mut left, mut right) = initial_triangle(face, tri);
 
-    let level_bits = (depth - 1) * 8;
-    if level_bits < 3 {
-        return Ok(RsdggsIndex { body: Body::Earth, face, triangle: Some(tri), levels: vec![] });
-    }
-    let num_levels = (level_bits - 3) / 2;
+    let num_levels = crate::wire::levels_for_depth(depth);
 
     let mut levels = Vec::with_capacity(num_levels);
     for _ in 0..num_levels {
