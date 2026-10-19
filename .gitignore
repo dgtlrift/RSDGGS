@@ -21,3 +21,4 @@ target
 #.idea/
 images/.cache/
 __pycache__/
+draft/.tools/

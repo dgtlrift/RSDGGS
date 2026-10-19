@@ -1,11 +1,14 @@
 # draft-rsdggs-informational-00
 
-`draft-rsdggs-informational-00.xml` is the xml2rfc v3 source of the Internet-Draft and the master copy: edit the draft here, and generate every other format (text, HTML, PDF) from it. The docx draft is retired. Render with [xml2rfc](https://pypi.org/project/xml2rfc/):
+`draft-rsdggs-informational-00.xml` is the xml2rfc v3 source of the Internet-Draft and the master copy: edit the draft here, and generate every other format (text, HTML, PDF) from it. The docx draft is retired. Build the renderings with:
 
 ```sh
-pip install xml2rfc
-xml2rfc --text --html draft/draft-rsdggs-informational-00.xml
+draft/build.sh
 ```
+
+It validates the XML against the RFCXML schema ([`rfc7991bis.rnc`](https://github.com/ietf-tools/RFCXML)) and runs [svgcheck](https://github.com/ietf-tools/svgcheck). It then writes `draft-rsdggs-informational-00.txt` and `.html` with [xml2rfc](https://github.com/ietf-tools/xml2rfc), and `.docx` with LibreOffice from the HTML (`docx.py` cleans up the conversion). The tools are pinned in `build.sh` and installed into `draft/.tools` on first run; it needs Python 3, Java and LibreOffice. The renderings are committed for convenience; rebuild them whenever the XML changes, and never edit them by hand.
+
+The draft's `<date>` gives only the year, so each build is dated the day it runs, as an Internet-Draft submission is.
 
 History of this file:
 
