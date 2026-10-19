@@ -670,15 +670,15 @@ EU internal borders (CEPT/ECC):
             <name>Coordination Zone Geometry and RSDGGS Resolution</name>
             <thead><tr><th>Zone radius</th><th>RSDGGS resolution needed</th><th>Bytes</th><th>Example agreement</th></tr></thead>
             <tbody>
-              <tr><td>140 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>US-Canada above 30 MHz</td></tr>
-              <tr><td>120 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>Canada transmit sites near border</td></tr>
-              <tr><td>110 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>US-Mexico 800 MHz sharing zone</td></tr>
-              <tr><td>30 km</td><td>4 bytes (~8 km cells)</td><td>4</td><td>London, ON protection zone</td></tr>
-              <tr><td>12 nm</td><td>5 bytes (~1 km cells)</td><td>5</td><td>Territorial sea boundary</td></tr>
-              <tr><td>&lt; 5 km</td><td>6 bytes (~120 m cells)</td><td>6</td><td>Land border crossing point</td></tr>
+              <tr><td>140 km</td><td>3 bytes (~65 km cells)</td><td>3</td><td>US-Canada above 30 MHz</td></tr>
+              <tr><td>120 km</td><td>3 bytes (~65 km cells)</td><td>3</td><td>Canada transmit sites near border</td></tr>
+              <tr><td>110 km</td><td>3 bytes (~65 km cells)</td><td>3</td><td>US-Mexico 800 MHz sharing zone</td></tr>
+              <tr><td>30 km</td><td>4 bytes (~4 km cells)</td><td>4</td><td>London, ON protection zone</td></tr>
+              <tr><td>12 nm</td><td>5 bytes (~260 m cells)</td><td>5</td><td>Territorial sea boundary</td></tr>
+              <tr><td>&lt; 5 km</td><td>6 bytes (~16 m cells)</td><td>6</td><td>Land border crossing point</td></tr>
             </tbody>
           </table>
-          <t>The 3-byte resolution (RSL 3, ~60 km cells) is sufficient to determine whether a device is within the 110-140 km coordination zones established by the FCC-ISED and FCC-IFT bilateral agreements. This aligns with the RSL values defined in Section 8.2 for most regulatory jurisdictions. For the innermost protection zones (e.g., the 30 km London, Ontario zone in the FCC-ISED 700 MHz arrangement), 4-byte resolution is required. Maritime territorial sea boundaries require 5-byte resolution.</t>
+          <t>The 3-byte resolution (RSL 3, ~65 km cells) is sufficient to determine whether a device is within the 110-140 km coordination zones established by the FCC-ISED and FCC-IFT bilateral agreements. This aligns with the RSL values defined in Section 8.2 for most regulatory jurisdictions. For the innermost protection zones (e.g., the 30 km London, Ontario zone in the FCC-ISED 700 MHz arrangement), 4-byte resolution is required. Maritime territorial sea boundaries require 5-byte resolution.</t>
         </section>
         <section anchor="s-boundary-proximity-function" numbered="true" toc="default">
           <name>Boundary Proximity Function</name>
@@ -741,7 +741,7 @@ Implementations MAY substitute a continuous function:
 where d is the estimated distance to the boundary in meters
 and d_0 is the coordination zone radius in meters.
 This continuous form requires 5-byte resolution to evaluate
-with adequate precision (cell diameter ~1 km).
+with adequate precision (cell diameter ~260 m).
 ]]></artwork></figure>
             <t>The minimum neighbor power constraint (taking the minimum of the two rule sets at B=0) is the most conservative applicable interpretation of cross-border coordination obligations. It corresponds to the principle that a device straddling a boundary cannot claim the more permissive of two jurisdictions and must comply with both simultaneously.</t>
           </section>
@@ -783,18 +783,18 @@ Resolution escalation rule:
     Repeat until B > 0 or resolution == 8 bytes.
 
   If resolution == 8 bytes and B == 0:
-    // Device is within ~3 cm of the boundary line
+    // Device is within ~6 cm of the boundary line
     // (sub-decimeter precision — effectively on the line)
     Apply conservative rule: use minimum of both rule sets.
     Log condition for operator review.
 
   Maximum practical resolution for boundary determination:
-    5 bytes (~1 km)  — adequate for bilateral zone classification
-    6 bytes (~120 m) — adequate for most land borders
-    7 bytes (~15 m)  — adequate for all practical land borders
+    5 bytes (~260 m) — adequate for bilateral zone classification
+    6 bytes (~16 m)  — adequate for most land borders
+    7 bytes (~1 m)   — adequate for all practical land borders
 ]]></artwork></figure>
           <t>The resolution escalation requirement means that a device moving toward a regulatory boundary will autonomously increase its index precision as it approaches, consuming more power in the cooperative localization process (Section 12) but ensuring that its compliance determination remains accurate. For fixed devices, this escalation occurs once at commissioning and the resulting high-resolution index is stored permanently.</t>
-          <t>The escalation is bounded: for the vast majority of IoT deployments, 3-byte resolution is sufficient for all regulatory decisions and boundary detection. Resolution escalation beyond 5 bytes is only required for devices within approximately 1 km of a land border between jurisdictions with conflicting ISM band rules — a scenario that affects only a small fraction of deployed devices.</t>
+          <t>The escalation is bounded: for the vast majority of IoT deployments, 3-byte resolution is sufficient for all regulatory decisions and boundary detection. Resolution escalation beyond 5 bytes is only required for devices within approximately 260 m of a land border between jurisdictions with conflicting ISM band rules — a scenario that affects only a small fraction of deployed devices.</t>
         </section>
         <section anchor="s-cddl-schema-for-boundary-aware-operation" numbered="true" toc="default">
           <name>CDDL Schema for Boundary-Aware Operation</name>
@@ -910,7 +910,7 @@ boundary-entry = {              ; in regulatory database
               <tr><td>M3 — UWB Ranging</td><td>DS-TWR timestamps (802.15.4a/z)</td><td>0.1–0.5 m (LoS), 0.3–1 m (NLoS)</td><td>HRP UWB ranging exchange</td></tr>
             </tbody>
           </table>
-          <t>A device with access only to Method M1 can resolve its RSDGGS cell to the intersection of its peers' cells, typically 2–4 bytes of resolution. A device with M2 capability can typically achieve 6-byte resolution (120 m) in outdoor environments. A device with M3 capability can achieve 7–8 byte resolution (2–15 m) in line-of-sight conditions.</t>
+          <t>A device with access only to Method M1 can resolve its RSDGGS cell to the intersection of its peers' cells, typically 2–4 bytes of resolution. A device with M2 capability can typically achieve 6-byte resolution (~16 m cells) in outdoor environments. A device with M3 capability can achieve 7–8 byte resolution (~1 m to ~6 cm cells) in line-of-sight conditions.</t>
         </section>
         <section anchor="s-rsdggs-cell-intersection" numbered="true" toc="default">
           <name>RSDGGS Cell Intersection</name>
@@ -1041,18 +1041,18 @@ PDOA angle estimation:
             <name>RSDGGS as Position State Space</name>
             <thead><tr><th>Position Uncertainty (1-sigma)</th><th>RSDGGS Resolution</th><th>Primary Source</th></tr></thead>
             <tbody>
-              <tr><td>&gt; 2,000 km</td><td>1 byte (face)</td><td>No measurement; prior only</td></tr>
-              <tr><td>250 – 2,000 km</td><td>2 bytes</td><td>Cell intersection (1-2 peers)</td></tr>
-              <tr><td>60 – 250 km</td><td>3 bytes</td><td>Cell intersection (3+ peers), RSL sufficient</td></tr>
-              <tr><td>8 – 60 km</td><td>4 bytes</td><td>Cell intersection (dense); coarse RSSI</td></tr>
-              <tr><td>1 – 8 km</td><td>5 bytes</td><td>RSSI multilateration (outdoor)</td></tr>
-              <tr><td>120 m – 1 km</td><td>6 bytes</td><td>RSSI multilateration (dense urban)</td></tr>
-              <tr><td>15 – 120 m</td><td>7 bytes</td><td>UWB NLoS / dense RSSI</td></tr>
-              <tr><td>&lt; 15 m</td><td>8 bytes (max)</td><td>UWB DS-TWR LoS</td></tr>
+              <tr><td>&gt; 7,000 km</td><td>1 byte (face)</td><td>No measurement; prior only</td></tr>
+              <tr><td>1,000 – 7,000 km</td><td>2 bytes</td><td>Cell intersection (1-2 peers)</td></tr>
+              <tr><td>65 – 1,000 km</td><td>3 bytes</td><td>Cell intersection (3+ peers), RSL sufficient</td></tr>
+              <tr><td>4 – 65 km</td><td>4 bytes</td><td>Cell intersection (dense); coarse RSSI</td></tr>
+              <tr><td>260 m – 4 km</td><td>5 bytes</td><td>RSSI multilateration (outdoor)</td></tr>
+              <tr><td>16 – 260 m</td><td>6 bytes</td><td>RSSI multilateration (dense urban)</td></tr>
+              <tr><td>1 – 16 m</td><td>7 bytes</td><td>UWB NLoS / dense RSSI</td></tr>
+              <tr><td>&lt; 1 m</td><td>8 bytes (max)</td><td>UWB DS-TWR LoS</td></tr>
             </tbody>
           </table>
           <t>The position uncertainty is maintained as a single integer sigma_cells, representing the radius of the position uncertainty ellipse in units of RSDGGS cells at the current resolution. When sigma_cells falls below 1 at the current resolution, the resolution is incremented (one byte added) and sigma_cells is recomputed in terms of the finer cells. When sigma_cells grows beyond a threshold (RECOMMENDED: 4 cells), the resolution is decremented (one byte removed).</t>
-          <t>This adaptive quantization ensures that the RSDGGS cell always represents the region within which the device's true position lies with high probability, without overstating precision. A device reporting its cell at 3-byte resolution is asserting that its position is within the corresponding 60 km cell; a device reporting at 7-byte resolution is asserting position within 15 m.</t>
+          <t>This adaptive quantization ensures that the RSDGGS cell always represents the region within which the device's true position lies with high probability, without overstating precision. A device reporting its cell at 3-byte resolution is asserting that its position is within the corresponding 65 km cell; a device reporting at 7-byte resolution is asserting position within 1 m.</t>
         </section>
         <section anchor="s-weighted-multilateration-engine" numbered="true" toc="default">
           <name>Weighted Multilateration Engine</name>
@@ -1166,11 +1166,11 @@ consistent with the CBOR encoding defined in Section 7.
             <tbody>
               <tr><td>Sub-IE ID</td><td>15:8</td><td>0x9A (TBD)</td><td>RSDGGS Location Sub-IE identifier</td></tr>
               <tr><td>Length</td><td>7:0</td><td>0x01 to 0x08</td><td>Number of RSDGGS cell octets; encodes resolution</td></tr>
-              <tr><td>Cell[0]</td><td>—</td><td>0x00 to 0x0B</td><td>Dodecahedron face index (mandatory)</td></tr>
-              <tr><td>Cell[1..7]</td><td>—</td><td>variable</td><td>Subdivision octets, present per Length field</td></tr>
+              <tr><td>Cell[0]</td><td>—</td><td>variable</td><td>Celestial body selector (bits 7-4) and dodecahedron face index 0-11 (bits 3-0); mandatory</td></tr>
+              <tr><td>Cell[1..7]</td><td>—</td><td>variable</td><td>Triangle index (Cell[1] bits 7-4) and subdivision levels, present per Length field</td></tr>
             </tbody>
           </table>
-          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0x0C to 0x0F in Cell[0]) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (Cell[1] bits 7-4 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
+          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0xC to 0xF in Cell[0] bits 3-0) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (Cell[1] bits 7-4 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
           <t>The Sub-IE MAY appear in any MAC frame type that permits Payload IEs, including Beacon frames, Enhanced Beacon frames, Data frames, and Command frames. It SHALL appear in the SUN Device Description payload of Enhanced Beacon frames transmitted by devices that have resolved their regulatory context.</t>
         </section>
         <section anchor="s-sun-device-description-integration" numbered="true" toc="default">
@@ -1233,14 +1233,15 @@ Enhanced Beacon Frame (abbreviated):
             <name>Prefix Hierarchy and Aggregation</name>
             <thead><tr><th>IPv6 Prefix</th><th>RSDGGS Bits</th><th>Cell Diameter</th><th>Geographic Scope</th></tr></thead>
             <tbody>
-              <tr><td>/72</td><td>8 (face)</td><td>~2,000 km</td><td>ITU Region / dodecahedron face</td></tr>
-              <tr><td>/75</td><td>8 + 3 (triangle)</td><td>~800 km</td><td>Triangle sector within face</td></tr>
-              <tr><td>/77</td><td>+ 2 (subdiv 1)</td><td>~400 km</td><td>First subdivision</td></tr>
-              <tr><td>/80</td><td>+ 5 (subdiv 1-2.5)</td><td>~200 km</td><td>Equivalent to 2-byte RSDGGS</td></tr>
-              <tr><td>/88</td><td>+ 13 (byte 2 full)</td><td>~60 km</td><td>Country-level (3-byte RSDGGS RSL)</td></tr>
-              <tr><td>/96</td><td>+ 21 (byte 3 full)</td><td>~8 km</td><td>Metro area (4-byte RSDGGS)</td></tr>
-              <tr><td>/112</td><td>+ 37 (byte 5 full)</td><td>~120 m</td><td>Block level (6-byte RSDGGS)</td></tr>
-              <tr><td>/128</td><td>all 64 bits</td><td>~3 cm</td><td>Precise device address</td></tr>
+              <tr><td>/72</td><td>8 (body + face)</td><td>~7,000 km</td><td>ITU Region / dodecahedron face</td></tr>
+              <tr><td>/76</td><td>8 + 4 (triangle)</td><td>~4,500 km</td><td>Triangle sector within face</td></tr>
+              <tr><td>/80</td><td>16 (2 octets)</td><td>~1,000 km</td><td>Equivalent to 2-byte RSDGGS</td></tr>
+              <tr><td>/88</td><td>24 (3 octets)</td><td>~65 km</td><td>Country-level (3-byte RSDGGS RSL)</td></tr>
+              <tr><td>/96</td><td>32 (4 octets)</td><td>~4 km</td><td>Metro area (4-byte RSDGGS)</td></tr>
+              <tr><td>/104</td><td>40 (5 octets)</td><td>~260 m</td><td>Block level (5-byte RSDGGS)</td></tr>
+              <tr><td>/112</td><td>48 (6 octets)</td><td>~16 m</td><td>Building (6-byte RSDGGS)</td></tr>
+              <tr><td>/120</td><td>56 (7 octets)</td><td>~1 m</td><td>Device location (7-byte RSDGGS)</td></tr>
+              <tr><td>/128</td><td>all 64 bits</td><td>~6 cm</td><td>Precise device address</td></tr>
             </tbody>
           </table>
           <t>A /72 prefix encompasses all devices in a single ITU Region. A /88 prefix encompasses all devices within a single country-scale cell. This aggregation is lossless: any RSDGGS cell address is aggregatable at any of the above prefix boundaries without loss of hierarchical information.</t>
@@ -1399,14 +1400,14 @@ Dimension            RFC 9179 YANG grouping    RSDGGS
 ───────────────────  ────────────────────────  ─────────────────────────
 Target context       YANG/NETCONF mgmt         802.15.4 / CBOR / IPv6
 Encoding             XML/JSON (NETCONF)        CBOR bstr (1-8 bytes)
-Precision            decimal64 (16 frac)       3 cm at 8 bytes
+Precision            decimal64 (16 frac)       6 cm at 8 bytes
 Regulatory context   Absent                    Primary design goal
 Routing use          Not defined               See Section 13
 Constrained devices  Not applicable            Primary target
 Uncertainty          coord-accuracy (m)        Implicit in byte length
 Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 ]]></artwork></figure>
-            <t>RFC 9179's decimal64 latitude and longitude fields (16 fraction-digits) provide sub-nanometer theoretical precision, far exceeding GPS capability. RSDGGS at 8 bytes provides 3 cm precision, which matches or exceeds operational GPS accuracy for IoT applications. The YANG encoding overhead (XML or JSON field names plus decimal values) is typically 60-100 bytes per location fix versus 1-8 bytes for RSDGGS.</t>
+            <t>RFC 9179's decimal64 latitude and longitude fields (16 fraction-digits) provide sub-nanometer theoretical precision, far exceeding GPS capability. RSDGGS at 8 bytes provides 6 cm precision, which matches or exceeds operational GPS accuracy for IoT applications. The YANG encoding overhead (XML or JSON field names plus decimal values) is typically 60-100 bytes per location fix versus 1-8 bytes for RSDGGS.</t>
             <t>RFC 9179 does not define a hierarchical structure for location data and provides no support for location-based routing. The RSDGGS cell index has no analog in the RFC 9179 model. An RSDGGS extension to the RFC 9179 grouping is a potential future work item, adding an optional rsdggs-cell leaf of type binary with length constraint 1..8 to the geo-location grouping, enabling network elements to carry RSDGGS regulatory context alongside their WGS-84 coordinates in YANG data models.</t>
           </section>
         </section>
@@ -1424,7 +1425,7 @@ Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 Dimension            RFC 9632 Geofeed          RSDGGS
 ───────────────────  ────────────────────────  ─────────────────────────
 Address space        IP prefixes (BGP)         802.15.4 / 6LoWPAN / CBOR
-Loc. granularity     Country/region/city       3cm-continental (8B)
+Loc. granularity     Country/region/city       6cm-continental (8B)
 Format               CSV file (HTTPS)          Binary (1-8B in-frame)
 Discovery            RPSL inetnum + RPKI       MAC bcn/RSDGGS IPv6
 Regulatory context   Absent                    Primary design goal
@@ -1451,7 +1452,7 @@ Routing              Not defined               See Section 13
 Dimension            RFC 8805 Geofeed Format   RSDGGS
 ───────────────────  ────────────────────────  ─────────────────────────
 Target               IP prefix holders         IoT device manufacturers
-Granularity          Country/region/city       3cm-continental (8B)
+Granularity          Country/region/city       6cm-continental (8B)
 Format               CSV text (HTTPS poll)     Binary (1-8B in-frame)
 Update mechanism     Periodic HTTP fetch       Per-frame dynamic
 Regulatory context   Absent                    Primary design goal
@@ -1579,7 +1580,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
               <tr><td>RFC 6442 (SIP Location)</td><td>SIP-only; PIDF-LO XML; no IoT path</td><td>MAC-layer IE; CBOR; 802.15.4 native</td></tr>
               <tr><td>RFC 9179 (YANG Location)</td><td>NETCONF/RESTCONF only; no constrained IoT</td><td>No YANG model; future work candidate</td></tr>
               <tr><td>RFC 9632 (Geofeed)</td><td>IP prefixes; batch fetch; not real-time</td><td>Per-frame binary; MAC-layer bootstrap</td></tr>
-              <tr><td>RFC 8805 (IP Geofeed fmt)</td><td>Administrative boundary only; not IoT</td><td>Physical cell; 3 cm resolution at 8 bytes</td></tr>
+              <tr><td>RFC 8805 (IP Geofeed fmt)</td><td>Administrative boundary only; not IoT</td><td>Physical cell; 6 cm resolution at 8 bytes</td></tr>
               <tr><td>RFC 5808 (LbyR Reqs)</td><td>Requires LIS infrastructure; not decentralized</td><td>No infrastructure; peer mesh bootstrap</td></tr>
               <tr><td>RFC 5491 (PIDF-LO Usage)</td><td>XML/GML encoding; not constrained IoT</td><td>CBOR bstr; 1-8 bytes; 802.15.4 IE</td></tr>
               <tr><td>RFC 6280 (GEOPRIV Arch.)</td><td>Requires LS/LG/LR servers; centralized</td><td>Fully decentralized; peer-assisted</td></tr>
