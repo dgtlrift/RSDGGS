@@ -126,6 +126,19 @@ Dodecahedron pentagonal face:
           </section>
           <section anchor="s-summary-of-design-decision" numbered="true" toc="default">
             <name>Summary of Design Decision</name>
+            <table anchor="t-icosahedron-vs-dodecahedron">
+              <name>Icosahedron vs. Dodecahedron</name>
+              <thead><tr><th>Property</th><th>Icosahedron (20 triangles)</th><th>Dodecahedron (12 pentagons)</th><th>Winner</th></tr></thead>
+              <tbody>
+                <tr><td>Face count vs. ITU Regions</td><td>20 faces / 3 regions (excess)</td><td>12 faces / 3 regions (correct)</td><td>Dodecahedron</td></tr>
+                <tr><td>Extension faces for sub-regions</td><td>17 (over-partitioned)</td><td>9 (exact fit for regulatory blocs)</td><td>Dodecahedron</td></tr>
+                <tr><td>Face area vs. Region 2</td><td>~25.5M km² (tight fit)</td><td>~42M km² (ample margin)</td><td>Dodecahedron</td></tr>
+                <tr><td>Max boundary distortion</td><td>1.80x (same)</td><td>1.80x (same)</td><td>Tie</td></tr>
+                <tr><td>Distortion ratio vertex/midpoint</td><td>1.57x (high variation)</td><td>1.30x (low variation)</td><td>Dodecahedron</td></tr>
+                <tr><td>Interior angle at boundary corner</td><td>60 degrees (sharp)</td><td>108 degrees (obtuse)</td><td>Dodecahedron</td></tr>
+                <tr><td>Subdivision primitive</td><td>Triangle (direct)</td><td>Triangle (derived, apex at center)</td><td>Tie (different placement)</td></tr>
+              </tbody>
+            </table>
             <t>The dodecahedron satisfies both requirements that the icosahedron fails: it provides the correct face count for direct ITU Region alignment, and it produces lower distortion variance at face boundaries due to its obtuse pentagonal corner angles and smaller vertex-to-edge-midpoint distance ratio. These properties are intrinsic to the dodecahedral geometry and are not achievable by orientation adjustment of the icosahedron.</t>
           </section>
         </section>
@@ -133,6 +146,24 @@ Dodecahedron pentagonal face:
         <section anchor="s-face-topology-and-itu-region-alignment" numbered="true" toc="default">
           <name>Face Topology and ITU Region Alignment</name>
           <t>The RSDGGS grid is rooted in a regular dodecahedron projected onto the surface of a unit sphere. A regular dodecahedron has twelve pentagonal faces. RSDGGS assigns these faces as follows:</t>
+          <table anchor="t-face-assignments">
+            <name>Face Assignments</name>
+            <thead><tr><th>Face</th><th>ITU Parent</th><th>Primary Name</th><th>Anchor Authority</th><th>Primary Bodies</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>—</td><td>Polar / Antarctic</td><td>ITU Special Zone</td><td>Antarctic Treaty, ITU Art. 48</td></tr>
+              <tr><td>1</td><td>R1</td><td>ITU Region 1 — Europe</td><td>ETSI / CEPT</td><td>ETSI, Ofcom, ARCEP, BNetzA</td></tr>
+              <tr><td>2</td><td>R2</td><td>ITU Region 2 — N. America</td><td>FCC / ISED / IFT</td><td>FCC (US), ISED (CA), IFT (MX)</td></tr>
+              <tr><td>3</td><td>R3</td><td>ITU Region 3 — E. Asia</td><td>MIC / MIIT / KCC</td><td>MIC (JP), MIIT (CN), KCC (KR)</td></tr>
+              <tr><td>4</td><td>R1</td><td>Region 1-A — Africa West</td><td>ATU West</td><td>ARTP, ARCEP (SN), ATU west</td></tr>
+              <tr><td>5</td><td>R1</td><td>Region 1-B — Africa East</td><td>ATU East</td><td>CA (ET), CCK (KE), TCRA (TZ)</td></tr>
+              <tr><td>6</td><td>R1</td><td>Region 1-C — Russia / CAS</td><td>Roskomnadzor / RRT</td><td>Roskomnadzor (RU), RRT (KZ)</td></tr>
+              <tr><td>7</td><td>R1</td><td>Region 1-D — Middle East</td><td>ASMG</td><td>MCIT (SA), TRA (AE), NTRA (EG)</td></tr>
+              <tr><td>8</td><td>R2</td><td>Region 2-A — S. America</td><td>ANATEL / ENACOM</td><td>Anatel (BR), ENACOM (AR)</td></tr>
+              <tr><td>9</td><td>R2</td><td>Region 2-B — Caribbean</td><td>NTRC Cluster</td><td>NTRC, Caribbean authorities</td></tr>
+              <tr><td>10</td><td>R3</td><td>Region 3-A — S/SE Asia</td><td>WPC / MCMC</td><td>DoT/WPC (IN), MCMC (MY)</td></tr>
+              <tr><td>11</td><td>R3</td><td>Region 3-B — Oceania</td><td>ACMA / RSM</td><td>ACMA (AU), RSM (NZ), SPC</td></tr>
+            </tbody>
+          </table>
           <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership. Extension faces 4 through 11 subdivide the large ITU regions into coherent regulatory blocs whose parent region is encoded in the regulatory database rather than the index itself.</t>
           <t>Face 0 is reserved for polar and Antarctic zones, which are subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks.</t>
         </section>
@@ -199,10 +230,40 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
           <section anchor="s-ism-band-color-coding" numbered="true" toc="default">
             <name>ISM Band Color Coding</name>
             <t>The following color scheme is used consistently across all twelve faces of the net:</t>
+            <table anchor="t-ism-band-color-coding">
+              <name>ISM Band Color Coding</name>
+              <thead><tr><th>Color</th><th>Band</th><th>Frequency Range</th><th>Primary Coverage</th></tr></thead>
+              <tbody>
+                <tr><td>Deep red (#CC2222)</td><td>Band A</td><td>433.050–434.790 MHz</td><td>ITU Region 1: Europe, Africa, Middle East, Russia, Central Asia, Indian Subcontinent</td></tr>
+                <tr><td>Deep teal (#1A7A5E)</td><td>Band B</td><td>863–870 MHz (ETSI SRD)</td><td>EU/CEPT/EEA member states and ETSI-aligned partner nations</td></tr>
+                <tr><td>Orange (#D4780A)</td><td>Band C</td><td>902–928 MHz</td><td>ITU Region 2 (Americas) plus Australia, New Zealand, Taiwan, and Japan (920–928 MHz only)</td></tr>
+                <tr><td>Navy blue (#1A3580)</td><td>Band D</td><td>2400–2500 MHz</td><td>Global allocation — all countries (informational baseline, universal)</td></tr>
+                <tr><td>Steel blue (#B0C8DC)</td><td>2.4 GHz only</td><td>2400–2500 MHz</td><td>No sub-GHz ISM band allocated (most of Asia/Pacific)</td></tr>
+                <tr><td>Primary + diagonal hatch</td><td>Multiple bands</td><td>Two bands concurrent</td><td>Primary fill = first band; hatch color = second band (e.g., EU: red fill + teal hatch for 433 + 868 MHz)</td></tr>
+              </tbody>
+            </table>
           </section>
           <section anchor="s-face-assignments-and-regulatory-bodies" numbered="true" toc="default">
             <name>Face Assignments and Regulatory Bodies</name>
             <t>Each face of the RSDGGS dodecahedron is labeled with its face index (0–11) and a short geographic identifier. The face index is the RSDGGS encoding value returned for any coordinate within that face at 1-byte resolution. The following table maps each face index to its geographic coverage and the principal national regulatory bodies whose ISM band rules apply within that face.</t>
+            <table anchor="t-face-assignments-and-regulatory-bodies">
+              <name>Face Assignments and Regulatory Bodies</name>
+              <thead><tr><th>Face</th><th>Geographic Region</th><th>ITU Designation</th><th>Principal Regulatory Bodies</th><th>ISM Bands</th></tr></thead>
+              <tbody>
+                <tr><td>F0</td><td>Polar / Antarctic</td><td>Special</td><td>Antarctic Treaty — no standard ISM allocations</td><td>Coordination required</td></tr>
+                <tr><td>F1</td><td>Europe</td><td>ITU Region 1</td><td>ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE)</td><td>433 + 868 + 2.4 GHz</td></tr>
+                <tr><td>F2</td><td>N. America</td><td>ITU Region 2</td><td>FCC (US) · ISED (CA) · IFT (MX)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F3</td><td>E. Asia</td><td>ITU Region 3</td><td>MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)</td><td>2.4 GHz; JP 920–928 MHz; TW 902–928 MHz</td></tr>
+                <tr><td>F4</td><td>Africa West</td><td>ITU Region 1</td><td>ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F5</td><td>Africa East</td><td>ITU Region 1</td><td>ATU East · CCK (KE) · TCRA (TZ) · CA (ET)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F6</td><td>Russia / CAS</td><td>ITU Region 1</td><td>Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F7</td><td>Middle East</td><td>ITU Region 1</td><td>ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F8</td><td>S. America</td><td>ITU Region 2</td><td>Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</td><td>902–928 + 2.4 GHz; BR split-band</td></tr>
+                <tr><td>F9</td><td>Caribbean</td><td>ITU Region 2</td><td>NTRC cluster · FCC (PR/USVI) · BIPT (AW)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F10</td><td>S/SE Asia</td><td>ITU Region 3</td><td>WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)</td><td>2.4 GHz; some: 920–925 MHz</td></tr>
+                <tr><td>F11</td><td>Oceania</td><td>ITU Region 3</td><td>ACMA (AU) · RSM (NZ) · MCIT (PG)</td><td>915–928 MHz (AU/NZ) + 2.4 GHz</td></tr>
+              </tbody>
+            </table>
           </section>
           <section anchor="s-net-topology-and-construction" numbered="true" toc="default">
             <name>Net Topology and Construction</name>
@@ -431,11 +492,38 @@ modulation-type = &(
         <section anchor="s-resolution-sufficiency-levels" numbered="true" toc="default">
           <name>Resolution Sufficiency Levels</name>
           <t>The Resolution Sufficiency Level (RSL) for a given face and band specifies the minimum index length at which the regulatory rule set is unambiguous. Devices MUST acquire an index of at least RSL octets before performing a regulatory lookup for that band.</t>
+          <table anchor="t-resolution-sufficiency-levels">
+            <name>Resolution Sufficiency Levels</name>
+            <thead><tr><th>Band</th><th>Face 2 (N. Am.)</th><th>Face 1 (EU)</th><th>Faces 3/10/11 (Asia/Pac)</th><th>Faces 4/5 (Africa)</th><th>Faces 6/7 (RU/ME)</th></tr></thead>
+            <tbody>
+              <tr><td>433 MHz</td><td>RSL 1 (illegal)</td><td>RSL 2</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 2</td></tr>
+              <tr><td>863 MHz</td><td>RSL 1 (illegal)</td><td>RSL 2</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 2</td></tr>
+              <tr><td>902 MHz</td><td>RSL 1</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 3</td><td>RSL 1 (illegal)</td></tr>
+              <tr><td>920 MHz</td><td>RSL 1 (902 band)</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 3</td><td>RSL 1 (illegal)</td></tr>
+              <tr><td>Whitespace</td><td>RSL 1 (US only)</td><td>RSL 1 (illegal)</td><td>RSL 1 (illegal)</td><td>RSL 1 (illegal)</td><td>RSL 1 (illegal)</td></tr>
+            </tbody>
+          </table>
           <t>For faces where a band is universally illegal, RSL 1 is sufficient: the face byte alone enables immediate determination that the band is unavailable, and no further index bytes are required for regulatory validation purposes.</t>
         </section>
         <section anchor="s-exception-overlay-table" numbered="true" toc="default">
           <name>Exception Overlay Table</name>
           <t>Certain jurisdictions cannot be fully resolved by the regular grid at any practical resolution due to their small geographic extent, enclave status, or face-level regulatory misassignment. These locations are addressed by an exception overlay table consulted after the primary database lookup when the band-entry exception flag is set.</t>
+          <table anchor="t-exception-overlay-table">
+            <name>Exception Overlay Table</name>
+            <thead><tr><th>Location</th><th>Face</th><th>Issue</th><th>Min RSL for Exception</th></tr></thead>
+            <tbody>
+              <tr><td>Hong Kong (OFCA)</td><td>3</td><td>920-925 MHz, 100 mW vs. CN illegal</td><td>5</td></tr>
+              <tr><td>Macau (DSRT)</td><td>3</td><td>ETSI framework in Region 3 face</td><td>5</td></tr>
+              <tr><td>Singapore (IMDA)</td><td>10</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
+              <tr><td>US Virgin Islands (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>5</td></tr>
+              <tr><td>British Virgin Islands</td><td>9</td><td>ICTA rules adjacent to USVI</td><td>5</td></tr>
+              <tr><td>French Guiana (ARCEP)</td><td>8</td><td>ETSI rules in Region 2-A face</td><td>4</td></tr>
+              <tr><td>Ceuta / Melilla (ETSI)</td><td>4</td><td>EU enclave in Africa West face</td><td>6</td></tr>
+              <tr><td>Puerto Rico (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>4</td></tr>
+              <tr><td>Guam / CNMI (FCC)</td><td>3</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
+              <tr><td>French Pacific (ARCEP)</td><td>11</td><td>ETSI rules in Oceania face</td><td>4</td></tr>
+            </tbody>
+          </table>
         </section>
       
         <section anchor="s-regulatory-database-validity-limitations" numbered="true" toc="default">
@@ -454,18 +542,67 @@ modulation-type = &(
         <section anchor="s-mhz-center-433-92-mhz" numbered="true" toc="default">
           <name>433.05-434.79 MHz (Center: 433.92 MHz)</name>
           <t>This band is designated for ISM use exclusively within ITU Region 1 (Europe, Africa, Middle East, and parts of the former USSR). It is not available as an ISM band in ITU Regions 2 or 3. A single-octet RSDGGS index is sufficient to determine unavailability for all Region 2 and Region 3 faces.</t>
+          <table anchor="t-433-05-434-79-mhz-center-433-92-mhz">
+            <name>433.05-434.79 MHz (Center: 433.92 MHz)</name>
+            <thead><tr><th>Authority</th><th>Power Limit</th><th>Power Ref.</th><th>Duty Cycle</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>ETSI EN 300 220 [ETSI-220] (EU)</td><td>10 mW</td><td>ERP</td><td>10%</td><td>Standard EU SRD allocation</td></tr>
+              <tr><td>Ofcom IR 2030 (UK)</td><td>10 mW</td><td>ERP</td><td>10%</td><td>Post-Brexit mirrors ETSI</td></tr>
+              <tr><td>Roskomnadzor (RU)</td><td>10 mW</td><td>—</td><td>None stated</td><td>GOST-R framework</td></tr>
+              <tr><td>UCRF (UA)</td><td>10 mW</td><td>ERP</td><td>10%</td><td>EU-aligned post-2022</td></tr>
+              <tr><td>Most of Africa</td><td>—</td><td>—</td><td>—</td><td>No harmonized ISM rule</td></tr>
+            </tbody>
+          </table>
         </section>
         <section anchor="s-mhz-etsi-srd-sub-bands" numbered="true" toc="default">
           <name>863-870 MHz (ETSI SRD Sub-bands)</name>
           <t>This band is the primary short-range device allocation for ITU Region 1 and is governed by ETSI EN 300 220 <xref target="ETSI-220"/>. It is not available in Regions 2 or 3. The band is internally divided into sub-bands with significantly different duty cycle and power parameters.</t>
+          <table anchor="t-863-870-mhz-etsi-srd-sub-bands">
+            <name>863-870 MHz (ETSI SRD Sub-bands)</name>
+            <thead><tr><th>Sub-band</th><th>Power</th><th>Duty Cycle / Access</th><th>Primary Use</th></tr></thead>
+            <tbody>
+              <tr><td>863.0-865.0 MHz</td><td>25 mW ERP</td><td>0.1%</td><td>Alarms, EN 300 220-2</td></tr>
+              <tr><td>865.0-868.6 MHz</td><td>25 mW ERP</td><td>1%</td><td>General SRD</td></tr>
+              <tr><td>868.6-868.7 MHz</td><td>25 mW ERP</td><td>&lt;1%</td><td>Alarms</td></tr>
+              <tr><td>868.7-869.2 MHz</td><td>25 mW ERP</td><td>0.1%</td><td>General SRD</td></tr>
+              <tr><td>869.2-869.4 MHz</td><td>10 mW ERP</td><td>&lt;0.1%</td><td>Alarms, social alarms</td></tr>
+              <tr><td>869.4-869.65 MHz</td><td>500 mW ERP</td><td>10% or LBT</td><td>High-power SRD, LoRa gateway</td></tr>
+              <tr><td>869.65-869.7 MHz</td><td>25 mW ERP</td><td>&lt;0.1%</td><td>Alarms</td></tr>
+              <tr><td>869.7-870.0 MHz</td><td>5 mW ERP</td><td>—</td><td>Non-specific SRD</td></tr>
+            </tbody>
+          </table>
         </section>
         <section anchor="s-mhz-center-915-mhz" numbered="true" toc="default">
           <name>902-928 MHz (Center: 915 MHz)</name>
         <t>This band is governed primarily by FCC Part 15 Subpart C <xref target="FCC-15"/> in the United States and equivalent national regulations in the Americas and selected Asia-Pacific jurisdictions.</t>
           <t>This band is the primary sub-GHz ISM allocation for ITU Region 2 and selected Region 3 jurisdictions. It is not available in ITU Region 1 (occupied by GSM-R and other licensed services) or in most of Region 3.</t>
+          <table anchor="t-902-928-mhz-center-915-mhz">
+            <name>902-928 MHz (Center: 915 MHz)</name>
+            <thead><tr><th>Authority</th><th>Allocation</th><th>Power</th><th>Duty Cycle</th><th>Channelization / Hopping</th></tr></thead>
+            <tbody>
+              <tr><td>FCC (US) Part 15.247 [FCC-15]</td><td>902-928 MHz</td><td>1 W EIRP</td><td>None</td><td>Hop &gt;= 50 channels, min 25 kHz</td></tr>
+              <tr><td>ISED (CA) RSS-210</td><td>902-928 MHz</td><td>1 W EIRP</td><td>None</td><td>Mirrors FCC</td></tr>
+              <tr><td>IFT (MX)</td><td>902-928 MHz</td><td>1 W EIRP</td><td>None</td><td>Mirrors FCC</td></tr>
+              <tr><td>Anatel (BR) REF 680</td><td>902-907.5 + 915-928 MHz</td><td>30 mW EIRP</td><td>1%</td><td>Fixed or hopping</td></tr>
+              <tr><td>ENACOM (AR)</td><td>902-928 MHz</td><td>1 W EIRP</td><td>None</td><td>FCC-aligned</td></tr>
+              <tr><td>Subtel (CL)</td><td>902-928 MHz</td><td>1 W EIRP</td><td>None</td><td>FCC-aligned</td></tr>
+              <tr><td>ACMA (AU) AS/NZS 4268</td><td>915-928 MHz</td><td>1 W EIRP</td><td>None</td><td>FCC-aligned</td></tr>
+              <tr><td>RSM (NZ)</td><td>915-928 MHz</td><td>1 W EIRP</td><td>None</td><td>Mirrors ACMA</td></tr>
+            </tbody>
+          </table>
         </section>
         <section anchor="s-mhz-regional-variants" numbered="true" toc="default">
           <name>920-928 MHz Regional Variants</name>
+          <table anchor="t-920-928-mhz-regional-variants">
+            <name>920-928 MHz Regional Variants</name>
+            <thead><tr><th>Authority</th><th>Allocation</th><th>Power</th><th>Duty Cycle</th><th>Modulation / Notes</th></tr></thead>
+            <tbody>
+              <tr><td>MIC (JP) ARIB STD-T108 [ARIB-T108]</td><td>920.5-928 MHz</td><td>20 mW EIRP</td><td>1%</td><td>GFSK, 250 kHz channels</td></tr>
+              <tr><td>NCC (TW)</td><td>920-925 MHz</td><td>500 mW EIRP</td><td>None</td><td>Restricted bandwidth</td></tr>
+              <tr><td>IMDA (SG)</td><td>920-925 MHz</td><td>500 mW EIRP</td><td>None</td><td>City-state; RSL 4-5</td></tr>
+              <tr><td>OFCA (HK)</td><td>920-925 MHz</td><td>100 mW EIRP</td><td>None</td><td>Enclave; RSL 5 required</td></tr>
+            </tbody>
+          </table>
         <t>The 920-928 MHz band variants are governed by national standards including ARIB STD-T108 <xref target="ARIB-T108"/> in Japan and equivalent regulations in Australia, New Zealand, and other Asia-Pacific jurisdictions.</t>
         </section>
         <section anchor="s-tv-whitespace-bands-174-216-mhz-470-608-mhz" numbered="true" toc="default">
@@ -512,12 +649,35 @@ EU internal borders (CEPT/ECC):
           <section anchor="s-technical-mitigation-mechanisms" numbered="true" toc="default">
             <name>Technical Mitigation Mechanisms</name>
             <t>Within coordination zones, administrations enforce technical constraints to limit signal spillover. These mechanisms have direct analogs in RSDGGS-driven adaptive compliance:</t>
+            <table anchor="t-technical-mitigation-mechanisms">
+              <name>Technical Mitigation Mechanisms</name>
+              <thead><tr><th>Mechanism</th><th>Traditional Deployment</th><th>RSDGGS IoT Analog</th></tr></thead>
+              <tbody>
+                <tr><td>Power flux-density limit</td><td>Fixed limit at border line (e.g., -107 dBW/m²)</td><td>Computed from distance to boundary cell edge + TX power</td></tr>
+                <tr><td>ERP reduction</td><td>Graduated by antenna height above terrain</td><td>Graduated by RSDGGS resolution steps to boundary</td></tr>
+                <tr><td>Directional antenna null</td><td>Beam steering away from border</td><td>Not applicable to omni IoT devices</td></tr>
+                <tr><td>Antenna height restriction</td><td>Lowers line-of-sight range</td><td>802.15.4 TX power reduction achieves equivalent range limit</td></tr>
+                <tr><td>Duty cycle restriction</td><td>Border-zone operational limit</td><td>Tighter duty cycle from neighboring rule set applied</td></tr>
+              </tbody>
+            </table>
             <t>For IoT devices operating under IEEE 802.15.4, directional antenna nulling is generally not available. The primary adaptive mechanism is transmit power reduction, which reduces the effective propagation range and thereby limits the power flux-density at the boundary. RSDGGS provides the geographic trigger for this reduction by computing the distance from the device's current cell to the nearest boundary cell between conflicting rule sets.</t>
           </section>
         </section>
         <section anchor="s-coordination-zone-geometry-and-rsdggs-resolution" numbered="true" toc="default">
           <name>Coordination Zone Geometry and RSDGGS Resolution</name>
           <t>Coordination zone extents established by bilateral agreements map directly to RSDGGS resolution levels. A device must know its position within the applicable coordination zone to apply the correct power limits. The following table maps representative coordination zone radii to the RSDGGS resolution required for unambiguous zone membership determination:</t>
+          <table anchor="t-coordination-zone-geometry-and-rsdggs-resolution">
+            <name>Coordination Zone Geometry and RSDGGS Resolution</name>
+            <thead><tr><th>Zone radius</th><th>RSDGGS resolution needed</th><th>Bytes</th><th>Example agreement</th></tr></thead>
+            <tbody>
+              <tr><td>140 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>US-Canada above 30 MHz</td></tr>
+              <tr><td>120 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>Canada transmit sites near border</td></tr>
+              <tr><td>110 km</td><td>3 bytes (~60 km cells)</td><td>3</td><td>US-Mexico 800 MHz sharing zone</td></tr>
+              <tr><td>30 km</td><td>4 bytes (~8 km cells)</td><td>4</td><td>London, ON protection zone</td></tr>
+              <tr><td>12 nm</td><td>5 bytes (~1 km cells)</td><td>5</td><td>Territorial sea boundary</td></tr>
+              <tr><td>&lt; 5 km</td><td>6 bytes (~120 m cells)</td><td>6</td><td>Land border crossing point</td></tr>
+            </tbody>
+          </table>
           <t>The 3-byte resolution (RSL 3, ~60 km cells) is sufficient to determine whether a device is within the 110-140 km coordination zones established by the FCC-ISED and FCC-IFT bilateral agreements. This aligns with the RSL values defined in Section 8.2 for most regulatory jurisdictions. For the innermost protection zones (e.g., the 30 km London, Ontario zone in the FCC-ISED 700 MHz arrangement), 4-byte resolution is required. Maritime territorial sea boundaries require 5-byte resolution.</t>
         </section>
         <section anchor="s-boundary-proximity-function" numbered="true" toc="default">
@@ -680,11 +840,38 @@ boundary-entry = {              ; in regulatory database
         <section anchor="s-channel-scanning-protocol" numbered="true" toc="default">
           <name>Channel Scanning Protocol</name>
           <t>A Naive Device that has not resolved its regulatory context SHALL implement the following scanning procedure to discover Beacon Devices:</t>
+          <ol>
+            <li>The Naive Device MUST scan all channels across the candidate ISM bands for the broadest possible regulatory region. For a device manufactured for global deployment, this includes all of: 433.05-434.79 MHz, 863-870 MHz, 902-928 MHz, and 920-928 MHz.</li>
+            <li>The Naive Device SHALL dwell on each candidate channel for a duration sufficient to receive at least one beacon frame from a Beacon Device operating on that channel, accounting for the maximum permitted beacon interval.</li>
+            <li>Upon receiving a valid beacon frame, the Naive Device SHALL extract the RSDGGS cell and perform a regulatory database lookup to determine the rule set applicable at that cell.</li>
+            <li>If the Naive Device can independently verify that it is within the same RSDGGS cell as the Beacon Device at RSL depth (for example, by RF signal characteristics or approximate location knowledge), it MAY adopt the Beacon Device's rule set and begin operation.</li>
+            <li>If the Naive Device cannot independently verify co-location, it SHALL continue scanning until it receives beacons from multiple Beacon Devices with consistent RSDGGS cells, or until it acquires independent location information.</li>
+          </ol>
           <t>The maximum beacon interval SHALL be no greater than 60 seconds for devices operating in regulatory environments where initial channel selection is required within that interval. Implementations MAY use longer intervals in environments where the regulatory context is known to be stable.</t>
         </section>
         <section anchor="s-regulatory-bootstrap-procedure" numbered="true" toc="default">
           <name>Regulatory Bootstrap Procedure</name>
           <t>The complete regulatory bootstrap procedure for a Naive Device is as follows:</t>
+          <ol>
+            <li>Power on. No regulatory context assumed.</li>
+            <li>Begin channel scan as defined in Section 10.2.</li>
+            <li><t>On receiving a beacon frame with a valid RSDGGS cell:</t>
+              <ol type="a">
+                <li>Extract cell bytes.</li>
+                <li>Perform database lookup: is the received channel legal for the cell's rule set?</li>
+                <li>If legal: tentatively adopt rule set. Increment confidence counter.</li>
+                <li>If illegal: discard beacon. This may indicate the Beacon Device is non-compliant or the Naive Device is in a different jurisdiction.</li>
+              </ol>
+            </li>
+            <li><t>When confidence threshold is reached (RECOMMENDED: 3 consistent beacons from 1 or more Beacon Devices within the same RSL cell):</t>
+              <ol type="a">
+                <li>Adopt rule set as operational regulatory context.</li>
+                <li>Store RSDGGS cell in non-volatile memory.</li>
+                <li>Begin normal operation on permitted channels.</li>
+              </ol>
+            </li>
+            <li>Periodically re-validate regulatory context by continuing to receive beacons. If the device moves (as determined by a change in the received RSDGGS cell at RSL depth), restart the bootstrap procedure.</li>
+          </ol>
         </section>
       </section>
       <section anchor="s-manufacturing-provisioning-use-case" numbered="true" toc="default">
@@ -692,7 +879,20 @@ boundary-entry = {              ; in regulatory database
         <t>RSDGGS enables a single global hardware SKU to be provisioned with location-specific regulatory parameters at manufacturing time, eliminating the need for hardware or firmware variants differentiated by target market. Pre-provisioning at manufacturing time is one of three equally valid provisioning paths; the others are peer-assisted bootstrap (Section 11) and tethered-device provisioning (Section 11.3). In all three cases, the provisioned RSDGGS cell is stored in non-volatile device memory and does not require ongoing connectivity to any server to be applied.</t>
         <t>This section does not preclude optional use of infrastructure-based provisioning mechanisms such as DHCPv6 (analogous to RFC 3825, which defines a DHCP option for geodetic coordinates) or cloud enrollment APIs using device authorization flows such as those defined in <xref target="RFC8628"/>. However, in conformance with design goal G8, infrastructure-based provisioning MUST NOT be the only path to regulatory compliance. Any device provisioned via DHCP or cloud enrollment MUST also be capable of regulatory self-configuration via peer discovery if the infrastructure becomes unavailable.</t>
         <t>The manufacturing provisioning procedure is as follows:</t>
+        <ol>
+          <li>The deployment location is determined at order entry, warehouse assignment, or installation scheduling. The RSDGGS cell for the deployment location is computed at RSL depth for the intended ISM band.</li>
+          <li>The RSDGGS cell (1 to 4 octets for most fixed deployments) is written to the device's non-volatile configuration store during manufacturing or pre-shipment provisioning, alongside the target band identifier.</li>
+          <li>At first boot, the device performs a regulatory database lookup using the stored cell to retrieve the applicable rule set. The device configures its radio stack with the retrieved parameters: center frequency, channel plan, transmit power, duty cycle timer, dwell timer, LBT engine, and modulation.</li>
+          <li>The device MAY verify its provisioned cell against independently acquired location information (GPS, beacon scan) if such capability is available. Mismatches SHOULD be flagged for operator review.</li>
+        </ol>
         <t>This approach yields several manufacturing benefits:</t>
+        <ul>
+          <li>A single firmware image supports all markets. Regulatory differentiation is entirely data-driven.</li>
+          <li>The RSDGGS cell is human-readable as a short hex string and can be included in the device's bill of materials and shipping documentation.</li>
+          <li>Privacy is inherent: a 3-byte cell (country-level precision) stored in the device does not disclose the precise installation address.</li>
+          <li>Regulatory database updates are decoupled from firmware updates. Changes to national power limits or channelization can be distributed as database patches without reflashing devices.</li>
+          <li>Devices deployed in regions requiring only a 1-byte cell (e.g., anywhere in North America for 902 MHz) can be provisioned with a single byte, minimizing configuration data.</li>
+        </ul>
       </section>
       <section anchor="s-cooperative-localization" numbered="true" toc="default">
         <name>Cooperative Localization</name>
@@ -701,6 +901,15 @@ boundary-entry = {              ; in regulatory database
         <section anchor="s-localization-method-hierarchy" numbered="true" toc="default">
           <name>Localization Method Hierarchy</name>
           <t>Three localization methods are defined, ordered from coarsest to finest achievable precision. The methods are composable: a device SHOULD apply all available methods simultaneously, using each as a weighted input to the unified estimation engine defined in Section 11.6.</t>
+          <table anchor="t-localization-method-hierarchy">
+            <name>Localization Method Hierarchy</name>
+            <thead><tr><th>Method</th><th>Input</th><th>Typical Precision</th><th>802.15.4 Primitive</th></tr></thead>
+            <tbody>
+              <tr><td>M1 — Cell Intersection</td><td>RSDGGS cells from peers</td><td>Cell resolution of peers</td><td>Beacon / Enhanced Beacon</td></tr>
+              <tr><td>M2 — RSSI Multilateration</td><td>Round-trip RSSI + path loss model</td><td>10–50 m (outdoor), 20–100 m (indoor)</td><td>Data frame + Enhanced ACK</td></tr>
+              <tr><td>M3 — UWB Ranging</td><td>DS-TWR timestamps (802.15.4a/z)</td><td>0.1–0.5 m (LoS), 0.3–1 m (NLoS)</td><td>HRP UWB ranging exchange</td></tr>
+            </tbody>
+          </table>
           <t>A device with access only to Method M1 can resolve its RSDGGS cell to the intersection of its peers' cells, typically 2–4 bytes of resolution. A device with M2 capability can typically achieve 6-byte resolution (120 m) in outdoor environments. A device with M3 capability can achieve 7–8 byte resolution (2–15 m) in line-of-sight conditions.</t>
         </section>
         <section anchor="s-rsdggs-cell-intersection" numbered="true" toc="default">
@@ -828,6 +1037,20 @@ PDOA angle estimation:
         <section anchor="s-rsdggs-as-position-state-space" numbered="true" toc="default">
           <name>RSDGGS as Position State Space</name>
           <t>Rather than maintaining a floating-point latitude/longitude position estimate, the cooperative localization engine represents position state natively as an RSDGGS cell index at the finest resolution consistent with the current position uncertainty. This representation is exact within the quantization of the cell size, requires no floating-point arithmetic at the application layer, and directly produces the regulatory cell needed for ISM band validation.</t>
+          <table anchor="t-rsdggs-as-position-state-space">
+            <name>RSDGGS as Position State Space</name>
+            <thead><tr><th>Position Uncertainty (1-sigma)</th><th>RSDGGS Resolution</th><th>Primary Source</th></tr></thead>
+            <tbody>
+              <tr><td>&gt; 2,000 km</td><td>1 byte (face)</td><td>No measurement; prior only</td></tr>
+              <tr><td>250 – 2,000 km</td><td>2 bytes</td><td>Cell intersection (1-2 peers)</td></tr>
+              <tr><td>60 – 250 km</td><td>3 bytes</td><td>Cell intersection (3+ peers), RSL sufficient</td></tr>
+              <tr><td>8 – 60 km</td><td>4 bytes</td><td>Cell intersection (dense); coarse RSSI</td></tr>
+              <tr><td>1 – 8 km</td><td>5 bytes</td><td>RSSI multilateration (outdoor)</td></tr>
+              <tr><td>120 m – 1 km</td><td>6 bytes</td><td>RSSI multilateration (dense urban)</td></tr>
+              <tr><td>15 – 120 m</td><td>7 bytes</td><td>UWB NLoS / dense RSSI</td></tr>
+              <tr><td>&lt; 15 m</td><td>8 bytes (max)</td><td>UWB DS-TWR LoS</td></tr>
+            </tbody>
+          </table>
           <t>The position uncertainty is maintained as a single integer sigma_cells, representing the radius of the position uncertainty ellipse in units of RSDGGS cells at the current resolution. When sigma_cells falls below 1 at the current resolution, the resolution is incremented (one byte added) and sigma_cells is recomputed in terms of the finer cells. When sigma_cells grows beyond a threshold (RECOMMENDED: 4 cells), the resolution is decremented (one byte removed).</t>
           <t>This adaptive quantization ensures that the RSDGGS cell always represents the region within which the device's true position lies with high probability, without overstating precision. A device reporting its cell at 3-byte resolution is asserting that its position is within the corresponding 60 km cell; a device reporting at 7-byte resolution is asserting position within 15 m.</t>
         </section>
@@ -837,6 +1060,12 @@ PDOA angle estimation:
           <section anchor="s-measurement-model" numbered="true" toc="default">
             <name>Measurement Model</name>
             <t>Each peer P_i contributes one or more of the following measurements:</t>
+            <ul>
+              <li>Cell assertion C_i: the RSDGGS cell of P_i, known from beacon reception. Constrains the device position to the intersection of C_i and the current position cell.</li>
+              <li>RSSI range r_i with uncertainty sigma_i: derived from round-trip RSSI exchange per Section 11.3.</li>
+              <li>UWB range R_i with uncertainty epsilon_i: derived from DS-TWR per Section 11.4.1.</li>
+              <li>PDOA angle theta_i with uncertainty delta_i: derived from PDOA per Section 11.4.3.</li>
+            </ul>
           </section>
           <section anchor="s-weighted-least-squares-position-update" numbered="true" toc="default">
             <name>Weighted Least Squares Position Update</name>
@@ -931,6 +1160,16 @@ consistent with the CBOR encoding defined in Section 7.
         <section anchor="s-rsdggs-location-sub-ie-definition" numbered="true" toc="default">
           <name>RSDGGS Location Sub-IE Definition</name>
           <t>The RSDGGS Location Sub-IE is defined as follows. The Sub-IE ID value is pending assignment by the IEEE Registration Authority. The placeholder value 0x9A is used in this document.</t>
+          <table anchor="t-rsdggs-location-sub-ie-definition">
+            <name>RSDGGS Location Sub-IE Definition</name>
+            <thead><tr><th>Field</th><th>Bits</th><th>Value</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>Sub-IE ID</td><td>15:8</td><td>0x9A (TBD)</td><td>RSDGGS Location Sub-IE identifier</td></tr>
+              <tr><td>Length</td><td>7:0</td><td>0x01 to 0x08</td><td>Number of RSDGGS cell octets; encodes resolution</td></tr>
+              <tr><td>Cell[0]</td><td>—</td><td>0x00 to 0x0B</td><td>Dodecahedron face index (mandatory)</td></tr>
+              <tr><td>Cell[1..7]</td><td>—</td><td>variable</td><td>Subdivision octets, present per Length field</td></tr>
+            </tbody>
+          </table>
           <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0x0C to 0x0F in Cell[0]) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (Cell[1] bits 7-4 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
           <t>The Sub-IE MAY appear in any MAC frame type that permits Payload IEs, including Beacon frames, Enhanced Beacon frames, Data frames, and Command frames. It SHALL appear in the SUN Device Description payload of Enhanced Beacon frames transmitted by devices that have resolved their regulatory context.</t>
         </section>
@@ -956,6 +1195,13 @@ Enhanced Beacon Frame (abbreviated):
         <section anchor="s-mac-layer-regulatory-bootstrap" numbered="true" toc="default">
           <name>MAC-Layer Regulatory Bootstrap</name>
           <t>The inclusion of RSDGGS location in the SUN Device Description enables regulatory bootstrap at the MAC layer, prior to any application stack initialization. The procedure is as follows:</t>
+          <ol>
+            <li>A Naive Device scans for Enhanced Beacon frames on candidate ISM channels as defined in Section 10.2.</li>
+            <li>On receiving an Enhanced Beacon containing a SUN Device Description with an RSDGGS Location Sub-IE, the Naive Device extracts the cell bytes.</li>
+            <li>The Naive Device performs a regulatory database lookup using the received cell at the encoded resolution level.</li>
+            <li>If the channel on which the beacon was received is consistent with the rule set for the received cell, the Naive Device MAY adopt the rule set as its operational regulatory context and join the PAN.</li>
+            <li>The PAN coordinator, upon receiving an Association Request from a Naive Device, SHOULD validate that the requesting device's RSDGGS Location Sub-IE (if present) is consistent with the coordinator's own cell at RSL depth. Devices whose cells are inconsistent with the PAN coordinator's cell at RSL depth SHOULD NOT be admitted to the PAN without operator override, as they may be operating under a different regulatory framework.</li>
+          </ol>
           <t>This MAC-layer integration enables fully automated regulatory provisioning during PAN formation, with no application-layer involvement. A device joining a well-managed SUN PAN will have its regulatory context resolved as a side effect of the standard association procedure.</t>
         </section>
       </section>
@@ -983,6 +1229,20 @@ Enhanced Beacon Frame (abbreviated):
         <section anchor="s-prefix-hierarchy-and-aggregation" numbered="true" toc="default">
           <name>Prefix Hierarchy and Aggregation</name>
           <t>The RSDGGS hierarchical structure maps directly onto IPv6 prefix aggregation. The following prefix lengths correspond to RSDGGS resolution levels:</t>
+          <table anchor="t-prefix-hierarchy-and-aggregation">
+            <name>Prefix Hierarchy and Aggregation</name>
+            <thead><tr><th>IPv6 Prefix</th><th>RSDGGS Bits</th><th>Cell Diameter</th><th>Geographic Scope</th></tr></thead>
+            <tbody>
+              <tr><td>/72</td><td>8 (face)</td><td>~2,000 km</td><td>ITU Region / dodecahedron face</td></tr>
+              <tr><td>/75</td><td>8 + 3 (triangle)</td><td>~800 km</td><td>Triangle sector within face</td></tr>
+              <tr><td>/77</td><td>+ 2 (subdiv 1)</td><td>~400 km</td><td>First subdivision</td></tr>
+              <tr><td>/80</td><td>+ 5 (subdiv 1-2.5)</td><td>~200 km</td><td>Equivalent to 2-byte RSDGGS</td></tr>
+              <tr><td>/88</td><td>+ 13 (byte 2 full)</td><td>~60 km</td><td>Country-level (3-byte RSDGGS RSL)</td></tr>
+              <tr><td>/96</td><td>+ 21 (byte 3 full)</td><td>~8 km</td><td>Metro area (4-byte RSDGGS)</td></tr>
+              <tr><td>/112</td><td>+ 37 (byte 5 full)</td><td>~120 m</td><td>Block level (6-byte RSDGGS)</td></tr>
+              <tr><td>/128</td><td>all 64 bits</td><td>~3 cm</td><td>Precise device address</td></tr>
+            </tbody>
+          </table>
           <t>A /72 prefix encompasses all devices in a single ITU Region. A /88 prefix encompasses all devices within a single country-scale cell. This aggregation is lossless: any RSDGGS cell address is aggregatable at any of the above prefix boundaries without loss of hierarchical information.</t>
           <t>Routing tables for geographic address spaces can therefore aggregate aggressively. A continental backbone router needs only /72 or /80 routes. A national backbone router needs only /88 routes. A metropolitan router needs only /96 routes. Leaf-level routing to specific devices uses the full /128.</t>
         </section>
@@ -1310,20 +1570,24 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
         <section anchor="s-gap-analysis-summary" numbered="true" toc="default">
           <name>Gap Analysis Summary</name>
           <t>The following table summarizes the key gaps across all ten reviewed specifications and the RSDGGS response to each. Each entry corresponds to the detailed comparison in the preceding subsections (16.1 through 16.10):</t>
-          <figure><artwork type="ascii-art"><![CDATA[
-Specification    Gap Addressed by RSDGGS
-───────────────  ─────────────────────────────────────────────────────
-RFC 2009         No ISM regulatory context; float GPS coordinates
-RFC 5870         Text encoding (~25 bytes); no regulatory awareness
-RFC 6442         SIP-only deployment; PIDF-LO XML; no constrained IoT
-RFC 9179         NETCONF/RESTCONF only; not implementable on MCU
-RFC 9632         IP-prefix granularity; batch HTTP; not real-time
-RFC 8805         Administrative boundary only; 1-8 byte encoding absent
-RFC 5808         Requires LIS infrastructure; not decentralized
-RFC 5491         XML/GML encoding; not suitable for constrained IoT
-RFC 6280         Requires LS/LG/LR server infrastructure; centralized
-RFC 6772         XML policy rules; not implementable on microcontroller
-]]></artwork></figure>
+          <table anchor="t-gap-analysis-summary">
+            <name>Gap Analysis Summary</name>
+            <thead><tr><th>Specification</th><th>Primary Gap vs RSDGGS</th><th>RSDGGS Response</th></tr></thead>
+            <tbody>
+              <tr><td>RFC 2009 (GPS Routing)</td><td>No ISM regulatory context; float GPS coords</td><td>Binary cell index; regulatory DB per cell</td></tr>
+              <tr><td>RFC 5870 (geo URI)</td><td>Text encoding; no regulatory context</td><td>1-8 bytes; implicit uncertainty by length</td></tr>
+              <tr><td>RFC 6442 (SIP Location)</td><td>SIP-only; PIDF-LO XML; no IoT path</td><td>MAC-layer IE; CBOR; 802.15.4 native</td></tr>
+              <tr><td>RFC 9179 (YANG Location)</td><td>NETCONF/RESTCONF only; no constrained IoT</td><td>No YANG model; future work candidate</td></tr>
+              <tr><td>RFC 9632 (Geofeed)</td><td>IP prefixes; batch fetch; not real-time</td><td>Per-frame binary; MAC-layer bootstrap</td></tr>
+              <tr><td>RFC 8805 (IP Geofeed fmt)</td><td>Administrative boundary only; not IoT</td><td>Physical cell; 3 cm resolution at 8 bytes</td></tr>
+              <tr><td>RFC 5808 (LbyR Reqs)</td><td>Requires LIS infrastructure; not decentralized</td><td>No infrastructure; peer mesh bootstrap</td></tr>
+              <tr><td>RFC 5491 (PIDF-LO Usage)</td><td>XML/GML encoding; not constrained IoT</td><td>CBOR bstr; 1-8 bytes; 802.15.4 IE</td></tr>
+              <tr><td>RFC 6280 (GEOPRIV Arch.)</td><td>Requires LS/LG/LR servers; centralized</td><td>Fully decentralized; peer-assisted</td></tr>
+              <tr><td>RFC 6772 (Geoloc. Policy)</td><td>XML policy engine; not implementable on MCU</td><td>Structural privacy via byte truncation</td></tr>
+            </tbody>
+          </table>
+          <t>RSDGGS does not supersede any of the five referenced specifications. Each addresses a distinct protocol layer or use case for which it remains the appropriate standard. RSDGGS fills the gap at the intersection of geographic addressing, regulatory compliance encoding, constrained IoT communication, and MAC-layer integration — a combination not addressed by any prior IETF work.</t>
+          <t>Implementations are encouraged to support translation between RSDGGS cells and the formats defined in RFC 5870 ('geo' URI) and RFC 9179 (YANG grouping) for interoperability with infrastructure-side systems. The RSDGGS cell center coordinates provide the lat/lon values for these translations; the cell radius provides the uncertainty parameter.</t>
         </section>
 
       </section>
@@ -1375,6 +1639,22 @@ RFC 6772         XML policy rules; not implementable on microcontroller
         <section anchor="s-b-9-summary-of-newly-identified-references" numbered="true" toc="default">
           <name>Summary of Newly Identified References</name>
           <t>The following references, surfaced from the backward citation chains of documents already examined, should be added to Section 21 (References) of this draft as informative references:</t>
+          <table anchor="t-summary-of-newly-identified-references">
+            <name>Summary of Newly Identified References</name>
+            <thead><tr><th>Reference</th><th>Surfaced From</th><th>Section to Cite In</th><th>Relevance</th></tr></thead>
+            <tbody>
+              <tr><td>Karp &amp; Kung, GPSR (MobiCom 2000)</td><td>US 10,812,365</td><td>Section 15.3</td><td>Void handling gap in geographic forwarding</td></tr>
+              <tr><td>IEEE 802.11d-2001</td><td>US 10,306,400 family</td><td>Section 14</td><td>802.11 predecessor of RSDGGS 802.15.4 Sub-IE</td></tr>
+              <tr><td>IEEE 802.11h-2003</td><td>US 10,306,400 family</td><td>Section 10.4</td><td>802.11 predecessor of RSDGGS boundary power control</td></tr>
+              <tr><td>RFC 3693 (GEOPRIV Requirements)</td><td>RFC 6442, RFC 6280</td><td>Section 14</td><td>Using protocol requirements; RSDGGS compliance</td></tr>
+              <tr><td>RFC 3825 (DHCP Geodetic)</td><td>RFC 5870, RFC 5808</td><td>Section 12</td><td>Infrastructure provisioning path; single point of failure</td></tr>
+              <tr><td>RFC 4862 (SLAAC)</td><td>Design goal G8</td><td>Section 11, 12</td><td>Serverless autoconfiguration model</td></tr>
+              <tr><td>RFC 4861 (Neighbor Discovery)</td><td>Design goal G8</td><td>Section 11</td><td>Serverless neighbor-based discovery model</td></tr>
+              <tr><td>RFC 4632 (CIDR)</td><td>RFC 9632</td><td>Section 15.2</td><td>Prefix aggregation conceptual ancestor</td></tr>
+              <tr><td>RFC 6269 (IP address sharing)</td><td>RFC 9632</td><td>Section 15</td><td>Problem RSDGGS-IPv6 solves categorically</td></tr>
+              <tr><td>Navas &amp; Imielinski, GeoCast (1997)</td><td>RFC 2009</td><td>Section 15</td><td>Geographic multicast ancestor</td></tr>
+            </tbody>
+          </table>
           <t>Of these, RFC 3825 with its DHCP single-point-of-failure limitation, IEEE 802.11d as the direct predecessor of the RSDGGS 802.15.4 Sub-IE, and RFC 4862/4861 as the SLAAC/ND model that G8 follows are the highest-priority additions. The GPSR void-handling gap is the most significant technical limitation currently undocumented in the specification.</t>
         </section>
       </section>
@@ -1585,11 +1865,39 @@ RSDGGS distinguishing elements — no claim reads on RSDGGS:
         <section anchor="s-summary-of-improvement-opportunities" numbered="true" toc="default">
           <name>Summary of Improvement Opportunities</name>
           <t>The following table consolidates all actionable improvement opportunities identified from the cited patents and RFCs, categorized by implementation priority.</t>
+          <table anchor="t-summary-of-improvement-opportunities">
+            <name>Summary of Improvement Opportunities</name>
+            <thead><tr><th>Source</th><th>Opportunity</th><th>Section Affected</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td>US 4,939,726 / 5,115,433</td><td>Link quality weighted forwarding (distance + power + retry)</td><td>Section 15.3</td><td>High — routing performance</td></tr>
+              <tr><td>US 10,306,400 / 9,654,965</td><td>Explicit credit of lookup table architecture pattern</td><td>Section 8, Patent prosecution</td><td>Medium — FTO documentation</td></tr>
+              <tr><td>RFC 2009</td><td>Distinguish address adoption vs address derivation in peer location</td><td>Section 11 intro</td><td>Medium — novelty clarity</td></tr>
+              <tr><td>RFC 5870</td><td>crs=rsdggs URI extension as future work item</td><td>Section 21 future work</td><td>Low — interoperability</td></tr>
+              <tr><td>RFC 6442</td><td>424 sub-code for insufficient cell resolution at SIP gateway</td><td>Section 16.3 / gateway spec</td><td>Low — SIP integration</td></tr>
+              <tr><td>RFC 9179</td><td>Velocity field in CBOR location encoding</td><td>Section 7.3 CDDL</td><td>Medium — YANG interop</td></tr>
+              <tr><td>RFC 9179</td><td>Float32 altitude option for precision applications</td><td>Section 7.3 CDDL</td><td>Low — schema extension</td></tr>
+              <tr><td>RFC 9632 / 8805</td><td>Formalize RSDGGS-IPv6 geofeed profile mapping</td><td>Section 15 / new appendix</td><td>High — deployment utility</td></tr>
+              <tr><td>RFC 5808</td><td>Optional staleness/timestamp field in CBOR encoding</td><td>Section 7.3 CDDL</td><td>Medium — LbyV semantics</td></tr>
+              <tr><td>RFC 5491</td><td>Confidence percentage field for peer-derived cells</td><td>Section 7.3 CDDL</td><td>Medium — cooperative location</td></tr>
+              <tr><td>RFC 6280</td><td>Multi-resolution CBOR map for per-recipient disclosure</td><td>Section 7 / new section</td><td>Medium — privacy model</td></tr>
+              <tr><td>RFC 6772</td><td>Per-cell RSL override in exception table</td><td>Section 8.3 / 10</td><td>Low — policy extension</td></tr>
+            </tbody>
+          </table>
           <t>The highest-priority improvements — link quality weighted forwarding, RSDGGS-IPv6 geofeed profile, and the staleness field — represent concrete enhancements to the core specification that should be incorporated in the -01 revision. The medium-priority items are suitable for informational notes or future work statements in the current -00 draft. The low-priority items are candidates for companion specifications or implementation guidance documents.</t>
         </section>
         <section anchor="s-recommended-clearance-actions" numbered="true" toc="default">
           <name>Recommended Clearance Actions</name>
           <t>Prior to commercial deployment or patent prosecution based on RSDGGS, the following actions are recommended:</t>
+          <ol>
+            <li>US 10,812,365 (Northeastern/Krioukov, active until 2037): No infringement risk identified. The hyperbolic geometry, radial centrality, and population-density zone ranking in every claim are completely absent from RSDGGS. No action required beyond documenting the technical distinction in any patent prosecution filings.</li>
+            <li>US 11,652,742 (Microsoft, active until 2041): No infringement risk. Ghost routing is a cloud datacenter network verification technique with zero overlap with RSDGGS. No action required.</li>
+            <li>US 10,306,400 / application family (active until ~2035): No infringement risk from current RSDGGS specification. RSDGGS MUST NOT add AC power line frequency as a location verification mechanism. Any patent prosecution should distinguish the lookup table architecture using RFC 2009 (1996) as prior art predating US 9,654,965.</li>
+            <li>US 4,939,726 and US 5,115,433 (both expired): Freely implementable. The link quality weighted forwarding enhancement described in Section 17.3 above should be incorporated in the -01 revision and explicitly credited to these expired patents as the enabling prior art in any prosecution.</li>
+            <li>Search CPC class H04W16/14 (channel plan based on geography) and H04B1/3827 (ISM band operation) for active patents not identified here. This search should be conducted by patent counsel before commercial deployment.</li>
+            <li>Search for continuation patents based on US Application 2014/0162692 beyond the identified US 10,306,400, US 9,794,738, and US 9,654,965. The application family may have additional continuations with broader claims.</li>
+            <li>For the RSDGGS-IPv6 geofeed profile (improvement opportunity from RFC 9632 / 8805): verify that no active patent covers the specific combination of hierarchical geographic grid prefix as an IP geofeed CSV entry. This combination appears novel but has not been searched.</li>
+            <li>RFC publication of draft-rsdggs-informational-00 establishes a prior art date for all disclosed subject matter including the improvement opportunities listed in Section 17.4. This is a significant benefit of early publication even before normative follow-on work is complete.</li>
+          </ol>
         </section>
       </section>
       <section anchor="s-reference-implementation-rust-pseudocode" numbered="true" toc="default">
@@ -2084,6 +2392,16 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
       <section anchor="s-iana-considerations" numbered="true" toc="default">
         <name>IANA Considerations</name>
         <t>This document requests registration of a CBOR tag for the RSDGGS cell type in the CBOR Tags registry. The requested tag value is in the first-come-first-served range. The tag is used to identify a CBOR byte string as an RSDGGS cell index as defined in this document.</t>
+        <table anchor="t-cbor-tag-registration">
+          <name>CBOR Tag Registration</name>
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Tag</td><td>TBD (first-come-first-served range)</td></tr>
+            <tr><td>Data item</td><td>byte string</td></tr>
+            <tr><td>Semantics</td><td>RSDGGS geographic cell index, 1-8 octets</td></tr>
+            <tr><td>Reference</td><td>This document</td></tr>
+          </tbody>
+        </table>
       </section>
   </middle>
   <back>
