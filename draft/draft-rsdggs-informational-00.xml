@@ -172,7 +172,7 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
         <section anchor="s-pentagonal-face-subdivision" numbered="true" toc="default">
           <name>Pentagonal Face Subdivision</name>
           <t>Each pentagonal face of the dodecahedron is divided into five congruent isosceles triangles by connecting the face center to each of the five pentagon vertices. Each triangle has its apex at the face center and its base along one edge of the pentagon.</t>
-          <t>This subdivision produces five triangular sectors per face, indexed 0 through 4. The five sectors are identified within the RSDGGS index by a 3-bit field in Octet 1 of the index, with values 5 through 7 reserved.</t>
+          <t>This subdivision produces five triangular sectors per face, indexed 0 through 4. The five sectors are identified within the RSDGGS index by a 4-bit field in the high nibble of Octet 1, with values 5 through 15 reserved. The 4-bit width keeps every subdivision level within a single octet (Section 5.1).</t>
         </section>
         <section anchor="s-isosceles-triangle-hierarchy" numbered="true" toc="default">
           <name>Isosceles Triangle Hierarchy</name>
@@ -225,68 +225,79 @@ Octet 0:        Bits 7-4: Celestial body selector, values 0-15.
                 Bits 3-0: Face index [0..11] on the selected body.
                           Values 12-15 are reserved.
 
-Octet 1:        Bits 7-5: Triangle index within face, values 0-4.
-                          Values 5-7 are reserved.
-                Bits 4-3: Subdivision level 1 (2-bit child index).
-                Bits 2-1: Subdivision level 2 (2-bit child index).
-                Bit  0:   Subdivision level 3, most significant bit.
-                       (Level 3 LSB is Octet 2 bit 7.)
+Octet 1:        Bits 7-4: Triangle index within face, values 0-4.
+                          Values 5-15 are reserved.
+                Bits 3-2: Subdivision level 1 (2-bit child index).
+                Bits 1-0: Subdivision level 2 (2-bit child index).
 
 Octets 2-7:     Packed subdivision levels, 2 bits per level, MSB-first.
-                Each octet carries 4 complete levels EXCEPT where a
-                level straddles an octet boundary (levels 3, 7, 11, 15,
-                19, and 23 each have one bit in the preceding octet and
-                one bit in this octet). See Section 5.3 for the complete
-                bit-field layout.
+                Each octet carries exactly 4 complete levels: octet n
+                (n >= 2) carries levels 4n-5 through 4n-2. No level
+                straddles an octet boundary. See Section 5.3 for the
+                complete bit-field layout.
 ]]></artwork></figure>
-          <t>When stored as a uint64_t for in-memory computation, Octet 0 occupies the most significant byte (big-endian octet order). Unused bits in the final octet of a given resolution MUST be set to zero.</t>
+          <t>When stored as a uint64_t for in-memory computation, Octet 0 occupies the most significant byte (big-endian octet order). Every bit of an index of a given length is significant; there are no unused bits. When an index is held in a wider container (for example, a uint64_t), the octets beyond its length MUST be zero and MUST be ignored by receivers. A receiver MUST reject an index whose triangle index is a reserved value (5-15).</t>
           <t>The four-bit celestial body selector in bits 7-4 of Octet 0 partitions the RSDGGS index space into sixteen independent dodecahedral grids, one per celestial body. Body 0x0 (Earth) is the default and backward-compatible value: all existing RSDGGS indices have Octet 0 in the range 0x00-0x0B, which corresponds to body=0, face=0-11. Implementations that predate this field definition will continue to decode these indices correctly as Earth face indices.</t>
           <t>The body selector enables RSDGGS to serve as a unified location encoding for operations on the Moon, Mars, and future celestial bodies where wireless regulatory coordination may be required under the Outer Space Treaty (1967) and subsequent ITU coordination frameworks. The dodecahedral grid geometry is body-agnostic: the same 12-face topology and subdivision hierarchy applies to any approximately spherical body, with face assignments and regulatory databases defined independently per body. New body selector values are assigned by IANA under the "RSDGGS Celestial Body Selector" sub-registry defined in Section 20.</t>
         </section>
         <section anchor="s-resolution-by-length" numbered="true" toc="default">
           <name>Resolution by Length</name>
-          <t>The spatial resolution of an RSDGGS index is determined entirely by its length in octets. The following table gives the approximate cell size at each length, based on a dodecahedron face area of approximately 42 million square kilometers:</t>
+          <t>The spatial resolution of an RSDGGS index is determined entirely by its length in octets. Each octet after Octet 1 adds four subdivision levels, reducing the linear cell size by a factor of 16. Cell sizes vary across a face; the values below were measured at 39°N 98°W with the reference implementation, for a dodecahedron face area of approximately 42 million square kilometers:</t>
+          <table anchor="t-resolution-by-length">
+            <name>Resolution by Length</name>
+            <thead><tr><th>Length (octets)</th><th>Subdivision Levels</th><th>Approx. Cell Diameter</th><th>Primary Use</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>0 (face only)</td><td>~7,000 km</td><td>ITU Region / band availability</td></tr>
+              <tr><td>2</td><td>2</td><td>~1,000 km</td><td>Sub-regional regulatory bloc</td></tr>
+              <tr><td>3</td><td>6</td><td>~65 km</td><td>Country-level jurisdiction (RSL for most)</td></tr>
+              <tr><td>4</td><td>10</td><td>~4 km</td><td>Border zones, enclaves</td></tr>
+              <tr><td>5</td><td>14</td><td>~260 m</td><td>Urban regulatory exceptions (HK, SG)</td></tr>
+              <tr><td>6</td><td>18</td><td>~16 m</td><td>Finest exception cases (Ceuta, BVI)</td></tr>
+              <tr><td>7</td><td>22</td><td>~1 m</td><td>Precision location services</td></tr>
+              <tr><td>8</td><td>26</td><td>~6 cm</td><td>Survey-grade, sub-decimeter</td></tr>
+            </tbody>
+          </table>
         </section>
         <section anchor="s-bit-field-layout" numbered="true" toc="default">
           <name>Bit-Field Layout</name>
-          <t>The following table provides the normative bit-field definition for a maximum-resolution 8-octet RSDGGS index stored as a uint64_t. Octet 0 occupies bits 63-56 (most significant byte, big-endian). Bits 63-60 of Octet 0 carry the four-bit celestial body selector; bits 59-56 carry the four-bit face index. Six subdivision levels (3, 7, 11, 15, 19, and 23) each straddle an octet boundary, with one bit in the preceding octet and one bit in the following octet.</t>
+          <t>The following table provides the normative bit-field definition for a maximum-resolution 8-octet RSDGGS index stored as a uint64_t. Octet 0 occupies bits 63-56 (most significant byte, big-endian). Bits 63-60 of Octet 0 carry the four-bit celestial body selector; bits 59-56 carry the four-bit face index. The triangle index occupies the high nibble of Octet 1, and every subdivision level lies entirely within one octet. All 64 bits are significant.</t>
           <figure><artwork type="ascii-art"><![CDATA[
 Bits 63-60:  Octet 0 bits 7-4 — Celestial body selector [0..15]
 Bits 59-56:  Octet 0 bits 3-0 — Face index [0..11] on selected body
-Bits 55-53:  Triangle index [0..4]
-Bits 52-51:  Subdivision level  1
-Bits 50-49:  Subdivision level  2
-Bits 48-47:  Subdivision level  3
-Bits 46-45:  Subdivision level  4
-Bits 44-43:  Subdivision level  5
-Bits 42-41:  Subdivision level  6
-Bits 40-39:  Subdivision level  7
-Bits 38-37:  Subdivision level  8
-Bits 36-35:  Subdivision level  9
-Bits 34-33:  Subdivision level 10
-Bits 32-31:  Subdivision level 11
-Bits 30-29:  Subdivision level 12
-Bits 28-27:  Subdivision level 13
-Bits 26-25:  Subdivision level 14
-Bits 24-23:  Subdivision level 15
-Bits 22-21:  Subdivision level 16
-Bits 20-19:  Subdivision level 17
-Bits 18-17:  Subdivision level 18
-Bits 16-15:  Subdivision level 19
-Bits 14-13:  Subdivision level 20
-Bits 12-11:  Subdivision level 21
-Bits 10-9:   Subdivision level 22
-Bits  8-7:   Subdivision level 23
-Bits  6-5:   Subdivision level 24
-Bits  4-3:   Subdivision level 25
-Bits  2-1:   Subdivision level 26
-Bit   0:     Reserved
+Bits 55-52:  Octet 1 bits 7-4 — Triangle index [0..4]; 5-15 reserved
+Bits 51-50:  Subdivision level  1
+Bits 49-48:  Subdivision level  2
+Bits 47-46:  Subdivision level  3
+Bits 45-44:  Subdivision level  4
+Bits 43-42:  Subdivision level  5
+Bits 41-40:  Subdivision level  6
+Bits 39-38:  Subdivision level  7
+Bits 37-36:  Subdivision level  8
+Bits 35-34:  Subdivision level  9
+Bits 33-32:  Subdivision level 10
+Bits 31-30:  Subdivision level 11
+Bits 29-28:  Subdivision level 12
+Bits 27-26:  Subdivision level 13
+Bits 25-24:  Subdivision level 14
+Bits 23-22:  Subdivision level 15
+Bits 21-20:  Subdivision level 16
+Bits 19-18:  Subdivision level 17
+Bits 17-16:  Subdivision level 18
+Bits 15-14:  Subdivision level 19
+Bits 13-12:  Subdivision level 20
+Bits 11-10:  Subdivision level 21
+Bits  9-8:   Subdivision level 22
+Bits  7-6:   Subdivision level 23
+Bits  5-4:   Subdivision level 24
+Bits  3-2:   Subdivision level 25
+Bits  1-0:   Subdivision level 26
 ]]></artwork></figure>
           <t>At 26 subdivision levels, the minimum triangle area is approximately 9 square centimeters, representing a linear cell dimension of roughly 3 centimeters on Earth's surface.</t>
         </section>
         <section anchor="s-privacy-truncation" numbered="true" toc="default">
           <name>Privacy Truncation</name>
           <t>An RSDGGS index MAY be truncated to any shorter length to reduce precision. The resulting truncated index is a valid RSDGGS index at the coarser resolution corresponding to its new length. No metadata is lost by truncation, as the resolution is fully recoverable from the length of the remaining bytes.</t>
+          <t>Truncation is performed by removing trailing octets; no bits of the remaining octets change. Because no subdivision level spans an octet boundary, the truncated index is identical to the index that would be produced by encoding the original point at the shorter length, and every cell has exactly one encoding at each length. An index is contained in another if and only if the other is a prefix of it.</t>
           <t>Implementations sharing location information with peers SHOULD use the minimum resolution necessary for the intended regulatory purpose. For ISM band availability determination, 1 octet is sufficient for most locations. For country-level rule set selection, 3 octets are RECOMMENDED. For border zone and enclave disambiguation, 4 to 6 octets MAY be required.</t>
           <t>Implementations MUST NOT infer more precise location information from a truncated index than its resolution supports. The geographic region corresponding to a truncated index is the entire cell at that resolution, not the point within it from which the index was derived.</t>
         </section>
@@ -338,16 +349,16 @@ Children of triangle (apex, left, right):
           <name>Compact Form</name>
           <t>An RSDGGS index is encoded as a CBOR byte string (major type 2) <xref target="RFC8949"/>. The byte string length provides the resolution information at no additional cost, satisfying design goal G5. The compact form is suitable for resource-constrained IoT messages where protocol overhead must be minimized.</t>
           <figure><artwork type="ascii-art"><![CDATA[
-  0x41 0x02       -- 1-byte index, face 2 (ITU Region 2 / N. America)
-  0x43 0x02 0xA4 0x30  -- 3-byte index, country-level precision
-  0x48 ...        -- 8-byte index, maximum resolution
+  0x41 0x02            -- 1-byte index, face 2 (ITU Region 2)
+  0x43 0x02 0x03 0xC1  -- 3-byte index, 39N 98W, country-level
+  0x48 ...             -- 8-byte index, maximum resolution
 ]]></artwork></figure>
         </section>
         <section anchor="s-tagged-form" numbered="true" toc="default">
           <name>Tagged Form</name>
           <t>Implementations requiring explicit type identification SHOULD use a CBOR tag to mark the byte string as an RSDGGS index. A private-use tag in the range 65536-15309735 SHOULD be used pending IANA assignment. The recommended placeholder tag value is 0xC24D52 (pending registration).</t>
           <figure><artwork type="ascii-art"><![CDATA[
-  0xC2 0x4D 0x52 0x43 0x02 0xA4 0x30
+  0xC2 0x4D 0x52 0x43 0x02 0x03 0xC1
   -- Tagged RSDGGS, 3-byte index
 ]]></artwork></figure>
         </section>
@@ -695,7 +706,7 @@ boundary-entry = {              ; in regulatory database
         <section anchor="s-rsdggs-cell-intersection" numbered="true" toc="default">
           <name>RSDGGS Cell Intersection</name>
           <t>Each beacon received from a peer carries an RSDGGS cell at the RSL depth for the transmitting channel. The Naive Device accumulates received cells and maintains the geographic intersection of all received cells as a constraint on its own position.</t>
-          <t>The intersection of two RSDGGS cells is defined as the longest common prefix of their bit representations. If two cells share a common prefix of length L bits, then any point within both cells must lie within the geographic region represented by that L-bit prefix. The intersection cell is that prefix, truncated to the nearest byte boundary.</t>
+          <t>The intersection of two RSDGGS cells is defined as the longest common prefix of their bit representations. If two cells share a common prefix of length L bits, then any point within both cells must lie within the geographic region represented by that L-bit prefix. The intersection cell is that prefix, truncated to the nearest byte boundary. Every octet boundary is a subdivision-level boundary (Section 5.1), so the truncated prefix is always a valid index.</t>
           <figure><artwork type="ascii-art"><![CDATA[
 Cell intersection algorithm:
 
@@ -920,7 +931,7 @@ consistent with the CBOR encoding defined in Section 7.
         <section anchor="s-rsdggs-location-sub-ie-definition" numbered="true" toc="default">
           <name>RSDGGS Location Sub-IE Definition</name>
           <t>The RSDGGS Location Sub-IE is defined as follows. The Sub-IE ID value is pending assignment by the IEEE Registration Authority. The placeholder value 0x9A is used in this document.</t>
-          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0x0C to 0x0F in Cell[0]) MUST be treated as an error condition.</t>
+          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0x0C to 0x0F in Cell[0]) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (Cell[1] bits 7-4 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
           <t>The Sub-IE MAY appear in any MAC frame type that permits Payload IEs, including Beacon frames, Enhanced Beacon frames, Data frames, and Command frames. It SHALL appear in the SUN Device Description payload of Enhanced Beacon frames transmitted by devices that have resolved their regulatory context.</t>
         </section>
         <section anchor="s-sun-device-description-integration" numbered="true" toc="default">
@@ -936,9 +947,9 @@ Enhanced Beacon Frame (abbreviated):
       ... capability fields ...
     Sub-IE: ID = 0x9A (RSDGGS Location)
       Length = 0x03  (3 octets, country-level RSL)
-      Cell   = 0x02 0xA4 0x30
+      Cell   = 0x02 0x03 0xC1
                ^^^^             face 2 = ITU Region 2 / N. America
-                    ^^^^ ^^^^   subdivision to ~60 km cell
+                    ^^^^ ^^^^   triangle 0, 6 levels: ~65 km cell
   MFR
 ]]></artwork></figure>
         </section>
@@ -1072,7 +1083,7 @@ Status               Experimental / Legacy     Informational (this doc)
             <figure><artwork type="ascii-art"><![CDATA[
 Dimension            RFC 5870 'geo' URI        RSDGGS
 ───────────────────  ────────────────────────  ─────────────────────────
-Representation       'geo:48.2,16.4;u=40'      Binary: 0x02 0xA4 0x30
+Representation       'geo:48.2,16.4;u=40'      Binary: 0x01 0x2D 0x35
 Encoding size        20-30 bytes typical       1-8 bytes
 Uncertainty          Float param (u=)          Implicit in byte length
 Privacy control      Digit trunc (lossy)       Byte trunc (lossless)
@@ -1862,7 +1873,7 @@ fn initial_triangle(face: u8, sector: u8) -> Triangle {
         </section>
         <section anchor="s-top-level-encode-function" numbered="true" toc="default">
           <name>Top-Level Encode Function</name>
-          <t>The encode function takes a WGS-84 coordinate and a desired length in bytes (1 to 8) and returns a populated RsdggsCell. The length parameter controls the resolution: 1 byte encodes face only; each additional byte adds 4 subdivision levels, or 2 bits per level with 4 levels per byte starting from byte 1 (accounting for the 3 bits of sector in byte 1).</t>
+          <t>The encode function takes a WGS-84 coordinate and a desired length in bytes (1 to 8) and returns a populated RsdggsCell. The length parameter controls the resolution: 1 byte encodes face only; byte 1 carries the 4-bit sector and 2 subdivision levels, and each additional byte adds 4 subdivision levels (2 bits per level).</t>
           <figure><artwork type="ascii-art"><![CDATA[
 /// Encode a WGS-84 coordinate as an RSDGGS cell index.
 ///
@@ -1886,22 +1897,17 @@ pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
     cell.bytes[0] = face;
     if len == 1 { return cell; }
 
-    // ── Byte 1 [7:5]: pentagon sector ───────────────────────────────
+    // ── Byte 1 [7:4]: pentagon sector ───────────────────────────────
     let sector = sector_for(face, p);
     // Byte 1 layout:
-    //   bits [7:5]  sector (3 bits, values 0-4)
-    //   bits [4:3]  subdiv level 1 (2 bits)
-    //   bits [2:1]  subdiv level 2 (2 bits)
-    //   bit  [0]    subdiv level 3 high bit
-
-    // Compute subdivision bits: how many levels fit in remaining bytes?
-    // Byte 1 holds: 3 bits sector + 5 bits sub (2.5 levels, round to 2)
-    // Bytes 2-7 hold 4 levels each.
-    // Total sub-levels for len bytes: 2 + (len-2)*4  for len >= 2
-    let sub_levels = if len >= 2 { 2 + (len-2)*4 } else { 0 };
+    //   bits [7:4]  sector (4 bits, values 0-4; 5-15 reserved)
+    //   bits [3:2]  subdiv level 1
+    //   bits [1:0]  subdiv level 2
+    // Bytes 2..len hold 4 levels each.
+    let sub_levels = 2 + (len as usize - 2) * 4;
 
     let mut tri = initial_triangle(face, sector);
-    let mut sub_bits = [0u8; 28];  // max 28 subdivision levels
+    let mut sub_bits = [0u8; 26];  // max 26 subdivision levels
 
     for level in 0..sub_levels {
         let (child_tri, child_idx) = subdivide(tri, p);
@@ -1909,32 +1915,14 @@ pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
         tri = child_tri;
     }
 
-    // Pack byte 1: sector in [7:5], sub_bits[0] in [4:3],
-    //              sub_bits[1] in [2:1], sub_bits[2] high bit in [0]
-    cell.bytes[1] = (sector << 5)
-                  | (sub_bits[0] << 3)
-                  | (sub_bits[1] << 1)
-                  | (if sub_levels > 2 { sub_bits[2] >> 1 } else { 0 });
-
-    // Pack bytes 2-7: 4 levels per byte
-    // Levels 2+ are offset: level 2 straddles bytes 1 and 2.
-    // For simplicity: pack all sub_bits into a bit stream,
-    // skip first 5 bits (used in byte 1), fill bytes 2-7.
-    // Re-pack cleanly:
-    let mut bit_stream: u64 = 0;
-    let mut bit_count = 0usize;
-    // byte 1 consumes 5 sub bits (2 full + 1 high bit of level 3)
+    // Sector then levels, MSB first: exactly 8 * (len - 1) bits,
+    // filling bytes 1..len with no remainder.
+    let mut bits: u64 = sector as u64;
     for level in 0..sub_levels {
-        bit_stream = (bit_stream << 2) | sub_bits[level] as u64;
-        bit_count += 2;
+        bits = (bits << 2) | sub_bits[level] as u64;
     }
-    // Align to full bytes for bytes 2-7
-    // (byte 1 already written; remaining bits go into bytes 2..len)
-    // See Section 5.3 for the precise bit-field layout.
-    for b in 2..len as usize {
-        let offset = (b - 2) * 8;
-        let shift  = (sub_levels * 2).saturating_sub(8 + offset) as u32;
-        cell.bytes[b] = (bit_stream >> shift) as u8;
+    for b in 1..len as usize {
+        cell.bytes[b] = (bits >> (8 * (len as usize - 1 - b))) as u8;
     }
 
     cell
@@ -1950,7 +1938,7 @@ pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
 pub struct DecodedCell {
     pub face:       u8,
     pub sector:     u8,
-    pub sub_bits:   [u8; 28],  // 2 bits each, packed as 0b00..0b11
+    pub sub_bits:   [u8; 26],  // 2 bits each, packed as 0b00..0b11
     pub sub_levels: usize,
 }
 
@@ -1960,17 +1948,17 @@ pub fn decode(cell: &RsdggsCell) -> DecodedCell {
 
     if len == 1 {
         return DecodedCell { face, sector: 0,
-                             sub_bits: [0u8; 28], sub_levels: 0 };
+                             sub_bits: [0u8; 26], sub_levels: 0 };
     }
 
-    let sector = (cell.bytes[1] >> 5) & 0x07;
+    let sector = cell.bytes[1] >> 4;            // 5-15 reserved: reject
 
-    // Extract sub_bits from byte 1 [4:0] and bytes 2..len
-    let mut sub_bits = [0u8; 28];
+    // Extract sub_bits from byte 1 [3:0] and bytes 2..len
+    let mut sub_bits = [0u8; 26];
     let sub_levels = 2 + (len - 2) * 4;
 
-    sub_bits[0] = (cell.bytes[1] >> 3) & 0x03;
-    sub_bits[1] = (cell.bytes[1] >> 1) & 0x03;
+    sub_bits[0] = (cell.bytes[1] >> 2) & 0x03;
+    sub_bits[1] =  cell.bytes[1]       & 0x03;
 
     let mut sl = 2usize;
     for b in 2..len {
@@ -2048,16 +2036,16 @@ let cell = encode(sf, 4);
 
 // Expected output:
 //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x99   sector 4 [7:5]=100; sub_bits[0]=3 [4:3]=11;
-//                  sub_bits[1]=0 [2:1]=00; sub_bits[2] hi=0 [0]=1
-//   cell.bytes[2] = 0x21   sub_bits[3..6]: 0b00 0b10 0b00 0b01
-//   cell.bytes[3] = 0x32   sub_bits[7..10]: 0b00 0b11 0b00 0b10
+//   cell.bytes[1] = 0x4E   sector 4 [7:4]=0100; sub_bits[0]=3 [3:2]=11;
+//                          sub_bits[1]=2 [1:0]=10
+//   cell.bytes[2] = 0xCF   sub_bits[2..6]: 0b11 0b00 0b11 0b11
+//   cell.bytes[3] = 0x4D   sub_bits[6..10]: 0b01 0b00 0b11 0b01
 //   cell.len      = 4
 
 assert_eq!(cell.bytes[0], 0x02);
-assert_eq!(cell.bytes[1], 0x99);
-assert_eq!(cell.bytes[2], 0x21);
-assert_eq!(cell.bytes[3], 0x32);
+assert_eq!(cell.bytes[1], 0x4E);
+assert_eq!(cell.bytes[2], 0xCF);
+assert_eq!(cell.bytes[3], 0x4D);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
