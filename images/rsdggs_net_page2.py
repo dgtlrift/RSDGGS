@@ -59,7 +59,7 @@ FACES = [
 ]
 
 STEPS = [
-    ("Print", 'Print page 1 on A3/Tabloid (420×297 mm / 17×11"). Select "Actual size" — '
+    ("Print", 'Print page 1 on US Letter (8.5×11", portrait). Select "Actual size" — '
               "do not scale to fit."),
     ("Cut", "Cut along all solid outer edges. A sharp craft knife and steel rule gives the "
             "cleanest result."),
