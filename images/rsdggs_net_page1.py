@@ -411,6 +411,22 @@ def main():
         a, b = pts[i], pts[(i + 1) % 5]
         ax.plot(*np.column_stack([a, b]), color="#333333", lw=0.8, ls=(0, (4, 3)), zorder=5)
 
+    # Ghost lines for the five top-level triangles. Triangle k is (centre, vertex k,
+    # vertex k+1) in the order of FACE_PENTAGON_VERTS, which is the order the encoder
+    # uses for Cell[1] bits 7-4; the winding differs between faces, so do not re-sort.
+    ghost = dict(color=INK, alpha=0.45, lw=0.45, ls=(0, (2.5, 2)), zorder=6)
+    for f in range(12):
+        ctr = net.to_page(f, net.c[f])
+        corners = net.to_page(f, net.v[f])
+        for k in range(5):
+            d = corners[k] - ctr
+            start = ctr + d / np.linalg.norm(d) * 3.2      # keep the face index clear
+            ax.plot(*np.column_stack([start, corners[k]]), **ghost)
+            mid = (corners[k] + corners[(k + 1) % 5]) / 2
+            label = ctr + 0.82 * (mid - ctr)              # clear of face 2's cities
+            ax.text(*label, f"T{k}", fontsize=5.5, color=INK, style="italic", ha="center",
+                    va="center", alpha=0.8, path_effects=halo("white", 1.4), zorder=7)
+
     for f in range(12):
         ctr = net.to_page(f, net.c[f])
         ax.text(*ctr, str(f), fontsize=9, color="white", weight="bold", ha="center",
@@ -480,13 +496,15 @@ def main():
     y = MARGIN + 3
     ax.plot([MARGIN, MARGIN + 8], [y, y], color="#333333", lw=0.8, ls=(0, (4, 3)))
     ax.text(MARGIN + 10, y, "Fold line (score & fold)", fontsize=6.5, color=INK, va="center")
-    ax.plot([MARGIN + 50, MARGIN + 58], [y, y], color=INK, lw=1.0)
-    ax.text(MARGIN + 60, y, "Cut line (outer edge)", fontsize=6.5, color=INK, va="center")
-    ax.add_patch(Rectangle((MARGIN + 98, y - 1.4), 7, 2.8, facecolor="#E0E0D0",
+    ax.plot([MARGIN + 44, MARGIN + 52], [y, y], color=INK, lw=1.0)
+    ax.text(MARGIN + 54, y, "Cut line (outer edge)", fontsize=6.5, color=INK, va="center")
+    ax.add_patch(Rectangle((MARGIN + 84, y - 1.4), 7, 2.8, facecolor="#E0E0D0",
                            edgecolor="#9A9A88", lw=0.5))
-    ax.text(MARGIN + 107, y, "GLUE tab", fontsize=6.5, color=INK, va="center")
-    ax.plot(MARGIN + 132, y, "x", ms=4, mec="#D00000", mew=1.2)
-    ax.text(MARGIN + 135, y, "Face 2 boundary exception", fontsize=6.5, color=INK, va="center")
+    ax.text(MARGIN + 93, y, "GLUE tab", fontsize=6.5, color=INK, va="center")
+    ax.plot(MARGIN + 109, y, "x", ms=4, mec="#D00000", mew=1.2)
+    ax.text(MARGIN + 112, y, "Boundary exception", fontsize=6.5, color=INK, va="center")
+    ax.text(MARGIN + 140, y, "T0–T4 = triangle index", fontsize=6.5, color=INK,
+            style="italic", va="center")
 
     out = HERE / "rsdggs_net_page1.png"
     fig.savefig(out, dpi=DPI, facecolor="white")
