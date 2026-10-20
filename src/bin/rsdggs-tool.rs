@@ -22,18 +22,18 @@ use rsdggs::{
 // ── Face labels ────────────────────────────────────────────────────────────────
 
 const FACE_LABELS: [&str; 12] = [
-    "Polar/Antarctic",      // F0
-    "Europe",               // F1
-    "N. America (anchor)",  // F2
-    "E. Asia",              // F3
-    "Africa West",          // F4
-    "Africa East",          // F5
-    "Russia / C. Asia",     // F6
-    "Middle East",          // F7
-    "S. America",           // F8
-    "Caribbean / Pacific",  // F9
-    "S/SE Asia & Oceania",  // F10
-    "Oceania / S. Pacific", // F11
+    "Antarctica / New Zealand", // F0
+    "Europe",                   // F1
+    "North America",            // F2
+    "Asia",                     // F3
+    "South Atlantic",           // F4
+    "Africa / Middle East",     // F5
+    "South America",            // F6
+    "Eastern Australia",        // F7
+    "Southern Indian Ocean",    // F8
+    "West Africa",              // F9
+    "Central Pacific",          // F10
+    "North Pacific",            // F11
 ];
 
 // ── Entry point ────────────────────────────────────────────────────────────────
@@ -232,7 +232,7 @@ fn print_regulatory(idx: &RsdggsIndex) {
     let bands: Vec<_> = bands_for_face(face, body).collect();
     if bands.is_empty() {
         println!("   WARNING: No regulatory data for this face/region in the database.");
-        println!("   Coverage is limited to faces 1 (Europe), 2 (N. America), and 10 (S/SE Asia & Oceania).");
+        println!("   Coverage is limited to faces 1 (Europe), 2 (North America), and 7 (Eastern Australia).");
         return;
     }
 

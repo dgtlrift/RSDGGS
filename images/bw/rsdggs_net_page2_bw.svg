@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" viewBox="0 0 2000 1555" font-family="sans-serif">
+<title>RSDGGS dodecahedron net: reference key (black and white)</title>
+<rect x="0" y="0" width="2000" height="1555" fill="white"/>
+<text x="1000" y="74.72" font-size="27.78" text-anchor="middle" font-weight="bold" fill="black">RSDGGS Dodecahedron Net — Reference Key</text>
+<text x="1000" y="120.35" font-size="15.28" text-anchor="middle" font-style="italic" fill="black">Regulatory Spectrum Discrete Global Grid System · ISM Band Coverage · ITU Radio Region Face Assignment · Black-and-white edition</text>
+<path d="M50 135 1950 135" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="50" y="195" font-size="18.06" font-weight="bold" fill="black">ISM Band Regulatory Coverage</text>
+<path d="M50 217 680 217" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M45 245.2 50.2 240M45 260.47 65.47 240M45 275.74 80.74 240M45 291.02 96.02 240M45 306.29 111.29 240M50.56 316 126.56 240M65.84 316 141.84 240M81.11 316 157.11 240M96.38 316 165 247.38M111.66 316 165 262.66M126.93 316 165 277.93M142.21 316 165 293.21M157.48 316 165 308.48" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="45" y="240" width="120" height="76" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="180" y="254.22" font-size="15.28" font-weight="bold" fill="black">A  433.050–434.790 MHz</text>
+<text x="180" y="276.56" font-size="13.19" fill="black">ITU Region 1 only</text>
+<text x="180" y="295.44" font-size="11.81" font-style="italic" fill="black">Europe, Africa, Middle East, Russia,</text>
+<text x="180" y="311.03" font-size="11.81" font-style="italic" fill="black">Central Asia, Indian Subcontinent</text>
+<path d="M155.32 342 165 351.68M138.35 342 165 368.65M121.38 342 165 385.62M104.41 342 165 402.59M87.44 342 163.44 418M70.47 342 146.47 418M53.5 342 129.5 418M45 350.47 112.53 418M45 367.44 95.56 418M45 384.41 78.59 418M45 401.38 61.62 418" fill="none" stroke="black" stroke-width="1.6"/>
+<rect x="45" y="342" width="120" height="76" fill="none" stroke="black" stroke-width="1.6"/>
+<text x="180" y="356.22" font-size="15.28" font-weight="bold" fill="black">B  863–870 MHz (ETSI SRD)</text>
+<text x="180" y="378.56" font-size="13.19" fill="black">EU / CEPT / EEA region</text>
+<text x="180" y="397.44" font-size="11.81" font-style="italic" fill="black">EU member states, EEA, and select</text>
+<text x="180" y="413.03" font-size="11.81" font-style="italic" fill="black">ETSI-aligned partner nations</text>
+<path d="M45 453.6 165 453.6M45 464.4 165 464.4M45 475.2 165 475.2M45 486 165 486M45 496.8 165 496.8M45 507.6 165 507.6M45 518.4 165 518.4" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="45" y="444" width="120" height="76" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="180" y="458.22" font-size="15.28" font-weight="bold" fill="black">C  902–928 MHz</text>
+<text x="180" y="480.56" font-size="13.19" fill="black">Region 2 + selected Region 3</text>
+<text x="180" y="499.44" font-size="11.81" font-style="italic" fill="black">Americas · Australia · New Zealand</text>
+<text x="180" y="515.03" font-size="11.81" font-style="italic" fill="black">Taiwan · Japan (920–928 MHz only)</text>
+<rect x="45" y="546" width="120" height="76" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="180" y="560.22" font-size="15.28" font-weight="bold" fill="black">D  2400–2500 MHz</text>
+<text x="180" y="582.56" font-size="13.19" fill="black">Global — all countries: no hatching</text>
+<text x="180" y="601.44" font-size="11.81" font-style="italic" fill="black">Wi-Fi (802.11 b/g/n/ax)</text>
+<text x="180" y="617.03" font-size="11.81" font-style="italic" fill="black">Bluetooth · Zigbee · Thread</text>
+<path d="M54 660h0.01M66 660h0.01M78 660h0.01M90 660h0.01M102 660h0.01M114 660h0.01M126 660h0.01M138 660h0.01M150 660h0.01M162 660h0.01M48 672h0.01M60 672h0.01M72 672h0.01M84 672h0.01M96 672h0.01M108 672h0.01M120 672h0.01M132 672h0.01M144 672h0.01M156 672h0.01M54 684h0.01M66 684h0.01M78 684h0.01M90 684h0.01M102 684h0.01M114 684h0.01M126 684h0.01M138 684h0.01M150 684h0.01M162 684h0.01M48 696h0.01M60 696h0.01M72 696h0.01M84 696h0.01M96 696h0.01M108 696h0.01M120 696h0.01M132 696h0.01M144 696h0.01M156 696h0.01M54 708h0.01M66 708h0.01M78 708h0.01M90 708h0.01M102 708h0.01M114 708h0.01M126 708h0.01M138 708h0.01M150 708h0.01M162 708h0.01M48 720h0.01M60 720h0.01M72 720h0.01M84 720h0.01M96 720h0.01M108 720h0.01M120 720h0.01M132 720h0.01M144 720h0.01M156 720h0.01" fill="none" stroke="black" stroke-width="3.6" stroke-linecap="round"/>
+<rect x="45" y="648" width="120" height="76" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="180" y="662.22" font-size="15.28" font-weight="bold" fill="black">Dots: 2.4 GHz only (no sub-GHz ISM)</text>
+<text x="180" y="684.56" font-size="13.19" fill="black">Most of Asia/Pacific region</text>
+<text x="180" y="703.44" font-size="11.81" font-style="italic" fill="black">No 433/868/915 MHz allocation</text>
+<path d="M45 764.5 59.5 750M45 779.77 74.77 750M45 795.04 90.04 750M45 810.32 105.32 750M45 825.59 120.59 750M59.86 826 135.86 750M75.14 826 151.14 750M90.41 826 165 751.41M105.68 826 165 766.68M120.96 826 165 781.96M136.23 826 165 797.23M151.5 826 165 812.5" fill="none" stroke="black" stroke-width="1.56"/>
+<path d="M154.33 750 165 760.67M139.06 750 165 775.94M123.79 750 165 791.21M108.51 750 165 806.49M93.24 750 165 821.76M77.97 750 153.97 826M62.69 750 138.69 826M47.42 750 123.42 826M45 762.85 108.15 826M45 778.13 92.87 826M45 793.4 77.6 826M45 808.68 62.32 826M45 823.95 47.05 826" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="45" y="750" width="120" height="76" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="180" y="764.22" font-size="15.28" font-weight="bold" fill="black">Crossed hatching: 433 + 868 MHz</text>
+<text x="180" y="786.56" font-size="13.19" fill="black">Each band adds its own hatching</text>
+<text x="180" y="805.44" font-size="11.81" font-style="italic" fill="black">/ = 433 MHz   \ = 868 MHz   — = 902–928 MHz</text>
+<text x="50" y="905" font-size="18.06" font-weight="bold" fill="black">Construction Edge Guide</text>
+<path d="M50 927 680 927" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M60 972 160 972" fill="none" stroke="black" stroke-width="3.5" stroke-dasharray="12 8"/>
+<text x="180" y="970.22" font-size="15.28" font-weight="bold" fill="black">Dashed line = Fold edge</text>
+<text x="180" y="990.56" font-size="13.19" fill="black">Score firmly with a stylus or dull knife, then fold</text>
+<path d="M58 1048 160 1048" fill="none" stroke="black" stroke-width="4.2"/>
+<text x="180" y="1046.22" font-size="15.28" font-weight="bold" fill="black">Solid outer edge = Cut line</text>
+<text x="180" y="1066.56" font-size="13.19" fill="black">Cut cleanly with scissors or craft knife</text>
+<rect x="55" y="1106" width="110" height="40" fill="none" stroke="black" stroke-width="1.1"/>
+<text x="110" y="1129.4" font-size="9.72" text-anchor="middle" fill="black">GLUE</text>
+<text x="180" y="1122.22" font-size="15.28" font-weight="bold" fill="black">Outlined tab = Glue surface</text>
+<text x="180" y="1142.56" font-size="13.19" fill="black">Apply PVA or stick glue; press to adjacent face</text>
+<text x="50" y="1230" font-size="18.06" font-weight="bold" fill="black">Cartographic Projection</text>
+<path d="M50 1252 680 1252" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="50" y="1278.56" font-size="13.19" fill="black">Each face uses a gnomonic projection centered on its dodecahedron face</text>
+<text x="50" y="1295.97" font-size="13.19" fill="black">center. On a gnomonic projection, all great-circle arcs appear as</text>
+<text x="50" y="1313.39" font-size="13.19" fill="black">straight lines, so country borders that cross a fold edge continue as</text>
+<text x="50" y="1330.81" font-size="13.19" fill="black">straight lines into the adjacent face. Geographic continuity across</text>
+<text x="50" y="1348.22" font-size="13.19" fill="black">all 11 fold edges is verified to within 0.006° of arc (numerical</text>
+<text x="50" y="1365.64" font-size="13.19" fill="black">precision only).</text>
+<text x="750" y="195" font-size="18.06" font-weight="bold" fill="black">RSDGGS Face Reference</text>
+<path d="M750 217 1310 217" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="750" y="262.56" font-size="13.19" font-weight="bold" fill="black">F#</text>
+<text x="810" y="262.56" font-size="13.19" font-weight="bold" fill="black">Name / Regulatory Bodies</text>
+<text x="1115" y="262.56" font-size="13.19" font-weight="bold" fill="black">ISM Bands Available</text>
+<path d="M750 274 1310 274" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M750 347 1310 347" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="300" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="305.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">0</text>
+<text x="810" y="297.67" font-size="14.58" font-weight="bold" fill="black">Antarctica / New Zealand</text>
+<text x="810" y="318.89" font-size="11.11" font-style="italic" fill="black">Antarctic Treaty · RSM (NZ)</text>
+<text x="1115" y="296.44" font-size="11.81" fill="black">Antarctica: coordination zone;</text>
+<text x="1115" y="312.03" font-size="11.81" fill="black">NZ 915–928 MHz + 2.4 GHz</text>
+<path d="M750 417 1310 417" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="370" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="375.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">1</text>
+<text x="810" y="367.67" font-size="14.58" font-weight="bold" fill="black">ITU R1 — Europe</text>
+<text x="810" y="388.89" font-size="11.11" font-style="italic" fill="black">ETSI · Ofcom · ARCEP · BNetzA · IDA</text>
+<text x="1115" y="366.44" font-size="11.81" fill="black">433 MHz + 868 MHz + 2.4 GHz</text>
+<path d="M750 487 1310 487" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="440" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="445.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">2</text>
+<text x="810" y="437.67" font-size="14.58" font-weight="bold" fill="black">ITU R2 — N. America</text>
+<text x="810" y="458.89" font-size="11.11" font-style="italic" fill="black">FCC (US) · ISED (CA) · IFT (MX)</text>
+<text x="1115" y="436.44" font-size="11.81" fill="black">902–928 MHz + 2.4 GHz · 1-byte</text>
+<text x="1115" y="452.03" font-size="11.81" fill="black">RSL covers all of face 2</text>
+<path d="M750 557 1310 557" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="510" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="515.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">3</text>
+<text x="810" y="507.67" font-size="14.58" font-weight="bold" fill="black">ITU R3 — Asia</text>
+<text x="810" y="528.89" font-size="11.11" font-style="italic" fill="black">MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW) · WPC (IN)</text>
+<text x="1115" y="506.44" font-size="11.81" fill="black">2.4 GHz universal; 920–928 MHz</text>
+<text x="1115" y="522.03" font-size="11.81" fill="black">JP; 915 MHz TW</text>
+<path d="M750 627 1310 627" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="580" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="585.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">4</text>
+<text x="810" y="577.67" font-size="14.58" font-weight="bold" fill="black">South Atlantic</text>
+<text x="810" y="598.89" font-size="11.11" font-style="italic" fill="black">ICASA (ZA)</text>
+<text x="1115" y="576.44" font-size="11.81" fill="black">433 MHz + 2.4 GHz (ZA);</text>
+<text x="1115" y="592.03" font-size="11.81" fill="black">Antarctica: coordination zone</text>
+<path d="M750 697 1310 697" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="650" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="655.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">5</text>
+<text x="810" y="647.67" font-size="14.58" font-weight="bold" fill="black">R1 — Africa / Middle East</text>
+<text x="810" y="668.89" font-size="11.11" font-style="italic" fill="black">ATU East · ASMG · CCK (KE) · TCRA (TZ) · TRA (AE)</text>
+<text x="1115" y="646.44" font-size="11.81" fill="black">433 MHz + 2.4 GHz</text>
+<path d="M750 767 1310 767" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="720" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="725.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">6</text>
+<text x="810" y="717.67" font-size="14.58" font-weight="bold" fill="black">R2 — S. America</text>
+<text x="810" y="738.89" font-size="11.11" font-style="italic" fill="black">Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</text>
+<text x="1115" y="716.44" font-size="11.81" fill="black">902–928 MHz + 2.4 GHz · BR:</text>
+<text x="1115" y="732.03" font-size="11.81" fill="black">split 902–907.5 + 915–928 MHz</text>
+<path d="M750 837 1310 837" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="790" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="795.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">7</text>
+<text x="810" y="787.67" font-size="14.58" font-weight="bold" fill="black">R3 — Eastern Australia</text>
+<text x="810" y="808.89" font-size="11.11" font-style="italic" fill="black">ACMA (AU) · MCIT (PG)</text>
+<text x="1115" y="786.44" font-size="11.81" fill="black">915–928 MHz (AU) + 2.4 GHz</text>
+<path d="M750 907 1310 907" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="860" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="865.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">8</text>
+<text x="810" y="857.67" font-size="14.58" font-weight="bold" fill="black">Southern Indian Ocean</text>
+<text x="810" y="878.89" font-size="11.11" font-style="italic" fill="black">ACMA (AU: Melbourne, Adelaide, Perth)</text>
+<text x="1115" y="856.44" font-size="11.81" fill="black">915–928 MHz (AU) + 2.4 GHz;</text>
+<text x="1115" y="872.03" font-size="11.81" fill="black">Antarctica: coordination zone</text>
+<path d="M750 977 1310 977" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="930" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="935.35" font-size="15.28" text-anchor="middle" font-weight="bold" fill="black">9</text>
+<text x="810" y="927.67" font-size="14.58" font-weight="bold" fill="black">R1 — West Africa</text>
+<text x="810" y="948.89" font-size="11.11" font-style="italic" fill="black">ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</text>
+<text x="1115" y="926.44" font-size="11.81" fill="black">433 MHz + 2.4 GHz; NE Brazil</text>
+<text x="1115" y="942.03" font-size="11.81" fill="black">902–928 MHz</text>
+<path d="M750 1047 1310 1047" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="1000" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="1004.62" font-size="13.19" text-anchor="middle" font-weight="bold" fill="black">10</text>
+<text x="810" y="997.67" font-size="14.58" font-weight="bold" fill="black">R2 — Central Pacific</text>
+<text x="810" y="1018.89" font-size="11.11" font-style="italic" fill="black">FCC (US: Hawaii)</text>
+<text x="1115" y="996.44" font-size="11.81" fill="black">902–928 MHz + 2.4 GHz</text>
+<path d="M750 1117 1310 1117" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="773" cy="1070" r="15" fill="white" stroke="black" stroke-width="1.6"/>
+<text x="773" y="1074.62" font-size="13.19" text-anchor="middle" font-weight="bold" fill="black">11</text>
+<text x="810" y="1067.67" font-size="14.58" font-weight="bold" fill="black">R3 — North Pacific</text>
+<text x="810" y="1088.89" font-size="11.11" font-style="italic" fill="black">MIC (JP) · Roskomnadzor (RU) · FCC (US: Alaska)</text>
+<text x="1115" y="1066.44" font-size="11.81" fill="black">920–928 MHz JP; 433 MHz RU;</text>
+<text x="1115" y="1082.03" font-size="11.81" fill="black">902–928 MHz AK; + 2.4 GHz</text>
+<text x="1350" y="195" font-size="18.06" font-weight="bold" fill="black">Construction Instructions</text>
+<path d="M1350 217 1950 217" fill="none" stroke="black" stroke-width="0.8"/>
+<circle cx="1364" cy="244" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="248.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">1</text>
+<text x="1405" y="244.22" font-size="15.28" font-weight="bold" fill="black">Print</text>
+<text x="1405" y="262.44" font-size="11.81" fill="black">Print page 1 on US Letter (8.5×11", portrait). Select "Actual size" — do not scale to fit.</text>
+<circle cx="1364" cy="308" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="312.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">2</text>
+<text x="1405" y="308.22" font-size="15.28" font-weight="bold" fill="black">Cut</text>
+<text x="1405" y="326.44" font-size="11.81" fill="black">Cut along all solid outer edges. A sharp craft knife and steel rule gives the cleanest</text>
+<text x="1405" y="342.03" font-size="11.81" fill="black">result.</text>
+<circle cx="1364" cy="372" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="376.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">3</text>
+<text x="1405" y="372.22" font-size="15.28" font-weight="bold" fill="black">Score</text>
+<text x="1405" y="390.44" font-size="11.81" fill="black">Score every dashed fold line firmly with a dull stylus or spent ballpoint, running against a</text>
+<text x="1405" y="406.03" font-size="11.81" fill="black">ruler.</text>
+<circle cx="1364" cy="436" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="440.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">4</text>
+<text x="1405" y="436.22" font-size="15.28" font-weight="bold" fill="black">Fold</text>
+<text x="1405" y="454.44" font-size="11.81" fill="black">Fold each face upward (mountain fold) along the scored dashed lines. Crease firmly.</text>
+<circle cx="1364" cy="500" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="504.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">5</text>
+<text x="1405" y="500.22" font-size="15.28" font-weight="bold" fill="black">Glue</text>
+<text x="1405" y="518.44" font-size="11.81" fill="black">Apply PVA or strong stick glue to the GLUE tabs, which are left unprinted so the glue holds.</text>
+<text x="1405" y="534.03" font-size="11.81" fill="black">Work one tab at a time.</text>
+<circle cx="1364" cy="564" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="568.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">6</text>
+<text x="1405" y="564.22" font-size="15.28" font-weight="bold" fill="black">Join</text>
+<text x="1405" y="582.44" font-size="11.81" fill="black">Press each glued tab firmly against the inner face of its matching neighbour. Hold 30</text>
+<text x="1405" y="598.03" font-size="11.81" fill="black">seconds.</text>
+<circle cx="1364" cy="628" r="13" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="1364" y="632.86" font-size="13.89" text-anchor="middle" font-weight="bold" fill="black">7</text>
+<text x="1405" y="628.22" font-size="15.28" font-weight="bold" fill="black">Close</text>
+<text x="1405" y="646.44" font-size="11.81" fill="black">The final seam joins the last free edge. Clamp or tape on the outside while the glue sets.</text>
+<path d="M1350 685 1950 685" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="1350" y="735" font-size="18.06" font-weight="bold" fill="black">ISM Band Quick Reference</text>
+<path d="M1350 757 1950 757" fill="none" stroke="black" stroke-width="0.8"/>
+<rect x="1340" y="772" width="565" height="40" fill="none" stroke="black" stroke-width="1.6"/>
+<text x="1355" y="796.38" font-size="12.5" font-weight="bold" fill="black">Band</text>
+<text x="1430" y="796.38" font-size="12.5" font-weight="bold" fill="black">Frequency</text>
+<text x="1555" y="796.38" font-size="12.5" font-weight="bold" fill="black">Max EIRP</text>
+<text x="1685" y="796.38" font-size="12.5" font-weight="bold" fill="black">Duty cycle</text>
+<text x="1795" y="796.38" font-size="12.5" font-weight="bold" fill="black">LBT req.</text>
+<rect x="1340" y="814" width="565" height="48" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M1350 834.11 1364.11 820M1350 849.38 1379.38 820M1358.66 856 1394.66 820M1373.93 856 1409.93 820M1389.21 856 1420 825.21M1404.48 856 1420 840.48M1419.75 856 1420 855.75" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="1350" y="820" width="70" height="36" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="1430" y="842.13" font-size="11.81" fill="black">433 MHz</text>
+<text x="1555" y="834.34" font-size="11.81" fill="black">10 mW (EU)</text>
+<text x="1555" y="849.92" font-size="11.81" fill="black">—(others)</text>
+<text x="1685" y="842.13" font-size="11.81" fill="black">10% EU</text>
+<text x="1795" y="842.13" font-size="11.81" fill="black">No (EU)</text>
+<rect x="1340" y="864" width="565" height="48" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M1413.06 870 1420 876.94M1396.09 870 1420 893.91M1379.12 870 1415.12 906M1362.15 870 1398.15 906M1350 874.82 1381.18 906M1350 891.79 1364.21 906" fill="none" stroke="black" stroke-width="1.6"/>
+<rect x="1350" y="870" width="70" height="36" fill="none" stroke="black" stroke-width="1.6"/>
+<text x="1430" y="892.13" font-size="11.81" fill="black">868 MHz</text>
+<text x="1555" y="884.34" font-size="11.81" fill="black">25 mW EU</text>
+<text x="1555" y="899.92" font-size="11.81" fill="black">500 mW 869.4</text>
+<text x="1685" y="892.13" font-size="11.81" fill="black">1% / 10%</text>
+<text x="1795" y="892.13" font-size="11.81" fill="black">Yes (EU)</text>
+<rect x="1340" y="914" width="565" height="48" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M1350 928.8 1420 928.8M1350 939.6 1420 939.6M1350 950.4 1420 950.4" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="1350" y="920" width="70" height="36" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="1430" y="942.13" font-size="11.81" fill="black">915 MHz</text>
+<text x="1555" y="934.34" font-size="11.81" fill="black">1 W FCC</text>
+<text x="1555" y="949.92" font-size="11.81" fill="black">4 W EIRP CA</text>
+<text x="1685" y="942.13" font-size="11.81" fill="black">None FCC</text>
+<text x="1795" y="942.13" font-size="11.81" fill="black">No (FCC)</text>
+<rect x="1340" y="964" width="565" height="48" fill="none" stroke="black" stroke-width="0.8"/>
+<path d="M1350 972 1420 972M1350 982.8 1420 982.8M1350 993.6 1420 993.6M1350 1004.4 1420 1004.4" fill="none" stroke="black" stroke-width="1.56"/>
+<rect x="1350" y="970" width="70" height="36" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="1430" y="992.13" font-size="11.81" fill="black">920 MHz</text>
+<text x="1555" y="984.34" font-size="11.81" fill="black">10 mW JP</text>
+<text x="1555" y="999.92" font-size="11.81" fill="black">25 mW AU</text>
+<text x="1685" y="992.13" font-size="11.81" fill="black">1% JP</text>
+<text x="1795" y="992.13" font-size="11.81" fill="black">Yes JP</text>
+<rect x="1340" y="1014" width="565" height="48" fill="none" stroke="black" stroke-width="0.8"/>
+<rect x="1350" y="1020" width="70" height="36" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="1430" y="1042.13" font-size="11.81" fill="black">2.4 GHz</text>
+<text x="1555" y="1034.34" font-size="11.81" fill="black">100 mW EU</text>
+<text x="1555" y="1049.92" font-size="11.81" fill="black">1 W FCC</text>
+<text x="1685" y="1042.13" font-size="11.81" fill="black">None</text>
+<text x="1795" y="1042.13" font-size="11.81" fill="black">No</text>
+<text x="1350" y="1110" font-size="18.06" font-weight="bold" fill="black">About RSDGGS</text>
+<path d="M1350 1132 1950 1132" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="1350" y="1158.56" font-size="13.19" fill="black">RSDGGS (Regulatory Spectrum Discrete Global Grid System) encodes device</text>
+<text x="1350" y="1175.97" font-size="13.19" fill="black">geographic location as a 1–8 byte index rooted in a spherical</text>
+<text x="1350" y="1193.39" font-size="13.19" fill="black">dodecahedron. The low two bits of the face index give the ITU Radio</text>
+<text x="1350" y="1210.81" font-size="13.19" fill="black">Region. Index length implies resolution: 1 byte = ITU Region · 2 bytes =</text>
+<text x="1350" y="1228.22" font-size="13.19" fill="black">sub-regional bloc · 3 bytes = country-level · 4+ bytes = sub-national.</text>
+<text x="1350" y="1245.64" font-size="13.19" fill="black">Devices derive regulatory ISM band rules directly from their cell index</text>
+<text x="1350" y="1263.06" font-size="13.19" fill="black">with no server dependency.</text>
+<text x="1350" y="1300.56" font-size="13.19" fill="black">draft-hanley-rsdggs-00 · Independent Submission</text>
+<text x="1350" y="1317.97" font-size="13.19" fill="black">IEEE 802.15.4 MAC layer · CBOR encoded · Rust reference impl</text>
+<path d="M50 1500 1950 1500" fill="none" stroke="black" stroke-width="0.8"/>
+<text x="1000" y="1523.89" font-size="11.11" text-anchor="middle" fill="black">RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-00 · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face</text>
+</svg>

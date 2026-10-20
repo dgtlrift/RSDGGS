@@ -5,6 +5,7 @@
 
 The IETF tools do not write .docx. LibreOffice converts the HTML well, except for:
 
+- inline SVG figures, which `prep` turns into embedded images;
 - the parts that only make sense in a browser or in print (pilcrow paragraph links,
   the running page header and footer, the "top" link), which `prep` removes;
 - tables, which come out narrow and without borders. LibreOffice hangs on this document
@@ -12,6 +13,7 @@ The IETF tools do not write .docx. LibreOffice converts the HTML well, except fo
   borders in the .docx itself.
 """
 
+import base64
 import shutil
 import sys
 import tempfile
@@ -35,6 +37,19 @@ def prep(src, dst):
                   "//script"):
         for el in doc.xpath(xpath):
             el.drop_tree()
+    # LibreOffice skips inline SVG, and links (does not embed) an image file; it does
+    # embed an image given as a data: URI.
+    for svg in doc.xpath('//*[local-name()="svg"]'):
+        for el in svg.iter():                 # the HTML parser lowercased these
+            for attr in ("viewBox", "baseProfile"):
+                if attr.lower() in el.attrib:
+                    el.set(attr, el.attrib.pop(attr.lower()))
+        data = base64.b64encode(etree.tostring(svg)).decode()
+        _, _, w, h = (float(v) for v in svg.get("viewBox").split())
+        img = etree.Element("img", src="data:image/svg+xml;base64," + data,
+                            width="576", height=str(round(576 * h / w)))  # 6 in wide
+        img.tail = svg.tail
+        svg.getparent().replace(svg, img)
     etree.ElementTree(doc).write(dst, method="html", encoding="utf-8")
 
 

@@ -20,7 +20,7 @@ fn roundtrip_check(lat: f64, lon: f64, depth: usize) {
 
 #[test]
 fn anchor_point_face2() {
-    // 39°N 98°W is the anchor for Face 2 (N. America)
+    // Central United States: Face 2 (North America)
     let idx = encode(39.0, -98.0, 2).unwrap();
     assert_eq!(idx.face, 2, "39°N 98°W should be in face 2");
 }
@@ -72,10 +72,10 @@ fn cell_center_near_input() {
 }
 
 #[test]
-fn regulatory_acma_face10() {
+fn regulatory_acma_face7() {
     use rsdggs::regulatory::lookup;
     use rsdggs::Body;
-    let entry = lookup(10, Body::Earth, 4).unwrap();
+    let entry = lookup(7, Body::Earth, 4).unwrap();
     assert_eq!(entry.authority, "ACMA");
     assert_eq!(entry.freq_lo_khz, 915_000);
 }

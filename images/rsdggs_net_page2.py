@@ -1,6 +1,6 @@
 """Draw Figure 2 of draft-hanley-rsdggs-00: the dodecahedron net reference key.
 
-    python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png
+    python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png and .svg
 
 Requires matplotlib (built with 3.10.8). Layout coordinates are in a 2000 x 1555
 grid with the origin at the top left.
@@ -39,23 +39,26 @@ BANDS = [
 ]
 
 FACES = [
-    ("Polar / Antarctic", "Special coordination zone",
-     "Antarctic Treaty area; no standard ISM band allocations"),
+    # Draft section 4.6.2. The low two bits of each face number give its ITU Region (0: none).
+    ("Antarctica / New Zealand", "Antarctic Treaty · RSM (NZ)",
+     "Antarctica: coordination zone; NZ 915–928 MHz + 2.4 GHz"),
     ("ITU R1 — Europe", "ETSI · Ofcom · ARCEP · BNetzA · IDA", "433 MHz + 868 MHz + 2.4 GHz"),
     ("ITU R2 — N. America", "FCC (US) · ISED (CA) · IFT (MX)",
-     "902–928 MHz + 2.4 GHz · 1-byte RSL covers all of R2"),
-    ("ITU R3 — E. Asia", "MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)",
+     "902–928 MHz + 2.4 GHz · 1-byte RSL covers all of face 2"),
+    ("ITU R3 — Asia", "MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW) · WPC (IN)",
      "2.4 GHz universal; 920–928 MHz JP; 915 MHz TW"),
-    ("R1-A Africa West", "ATU West cluster · NCC (NG) · OFCOM (GH)", "433 MHz + 2.4 GHz"),
-    ("R1-B Africa East", "ATU East · CCK (KE) · TCRA (TZ) · CA (ET)", "433 MHz + 2.4 GHz"),
-    ("R1-C Russia / CAS", "Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)", "433 MHz + 2.4 GHz"),
-    ("R1-D Middle East", "ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)", "433 MHz + 2.4 GHz"),
-    ("R2-A S. America", "Anatel (BR) · ENACOM (AR) · SUBTEL (CL)",
+    ("South Atlantic", "ICASA (ZA)", "433 MHz + 2.4 GHz (ZA); Antarctica: coordination zone"),
+    ("R1 — Africa / Middle East", "ATU East · ASMG · CCK (KE) · TCRA (TZ) · TRA (AE)", "433 MHz + 2.4 GHz"),
+    ("R2 — S. America", "Anatel (BR) · ENACOM (AR) · SUBTEL (CL)",
      "902–928 MHz + 2.4 GHz · BR: split 902–907.5 + 915–928 MHz"),
-    ("R2-B Caribbean", "NTRC cluster · FCC (PR/USVI) · BIPT (AW)", "902–928 MHz + 2.4 GHz"),
-    ("R3-A S/SE Asia", "WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)",
-     "2.4 GHz; some: 920–925 MHz (IN, SG, MY, ID)"),
-    ("R3-B Oceania", "ACMA (AU) · RSM (NZ) · MCIT (PG)", "915–928 MHz (AU/NZ) + 2.4 GHz"),
+    ("R3 — Eastern Australia", "ACMA (AU) · MCIT (PG)", "915–928 MHz (AU) + 2.4 GHz"),
+    ("Southern Indian Ocean", "ACMA (AU: Melbourne, Adelaide, Perth)",
+     "915–928 MHz (AU) + 2.4 GHz; Antarctica: coordination zone"),
+    ("R1 — West Africa", "ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)",
+     "433 MHz + 2.4 GHz; NE Brazil 902–928 MHz"),
+    ("R2 — Central Pacific", "FCC (US: Hawaii)", "902–928 MHz + 2.4 GHz"),
+    ("R3 — North Pacific", "MIC (JP) · Roskomnadzor (RU) · FCC (US: Alaska)",
+     "920–928 MHz JP; 433 MHz RU; 902–928 MHz AK; + 2.4 GHz"),
 ]
 
 STEPS = [
@@ -67,7 +70,8 @@ STEPS = [
               "running against a ruler."),
     ("Fold", "Fold each face upward (mountain fold) along the scored dashed lines. "
              "Crease firmly."),
-    ("Glue", "Apply PVA or strong stick glue to the grey GLUE tabs. Work one tab at a time."),
+    ("Glue", "Apply PVA or strong stick glue to the GLUE tabs, which are left unprinted so "
+             "the glue holds. Work one tab at a time."),
     ("Join", "Press each glued tab firmly against the inner face of its matching neighbour. "
              "Hold 30 seconds."),
     ("Close", "The final seam joins the last free edge. Clamp or tape on the outside while "
@@ -93,8 +97,8 @@ CARTOGRAPHY = (
 # Resolution per index length follows draft §5.2.
 ABOUT = (
     "RSDGGS (Regulatory Spectrum Discrete Global Grid System) encodes device geographic "
-    "location as a 1–8 byte index rooted in a spherical dodecahedron. Face indices align "
-    "to ITU Radio Region numbers. Index length implies resolution: 1 byte = ITU Region · "
+    "location as a 1–8 byte index rooted in a spherical dodecahedron. The low two bits "
+    "of the face index give the ITU Radio Region. Index length implies resolution: 1 byte = ITU Region · "
     "2 bytes = sub-regional bloc · 3 bytes = country-level · 4+ bytes = sub-national. "
     "Devices derive regulatory ISM band rules directly from their cell index with no "
     "server dependency."
@@ -142,7 +146,7 @@ def legend(ax, x0, x1):
     items = [
         ("dash", "Dashed line = Fold edge", "Score firmly with a stylus or dull knife, then fold"),
         ("solid", "Solid outer edge = Cut line", "Cut cleanly with scissors or craft knife"),
-        ("glue", "Grey tab = Glue surface", "Apply PVA or stick glue; press to adjacent face"),
+        ("glue", "Outlined tab = Glue surface", "Apply PVA or stick glue; press to adjacent face"),
     ]
     for k, (kind, title, line) in enumerate(items):
         y = 960 + 76 * k
@@ -154,8 +158,8 @@ def legend(ax, x0, x1):
         else:
             ax.add_patch(FancyBboxPatch((x0 + 5, y - 6), 110, 40,
                                         boxstyle="round,pad=0,rounding_size=4",
-                                        facecolor="#DDDDCC", edgecolor="#999999", lw=0.8))
-            text(ax, x0 + 60, y + 14, "GLUE", size=7, color="#777777", ha="center",
+                                        facecolor="none", edgecolor="black", lw=0.8))
+            text(ax, x0 + 60, y + 14, "GLUE", size=7, color="black", ha="center",
                  va="center")
         text(ax, x0 + 130, y - 2, title, size=11, weight="bold")
         text(ax, x0 + 130, y + 20, line, size=9.5)
@@ -232,7 +236,9 @@ def main():
     text(ax, W / 2, 1520, FOOTER, size=8, color="#777777", ha="center", va="center")
     out = Path(__file__).with_suffix(".png")
     fig.savefig(out, dpi=250, facecolor="white")
-    print(out)
+    plt.rcParams["svg.hashsalt"] = "rsdggs"          # stable ids, so re-runs diff cleanly
+    fig.savefig(out.with_suffix(".svg"), facecolor="white", metadata={"Date": None})
+    print(out, out.with_suffix(".svg"))
 
 
 if __name__ == "__main__":

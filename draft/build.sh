@@ -47,6 +47,11 @@ java -jar "$jing" -c "$rnc" "$name.xml"
 echo "   valid"
 echo "== svgcheck"
 "$tools/venv/bin/svgcheck" "$name.xml"
+# The black-and-white figures in images/bw are meant to be RFC-ready too.
+for f in ../images/bw/*.svg ../images/bw/faces/*.svg; do
+    "$tools/venv/bin/svgcheck" -N "$f" >/dev/null 2>&1 || { echo "$f: not RFC 7996 SVG" >&2; exit 1; }
+done
+echo "   images/bw: $(ls ../images/bw/*.svg ../images/bw/faces/*.svg | wc -l) files conform"
 echo "== xml2rfc"
 "$tools/venv/bin/xml2rfc" --text --html "$name.xml"
 

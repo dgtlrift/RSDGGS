@@ -1,13 +1,13 @@
 """Draw Figure 1 of draft-hanley-rsdggs-00: the dodecahedron net, ISM band coverage.
 
-    python images/rsdggs_net_page1.py    # writes images/rsdggs_net_page1.png
+    python images/rsdggs_net_page1.py    # writes images/rsdggs_net_page1.png and .svg
 
 Requires matplotlib (built with 3.10.8), numpy and shapely. The face geometry is read
 from src/constants.rs, so the figure always matches the reference implementation.
 Country outlines come from Natural Earth 5.1.2 (1:50m admin 0, public domain), which is
 downloaded once into images/.cache and checked against a pinned SHA-256.
 
-Output: US Letter portrait at 300 dpi with 0.5 in margins. Each pentagon has a
+Output: US Letter portrait, as a 300 dpi PNG and an all-vector SVG, with 0.5 in margins. Each pentagon has a
 circumradius of 25 mm when printed at 100%. Every face is a gnomonic projection centered
 on that face, so great-circle fold edges are straight and coastlines continue across them.
 """
@@ -26,8 +26,10 @@ import matplotlib.patheffects as pe
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.path import Path as MplPath
+from matplotlib.patches import PathPatch
 from matplotlib.patches import Polygon as MplPolygon
 from matplotlib.patches import Rectangle
+from matplotlib.transforms import Bbox
 from shapely.geometry import LineString, Polygon
 
 HERE = Path(__file__).resolve().parent
@@ -46,8 +48,8 @@ LEGEND_BAND = 16.0                # reserved above the bottom margin
 TAB_DEPTH = 5.0
 TAB_ANGLE = math.radians(30)      # tab sides stay inside the 36 degree notches of the net
 
-# The net: F0 with its five neighbours, F1 with its five, joined across the F8-F2 edge.
-NET_TREE = {0: [7, 8, 9, 10, 11], 8: [2], 2: [1], 1: [3, 4, 5, 6]}
+# The net: F0 with its five neighbours, F1 with its five, joined across the F6-F2 edge.
+NET_TREE = {0: [4, 6, 7, 8, 10], 6: [2], 2: [1], 1: [3, 5, 9, 11]}
 
 INK = "#1A1A2E"
 OCEAN = "#A9D6E5"
@@ -70,25 +72,106 @@ ETSI = set(
 BAND_C_EXTRA = {"AU", "NZ", "TW", "JP", "GU", "MP", "AS", "UM"}
 R1_ASIA = {"Western Asia", "Central Asia", "Southern Asia"}
 
+# The most populous cities on each face (Natural Earth 5.1.2 populated places, at least
+# 4.5 degrees apart). Face 2 keeps hand-set label offsets in points (it is drawn with north
+# up, tilted left); the other labels are placed automatically where they collide with nothing.
 CITIES = [
-    # name, lat, lon, label offset in points (face 2 is drawn with north to the upper left)
     ("Seattle", 47.61, -122.33, (3, -5)),
     ("Vancouver", 49.28, -123.12, (-3, 4)),
     ("Los Angeles", 34.05, -118.24, (4, -1)),
     ("Denver", 39.74, -104.99, (0, 5)),
     ("Dallas", 32.78, -96.80, (4, 0)),
     ("Minneapolis", 44.98, -93.27, (-4, -2)),
-    ("Chicago", 41.88, -87.63, (-4, 3)),
-    ("Toronto", 43.65, -79.38, (-4, 0)),
+    ("Chicago", 41.88, -87.63, (3, -5)),
+    ("Toronto", 43.65, -79.38, (-4, 4)),
     ("New York", 40.71, -74.01, (4, 1)),
     ("Miami", 25.76, -80.19, (4, 0)),
     ("Havana", 23.11, -82.37, (4, -3)),
     ("Mexico City", 19.43, -99.13, (4, 0)),
+    # face 0
+    ("Auckland", -36.85, 174.76, None),
+    ("Christchurch", -43.53, 172.64, None),
+    ("McMurdo", -77.85, 166.67, None),
+    # face 1
+    ("London", 51.51, -0.13, None),
+    ("Paris", 48.86, 2.35, None),
+    ("Madrid", 40.42, -3.70, None),
+    ("Moscow", 55.76, 37.62, None),
+    ("Istanbul", 41.01, 28.98, None),
+    ("Cairo", 30.04, 31.24, None),
+    ("Tehran", 35.69, 51.39, None),
+    # face 3
+    ("Tokyo", 35.68, 139.69, None),
+    ("Seoul", 37.57, 126.98, None),
+    ("Beijing", 39.90, 116.40, (4, 0)),
+    ("Shanghai", 31.23, 121.47, None),
+    ("Delhi", 28.61, 77.21, None),
+    ("Mumbai", 19.08, 72.88, None),
+    ("Kolkata", 22.57, 88.36, None),
+    ("Bangkok", 13.76, 100.50, None),
+    ("Jakarta", -6.21, 106.85, None),
+    # face 4
+    ("Cape Town", -33.92, 18.42, None),
+    ("Gqeberha", -33.96, 25.60, None),
+    # face 5
+    ("Kinshasa", -4.33, 15.31, None),
+    ("Luanda", -8.84, 13.23, None),
+    ("Khartoum", 15.59, 32.53, None),
+    ("Riyadh", 24.71, 46.68, None),
+    ("Johannesburg", -26.20, 28.05, None),
+    ("Addis Ababa", 9.03, 38.74, None),
+    ("Nairobi", -1.29, 36.82, None),
+    ("Dubai", 25.20, 55.27, None),
+    # face 6
+    ("São Paulo", -23.55, -46.63, None),
+    ("Buenos Aires", -34.60, -58.38, None),
+    ("Lima", -12.05, -77.04, None),
+    ("Bogotá", 4.71, -74.07, None),
+    ("Santiago", -33.45, -70.67, None),
+    ("Brasília", -15.79, -47.88, None),
+    # face 7
+    ("Sydney", -33.87, 151.21, None),
+    ("Brisbane", -27.47, 153.03, None),
+    ("Port Moresby", -9.44, 147.18, None),
+    ("Suva", -18.14, 178.44, None),
+    # face 8
+    ("Melbourne", -37.81, 144.96, None),
+    ("Adelaide", -34.93, 138.60, None),
+    ("Perth", -31.95, 115.86, None),
+    ("Denpasar", -8.65, 115.22, None),
+    ("Hobart", -42.88, 147.33, None),
+    # face 9
+    ("Lagos", 6.52, 3.38, None),
+    ("Abidjan", 5.36, -4.01, None),
+    ("Dakar", 14.69, -17.44, None),
+    ("Recife", -8.05, -34.88, None),
+    ("Fortaleza", -3.73, -38.53, None),
+    ("Salvador", -12.97, -38.50, None),
+    # face 10
+    ("Honolulu", 21.31, -157.86, None),
+    ("Papeete", -17.54, -149.57, None),
+    # face 11
+    ("Sapporo", 43.06, 141.35, None),
+    ("Khabarovsk", 48.48, 135.07, None),
+    ("Petropavlovsk", 53.04, 158.65, None),
+    ("Anchorage", 61.22, -149.90, None),
 ]
+# Places whose rules differ from their face's region code (draft sections 4.2 and 8.3).
 EXCEPTIONS = [
-    ("AK→F6", 61.2, -149.9),
-    ("HI→F9", 21.3, -157.8),
-    ("PR→F4", 18.5, -66.1),
+    ("NZ→F0", -45.5, 169.5),
+    ("IR→F1", 32.5, 54.5),
+    ("BVI→F2", 18.43, -64.62),
+    ("HK/MO→F3", 22.3, 114.0),
+    ("SG→F3", 1.35, 103.82),
+    ("ZA→F4", -29.5, 19.5),
+    ("GU→F7", 13.44, 144.79),
+    ("NC→F7", -21.3, 165.5),
+    ("AU→F8", -28.0, 123.0),
+    ("Canaries→F9", 28.3, -15.6),
+    ("Azores→F9", 38.6, -28.0),
+    ("GF→F9", 4.0, -53.0),
+    ("HI→F10", 21.3, -157.8),
+    ("AK→F11", 64.0, -152.0),
 ]
 
 
@@ -312,40 +395,89 @@ def class_raster(features, step=0.04):
 
 # Drawing --------------------------------------------------------------------------------
 
-def page_raster(net, raster, step):
-    """RGBA image of all faces at the output resolution."""
-    px = DPI / 25.4
-    w, h = round(PAGE_W * px), round(PAGE_H * px)
-    rgba = np.zeros((h, w, 4), dtype=np.uint8)
-    palette = np.zeros((6, 3), dtype=np.uint8)
-    palette[0] = [int(OCEAN[i:i + 2], 16) for i in (1, 3, 5)]
-    for k, col in CLASS_COLORS.items():
-        palette[k] = [int(col[i:i + 2], 16) for i in (1, 3, 5)]
-    hatch = np.array([int(HATCH[i:i + 2], 16) for i in (1, 3, 5)], dtype=np.uint8)
-    for f in range(12):
-        pts, _ = net.outline(f)
-        x0, y0 = np.floor(pts.min(0) * px).astype(int)
-        x1, y1 = np.ceil(pts.max(0) * px).astype(int)
-        gx, gy = np.meshgrid(np.arange(x0, x1), np.arange(y0, y1))
-        xy = np.column_stack([(gx.ravel() + 0.5) / px, (gy.ravel() + 0.5) / px])
-        inside = MplPath(pts).contains_points(xy)
-        xy, gx, gy = xy[inside], gx.ravel()[inside], gy.ravel()[inside]
-        p = net.from_page(f, xy)
-        lat = np.degrees(np.arcsin(np.clip(p[:, 2], -1, 1)))
-        lon = np.degrees(np.arctan2(p[:, 1], p[:, 0]))
-        rr = np.clip(((90 - lat) / step).astype(int), 0, raster.shape[0] - 1)
-        cc = np.clip(((lon + 180) / step).astype(int), 0, raster.shape[1] - 1)
-        cls = raster[rr, cc]
-        col = palette[cls]
-        stripe = (cls == 2) & (((gx + gy) % 14) < 4)
-        col[stripe] = hatch
-        rgba[gy, gx, :3] = col
-        rgba[gy, gx, 3] = 255
-    return rgba
+def polygons(feature):
+    """Each polygon of a feature as a list of rings, exterior first."""
+    geom = feature["geometry"]
+    return geom["coordinates"] if geom["type"] == "MultiPolygon" else [geom["coordinates"]]
 
 
-def draw_borders(ax, net, features):
-    for f in range(12):
+def clip_ring(p, c, eps=0.2):
+    """Clip a closed ring of sphere points to the half-space p.c >= eps (Sutherland-Hodgman).
+
+    Straight chords between kept points project to great-circle arcs, so the gnomonic
+    projection of the clipped ring is exact along every edge.
+    """
+    d = p @ c - eps
+    if (d >= 0).all():
+        return p
+    out = []
+    for i in range(len(p)):
+        j = (i + 1) % len(p)
+        if d[i] >= 0:
+            out.append(p[i])
+        if (d[i] >= 0) != (d[j] >= 0):
+            out.append(p[i] + d[i] / (d[i] - d[j]) * (p[j] - p[i]))
+    return np.array(out)
+
+
+def flat_polygons(geom):
+    if geom.is_empty:
+        return []
+    if geom.geom_type == "Polygon":
+        return [geom]
+    return [q for g in getattr(geom, "geoms", []) for q in flat_polygons(g)]
+
+
+def shapely_patch(geom, **kw):
+    """A PathPatch for a shapely geometry's polygons, holes included, or None."""
+    verts, codes = [], []
+    for poly in flat_polygons(geom):
+        for ring in [poly.exterior, *poly.interiors]:
+            xy = np.asarray(ring.coords)
+            verts += xy.tolist()
+            codes += [MplPath.MOVETO] + [MplPath.LINETO] * (len(xy) - 2) + [MplPath.CLOSEPOLY]
+    return PathPatch(MplPath(verts, codes), **kw) if verts else None
+
+
+def face_countries(net, f, features):
+    """Each country's land on face f, on the page, as (band class, [shapely geometries])."""
+    face = Polygon(net.outline(f)[0])
+    c = net.c[f]
+    for feat in features:
+        parts = []
+        for poly in polygons(feat):
+            ring3 = [unit(np.asarray(r)[:, 1], np.asarray(r)[:, 0]) for r in poly]
+            if (ring3[0] @ c).max() < 0.2:
+                continue
+            clipped = [clip_ring(r, c) for r in ring3]
+            if len(clipped[0]) < 3:
+                continue
+            holes = [net.to_page(f, r) for r in clipped[1:] if len(r) >= 3]
+            shape = Polygon(net.to_page(f, clipped[0]), holes).buffer(0).intersection(face)
+            if not shape.is_empty:
+                parts.append(shape)
+        if parts:
+            yield band_class(feat["properties"]), parts
+
+
+def draw_land(ax, net, faces, features):
+    """Ocean, then each country clipped to each face, coloured by band class (all vector)."""
+    for f in faces:
+        face = Polygon(net.outline(f)[0])
+        ax.add_patch(shapely_patch(face, facecolor=OCEAN, edgecolor=OCEAN, lw=0.2, zorder=2))
+        for cls, parts in face_countries(net, f, features):
+            col = CLASS_COLORS[cls]
+            for shape in parts:
+                # The edge in the fill colour closes hairline seams between neighbours.
+                ax.add_patch(shapely_patch(shape, facecolor=col, edgecolor=col, lw=0.2,
+                                           zorder=2.1))
+                if cls == 2:
+                    ax.add_patch(shapely_patch(shape, fill=False, hatch="//////",
+                                               edgecolor=HATCH, lw=0, zorder=2.2))
+
+
+def draw_borders(ax, net, features, faces=range(12), lw=0.18):
+    for f in faces:
         face = Polygon(net.outline(f)[0])
         c = net.c[f]
         for feat in features:
@@ -365,7 +497,7 @@ def draw_borders(ax, net, features):
                     for part in getattr(line, "geoms", [line]):
                         if part.length > 0:
                             xs, ys = part.xy
-                            ax.plot(xs, ys, color=BORDER, lw=0.18, alpha=0.75,
+                            ax.plot(xs, ys, color=BORDER, lw=lw, alpha=0.75,
                                     solid_capstyle="round", zorder=3)
 
 
@@ -373,21 +505,226 @@ def halo(color="black", width=1.6):
     return [pe.withStroke(linewidth=width, foreground=color)]
 
 
-def main():
-    net = Net()
-    tabs, cuts, folds = layout(net)
-    features = countries()
-    raster, step = class_raster(features)
+class Labeller:
+    """Places labels and north arrows on the drawn faces, clear of everything drawn so far.
 
+    A label may cross a fold line, where the map continues onto the next face, but every
+    corner must be on some drawn face, so nothing hangs over a cut edge. `k` scales the
+    offsets and sizes for enlarged faces.
+    """
+
+    STEPS = ((4, 0), (-4, 0), (0, 5), (0, -5), (4, 4), (-4, 4), (4, -4), (-4, -4))
+
+    def __init__(self, fig, ax, net, faces, k=1.0):
+        self.fig, self.ax, self.net, self.k = fig, ax, net, k
+        self.renderer = fig.canvas.get_renderer()
+        self.boxes = [t.get_window_extent(self.renderer).padded(1) for t in ax.texts]
+        self.paths = {f: MplPath(ax.transData.transform(net.outline(f)[0])) for f in faces}
+        self.offsets = [(dx * r * k, dy * r * k) for r in (1, 1.3) for dx, dy in self.STEPS]
+
+    def _free(self, bb):
+        corners = [(bb.x0, bb.y0), (bb.x0, bb.y1), (bb.x1, bb.y0), (bb.x1, bb.y1)]
+        on = np.any([path.contains_points(corners) for path in self.paths.values()], axis=0)
+        return on.all() and not any(bb.overlaps(b) for b in self.boxes)
+
+    def block_point(self, xy):
+        x, y = self.ax.transData.transform(xy)
+        r = 6 * self.k
+        self.boxes.append(Bbox([[x - r, y - r], [x + r, y + r]]))
+
+    def place(self, f, xy, text, off, **kw):
+        """Label a point. A hand-set offset is used as is on the net (k = 1), where it was
+        tuned by eye; on enlarged faces it is only the first position tried."""
+        fixed = off is not None and self.k == 1
+        tries = ([(off[0] * self.k, off[1] * self.k)] if off else []) + \
+            ([] if fixed else self.offsets)
+        for i, (dx, dy) in enumerate(tries):
+            ha = "center" if dx == 0 else "left" if dx > 0 else "right"
+            va = "center" if (off and i == 0) or dy == 0 else "bottom" if dy > 0 else "top"
+            t = self.ax.annotate(text, xy, xytext=(dx, dy), textcoords="offset points", ha=ha,
+                                 va=va, zorder=9, **kw)
+            bb = t.get_window_extent(self.renderer).padded(1)
+            if fixed or self._free(bb):
+                self.boxes.append(bb)
+                return
+            t.remove()
+        raise SystemExit(f"no room for the label {text!r} on face {f}; drop or move it")
+
+    def north_arrow(self, f, raster, step):
+        """A north arrow on face f, over open water where there is room."""
+        net, ax, k = self.net, self.ax, self.k
+        c, e1, e2 = net.basis[f]
+        cands = []
+        for frac in (0.55, 0.42, 0.68):
+            for deg in range(0, 360, 15):
+                a = math.radians(deg)
+                p = c + net.radius * frac * (math.cos(a) * e1 + math.sin(a) * e2)
+                p /= np.linalg.norm(p)
+                lat, lon = math.degrees(math.asin(p[2])), math.degrees(math.atan2(p[1], p[0]))
+                if lat < -88 or lat > 88:
+                    continue
+                cell = raster[min(int((90 - lat) / step), raster.shape[0] - 1),
+                              min(int((lon + 180) / step), raster.shape[1] - 1)]
+                cands.append((cell != 0, lat, lon))
+        cands.sort(key=lambda x: x[0])                   # open water first; stable otherwise
+        for _, lat, lon in cands:
+            base = net.to_page(f, unit(lat, lon))
+            tip = net.to_page(f, unit(lat + 0.5, lon))
+            d = (tip - base) / np.linalg.norm(tip - base)
+            ends = ax.transData.transform([base, base + 6 * k * d])
+            arrow = Bbox([ends.min(0) - 3 * k, ends.max(0) + 3 * k])
+            t = ax.text(*(base + 7.8 * k * d), "N", fontsize=6.5 * k, color="white",
+                        weight="bold", ha="center", va="center",
+                        path_effects=halo(width=1.4 * k), zorder=9)
+            bb = t.get_window_extent(self.renderer).padded(1)
+            if self.paths[f].contains_points(ends).all() and self._free(arrow) and self._free(bb):
+                ax.annotate("", base + 6 * k * d, base, zorder=9,
+                            arrowprops=dict(arrowstyle="-|>", color="white", lw=1.0 * k,
+                                            mutation_scale=7 * k,
+                                            path_effects=halo(width=2.2 * k)))
+                self.boxes += [arrow, bb]
+                return
+            t.remove()
+        raise SystemExit(f"no room for a north arrow on face {f}")
+
+
+def draw_map(fig, ax, net, faces, features, raster, step, k=1.0, cities=CITIES,
+             triangles_last=False):
+    """Everything on the faces themselves: map, triangles, numbers, cities, exceptions, arrows.
+
+    `k` scales text, symbols and line weights for enlarged faces. With `triangles_last` the
+    T0-T4 labels are placed after the cities, sliding toward the centre to stay clear.
+    """
+    draw_land(ax, net, faces, features)
+    draw_borders(ax, net, features, faces, lw=0.18 * k)
+
+    # Ghost lines for the five top-level triangles. Triangle k is (centre, vertex k,
+    # vertex k+1) in the order of FACE_PENTAGON_VERTS, which is the order the encoder
+    # uses for Cell[1] bits 7-4.
+    ghost = dict(color=INK, alpha=0.45, lw=0.45 * k, ls=(0, (2.5, 2)), zorder=6)
+    for f in faces:
+        ctr = net.to_page(f, net.c[f])
+        corners = net.to_page(f, net.v[f])
+        for t in range(5):
+            d = corners[t] - ctr
+            start = ctr + d / np.linalg.norm(d) * 3.2 * k     # keep the face index clear
+            ax.plot(*np.column_stack([start, corners[t]]), **ghost)
+            if not triangles_last:
+                mid = (corners[t] + corners[(t + 1) % 5]) / 2
+                tri_label(ax, ctr + 0.82 * (mid - ctr), t, k)   # clear of face 2's cities
+
+    for f in faces:
+        ctr = net.to_page(f, net.c[f])
+        ax.text(*ctr, str(f), fontsize=9 * k, color="white", weight="bold", ha="center",
+                va="center", path_effects=halo(width=1.6 * k), zorder=8)
+        if f in (6, 9):
+            # A bar under 6 and 9 tells them apart when the folded globe is turned over.
+            ax.plot([ctr[0] - 1.1 * k, ctr[0] + 1.1 * k], [ctr[1] - 2.2 * k] * 2,
+                    color="white", lw=1.1 * k, solid_capstyle="butt",
+                    path_effects=halo(width=2.4 * k), zorder=8)
+
+    labels = Labeller(fig, ax, net, faces, k)
+    here = [(name, lat, lon, off, net.face_of(lat, lon)) for name, lat, lon, off in cities]
+    here = [c for c in here if c[4] in faces]
+    exc = [(label, lat, lon, net.face_of(lat, lon)) for label, lat, lon in EXCEPTIONS]
+    for label, _, _, f in exc:
+        assert label.endswith(f"F{f}"), (label, f)
+    exc = [e for e in exc if e[3] in faces]
+    for _, lat, lon, _, f in here:
+        xy = net.to_page(f, unit(lat, lon))
+        ax.plot(*xy, "o", ms=4 * k, mfc="white", mec=INK, mew=0.5 * k, zorder=9)
+        labels.block_point(xy)
+    for _, lat, lon, f in exc:
+        xy = net.to_page(f, unit(lat, lon))
+        ax.plot(*xy, "x", ms=5 * k, mec="#D00000", mew=1.4 * k, zorder=9,
+                path_effects=halo("white", 2.6 * k))
+        labels.block_point(xy)
+    for name, lat, lon, off, f in here:
+        labels.place(f, net.to_page(f, unit(lat, lon)), name, off, fontsize=6 * k,
+                     color="white", path_effects=halo(width=1.2 * k))
+    for label, lat, lon, f in exc:
+        labels.place(f, net.to_page(f, unit(lat, lon)), label, None, fontsize=6 * k,
+                     color="#D00000", weight="bold", path_effects=halo("white", 1.6 * k))
+    if triangles_last:
+        for f in faces:
+            ctr = net.to_page(f, net.c[f])
+            corners = net.to_page(f, net.v[f])
+            for t in range(5):
+                mid = (corners[t] + corners[(t + 1) % 5]) / 2
+                along = (mid - ctr) / np.linalg.norm(mid - ctr)
+                side = np.array([-along[1], along[0]]) * 4 * k
+                spots = [ctr + frac * (mid - ctr) + sh for frac in (0.82, 0.72, 0.62, 0.52, 0.42)
+                         for sh in (0, side, -side)]
+                for spot in spots:
+                    txt = tri_label(ax, spot, t, k)
+                    bb = txt.get_window_extent(labels.renderer).padded(1)
+                    if labels._free(bb):
+                        labels.boxes.append(bb)
+                        break
+                    txt.remove()
+                else:
+                    raise SystemExit(f"no room for the label T{t} on face {f}")
+    for f in faces:
+        labels.north_arrow(f, raster, step)
+    return labels
+
+
+def tri_label(ax, xy, t, k):
+    return ax.text(*xy, f"T{t}", fontsize=5.5 * k, color=INK, style="italic", ha="center",
+                   va="center", alpha=0.8, path_effects=halo("white", 1.4 * k), zorder=7)
+
+
+def new_page():
     fig = plt.figure(figsize=(PAGE_W / 25.4, PAGE_H / 25.4), dpi=DPI)
     ax = fig.add_axes((0, 0, 1, 1))
     ax.set_xlim(0, PAGE_W)
     ax.set_ylim(0, PAGE_H)
     ax.set_aspect("equal")
     ax.axis("off")
+    return fig, ax
+
+
+def legend(ax, y):
+    """The band colour key, one row at height y."""
+    entries = [
+        (CLASS_COLORS[1], None, "433 MHz"),
+        (CLASS_COLORS[2], HATCH, "433 + 868 MHz"),
+        (CLASS_COLORS[3], None, "902–928 MHz"),
+        (CLASS_COLORS[4], None, "2.4 GHz only"),
+        (CLASS_COLORS[5], None, "No standard allocation"),
+        (OCEAN, None, "Ocean"),
+    ]
+    x = MARGIN
+    for fill, hatch, label in entries:
+        ax.add_patch(Rectangle((x, y - 1.5), 6, 3.2, facecolor=fill, edgecolor="#555555",
+                               lw=0.3))
+        if hatch:
+            ax.add_patch(Rectangle((x, y - 1.5), 6, 3.2, fill=False, hatch="/////",
+                                   edgecolor=hatch, lw=0))
+        ax.text(x + 7.5, y, label, fontsize=6.5, color=INK, va="center")
+        x += 13 + 1.25 * len(label)
+
+
+def save(fig, stem):
+    """Write stem.png (300 dpi) and stem.svg (all vector) next to this script or below it."""
+    for ext in ("png", "svg"):
+        fig.savefig(stem.with_suffix("." + ext), dpi=DPI, facecolor="white",
+                    metadata={"Date": None} if ext == "svg" else None)
+
+
+def main():
+    plt.rcParams["svg.hashsalt"] = "rsdggs"          # stable ids, so re-runs diff cleanly
+    plt.rcParams["hatch.linewidth"] = 0.6
+    net = Net()
+    tabs, cuts, folds = layout(net)
+    features = countries()
+    raster, step = class_raster(features)
+    fig, ax = new_page()
 
     for poly, a, b in tabs:
-        ax.add_patch(MplPolygon(poly, closed=True, facecolor="#E0E0D0", edgecolor="#9A9A88",
+        # Outline and text only, in pure black so a colour printer uses black toner alone:
+        # toner on a tab keeps the glue from holding.
+        ax.add_patch(MplPolygon(poly, closed=False, facecolor="none", edgecolor="black",
                                 lw=0.5, zorder=1))
         mid = (poly[1] + poly[2]) / 2 * 0.55 + (a + b) / 2 * 0.45
         ang = math.degrees(math.atan2(*(b - a)[::-1]))
@@ -395,12 +732,8 @@ def main():
             ang -= 180
         elif ang < -90:
             ang += 180
-        ax.text(*mid, "GLUE", fontsize=4.5, color="#8A8A78", ha="center", va="center",
+        ax.text(*mid, "GLUE", fontsize=4.5, color="black", ha="center", va="center",
                 rotation=ang, zorder=2)
-
-    ax.imshow(page_raster(net, raster, step), extent=(0, PAGE_W, 0, PAGE_H), origin="lower",
-              interpolation="nearest", zorder=2)
-    draw_borders(ax, net, features)
 
     for f, i in cuts:
         pts, _ = net.outline(f)
@@ -411,53 +744,7 @@ def main():
         a, b = pts[i], pts[(i + 1) % 5]
         ax.plot(*np.column_stack([a, b]), color="#333333", lw=0.8, ls=(0, (4, 3)), zorder=5)
 
-    # Ghost lines for the five top-level triangles. Triangle k is (centre, vertex k,
-    # vertex k+1) in the order of FACE_PENTAGON_VERTS, which is the order the encoder
-    # uses for Cell[1] bits 7-4; the winding differs between faces, so do not re-sort.
-    ghost = dict(color=INK, alpha=0.45, lw=0.45, ls=(0, (2.5, 2)), zorder=6)
-    for f in range(12):
-        ctr = net.to_page(f, net.c[f])
-        corners = net.to_page(f, net.v[f])
-        for k in range(5):
-            d = corners[k] - ctr
-            start = ctr + d / np.linalg.norm(d) * 3.2      # keep the face index clear
-            ax.plot(*np.column_stack([start, corners[k]]), **ghost)
-            mid = (corners[k] + corners[(k + 1) % 5]) / 2
-            label = ctr + 0.82 * (mid - ctr)              # clear of face 2's cities
-            ax.text(*label, f"T{k}", fontsize=5.5, color=INK, style="italic", ha="center",
-                    va="center", alpha=0.8, path_effects=halo("white", 1.4), zorder=7)
-
-    for f in range(12):
-        ctr = net.to_page(f, net.c[f])
-        ax.text(*ctr, str(f), fontsize=9, color="white", weight="bold", ha="center",
-                va="center", path_effects=halo(), zorder=8)
-
-    for name, lat, lon, off in CITIES:
-        f = net.face_of(lat, lon)
-        xy = net.to_page(f, unit(lat, lon))
-        ax.plot(*xy, "o", ms=4, mfc="white", mec=INK, mew=0.5, zorder=9)
-        ha = "center" if off[0] == 0 else "left" if off[0] > 0 else "right"
-        ax.annotate(name, xy, xytext=off, textcoords="offset points", fontsize=6,
-                    color="white", ha=ha, va="center",
-                    path_effects=halo(width=1.2), zorder=9)
-    for label, lat, lon in EXCEPTIONS:
-        f = net.face_of(lat, lon)
-        assert label.endswith(f"F{f}"), (label, f)
-        xy = net.to_page(f, unit(lat, lon))
-        ax.plot(*xy, "x", ms=5, mec="#D00000", mew=1.4, zorder=9, path_effects=halo("white", 2.6))
-        ax.annotate(label, xy, xytext=(4, 4), textcoords="offset points", fontsize=6,
-                    color="#D00000", weight="bold", path_effects=halo("white", 1.6), zorder=9)
-
-    # North arrow on face 2, over the open Pacific south-west of California.
-    assert net.face_of(18.0, -132.0) == 2
-    base = net.to_page(2, unit(18.0, -132.0))
-    tip = net.to_page(2, unit(18.5, -132.0))
-    d = (tip - base) / np.linalg.norm(tip - base)
-    ax.annotate("", base + 6 * d, base, zorder=9,
-                arrowprops=dict(arrowstyle="-|>", color="white", lw=1.0, mutation_scale=7,
-                                path_effects=halo(width=2.2)))
-    ax.text(*(base + 7.8 * d), "N", fontsize=6.5, color="white", weight="bold", ha="center",
-            va="center", path_effects=halo(width=1.4), zorder=9)
+    draw_map(fig, ax, net, range(12), features, raster, step)
 
     # Scale bar, bottom right.
     x1, y = PAGE_W - MARGIN, MARGIN + LEGEND_BAND - 3
@@ -474,42 +761,24 @@ def main():
             "edges · Numbers = RSDGGS face index · See reverse for key", fontsize=7,
             style="italic", color="#555555", ha="center", va="center")
 
-    # Legend.
-    legend = [
-        (CLASS_COLORS[1], None, "433 MHz"),
-        (CLASS_COLORS[2], HATCH, "433 + 868 MHz"),
-        (CLASS_COLORS[3], None, "902–928 MHz"),
-        (CLASS_COLORS[4], None, "2.4 GHz only"),
-        (CLASS_COLORS[5], None, "No standard allocation"),
-        (OCEAN, None, "Ocean"),
-    ]
-    y = MARGIN + 9
-    x = MARGIN
-    for fill, hatch, label in legend:
-        ax.add_patch(Rectangle((x, y - 1.5), 6, 3.2, facecolor=fill, edgecolor="#555555",
-                               lw=0.3, hatch="/////" if hatch else None))
-        if hatch:
-            ax.add_patch(Rectangle((x, y - 1.5), 6, 3.2, fill=False, hatch="/////",
-                                   edgecolor=hatch, lw=0))
-        ax.text(x + 7.5, y, label, fontsize=6.5, color=INK, va="center")
-        x += 13 + 1.25 * len(label)
+    legend(ax, MARGIN + 9)
     y = MARGIN + 3
     ax.plot([MARGIN, MARGIN + 8], [y, y], color="#333333", lw=0.8, ls=(0, (4, 3)))
     ax.text(MARGIN + 10, y, "Fold line (score & fold)", fontsize=6.5, color=INK, va="center")
     ax.plot([MARGIN + 44, MARGIN + 52], [y, y], color=INK, lw=1.0)
     ax.text(MARGIN + 54, y, "Cut line (outer edge)", fontsize=6.5, color=INK, va="center")
-    ax.add_patch(Rectangle((MARGIN + 84, y - 1.4), 7, 2.8, facecolor="#E0E0D0",
-                           edgecolor="#9A9A88", lw=0.5))
+    ax.add_patch(Rectangle((MARGIN + 84, y - 1.4), 7, 2.8, facecolor="none",
+                           edgecolor="black", lw=0.5))
     ax.text(MARGIN + 93, y, "GLUE tab", fontsize=6.5, color=INK, va="center")
     ax.plot(MARGIN + 109, y, "x", ms=4, mec="#D00000", mew=1.2)
     ax.text(MARGIN + 112, y, "Boundary exception", fontsize=6.5, color=INK, va="center")
     ax.text(MARGIN + 140, y, "T0–T4 = triangle index", fontsize=6.5, color=INK,
             style="italic", va="center")
 
-    out = HERE / "rsdggs_net_page1.png"
-    fig.savefig(out, dpi=DPI, facecolor="white")
+    out = HERE / "rsdggs_net_page1"
+    save(fig, out)
     check(fig, ax, net, tabs)
-    print(out)
+    print(out.with_suffix(".png"), out.with_suffix(".svg"))
 
 
 def check(fig, ax, net, tabs):
@@ -525,6 +794,17 @@ def check(fig, ax, net, tabs):
         bb = t.get_window_extent(renderer)
         assert bb.x0 >= lo - 1 and bb.x1 <= hi + 1 and bb.y0 >= lo - 1 and \
             bb.y1 <= (PAGE_H - MARGIN) * px + 1, f"text outside the margins: {t.get_text()!r}"
+    # Inside each tab (kept clear of its outline): grey levels only, and mostly paper.
+    fig.canvas.draw()
+    img = np.asarray(fig.canvas.buffer_rgba())[..., :3].astype(int)
+    h, w = img.shape[:2]
+    ys, xs = np.mgrid[0:h, 0:w]
+    pix = np.column_stack([xs.ravel() + 0.5, h - ys.ravel() - 0.5])
+    for poly, _, _ in tabs:
+        inner = poly.mean(0) + 0.85 * (poly - poly.mean(0))
+        p = img[MplPath(ax.transData.transform(inner)).contains_points(pix).reshape(h, w)]
+        assert (p.max(1) - p.min(1) <= 2).all(), "colour on a glue tab"
+        assert (p.max(1) < 250).mean() < 0.25, "shading on a glue tab"
 
 
 if __name__ == "__main__":

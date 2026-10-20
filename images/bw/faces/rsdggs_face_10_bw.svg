@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="215.9mm" height="279.4mm" viewBox="0 0 215.9 279.4" font-family="sans-serif">
+<title>RSDGGS face 10: Central Pacific (black and white)</title>
+<rect x="0" y="0" width="215.9" height="279.4" fill="white"/>
+<path d="M61.87 106.6 62.99 106.6M61.89 104.8 63.45 104.8M60.77 103 61.5 103" fill="none" stroke="black" stroke-width="0.26"/>
+<path d="M61.57 105.14 62.08 104.59 61.92 104.21 62.06 103.97 63.46 104.8 63.74 105.41 64.31 106 63.76 106.41 63.19 106.48 62.69 106.77 62.48 107.08 61.87 106.64 61.91 106.04ZM61.46 103.03 60.78 103.03 60.63 102.55 60.33 102.46 60.15 102.13 60.4 101.96 60.68 102.28 61.09 102.25 61.38 102.44 61.67 102.89ZM57.26 100.69 57.25 100.84 56.95 100.79 56.59 100.09 57.3 99.91 57.6 100.52 57.85 100.58 58 100.9 57.66 101.01ZM53.24 98.2 53.58 98.05 54.11 98.15 54.22 98.33 54.12 98.76 53.85 98.95 53.18 98.57 53.09 98.42Z" fill="none" stroke="black" stroke-width="0.32" stroke-linejoin="round"/>
+<path d="M104.45 138.2 118.24 58.79M97.69 141.52 26.43 103.86M98.76 148.97 40.92 205.11M106.17 150.26 141.69 222.61M109.69 143.6 189.47 132.18" fill="none" stroke="black" stroke-width="0.3" stroke-dasharray="1.8 1.4"/>
+<path d="M118.24 58.79 103.91 52.46 30.18 88.66 26.43 103.86" fill="none" stroke="black" stroke-width="0.28"/>
+<text x="0" y="1.05" transform="translate(69.69 75.94) rotate(-26.15)" font-size="3" text-anchor="middle" fill="black">glue under F11·T3</text>
+<path d="M40.92 205.11 48.79 218.65 129.72 232.71 141.69 222.61" fill="none" stroke="black" stroke-width="0.28"/>
+<text x="0" y="1.05" transform="translate(90.28 219.77) rotate(9.85)" font-size="3" text-anchor="middle" fill="black">glue under F0·T0</text>
+<path d="M118.24 58.79 26.43 103.86M40.92 205.11 141.69 222.61" fill="none" stroke="black" stroke-width="0.28" stroke-dasharray="1.4 1.05"/>
+<path d="M26.43 103.86 40.92 205.11M141.69 222.61 189.47 132.18M189.47 132.18 118.24 58.79" fill="none" stroke="black" stroke-width="0.42" stroke-linecap="round"/>
+<circle cx="57.53" cy="100.89" r="1.2" fill="white" stroke="black" stroke-width="0.36"/>
+<circle cx="74.86" cy="185.79" r="1.2" fill="white" stroke="black" stroke-width="0.36"/>
+<path d="M55.86 102.74 59.46 99.14M55.86 99.14 59.46 102.74" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M55.86 102.74 59.46 99.14M55.86 99.14 59.46 102.74" fill="none" stroke="black" stroke-width="0.8" stroke-linecap="round"/>
+<path d="M111.54 97.37 111.51 87.77" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M111.51 85.37 110.12 88.57 112.92 88.56Z" fill="white" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M111.54 97.37 111.51 87.77" fill="none" stroke="black" stroke-width="0.6" stroke-linecap="round"/>
+<path d="M111.51 85.37 110.12 88.57 112.92 88.56Z" fill="black" stroke="black" stroke-width="0.1" stroke-linejoin="round"/>
+<text x="103.35" y="147.52" font-size="7.3" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="2.56" stroke-linejoin="round">10</text>
+<text x="103.35" y="147.52" font-size="7.3" text-anchor="middle" font-weight="bold" fill="black">10</text>
+<text x="60.35" y="102.88" font-size="4.23" fill="white" stroke="white" stroke-width="1.48" stroke-linejoin="round">Honolulu</text>
+<text x="60.35" y="102.88" font-size="4.23" fill="black">Honolulu</text>
+<text x="77.68" y="186.97" font-size="4.23" fill="white" stroke="white" stroke-width="1.48" stroke-linejoin="round">Papeete</text>
+<text x="77.68" y="186.97" font-size="4.23" fill="black">Papeete</text>
+<text x="57.66" y="108.49" font-size="4.23" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.48" stroke-linejoin="round">HI-&gt;F10</text>
+<text x="57.66" y="108.49" font-size="4.23" text-anchor="middle" font-weight="bold" fill="black">HI-&gt;F10</text>
+<text x="77.92" y="94.56" font-size="3.88" text-anchor="middle" font-style="italic" fill="white" stroke="white" stroke-width="1.36" stroke-linejoin="round">T0</text>
+<text x="77.92" y="94.56" font-size="3.88" text-anchor="middle" font-style="italic" fill="black">T0</text>
+<text x="46.22" y="154.6" font-size="3.88" text-anchor="middle" font-style="italic" fill="white" stroke="white" stroke-width="1.36" stroke-linejoin="round">T1</text>
+<text x="46.22" y="154.6" font-size="3.88" text-anchor="middle" font-style="italic" fill="black">T1</text>
+<text x="93.47" y="203.28" font-size="3.88" text-anchor="middle" font-style="italic" fill="white" stroke="white" stroke-width="1.36" stroke-linejoin="round">T2</text>
+<text x="93.47" y="203.28" font-size="3.88" text-anchor="middle" font-style="italic" fill="black">T2</text>
+<text x="154.38" y="173.34" font-size="3.88" text-anchor="middle" font-style="italic" fill="white" stroke="white" stroke-width="1.36" stroke-linejoin="round">T3</text>
+<text x="154.38" y="173.34" font-size="3.88" text-anchor="middle" font-style="italic" fill="black">T3</text>
+<text x="139.19" y="100.48" font-size="3.88" text-anchor="middle" font-style="italic" fill="white" stroke="white" stroke-width="1.36" stroke-linejoin="round">T4</text>
+<text x="139.19" y="100.48" font-size="3.88" text-anchor="middle" font-style="italic" fill="black">T4</text>
+<text x="111.5" y="83.97" font-size="4.59" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.61" stroke-linejoin="round">N</text>
+<text x="111.5" y="83.97" font-size="4.59" text-anchor="middle" font-weight="bold" fill="black">N</text>
+<text x="0" y="1.11" transform="translate(74.32 85.37) rotate(-26.15)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round">F10·T0</text>
+<text x="0" y="1.11" transform="translate(74.32 85.37) rotate(-26.15)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="black">F10·T0</text>
+<text x="0" y="1.11" transform="translate(38.13 153.85) rotate(81.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round">F10·T1</text>
+<text x="0" y="1.11" transform="translate(38.13 153.85) rotate(81.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="black">F10·T1</text>
+<text x="0" y="1.11" transform="translate(92.08 209.42) rotate(9.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round">F10·T2</text>
+<text x="0" y="1.11" transform="translate(92.08 209.42) rotate(9.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="black">F10·T2</text>
+<text x="0" y="1.11" transform="translate(161.6 175.29) rotate(-62.15)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round">F10·T3</text>
+<text x="0" y="1.11" transform="translate(161.6 175.29) rotate(-62.15)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="black">F10·T3</text>
+<text x="0" y="1.11" transform="translate(150.62 98.62) rotate(45.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round">F10·T4</text>
+<text x="0" y="1.11" transform="translate(150.62 98.62) rotate(45.85)" font-size="3.17" text-anchor="middle" font-weight="bold" fill="black">F10·T4</text>
+<text x="107.95" y="18.2" font-size="4.94" text-anchor="middle" font-weight="bold" fill="black">RSDGGS face 10 — Central Pacific</text>
+<text x="107.95" y="24.2" font-size="2.29" text-anchor="middle" font-style="italic" fill="black">ITU Region 2 (face mod 4) · print at 100% on US Letter · edge 102.3 mm · cut along the solid outline and around the tabs · glue each tab under the named edge</text>
+<path d="M17.85 259 18.7 258.15M15.31 259 18.7 255.61M12.76 259 16.16 255.6M12.7 256.52 13.62 255.6" fill="none" stroke="black" stroke-width="0.26"/>
+<rect x="12.7" y="255.6" width="6" height="3.4" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="20.2" y="258.3" font-size="2.29" fill="black">433 MHz</text>
+<path d="M38.22 259 40.45 256.77M35.67 259 39.07 255.6M34.45 257.68 36.53 255.6" fill="none" stroke="black" stroke-width="0.26"/>
+<path d="M34.45 257.85 35.6 259M34.75 255.6 38.15 259M37.29 255.6 40.45 258.76M39.84 255.6 40.45 256.21" fill="none" stroke="black" stroke-width="0.26"/>
+<rect x="34.45" y="255.6" width="6" height="3.4" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="41.95" y="258.3" font-size="2.29" fill="black">433 + 868 MHz</text>
+<path d="M63.7 257.8 69.7 257.8M63.7 256 69.7 256" fill="none" stroke="black" stroke-width="0.26"/>
+<rect x="63.7" y="255.6" width="6" height="3.4" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="71.2" y="258.3" font-size="2.29" fill="black">902–928 MHz</text>
+<path d="M91 257.4h0.01M93 257.4h0.01M95 257.4h0.01" fill="none" stroke="black" stroke-width="0.6" stroke-linecap="round"/>
+<rect x="90.45" y="255.6" width="6" height="3.4" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="97.95" y="258.3" font-size="2.29" fill="black">2.4 GHz only</text>
+<rect x="118.45" y="255.6" width="6" height="3.4" fill="none" stroke="black" stroke-width="0.4"/>
+<text x="125.95" y="258.3" font-size="2.29" fill="black">No allocation (Antarctica)</text>
+<text x="12.7" y="265" font-size="2.29" fill="black">F·T = face and triangle of an edge   ·   × = boundary exception   ·   N = true north</text>
+<path d="M163.2 264.2 203.2 264.2" fill="none" stroke="black" stroke-width="0.5"/>
+<path d="M163.2 265.2 163.2 263.2M203.2 265.2 203.2 263.2" fill="none" stroke="black" stroke-width="0.28"/>
+<text x="161.2" y="265" font-size="2.29" text-anchor="end" fill="black">40 mm from the centre = 19.35°</text>
+</svg>

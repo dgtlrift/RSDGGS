@@ -4,7 +4,7 @@ use crate::{
     Error,
 };
 
-/// Width of the triangle selector, the first field after octet 0 (draft §5.1).
+/// Width of the triangle selector, the first field after octet 0 (draft section 5.1).
 ///
 /// Four bits (values 0–4 used, 5–15 reserved) keep every 2-bit level within one
 /// octet, so truncating a cell is simply dropping trailing octets.
