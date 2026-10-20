@@ -2197,7 +2197,7 @@ Dodecahedron pentagonal face:
           </tbody>
         </table>
 </div>
-<p id="section-4.2-3">Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules. Face 11 also carries Region exceptions at triangle level (Section 8.3): triangles 2 to 4 (Alaska and the Yukon) are Region 2, and triangle 0 (the Russian Far East) is Region 1, so a two-octet index resolves the Region there.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 <p id="section-4.2-4">Face 0 holds the largest part of Antarctica, which is subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks; faces 4 and 8 hold most of the rest. Face 0 also contains New Zealand, whose rules come from the regulatory database like those of any other jurisdiction.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2976,6 +2976,24 @@ modulation-type = &amp;(
               <td class="text-left" rowspan="1" colspan="1">7</td>
               <td class="text-left" rowspan="1" colspan="1">FCC rules in Region 3 face</td>
               <td class="text-left" rowspan="1" colspan="1">4</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Alaska / Yukon (FCC, ISED)</td>
+              <td class="text-left" rowspan="1" colspan="1">11, triangles 2–4</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 2 rules in Region 3 face; the triangles hold no other land</td>
+              <td class="text-left" rowspan="1" colspan="1">2</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Russian Far East (Roskomnadzor)</td>
+              <td class="text-left" rowspan="1" colspan="1">11, triangle 0</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 1 rules in Region 3 face; triangle 0 is 97% Russian land</td>
+              <td class="text-left" rowspan="1" colspan="1">2</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Alaska North Slope, Canadian Arctic (FCC, ISED)</td>
+              <td class="text-left" rowspan="1" colspan="1">11, triangle 0</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 2 inside the triangle 0 Region 1 exception; the US–Russia border passes between the Diomede Islands, 3.8 km apart</td>
+              <td class="text-left" rowspan="1" colspan="1">5</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">French Pacific (ARCEP)</td>

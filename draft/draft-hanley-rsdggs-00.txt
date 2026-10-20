@@ -796,7 +796,10 @@ Internet-Draft                   RSDGGS                     October 2026
    contain land of another Region (for example, north-east Brazil on
    face 9, Iran on face 1, and Alaska on face 11), and there the
    regulatory database, not the face index, determines the Region and
-   the rules.
+   the rules.  Face 11 also carries Region exceptions at triangle level
+   (Section 8.3): triangles 2 to 4 (Alaska and the Yukon) are Region 2,
+   and triangle 0 (the Russian Far East) is Region 1, so a two-octet
+   index resolves the Region there.
 
    Face 0 holds the largest part of Antarctica, which is subject to ITU
    Article 48 special coordination procedures rather than national
@@ -818,9 +821,6 @@ Internet-Draft                   RSDGGS                     October 2026
    core of ITU Region 3 (China, India, Japan, Korea, and their
    neighbours) on face 3.  It is fixed by two parameters, the position
    of the face 1 center and the bearing from it to the face 2 center:
-
-
-
 
 
 
@@ -1721,15 +1721,15 @@ Internet-Draft                   RSDGGS                     October 2026
    the primary database lookup when the band-entry exception flag is
    set.
 
-
-
-
-
-
-
-
-
-
+   +================+===========+=========================+===========+
+   | Location       | Face      | Issue                   | Min RSL   |
+   |                |           |                         | for       |
+   |                |           |                         | Exception |
+   +================+===========+=========================+===========+
+   | Hong Kong      | 3         | 920-925 MHz, 100 mW vs. | 5         |
+   | (OFCA)         |           | CN illegal              |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Macau (DSRT)   | 3         | ETSI framework in       | 5         |
 
 
 
@@ -1738,36 +1738,45 @@ Hanley                    Expires 23 April 2027                [Page 31]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-    +================+======+===========================+=============+
-    | Location       | Face | Issue                     | Min RSL for |
-    |                |      |                           | Exception   |
-    +================+======+===========================+=============+
-    | Hong Kong      | 3    | 920-925 MHz, 100 mW vs.   | 5           |
-    | (OFCA)         |      | CN illegal                |             |
-    +----------------+------+---------------------------+-------------+
-    | Macau (DSRT)   | 3    | ETSI framework in Region  | 5           |
-    |                |      | 3 face                    |             |
-    +----------------+------+---------------------------+-------------+
-    | Singapore      | 3    | 920-925 MHz, 500 mW; ~50  | 4-5         |
-    | (IMDA)         |      | km state                  |             |
-    +----------------+------+---------------------------+-------------+
-    | British Virgin | 2    | ICTA rules adjacent to    | 5           |
-    | Islands        |      | USVI (FCC)                |             |
-    +----------------+------+---------------------------+-------------+
-    | French Guiana  | 9    | ETSI rules in West Africa | 4           |
-    | (ARCEP)        |      | face, beside Brazil       |             |
-    +----------------+------+---------------------------+-------------+
-    | Ceuta /        | 1    | EU enclaves bordering     | 6           |
-    | Melilla (ETSI) |      | Morocco                   |             |
-    +----------------+------+---------------------------+-------------+
-    | Guam / CNMI    | 7    | FCC rules in Region 3     | 4           |
-    | (FCC)          |      | face                      |             |
-    +----------------+------+---------------------------+-------------+
-    | French Pacific | 7,   | ETSI rules in Pacific     | 4           |
-    | (ARCEP)        | 10   | faces                     |             |
-    +----------------+------+---------------------------+-------------+
+   |                |           | Region 3 face           |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Singapore      | 3         | 920-925 MHz, 500 mW;    | 4-5       |
+   | (IMDA)         |           | ~50 km state            |           |
+   +----------------+-----------+-------------------------+-----------+
+   | British Virgin | 2         | ICTA rules adjacent to  | 5         |
+   | Islands        |           | USVI (FCC)              |           |
+   +----------------+-----------+-------------------------+-----------+
+   | French Guiana  | 9         | ETSI rules in West      | 4         |
+   | (ARCEP)        |           | Africa face, beside     |           |
+   |                |           | Brazil                  |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Ceuta /        | 1         | EU enclaves bordering   | 6         |
+   | Melilla (ETSI) |           | Morocco                 |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Guam / CNMI    | 7         | FCC rules in Region 3   | 4         |
+   | (FCC)          |           | face                    |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Alaska / Yukon | 11,       | Region 2 rules in       | 2         |
+   | (FCC, ISED)    | triangles | Region 3 face; the      |           |
+   |                | 2–4       | triangles hold no other |           |
+   |                |           | land                    |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Russian Far    | 11,       | Region 1 rules in       | 2         |
+   | East           | triangle  | Region 3 face; triangle |           |
+   | (Roskomnadzor) | 0         | 0 is 97% Russian land   |           |
+   +----------------+-----------+-------------------------+-----------+
+   | Alaska North   | 11,       | Region 2 inside the     | 5         |
+   | Slope,         | triangle  | triangle 0 Region 1     |           |
+   | Canadian       | 0         | exception; the          |           |
+   | Arctic (FCC,   |           | US–Russia border passes |           |
+   | ISED)          |           | between the Diomede     |           |
+   |                |           | Islands, 3.8 km apart   |           |
+   +----------------+-----------+-------------------------+-----------+
+   | French Pacific | 7, 10     | ETSI rules in Pacific   | 4         |
+   | (ARCEP)        |           | faces                   |           |
+   +----------------+-----------+-------------------------+-----------+
 
-                      Table 7: Exception Overlay Table
+                     Table 7: Exception Overlay Table
 
 8.4.  Regulatory Database Validity Limitations
 
@@ -1776,15 +1785,6 @@ Internet-Draft                   RSDGGS                     October 2026
    compilation or last update.  Implementers and operators MUST be aware
    of the following limitations inherent to any static regulatory
    database.
-
-
-
-
-
-
-
-
-
 
 
 

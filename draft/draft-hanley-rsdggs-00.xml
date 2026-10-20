@@ -163,7 +163,7 @@ Dodecahedron pentagonal face:
               <tr><td>11</td><td>R3</td><td>Region 3 — North Pacific</td><td>MIC / Roskomnadzor</td><td>MIC (JP), Roskomnadzor (RU), FCC (US: Alaska)</td></tr>
             </tbody>
           </table>
-          <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules.</t>
+          <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules. Face 11 also carries Region exceptions at triangle level (Section 8.3): triangles 2 to 4 (Alaska and the Yukon) are Region 2, and triangle 0 (the Russian Far East) is Region 1, so a two-octet index resolves the Region there.</t>
           <t>Face 0 holds the largest part of Antarctica, which is subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks; faces 4 and 8 hold most of the rest. Face 0 also contains New Zealand, whose rules come from the regulatory database like those of any other jurisdiction.</t>
         </section>
         <section anchor="s-face-center-orientation" numbered="true" toc="default">
@@ -529,10 +529,13 @@ modulation-type = &(
               <tr><td>Hong Kong (OFCA)</td><td>3</td><td>920-925 MHz, 100 mW vs. CN illegal</td><td>5</td></tr>
               <tr><td>Macau (DSRT)</td><td>3</td><td>ETSI framework in Region 3 face</td><td>5</td></tr>
               <tr><td>Singapore (IMDA)</td><td>3</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
-                            <tr><td>British Virgin Islands</td><td>2</td><td>ICTA rules adjacent to USVI (FCC)</td><td>5</td></tr>
+              <tr><td>British Virgin Islands</td><td>2</td><td>ICTA rules adjacent to USVI (FCC)</td><td>5</td></tr>
               <tr><td>French Guiana (ARCEP)</td><td>9</td><td>ETSI rules in West Africa face, beside Brazil</td><td>4</td></tr>
               <tr><td>Ceuta / Melilla (ETSI)</td><td>1</td><td>EU enclaves bordering Morocco</td><td>6</td></tr>
-                            <tr><td>Guam / CNMI (FCC)</td><td>7</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
+              <tr><td>Guam / CNMI (FCC)</td><td>7</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
+              <tr><td>Alaska / Yukon (FCC, ISED)</td><td>11, triangles 2–4</td><td>Region 2 rules in Region 3 face; the triangles hold no other land</td><td>2</td></tr>
+              <tr><td>Russian Far East (Roskomnadzor)</td><td>11, triangle 0</td><td>Region 1 rules in Region 3 face; triangle 0 is 97% Russian land</td><td>2</td></tr>
+              <tr><td>Alaska North Slope, Canadian Arctic (FCC, ISED)</td><td>11, triangle 0</td><td>Region 2 inside the triangle 0 Region 1 exception; the US–Russia border passes between the Diomede Islands, 3.8 km apart</td><td>5</td></tr>
               <tr><td>French Pacific (ARCEP)</td><td>7, 10</td><td>ETSI rules in Pacific faces</td><td>4</td></tr>
             </tbody>
           </table>
