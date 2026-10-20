@@ -89,13 +89,13 @@ Dodecahedron — 12 pentagonal faces:
   → Region 2 fits within one pentagonal face with
     ~17,300,000 km² margin — accommodates coastal
     and island territories without boundary cuts
-  → 3 faces assigned to ITU Regions (face indices 1, 2, 3)
-  → 9 faces available for sub-region differentiation
-    at level 0: correct cardinality for the
-    10 major regulatory blocs defined in Section 4.2
+  → 3 faces centred in the ITU Regions (indices 1, 2, 3)
+  → 9 further faces, named in Section 4.2 for the
+    land they cover; several span two or three
+    ITU Regions
 ]]></artwork></figure>
             <t>The icosahedron's 20 faces would require fragmenting each ITU Region across multiple faces at the coarsest level, destroying the direct face-to-region correspondence that is a primary design goal (G1) of RSDGGS. The dodecahedron's 12 faces provide the minimum face count that satisfies the ITU Region alignment constraint while leaving sufficient faces for sub-region differentiation.</t>
-            <t>The 9 extension faces (4 through 11) of the dodecahedron correspond directly to the major regulatory sub-blocs within the three ITU Regions: four for Region 1 (Europe core, Africa West, Africa East, Russia/Central Asia, Middle East), two for Region 2 (South America, Caribbean), and two for Region 3 (South/Southeast Asia, Oceania). This correspondence is exact and natural for the dodecahedron face count; it would be over-specified with 17 icosahedron extension faces.</t>
+            <t>The other nine faces (0 and 4 through 11) are not aligned with regulatory blocs. Their positions follow from the orientation fixed in Section 4.3, and Section 4.2 names each for the land it covers; several span more than one ITU Region. The regulatory database (Section 8), not the face index, determines the rules that apply on these faces.</t>
           </section>
           <section anchor="s-map-projection-distortion-at-face-boundaries" numbered="true" toc="default">
             <name>Map Projection Distortion at Face Boundaries</name>
@@ -130,7 +130,7 @@ Dodecahedron pentagonal face:
               <thead><tr><th>Property</th><th>Icosahedron (20 triangles)</th><th>Dodecahedron (12 pentagons)</th><th>Winner</th></tr></thead>
               <tbody>
                 <tr><td>Face count vs. ITU Regions</td><td>20 faces / 3 regions (excess)</td><td>12 faces / 3 regions (correct)</td><td>Dodecahedron</td></tr>
-                <tr><td>Extension faces for sub-regions</td><td>17 (over-partitioned)</td><td>9 (exact fit for regulatory blocs)</td><td>Dodecahedron</td></tr>
+                <tr><td>Extension faces for sub-regions</td><td>17 (over-partitioned)</td><td>9 (coarser partition; see Section 4.2)</td><td>Dodecahedron</td></tr>
                 <tr><td>Face area vs. Region 2</td><td>~25.5M km² (tight fit)</td><td>~42M km² (ample margin)</td><td>Dodecahedron</td></tr>
                 <tr><td>Max boundary distortion</td><td>1.80x (same)</td><td>1.80x (same)</td><td>Tie</td></tr>
                 <tr><td>Distortion ratio vertex/midpoint</td><td>1.57x (high variation)</td><td>1.30x (low variation)</td><td>Dodecahedron</td></tr>
@@ -147,24 +147,24 @@ Dodecahedron pentagonal face:
           <t>The RSDGGS grid is rooted in a regular dodecahedron projected onto the surface of a unit sphere. A regular dodecahedron has twelve pentagonal faces. RSDGGS assigns these faces as follows:</t>
           <table anchor="t-face-assignments">
             <name>Face Assignments</name>
-            <thead><tr><th>Face</th><th>ITU Parent</th><th>Primary Name</th><th>Anchor Authority</th><th>Primary Bodies</th></tr></thead>
+            <thead><tr><th>Face</th><th>ITU Regions (by land area)</th><th>Primary Name</th><th>Anchor Authority</th><th>Primary Bodies</th></tr></thead>
             <tbody>
-              <tr><td>0</td><td>—</td><td>Polar / Antarctic</td><td>ITU Special Zone</td><td>Antarctic Treaty, ITU Art. 48</td></tr>
-              <tr><td>1</td><td>R1</td><td>ITU Region 1 — Europe</td><td>ETSI / CEPT</td><td>ETSI, Ofcom, ARCEP, BNetzA</td></tr>
-              <tr><td>2</td><td>R2</td><td>ITU Region 2 — N. America</td><td>FCC / ISED / IFT</td><td>FCC (US), ISED (CA), IFT (MX)</td></tr>
-              <tr><td>3</td><td>R3</td><td>ITU Region 3 — E. Asia</td><td>MIC / MIIT / KCC</td><td>MIC (JP), MIIT (CN), KCC (KR)</td></tr>
-              <tr><td>4</td><td>R1</td><td>Region 1-A — Africa West</td><td>ATU West</td><td>ARTP, ARCEP (SN), ATU west</td></tr>
-              <tr><td>5</td><td>R1</td><td>Region 1-B — Africa East</td><td>ATU East</td><td>CA (ET), CCK (KE), TCRA (TZ)</td></tr>
-              <tr><td>6</td><td>R1</td><td>Region 1-C — Russia / CAS</td><td>Roskomnadzor / RRT</td><td>Roskomnadzor (RU), RRT (KZ)</td></tr>
-              <tr><td>7</td><td>R1</td><td>Region 1-D — Middle East</td><td>ASMG</td><td>MCIT (SA), TRA (AE), NTRA (EG)</td></tr>
-              <tr><td>8</td><td>R2</td><td>Region 2-A — S. America</td><td>ANATEL / ENACOM</td><td>Anatel (BR), ENACOM (AR)</td></tr>
-              <tr><td>9</td><td>R2</td><td>Region 2-B — Caribbean</td><td>NTRC Cluster</td><td>NTRC, Caribbean authorities</td></tr>
-              <tr><td>10</td><td>R3</td><td>Region 3-A — S/SE Asia</td><td>WPC / MCMC</td><td>DoT/WPC (IN), MCMC (MY)</td></tr>
-              <tr><td>11</td><td>R3</td><td>Region 3-B — Oceania</td><td>ACMA / RSM</td><td>ACMA (AU), RSM (NZ), SPC</td></tr>
+              <tr><td>0</td><td>— (Antarctica); R3</td><td>Antarctica / New Zealand</td><td>ITU Special Zone; RSM</td><td>Antarctic Treaty, ITU Art. 48; RSM (NZ)</td></tr>
+              <tr><td>1</td><td>R1; R2</td><td>ITU Region 1 — Europe / North Atlantic</td><td>ETSI / CEPT</td><td>ETSI, Ofcom, ARCEP, BNetzA, Roskomnadzor (RU)</td></tr>
+              <tr><td>2</td><td>R2</td><td>ITU Region 2 — North and Central America</td><td>FCC / ISED / IFT</td><td>FCC (US), ISED (CA), IFT (MX)</td></tr>
+              <tr><td>3</td><td>R3; R1</td><td>ITU Region 3 — Mainland Asia</td><td>MIIT / WPC</td><td>MIIT (CN), WPC/DoT (IN), PTA (PK), CRA (IR), NCC (TW)</td></tr>
+              <tr><td>4</td><td>R2; R1</td><td>Equatorial Atlantic — northern South America, West Africa</td><td>Anatel / ATU</td><td>Anatel (BR), ANE (CO), CONATEL (VE), ARTP (SN)</td></tr>
+              <tr><td>5</td><td>R1</td><td>Africa / Middle East</td><td>ATU / ASMG</td><td>NCC (NG), NTRA (EG), CA (KE), TCRA (TZ), CST (SA)</td></tr>
+              <tr><td>6</td><td>R1; R2; R3</td><td>North Pacific — NE Asia, Alaska</td><td>MIC / Roskomnadzor</td><td>MIC (JP), KCC (KR), Roskomnadzor (RU), FCC (US: AK)</td></tr>
+              <tr><td>7</td><td>R1; R3</td><td>Southern Indian Ocean</td><td>ATU / ACMA</td><td>ARTEC (MG), ICTA (MU), ACMA (AU: WA coast)</td></tr>
+              <tr><td>8</td><td>R2</td><td>South America — Andes and Southern Cone</td><td>ENACOM / SUBTEL</td><td>ENACOM (AR), SUBTEL (CL), MTC (PE)</td></tr>
+              <tr><td>9</td><td>R3; R2</td><td>Central Pacific</td><td>FCC / Pacific administrations</td><td>FCC (US: HI, AS), TAF (FJ), Pacific island regulators</td></tr>
+              <tr><td>10</td><td>R3</td><td>Australia / Maritime Southeast Asia</td><td>ACMA / Komdigi</td><td>ACMA (AU), Komdigi (ID), NTC (PH), MCMC (MY), NICTA (PG)</td></tr>
+              <tr><td>11</td><td>R1; — (Antarctica)</td><td>South Atlantic / Southern Africa</td><td>ICASA</td><td>ICASA (ZA), CRAN (NA)</td></tr>
             </tbody>
           </table>
-          <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership. Extension faces 4 through 11 subdivide the large ITU regions into coherent regulatory blocs whose parent region is encoded in the regulatory database rather than the index itself.</t>
-          <t>Face 0 is reserved for polar and Antarctic zones, which are subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks.</t>
+          <t>Faces 1, 2, and 3 are centred in ITU Regions 1, 2, and 3, and their face indices carry the Region number. The correspondence is not exact: face 1 also takes in Greenland and Arctic Canada (Region 2), and face 3 also takes in Siberia, Kazakhstan, Mongolia and Central Asia (Region 1). The other faces are named for the land they cover, and several span more than one ITU Region; the second column lists the Regions on each face in order of land area. In every case the regulatory database, not the face index, determines the Region and the rules at a given location.</t>
+          <t>Face 0 covers most of Antarctica, which is subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks. It also contains New Zealand, whose rules come from the regulatory database like those of any other jurisdiction.</t>
         </section>
         <section anchor="s-face-center-orientation" numbered="true" toc="default">
           <name>Face Center Orientation</name>
@@ -250,18 +250,18 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
               <name>Face Assignments and Regulatory Bodies</name>
               <thead><tr><th>Face</th><th>Geographic Region</th><th>ITU Designation</th><th>Principal Regulatory Bodies</th><th>ISM Bands</th></tr></thead>
               <tbody>
-                <tr><td>F0</td><td>Polar / Antarctic</td><td>Special</td><td>Antarctic Treaty — no standard ISM allocations</td><td>Coordination required</td></tr>
-                <tr><td>F1</td><td>Europe</td><td>ITU Region 1</td><td>ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE)</td><td>433 + 868 + 2.4 GHz</td></tr>
-                <tr><td>F2</td><td>N. America</td><td>ITU Region 2</td><td>FCC (US) · ISED (CA) · IFT (MX)</td><td>902–928 + 2.4 GHz</td></tr>
-                <tr><td>F3</td><td>E. Asia</td><td>ITU Region 3</td><td>MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)</td><td>2.4 GHz; JP 920–928 MHz; TW 902–928 MHz</td></tr>
-                <tr><td>F4</td><td>Africa West</td><td>ITU Region 1</td><td>ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F5</td><td>Africa East</td><td>ITU Region 1</td><td>ATU East · CCK (KE) · TCRA (TZ) · CA (ET)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F6</td><td>Russia / CAS</td><td>ITU Region 1</td><td>Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F7</td><td>Middle East</td><td>ITU Region 1</td><td>ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F8</td><td>S. America</td><td>ITU Region 2</td><td>Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</td><td>902–928 + 2.4 GHz; BR split-band</td></tr>
-                <tr><td>F9</td><td>Caribbean</td><td>ITU Region 2</td><td>NTRC cluster · FCC (PR/USVI) · BIPT (AW)</td><td>902–928 + 2.4 GHz</td></tr>
-                <tr><td>F10</td><td>S/SE Asia</td><td>ITU Region 3</td><td>WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)</td><td>2.4 GHz; some: 920–925 MHz</td></tr>
-                <tr><td>F11</td><td>Oceania</td><td>ITU Region 3</td><td>ACMA (AU) · RSM (NZ) · MCIT (PG)</td><td>915–928 MHz (AU/NZ) + 2.4 GHz</td></tr>
+                <tr><td>F0</td><td>Antarctica / New Zealand</td><td>Special; Region 3</td><td>Antarctic Treaty · RSM (NZ)</td><td>Antarctica: coordination required; NZ: 915–928 + 2.4 GHz</td></tr>
+                <tr><td>F1</td><td>Europe / North Atlantic</td><td>ITU Region 1 (Greenland, Arctic Canada: Region 2)</td><td>ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE) · Roskomnadzor (RU)</td><td>433 + 868 + 2.4 GHz (ETSI); 433 + 2.4 GHz (RU, TR, Maghreb); 902–928 + 2.4 GHz (GL, CA)</td></tr>
+                <tr><td>F2</td><td>North and Central America</td><td>ITU Region 2</td><td>FCC (US) · ISED (CA) · IFT (MX)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F3</td><td>Mainland Asia</td><td>ITU Region 3 (Siberia, Central Asia, Mongolia: Region 1)</td><td>MIIT (CN) · WPC/DoT (IN) · PTA (PK) · CRA (IR) · NCC (TW)</td><td>433 + 2.4 GHz (IN, PK, IR, RU, KZ); 2.4 GHz only (CN, mainland SE Asia); TW 902–928 MHz</td></tr>
+                <tr><td>F4</td><td>Equatorial Atlantic — northern South America, West Africa</td><td>ITU Regions 2 and 1</td><td>Anatel (BR) · ANE (CO) · CONATEL (VE) · ARTP (SN) · ANRT (MA)</td><td>902–928 + 2.4 GHz (BR split-band, CO, VE); 433 + 2.4 GHz (West Africa)</td></tr>
+                <tr><td>F5</td><td>Africa / Middle East</td><td>ITU Region 1</td><td>ATU · ASMG · NCC (NG) · NTRA (EG) · CA (KE) · TCRA (TZ) · CST (SA)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F6</td><td>North Pacific — NE Asia, Alaska</td><td>ITU Regions 1, 2 and 3</td><td>MIC (JP) · KCC (KR) · Roskomnadzor (RU) · FCC (US: AK)</td><td>433 + 2.4 GHz (RU); JP 920–928 MHz; AK 902–928 MHz; 2.4 GHz only (CN, KR)</td></tr>
+                <tr><td>F7</td><td>Southern Indian Ocean</td><td>ITU Regions 1 and 3</td><td>ARTEC (MG) · ICTA (MU) · ACMA (AU: WA coast)</td><td>433 + 2.4 GHz (MG); AU 915–928 MHz; 2.4 GHz only (MU)</td></tr>
+                <tr><td>F8</td><td>South America — Andes and Southern Cone</td><td>ITU Region 2</td><td>ENACOM (AR) · SUBTEL (CL) · MTC (PE)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F9</td><td>Central Pacific</td><td>ITU Regions 3 and 2</td><td>FCC (US: HI, AS) · TAF (FJ) · Pacific island regulators</td><td>902–928 + 2.4 GHz (HI, AS); 433 + 868 + 2.4 GHz (PF); 2.4 GHz only (FJ, WS, TO, KI)</td></tr>
+                <tr><td>F10</td><td>Australia / Maritime Southeast Asia</td><td>ITU Region 3</td><td>ACMA (AU) · Komdigi (ID) · NTC (PH) · MCMC (MY) · NICTA (PG)</td><td>915–928 MHz (AU) + 2.4 GHz; 2.4 GHz only (ID, PH, PG); some: 920–925 MHz</td></tr>
+                <tr><td>F11</td><td>South Atlantic / Southern Africa</td><td>ITU Region 1; Antarctica</td><td>ICASA (ZA) · CRAN (NA)</td><td>433 + 2.4 GHz (ZA, NA); Antarctica: coordination required</td></tr>
               </tbody>
             </table>
           </section>
@@ -514,14 +514,14 @@ modulation-type = &(
             <tbody>
               <tr><td>Hong Kong (OFCA)</td><td>3</td><td>920-925 MHz, 100 mW vs. CN illegal</td><td>5</td></tr>
               <tr><td>Macau (DSRT)</td><td>3</td><td>ETSI framework in Region 3 face</td><td>5</td></tr>
-              <tr><td>Singapore (IMDA)</td><td>10</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
-              <tr><td>US Virgin Islands (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>5</td></tr>
-              <tr><td>British Virgin Islands</td><td>9</td><td>ICTA rules adjacent to USVI</td><td>5</td></tr>
-              <tr><td>French Guiana (ARCEP)</td><td>8</td><td>ETSI rules in Region 2-A face</td><td>4</td></tr>
-              <tr><td>Ceuta / Melilla (ETSI)</td><td>4</td><td>EU enclave in Africa West face</td><td>6</td></tr>
-              <tr><td>Puerto Rico (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>4</td></tr>
-              <tr><td>Guam / CNMI (FCC)</td><td>3</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
-              <tr><td>French Pacific (ARCEP)</td><td>11</td><td>ETSI rules in Oceania face</td><td>4</td></tr>
+              <tr><td>Singapore (IMDA)</td><td>3</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
+              <tr><td>US Virgin Islands (FCC)</td><td>4</td><td>FCC rules in Equatorial Atlantic face</td><td>5</td></tr>
+              <tr><td>British Virgin Islands</td><td>4</td><td>ICTA rules adjacent to USVI</td><td>5</td></tr>
+              <tr><td>French Guiana (ARCEP)</td><td>4</td><td>ETSI rules beside Brazil (902–928 MHz)</td><td>4</td></tr>
+              <tr><td>Ceuta / Melilla (ETSI)</td><td>1</td><td>EU enclaves bordering Morocco</td><td>6</td></tr>
+              <tr><td>Puerto Rico (FCC)</td><td>4</td><td>FCC rules in Equatorial Atlantic face</td><td>4</td></tr>
+              <tr><td>Guam / CNMI (FCC)</td><td>10</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
+              <tr><td>French Pacific (ARCEP)</td><td>9, 10</td><td>ETSI rules in Pacific faces</td><td>4</td></tr>
             </tbody>
           </table>
         </section>
@@ -2358,17 +2358,17 @@ assert_eq!(cell.bytes[3], 0x4D);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
-//   London    (51.51°N,   0.13°W) → face 1  (ITU Region 1, Europe)
-//   Tokyo  (35.68°N, 139.69°E) → face 6 (Region 1-C / Russia-CAS)
-//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, E. Asia)
-//   São Paulo (23.55°S,  46.63°W) → face 4  (Region 1-A / Africa West)
+//   London    (51.51°N,   0.13°W) → face 1  (Europe / North Atlantic)
+//   Tokyo     (35.68°N, 139.69°E) → face 6  (North Pacific)
+//   Beijing   (39.91°N, 116.39°E) → face 3  (Mainland Asia)
+//   São Paulo (23.55°S,  46.63°W) → face 4  (Equatorial Atlantic)
 //
 // Note: Tokyo → face 6 (not face 3) due to dodecahedron
 // face geometry places the face-3 center at 31.4°N, 86.5°E — closer to
 // South Asia — while face-6 center is at 51.0°N, 172°E, whose angular
 // proximity to Tokyo is greater than face-3 despite the longitude
 // geometry. This is correct dodecahedral behavior, not an error.
-// The regulatory DB maps face 6 to the correct East Asia rule set.
+// The regulatory DB maps Tokyo's cells on face 6 to Japan's rule set.
 
 // 1-byte truncation (privacy / regulatory coarse lookup):
 let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
