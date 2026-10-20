@@ -3,7 +3,7 @@
      category="info"
      docName="draft-hanley-rsdggs-00"
      ipr="trust200902"
-     submissionType="IETF"
+     submissionType="independent"
      xml:lang="en"
      version="3">
   <front>
@@ -14,8 +14,7 @@
       <address><email>James.Hanley@DGtlRift.com</email></address>
     </author>
     <date year="2026"/>
-    <area>Internet</area>
-    <workgroup>Internet Engineering Task Force</workgroup>
+    <workgroup>Independent Submission</workgroup>
     <keyword>IoT</keyword>
     <keyword>spectrum</keyword>
     <keyword>regulatory</keyword>
