@@ -97,8 +97,8 @@ Table of Contents
      4.5.  Isosceles Triangle Hierarchy  . . . . . . . . . . . . . .  17
      4.6.  RSDGGS Dodecahedron Net — ISM Band Regulatory Coverage
            Map . . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-       4.6.1.  ISM Band Color Coding . . . . . . . . . . . . . . . .  18
-       4.6.2.  Face Assignments and Regulatory Bodies  . . . . . . .  19
+       4.6.1.  ISM Band Color Coding . . . . . . . . . . . . . . . .  19
+       4.6.2.  Face Assignments and Regulatory Bodies  . . . . . . .  20
        4.6.3.  Net Topology and Construction . . . . . . . . . . . .  21
    5.  Index Encoding  . . . . . . . . . . . . . . . . . . . . . . .  22
      5.1.  Octet Array Format  . . . . . . . . . . . . . . . . . . .  22
@@ -984,7 +984,11 @@ Internet-Draft                   RSDGGS                     October 2026
    at https://github.com/dgtlrift/RSDGGS/blob/main/images/
    rsdggs_net_page1.png and
    https://github.com/dgtlrift/RSDGGS/blob/main/images/
-   rsdggs_net_page2.png.
+   rsdggs_net_page2.png.  Vector (SVG) versions are in the same
+   directory, and https://github.com/dgtlrift/RSDGGS/tree/main/images/
+   faces has the twelve faces one per page for building a larger model,
+   with each glue tab labelled with the face and triangle of the edge it
+   is glued to.
 
    The world map on each face is colored according to ISM band
    regulatory allowance.  Countries are colored by the sub-GHz ISM band
@@ -995,10 +999,6 @@ Internet-Draft                   RSDGGS                     October 2026
    simultaneously permitted display the primary band as the fill color
    with diagonal hatching in the secondary band color.
 
-4.6.1.  ISM Band Color Coding
-
-   The following color scheme is used consistently across all twelve
-   faces of the net:
 
 
 
@@ -1009,6 +1009,11 @@ Hanley                    Expires 23 April 2027                [Page 18]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+4.6.1.  ISM Band Color Coding
+
+   The following color scheme is used consistently across all twelve
+   faces of the net:
 
    +===========+==========+=================+==========================+
    | Color     | Band     | Frequency Range | Primary Coverage         |
@@ -1046,14 +1051,9 @@ Internet-Draft                   RSDGGS                     October 2026
 
                        Table 3: ISM Band Color Coding
 
-4.6.2.  Face Assignments and Regulatory Bodies
 
-   Each face of the RSDGGS dodecahedron is labeled with its face index
-   (0–11).  The face index is the RSDGGS encoding value returned for any
-   coordinate within that face at 1-byte resolution.  The following
-   table maps each face index to its geographic coverage and the
-   principal national regulatory bodies whose ISM band rules apply
-   within that face.
+
+
 
 
 
@@ -1065,6 +1065,15 @@ Hanley                    Expires 23 April 2027                [Page 19]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+4.6.2.  Face Assignments and Regulatory Bodies
+
+   Each face of the RSDGGS dodecahedron is labeled with its face index
+   (0–11).  The face index is the RSDGGS encoding value returned for any
+   coordinate within that face at 1-byte resolution.  The following
+   table maps each face index to its geographic coverage and the
+   principal national regulatory bodies whose ISM band rules apply
+   within that face.
 
    +======+============+=============+==============+=================+
    | Face | Geographic | ITU         | Principal    | ISM Bands       |
@@ -1105,6 +1114,14 @@ Internet-Draft                   RSDGGS                     October 2026
    |      |            |             | (TZ) · MCIT  |                 |
    |      |            |             | (SA) · TRA   |                 |
    |      |            |             | (AE)         |                 |
+
+
+
+Hanley                    Expires 23 April 2027                [Page 20]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    +------+------------+-------------+--------------+-----------------+
    | F6   | South      | ITU Region  | Anatel (BR)  | 902–928 + 2.4   |
    |      | America    | 2           | · ENACOM     | GHz; BR split-  |
@@ -1114,14 +1131,6 @@ Internet-Draft                   RSDGGS                     October 2026
    | F7   | Eastern    | ITU Region  | ACMA (AU) ·  | 915–928 MHz     |
    |      | Australia  | 3           | MCIT (PG)    | (AU) + 2.4 GHz  |
    +------+------------+-------------+--------------+-----------------+
-
-
-
-Hanley                    Expires 23 April 2027                [Page 20]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    | F8   | Southern   | None        | ACMA (AU)    | 915–928 MHz     |
    |      | Indian     |             |              | (AU) + 2.4 GHz; |
    |      | Ocean      |             |              | Antarctica:     |
@@ -1161,15 +1170,6 @@ Internet-Draft                   RSDGGS                     October 2026
    GLUE tab; and (6) pressing each tab against the inner surface of the
    mating face.  The last fold closes the final seam.
 
-   The gnomonic projection used for each face maps great-circle arcs to
-   straight line segments.  Since the shared edge between any two
-   adjacent dodecahedron faces lies on a great circle of the sphere,
-   that edge projects as a straight line in both adjacent face
-   projections.  After alignment of the shared-edge endpoints,
-   geographic features cross the fold edge continuously without
-   discontinuity, distortion artifact, or gap.
-
-
 
 
 
@@ -1177,6 +1177,14 @@ Hanley                    Expires 23 April 2027                [Page 21]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+   The gnomonic projection used for each face maps great-circle arcs to
+   straight line segments.  Since the shared edge between any two
+   adjacent dodecahedron faces lies on a great circle of the sphere,
+   that edge projects as a straight line in both adjacent face
+   projections.  After alignment of the shared-edge endpoints,
+   geographic features cross the fold edge continuously without
+   discontinuity, distortion artifact, or gap.
 
    Figure 1 is sized for US Letter, portrait, at 100% scale, which gives
    each pentagon a circumradius of 25 mm (37.38 degrees of arc).
@@ -1219,6 +1227,13 @@ Internet-Draft                   RSDGGS                     October 2026
    receivers.  A receiver MUST reject an index whose triangle index is a
    reserved value (5-15).
 
+
+
+Hanley                    Expires 23 April 2027                [Page 22]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    The four-bit celestial body selector in bits 7-4 of Octet 0
    partitions the RSDGGS index space into sixteen independent
    dodecahedral grids, one per celestial body.  Body 0x0 (Earth) is the
@@ -1226,13 +1241,6 @@ Internet-Draft                   RSDGGS                     October 2026
    have Octet 0 in the range 0x00-0x0B, which corresponds to body=0,
    face=0-11.  Implementations that predate this field definition will
    continue to decode these indices correctly as Earth face indices.
-
-
-
-Hanley                    Expires 23 April 2027                [Page 22]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
    The body selector enables RSDGGS to serve as a unified location
    encoding for operations on the Moon, Mars, and future celestial
@@ -1253,14 +1261,6 @@ Internet-Draft                   RSDGGS                     October 2026
    vary across a face; the values below were measured at 39°N 98°W with
    the reference implementation, for a dodecahedron face area of
    approximately 42 million square kilometers:
-
-
-
-
-
-
-
-
 
 
 

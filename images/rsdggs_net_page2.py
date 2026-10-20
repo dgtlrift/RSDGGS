@@ -1,6 +1,6 @@
 """Draw Figure 2 of draft-hanley-rsdggs-00: the dodecahedron net reference key.
 
-    python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png
+    python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png and .svg
 
 Requires matplotlib (built with 3.10.8). Layout coordinates are in a 2000 x 1555
 grid with the origin at the top left.
@@ -235,7 +235,9 @@ def main():
     text(ax, W / 2, 1520, FOOTER, size=8, color="#777777", ha="center", va="center")
     out = Path(__file__).with_suffix(".png")
     fig.savefig(out, dpi=250, facecolor="white")
-    print(out)
+    plt.rcParams["svg.hashsalt"] = "rsdggs"          # stable ids, so re-runs diff cleanly
+    fig.savefig(out.with_suffix(".svg"), facecolor="white", metadata={"Date": None})
+    print(out, out.with_suffix(".svg"))
 
 
 if __name__ == "__main__":
