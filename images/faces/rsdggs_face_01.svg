@@ -33,16 +33,18 @@ z
 L 198.497595 169.075031 
 L 68.302308 362.097482 
 L 80.541821 404.781736 
+L 242.658749 164.433507 
 z
-" clip-path="url(#p6927e6d9db)" style="fill: #e0e0d0; stroke: #1a1a2e; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p6927e6d9db)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 531.458179 534.079921 
 L 564.457083 504.367575 
 L 556.331533 271.682262 
 L 521.340384 244.34418 
+L 531.458179 534.079921 
 z
-" clip-path="url(#p6927e6d9db)" style="fill: #e0e0d0; stroke: #1a1a2e; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p6927e6d9db)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 36 737.574803 
@@ -102,7 +104,7 @@ z
    </g>
    <g id="text_1">
     <!-- glue under F2·T0 -->
-    <g style="fill: #55553f" transform="translate(129.238186 306.365749) rotate(-56) scale(0.085 -0.085)">
+    <g transform="translate(129.238186 306.365749) rotate(-56) scale(0.085 -0.085)">
      <defs>
       <path id="DejaVuSans-67" d="M 2906 1791 
 Q 2906 2416 2648 2759 
@@ -352,7 +354,7 @@ z
    </g>
    <g id="text_2">
     <!-- glue under F3·T0 -->
-    <g style="fill: #55553f" transform="translate(539.791663 352.587392) rotate(-272) scale(0.085 -0.085)">
+    <g transform="translate(539.791663 352.587392) rotate(-272) scale(0.085 -0.085)">
      <defs>
       <path id="DejaVuSans-33" d="M 2597 2516 
 Q 3050 2419 3304 2112 
@@ -63604,12 +63606,12 @@ L 521.340384 244.34418
    <g id="line2d_374">
     <path d="M 242.658749 164.433507 
 L 80.541821 404.781736 
-" clip-path="url(#p6927e6d9db)" style="fill: none; stroke-dasharray: 3.2,2.4; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.8"/>
+" clip-path="url(#p6927e6d9db)" style="fill: none; stroke-dasharray: 3.2,2.4; stroke-dashoffset: 0; stroke: #000000; stroke-width: 0.8"/>
    </g>
    <g id="line2d_375">
     <path d="M 531.458179 534.079921 
 L 521.340384 244.34418 
-" clip-path="url(#p6927e6d9db)" style="fill: none; stroke-dasharray: 3.2,2.4; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.8"/>
+" clip-path="url(#p6927e6d9db)" style="fill: none; stroke-dasharray: 3.2,2.4; stroke-dashoffset: 0; stroke: #000000; stroke-width: 0.8"/>
    </g>
    <g id="line2d_376">
     <path d="M 341.301644 385.00586 

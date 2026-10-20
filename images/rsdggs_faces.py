@@ -19,6 +19,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from matplotlib.path import Path as MPath
 from matplotlib.patches import Polygon as MplPolygon
 
 import rsdggs_net_page1 as fig1
@@ -121,12 +122,14 @@ def draw_edges(ax, net, f, across, owner):
         if owner[frozenset((f, g))] == f:
             mid = (a + b) / 2
             inward = (ctr - mid) / np.linalg.norm(ctr - mid)
-            ax.add_patch(MplPolygon(tab(a, b, ctr), closed=True, facecolor="#E0E0D0",
-                                    edgecolor=INK, lw=0.8, zorder=1))
-            ax.plot(*np.column_stack([a, b]), color="#333333", lw=0.8, ls=(0, (4, 3)),
+            # Outline and text only, in pure black so a colour printer uses black toner
+            # alone: toner on a tab keeps the glue from holding.
+            ax.add_patch(MplPolygon(tab(a, b, ctr), closed=True, facecolor="none",
+                                    edgecolor="black", lw=0.8, zorder=1))
+            ax.plot(*np.column_stack([a, b]), color="black", lw=0.8, ls=(0, (4, 3)),
                     zorder=5.5)
             ax.text(*(mid - TAB_DEPTH * 0.5 * inward), f"glue under F{g}·T{u}", fontsize=8.5,
-                    color="#55553F", ha="center", va="center", rotation=text_angle(a, b),
+                    color="black", ha="center", va="center", rotation=text_angle(a, b),
                     zorder=2)
 
 
@@ -177,7 +180,7 @@ def footer(ax, net, f, r):
 
 
 def check(fig, ax, f):
-    """Fail if any text or tab leaves the printable area."""
+    """Fail if any text or tab leaves the printable area, or a tab carries colour or fill."""
     px = fig.dpi / 25.4
     renderer = fig.canvas.get_renderer()
     lo, right, top = MARGIN * px, (PAGE_W - MARGIN) * px, (PAGE_H - MARGIN) * px
@@ -190,6 +193,19 @@ def check(fig, ax, f):
             xy = patch.get_xy()
             assert xy.min() >= MARGIN - 1e-6 and (xy[:, 0] <= PAGE_W - MARGIN).all() and \
                 (xy[:, 1] <= PAGE_H - MARGIN).all(), f"face {f}: tab outside the margins"
+    # Inside each tab (kept clear of its outline): grey levels only, and mostly paper.
+    fig.canvas.draw()
+    img = np.asarray(fig.canvas.buffer_rgba())[..., :3].astype(int)
+    h, w = img.shape[:2]
+    ys, xs = np.mgrid[0:h, 0:w]
+    pts = np.column_stack([xs.ravel() + 0.5, h - ys.ravel() - 0.5])
+    for patch in ax.patches:
+        if isinstance(patch, MplPolygon):
+            xy = patch.get_xy()
+            inner = xy.mean(0) + 0.85 * (xy - xy.mean(0))
+            p = img[MPath(ax.transData.transform(inner)).contains_points(pts).reshape(h, w)]
+            assert (p.max(1) - p.min(1) <= 2).all(), f"face {f}: colour on a glue tab"
+            assert (p.max(1) < 250).mean() < 0.06, f"face {f}: shading on a glue tab"
 
 
 def main():

@@ -70,7 +70,8 @@ STEPS = [
               "running against a ruler."),
     ("Fold", "Fold each face upward (mountain fold) along the scored dashed lines. "
              "Crease firmly."),
-    ("Glue", "Apply PVA or strong stick glue to the grey GLUE tabs. Work one tab at a time."),
+    ("Glue", "Apply PVA or strong stick glue to the GLUE tabs, which are left unprinted so "
+             "the glue holds. Work one tab at a time."),
     ("Join", "Press each glued tab firmly against the inner face of its matching neighbour. "
              "Hold 30 seconds."),
     ("Close", "The final seam joins the last free edge. Clamp or tape on the outside while "
@@ -145,7 +146,7 @@ def legend(ax, x0, x1):
     items = [
         ("dash", "Dashed line = Fold edge", "Score firmly with a stylus or dull knife, then fold"),
         ("solid", "Solid outer edge = Cut line", "Cut cleanly with scissors or craft knife"),
-        ("glue", "Grey tab = Glue surface", "Apply PVA or stick glue; press to adjacent face"),
+        ("glue", "Outlined tab = Glue surface", "Apply PVA or stick glue; press to adjacent face"),
     ]
     for k, (kind, title, line) in enumerate(items):
         y = 960 + 76 * k
@@ -157,8 +158,8 @@ def legend(ax, x0, x1):
         else:
             ax.add_patch(FancyBboxPatch((x0 + 5, y - 6), 110, 40,
                                         boxstyle="round,pad=0,rounding_size=4",
-                                        facecolor="#DDDDCC", edgecolor="#999999", lw=0.8))
-            text(ax, x0 + 60, y + 14, "GLUE", size=7, color="#777777", ha="center",
+                                        facecolor="none", edgecolor="black", lw=0.8))
+            text(ax, x0 + 60, y + 14, "GLUE", size=7, color="black", ha="center",
                  va="center")
         text(ax, x0 + 130, y - 2, title, size=11, weight="bold")
         text(ax, x0 + 130, y + 20, line, size=9.5)

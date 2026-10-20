@@ -717,7 +717,9 @@ def main():
     fig, ax = new_page()
 
     for poly, a, b in tabs:
-        ax.add_patch(MplPolygon(poly, closed=True, facecolor="#E0E0D0", edgecolor="#9A9A88",
+        # Outline and text only, in pure black so a colour printer uses black toner alone:
+        # toner on a tab keeps the glue from holding.
+        ax.add_patch(MplPolygon(poly, closed=True, facecolor="none", edgecolor="black",
                                 lw=0.5, zorder=1))
         mid = (poly[1] + poly[2]) / 2 * 0.55 + (a + b) / 2 * 0.45
         ang = math.degrees(math.atan2(*(b - a)[::-1]))
@@ -725,7 +727,7 @@ def main():
             ang -= 180
         elif ang < -90:
             ang += 180
-        ax.text(*mid, "GLUE", fontsize=4.5, color="#8A8A78", ha="center", va="center",
+        ax.text(*mid, "GLUE", fontsize=4.5, color="black", ha="center", va="center",
                 rotation=ang, zorder=2)
 
     for f, i in cuts:
@@ -760,8 +762,8 @@ def main():
     ax.text(MARGIN + 10, y, "Fold line (score & fold)", fontsize=6.5, color=INK, va="center")
     ax.plot([MARGIN + 44, MARGIN + 52], [y, y], color=INK, lw=1.0)
     ax.text(MARGIN + 54, y, "Cut line (outer edge)", fontsize=6.5, color=INK, va="center")
-    ax.add_patch(Rectangle((MARGIN + 84, y - 1.4), 7, 2.8, facecolor="#E0E0D0",
-                           edgecolor="#9A9A88", lw=0.5))
+    ax.add_patch(Rectangle((MARGIN + 84, y - 1.4), 7, 2.8, facecolor="none",
+                           edgecolor="black", lw=0.5))
     ax.text(MARGIN + 93, y, "GLUE tab", fontsize=6.5, color=INK, va="center")
     ax.plot(MARGIN + 109, y, "x", ms=4, mec="#D00000", mew=1.2)
     ax.text(MARGIN + 112, y, "Boundary exception", fontsize=6.5, color=INK, va="center")
@@ -787,6 +789,17 @@ def check(fig, ax, net, tabs):
         bb = t.get_window_extent(renderer)
         assert bb.x0 >= lo - 1 and bb.x1 <= hi + 1 and bb.y0 >= lo - 1 and \
             bb.y1 <= (PAGE_H - MARGIN) * px + 1, f"text outside the margins: {t.get_text()!r}"
+    # Inside each tab (kept clear of its outline): grey levels only, and mostly paper.
+    fig.canvas.draw()
+    img = np.asarray(fig.canvas.buffer_rgba())[..., :3].astype(int)
+    h, w = img.shape[:2]
+    ys, xs = np.mgrid[0:h, 0:w]
+    pix = np.column_stack([xs.ravel() + 0.5, h - ys.ravel() - 0.5])
+    for poly, _, _ in tabs:
+        inner = poly.mean(0) + 0.85 * (poly - poly.mean(0))
+        p = img[MplPath(ax.transData.transform(inner)).contains_points(pix).reshape(h, w)]
+        assert (p.max(1) - p.min(1) <= 2).all(), "colour on a glue tab"
+        assert (p.max(1) < 250).mean() < 0.25, "shading on a glue tab"
 
 
 if __name__ == "__main__":
