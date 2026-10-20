@@ -112,19 +112,21 @@ def text_angle(a, b):
 
 
 def draw_edges(ax, net, f, across, owner):
-    """Cut lines and glue tabs (drawn before the map)."""
+    """Cut lines, and glue tabs with a fold line in place of the cut (drawn before the map)."""
     ctr = net.to_page(f, net.c[f])
     corners = net.to_page(f, net.v[f])
     for t in range(5):
         a, b = corners[t], corners[(t + 1) % 5]
         g, u = across[f, t]
-        ax.plot(*np.column_stack([a, b]), color=INK, lw=1.2, zorder=5, solid_capstyle="round")
-        if owner[frozenset((f, g))] == f:
+        if owner[frozenset((f, g))] != f:
+            ax.plot(*np.column_stack([a, b]), color=INK, lw=1.2, zorder=5,
+                    solid_capstyle="round")
+        else:
             mid = (a + b) / 2
             inward = (ctr - mid) / np.linalg.norm(ctr - mid)
             # Outline and text only, in pure black so a colour printer uses black toner
             # alone: toner on a tab keeps the glue from holding.
-            ax.add_patch(MplPolygon(tab(a, b, ctr), closed=True, facecolor="none",
+            ax.add_patch(MplPolygon(tab(a, b, ctr), closed=False, facecolor="none",
                                     edgecolor="black", lw=0.8, zorder=1))
             ax.plot(*np.column_stack([a, b]), color="black", lw=0.8, ls=(0, (4, 3)),
                     zorder=5.5)

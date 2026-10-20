@@ -719,7 +719,7 @@ def main():
     for poly, a, b in tabs:
         # Outline and text only, in pure black so a colour printer uses black toner alone:
         # toner on a tab keeps the glue from holding.
-        ax.add_patch(MplPolygon(poly, closed=True, facecolor="none", edgecolor="black",
+        ax.add_patch(MplPolygon(poly, closed=False, facecolor="none", edgecolor="black",
                                 lw=0.5, zorder=1))
         mid = (poly[1] + poly[2]) / 2 * 0.55 + (a + b) / 2 * 0.45
         ang = math.degrees(math.atan2(*(b - a)[::-1]))
