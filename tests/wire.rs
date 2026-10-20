@@ -43,7 +43,7 @@ fn wire_roundtrip_all_depths() {
 }
 
 /// With a 4-bit triangle field no level straddles an octet boundary, so
-/// dropping trailing octets is exactly truncation (draft §5.4).
+/// dropping trailing octets is exactly truncation (draft section 5.4).
 #[test]
 fn dropping_octets_is_truncation() {
     for (lat, lon) in CASES {
