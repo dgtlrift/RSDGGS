@@ -89,13 +89,13 @@ Dodecahedron — 12 pentagonal faces:
   → Region 2 fits within one pentagonal face with
     ~17,300,000 km² margin — accommodates coastal
     and island territories without boundary cuts
-  → 3 faces assigned to ITU Regions (face indices 1, 2, 3)
-  → 9 faces available for sub-region differentiation
-    at level 0: correct cardinality for the
-    10 major regulatory blocs defined in Section 4.2
+  → 3 faces centred on the most populous zone of
+    each ITU Region (face indices 1, 2, 3)
+  → 9 further faces; the two low-order bits of every
+    face index give its ITU Region (Section 4.2)
 ]]></artwork></figure>
             <t>The icosahedron's 20 faces would require fragmenting each ITU Region across multiple faces at the coarsest level, destroying the direct face-to-region correspondence that is a primary design goal (G1) of RSDGGS. The dodecahedron's 12 faces provide the minimum face count that satisfies the ITU Region alignment constraint while leaving sufficient faces for sub-region differentiation.</t>
-            <t>The 9 extension faces (4 through 11) of the dodecahedron correspond directly to the major regulatory sub-blocs within the three ITU Regions: four for Region 1 (Europe core, Africa West, Africa East, Russia/Central Asia, Middle East), two for Region 2 (South America, Caribbean), and two for Region 3 (South/Southeast Asia, Oceania). This correspondence is exact and natural for the dodecahedron face count; it would be over-specified with 17 icosahedron extension faces.</t>
+            <t>The nine extension faces (0 and 4 through 11) are numbered so that the two low-order bits of every face index give the ITU Region of the face's principal population: faces 5 and 9 (Region 1: Africa and the Middle East, West Africa), faces 6 and 10 (Region 2: South America, the Central Pacific), and faces 7 and 11 (Region 3: Eastern Australia, the North Pacific). Faces 0, 4, and 8 cover Antarctica and the southern oceans and carry no Region. Section 4.2 lists the assignments. Twelve faces give each Region exactly three face indices; with the icosahedron's 20 faces the same scheme would leave most indices covering open ocean.</t>
           </section>
           <section anchor="s-map-projection-distortion-at-face-boundaries" numbered="true" toc="default">
             <name>Map Projection Distortion at Face Boundaries</name>
@@ -130,7 +130,7 @@ Dodecahedron pentagonal face:
               <thead><tr><th>Property</th><th>Icosahedron (20 triangles)</th><th>Dodecahedron (12 pentagons)</th><th>Winner</th></tr></thead>
               <tbody>
                 <tr><td>Face count vs. ITU Regions</td><td>20 faces / 3 regions (excess)</td><td>12 faces / 3 regions (correct)</td><td>Dodecahedron</td></tr>
-                <tr><td>Extension faces for sub-regions</td><td>17 (over-partitioned)</td><td>9 (exact fit for regulatory blocs)</td><td>Dodecahedron</td></tr>
+                <tr><td>Extension faces for sub-regions</td><td>17 (over-partitioned)</td><td>9 (two more per Region, three with none)</td><td>Dodecahedron</td></tr>
                 <tr><td>Face area vs. Region 2</td><td>~25.5M km² (tight fit)</td><td>~42M km² (ample margin)</td><td>Dodecahedron</td></tr>
                 <tr><td>Max boundary distortion</td><td>1.80x (same)</td><td>1.80x (same)</td><td>Tie</td></tr>
                 <tr><td>Distortion ratio vertex/midpoint</td><td>1.57x (high variation)</td><td>1.30x (low variation)</td><td>Dodecahedron</td></tr>
@@ -147,57 +147,71 @@ Dodecahedron pentagonal face:
           <t>The RSDGGS grid is rooted in a regular dodecahedron projected onto the surface of a unit sphere. A regular dodecahedron has twelve pentagonal faces. RSDGGS assigns these faces as follows:</t>
           <table anchor="t-face-assignments">
             <name>Face Assignments</name>
-            <thead><tr><th>Face</th><th>ITU Parent</th><th>Primary Name</th><th>Anchor Authority</th><th>Primary Bodies</th></tr></thead>
+            <thead><tr><th>Face</th><th>ITU Region (face &amp; 0x3)</th><th>Primary Name</th><th>Anchor Authority</th><th>Primary Bodies</th></tr></thead>
             <tbody>
-              <tr><td>0</td><td>—</td><td>Polar / Antarctic</td><td>ITU Special Zone</td><td>Antarctic Treaty, ITU Art. 48</td></tr>
+              <tr><td>0</td><td>—</td><td>Antarctica / New Zealand</td><td>ITU Special Zone</td><td>Antarctic Treaty, ITU Art. 48; RSM (NZ)</td></tr>
               <tr><td>1</td><td>R1</td><td>ITU Region 1 — Europe</td><td>ETSI / CEPT</td><td>ETSI, Ofcom, ARCEP, BNetzA</td></tr>
-              <tr><td>2</td><td>R2</td><td>ITU Region 2 — N. America</td><td>FCC / ISED / IFT</td><td>FCC (US), ISED (CA), IFT (MX)</td></tr>
-              <tr><td>3</td><td>R3</td><td>ITU Region 3 — E. Asia</td><td>MIC / MIIT / KCC</td><td>MIC (JP), MIIT (CN), KCC (KR)</td></tr>
-              <tr><td>4</td><td>R1</td><td>Region 1-A — Africa West</td><td>ATU West</td><td>ARTP, ARCEP (SN), ATU west</td></tr>
-              <tr><td>5</td><td>R1</td><td>Region 1-B — Africa East</td><td>ATU East</td><td>CA (ET), CCK (KE), TCRA (TZ)</td></tr>
-              <tr><td>6</td><td>R1</td><td>Region 1-C — Russia / CAS</td><td>Roskomnadzor / RRT</td><td>Roskomnadzor (RU), RRT (KZ)</td></tr>
-              <tr><td>7</td><td>R1</td><td>Region 1-D — Middle East</td><td>ASMG</td><td>MCIT (SA), TRA (AE), NTRA (EG)</td></tr>
-              <tr><td>8</td><td>R2</td><td>Region 2-A — S. America</td><td>ANATEL / ENACOM</td><td>Anatel (BR), ENACOM (AR)</td></tr>
-              <tr><td>9</td><td>R2</td><td>Region 2-B — Caribbean</td><td>NTRC Cluster</td><td>NTRC, Caribbean authorities</td></tr>
-              <tr><td>10</td><td>R3</td><td>Region 3-A — S/SE Asia</td><td>WPC / MCMC</td><td>DoT/WPC (IN), MCMC (MY)</td></tr>
-              <tr><td>11</td><td>R3</td><td>Region 3-B — Oceania</td><td>ACMA / RSM</td><td>ACMA (AU), RSM (NZ), SPC</td></tr>
+              <tr><td>2</td><td>R2</td><td>ITU Region 2 — North America</td><td>FCC / ISED / IFT</td><td>FCC (US), ISED (CA), IFT (MX)</td></tr>
+              <tr><td>3</td><td>R3</td><td>ITU Region 3 — Asia</td><td>MIC / MIIT / KCC</td><td>MIC (JP), MIIT (CN), KCC (KR), WPC/DoT (IN)</td></tr>
+              <tr><td>4</td><td>—</td><td>South Atlantic</td><td>ICASA</td><td>ICASA (ZA)</td></tr>
+              <tr><td>5</td><td>R1</td><td>Region 1 — Africa / Middle East</td><td>ATU East / ASMG</td><td>CA (ET), CCK (KE), TCRA (TZ), MCIT (SA), TRA (AE)</td></tr>
+              <tr><td>6</td><td>R2</td><td>Region 2 — South America</td><td>ANATEL / ENACOM</td><td>Anatel (BR), ENACOM (AR)</td></tr>
+              <tr><td>7</td><td>R3</td><td>Region 3 — Eastern Australia</td><td>ACMA</td><td>ACMA (AU), SPC</td></tr>
+              <tr><td>8</td><td>—</td><td>Southern Indian Ocean</td><td>ACMA</td><td>ACMA (AU: Melbourne, Adelaide, Perth)</td></tr>
+              <tr><td>9</td><td>R1</td><td>Region 1 — West Africa</td><td>ATU West</td><td>ARTP, ARCEP (SN), NCC (NG), ATU west</td></tr>
+              <tr><td>10</td><td>R2</td><td>Region 2 — Central Pacific</td><td>FCC</td><td>FCC (US: Hawaii)</td></tr>
+              <tr><td>11</td><td>R3</td><td>Region 3 — North Pacific</td><td>MIC / Roskomnadzor</td><td>MIC (JP), Roskomnadzor (RU), FCC (US: Alaska)</td></tr>
             </tbody>
           </table>
-          <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership. Extension faces 4 through 11 subdivide the large ITU regions into coherent regulatory blocs whose parent region is encoded in the regulatory database rather than the index itself.</t>
-          <t>Face 0 is reserved for polar and Antarctic zones, which are subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks.</t>
+          <t>Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules.</t>
+          <t>Face 0 holds the largest part of Antarctica, which is subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks; faces 4 and 8 hold most of the rest. Face 0 also contains New Zealand, whose rules come from the regulatory database like those of any other jurisdiction.</t>
         </section>
         <section anchor="s-face-center-orientation" numbered="true" toc="default">
           <name>Face Center Orientation</name>
           <t>The dodecahedron is constructed as the dual of the unit icosahedron. The twelve face centers of the dodecahedron correspond to the twelve vertices of the icosahedron after normalization to the unit sphere. The icosahedron is defined by the golden ratio phi = (1 + sqrt(5)) / 2, with twelve vertices at the normalized forms of (0, +-1, +-phi), (+-1, +-phi, 0), and (+-phi, 0, +-1).</t>
-          <t>A three-step rotation is applied to the entire icosahedron to orient the dodecahedron for ITU regulatory alignment. The rotation places icosahedron vertex 8 -- the normalized form of [phi, 0, 1] -- at geographic coordinates (39 degrees North, 98 degrees West), the approximate centroid of the contiguous United States. As a consequence, RSDGGS Face 2, whose center is the centroid of the five icosahedron triangles surrounding vertex 8, lands at approximately (31.43 degrees North, 102.48 degrees West). This orientation minimizes dodecahedron edge intersections across the harmonized FCC / ISED / IFT regulatory zone of North America, satisfying design goal G2.</t>
-          <t>In the default (unrotated) icosahedron, vertex 8 at [phi, 0, 1] normalizes to latitude arctan(1/phi) = 31.7175 degrees North, longitude 0 degrees (on the prime meridian). The orientation rotation proceeds in three steps applied to every icosahedron vertex:</t>
+          <t>The orientation places the three most populous regulatory zones each on a single face: Europe on face 1, North America on face 2, and the core of ITU Region 3 (China, India, Japan, Korea, and their neighbours) on face 3. It is fixed by two parameters, the position of the face 1 center and the bearing from it to the face 2 center:</t>
           <figure><artwork type="ascii-art"><![CDATA[
-Step 1: rot_z(0)           Vertex 8 is already at lon = 0; no-op.
-Step 2: rot_x(+7.2825 deg) Raise vertex 8 from 31.7175N to 39.0N.
-                            Angle = 39.0 - arctan(1/phi) = 7.2825 deg.
-Step 3: rot_z(-98.0 deg)   Place vertex 8 at 98.0W longitude.
+Face 1 center:  60.0000N, 26.5000E
+Face 2 center:  initial bearing 304.0000 deg (true) from the
+                face 1 center, at the angular distance between
+                adjacent face centers, arctan(2) = 63.4349 deg
 
-rot_x(a): [x, y*cos(a) - z*sin(a), y*sin(a) + z*cos(a)]
-rot_z(a): [x*cos(a) - y*sin(a), x*sin(a) + y*cos(a), z]
+1. Take any icosahedron vertex A and an adjacent vertex B,
+   so that dot(A, B) = 1/sqrt(5).
+2. Rotate the icosahedron by the rotation that maps A to the
+   face 1 center and B to the face 2 center: the rotation
+   taking the orthonormal frame (A, B', A x B') to (F1, F2',
+   F1 x F2'), where B' and F2' are B and F2 made orthogonal
+   to A and F1 and normalized. The icosahedral rotation group
+   acts simply transitively on ordered pairs of adjacent
+   vertices, so the choice of A and B does not matter.
+3. The rotated vertices are the twelve face centers. Number
+   them as below (each face is the one whose center is nearest
+   the listed position).
+4. The dodecahedron's vertices are the normalized centroids of
+   the twenty rotated icosahedron triangles. A face's five
+   vertices are those nearest its center; they are ordered
+   counter-clockwise as seen from outside the sphere, starting
+   with the vertex at the smallest bearing (clockwise from
+   true north) from the face center. Triangle k of a face is
+   (center, v[k], v[(k+1) mod 5]).
 
-Result after rotation:
-  Vertex 8 (anchor):   39.0000N, 98.0000W
-  Face 2 center:       31.4323N, 102.4796W
+Resulting face centers:
+  Face  0    60.00S, 153.50W   Antarctica / New Zealand
+  Face  1     60.00N, 26.50E   Europe (Region 1)
+  Face  2     39.60N, 79.28W   North America (Region 2)
+  Face  3    23.76N, 104.10E   Asia (Region 3)
+  Face  4      54.80S, 1.18E   South Atlantic
+  Face  5      1.89S, 44.32E   Africa / Middle East (Region 1)
+  Face  6     23.76S, 75.90W   South America (Region 2)
+  Face  7     6.43S, 161.32E   Eastern Australia (Region 3)
+  Face  8    39.60S, 100.72E   Southern Indian Ocean
+  Face  9      6.43N, 18.68W   West Africa (Region 1)
+  Face 10     1.89N, 135.68W   Central Pacific (Region 2)
+  Face 11    54.80N, 178.82W   North Pacific (Region 3)
 ]]></artwork></figure>
-          <t>This rotation procedure is normative for the purpose of independently verifying or regenerating the FACE_CENTERS compile-time constants defined in Section 18.2, and for deriving face center coordinates for non-Earth celestial bodies using a different regulatory anchor (Section 5.5). Implementations MUST use the precomputed FACE_CENTERS constants in Section 18.2 for all runtime face assignment. The rotation itself is never performed at runtime.</t>
-        
-          <t>The in-plane orientation of Face 2&#39;s pentagon -- that is, the compass bearings at which its five vertices point when viewed from the face center -- is not a separate parameter and is not independently configurable. It is a direct geometric consequence of the icosahedron&#39;s structure once the anchor vertex position is fixed. Icosahedron vertex 8, which dual-maps to Face 2, has five neighbouring triangular faces arranged at azimuths determined by the icosahedron&#39;s fixed symmetry. After the three-step rotation places vertex 8 at 39N, 98W, those five neighbouring centroids land at the following fixed geographic positions, forming the pentagon boundary:</t>
-          <figure><artwork type="ascii-art"><![CDATA[
-V0: 67.92N, 116.36W  (bearing 351.5 NNW -- interior BC / Alaska border)
-V1: 40.23N,  57.13W  (bearing  63.5 ENE -- mid-North Atlantic)
-V2: 29.97N, 146.21W  (bearing 279.5 WNW -- North Pacific)
-V3:  2.59S, 118.75W  (bearing 207.5 SSW -- Central Pacific)
-V4:  2.59N,  77.25W  (bearing 135.5 SE  -- Colombia coast)
-
-Pentagon tilt: ~63.5 deg clockwise from point-up (no vertex due north).
-Pentagon circumradius: 37.38 degrees of arc from face center.
-]]></artwork></figure>
-          <t>This orientation places the entire conterminous United States, all of Canada south of approximately 62 degrees North, Mexico, Cuba, the Bahamas, and most of the Greater Antilles within Face 2, coinciding with the FCC, ISED, and IFT regulatory jurisdictions. Unavoidable boundary crossings include Alaska (crosses into Face 6), Hawaii (Face 9), and Puerto Rico and the US Virgin Islands (Face 4). These are the minimum achievable boundary exceptions for any dodecahedral face covering the North American regulatory zone. The FACE_PENTAGON_VERTS compile-time constants in Section 18.2 encode these five boundary vertex positions explicitly and are used at runtime during triangle-sector assignment (Section 6.2). No runtime computation of the icosahedron rotation is ever required.</t>
+          <t>Weighted by the population of the Natural Earth populated places dataset (version 5.1.2), face 1 holds 99.6 percent of the population of Europe (including European Russia and Turkey), face 2 holds 99.4 percent of that of the United States, Canada, and Mexico, and face 3 holds 93 percent of that of the Region 3 core. The parts of these zones on other faces are the Canary Islands, Madeira, and the Azores (face 9); Hawaii (face 10); most of Alaska and the far north-west of Canada (face 11); and, for Region 3, Iran (mostly face 1), northern Japan (face 11), Australia (faces 7 and 8), and New Zealand (face 0). Australia and New Zealand cannot share face 3: Sydney is 74 degrees from its center, twice a face's circumradius of 37.38 degrees. Puerto Rico and the US Virgin Islands are on face 2.</t>
+          <t>This rotation procedure is normative for the purpose of independently verifying or regenerating the FACE_CENTERS and FACE_PENTAGON_VERTS compile-time constants defined in Section 18.2, and for deriving face orientations for non-Earth celestial bodies (Section 5.5). Implementations MUST use the precomputed constants in Section 18.2 for all runtime face and triangle assignment. The rotation itself is never performed at runtime. The reference implementation generates its constants with tools/gen_constants.py.</t>
         </section>
         <section anchor="s-pentagonal-face-subdivision" numbered="true" toc="default">
           <name>Pentagonal Face Subdivision</name>
@@ -250,24 +264,24 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
               <name>Face Assignments and Regulatory Bodies</name>
               <thead><tr><th>Face</th><th>Geographic Region</th><th>ITU Designation</th><th>Principal Regulatory Bodies</th><th>ISM Bands</th></tr></thead>
               <tbody>
-                <tr><td>F0</td><td>Polar / Antarctic</td><td>Special</td><td>Antarctic Treaty — no standard ISM allocations</td><td>Coordination required</td></tr>
-                <tr><td>F1</td><td>Europe</td><td>ITU Region 1</td><td>ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE)</td><td>433 + 868 + 2.4 GHz</td></tr>
-                <tr><td>F2</td><td>N. America</td><td>ITU Region 2</td><td>FCC (US) · ISED (CA) · IFT (MX)</td><td>902–928 + 2.4 GHz</td></tr>
-                <tr><td>F3</td><td>E. Asia</td><td>ITU Region 3</td><td>MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)</td><td>2.4 GHz; JP 920–928 MHz; TW 902–928 MHz</td></tr>
-                <tr><td>F4</td><td>Africa West</td><td>ITU Region 1</td><td>ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F5</td><td>Africa East</td><td>ITU Region 1</td><td>ATU East · CCK (KE) · TCRA (TZ) · CA (ET)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F6</td><td>Russia / CAS</td><td>ITU Region 1</td><td>Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F7</td><td>Middle East</td><td>ITU Region 1</td><td>ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)</td><td>433 + 2.4 GHz</td></tr>
-                <tr><td>F8</td><td>S. America</td><td>ITU Region 2</td><td>Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</td><td>902–928 + 2.4 GHz; BR split-band</td></tr>
-                <tr><td>F9</td><td>Caribbean</td><td>ITU Region 2</td><td>NTRC cluster · FCC (PR/USVI) · BIPT (AW)</td><td>902–928 + 2.4 GHz</td></tr>
-                <tr><td>F10</td><td>S/SE Asia</td><td>ITU Region 3</td><td>WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)</td><td>2.4 GHz; some: 920–925 MHz</td></tr>
-                <tr><td>F11</td><td>Oceania</td><td>ITU Region 3</td><td>ACMA (AU) · RSM (NZ) · MCIT (PG)</td><td>915–928 MHz (AU/NZ) + 2.4 GHz</td></tr>
+                <tr><td>F0</td><td>Antarctica / New Zealand</td><td>Special (no Region)</td><td>Antarctic Treaty · RSM (NZ)</td><td>Antarctica: coordination required; NZ: 915–928 + 2.4 GHz</td></tr>
+                <tr><td>F1</td><td>Europe</td><td>ITU Region 1</td><td>ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE)</td><td>433 + 868 + 2.4 GHz; 433 + 2.4 GHz (RU, TR, Maghreb)</td></tr>
+                <tr><td>F2</td><td>North America</td><td>ITU Region 2</td><td>FCC (US) · ISED (CA) · IFT (MX)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F3</td><td>Asia</td><td>ITU Region 3</td><td>MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW) · WPC/DoT (IN)</td><td>2.4 GHz; JP 920–928 MHz; TW 902–928 MHz; some: 920–925 MHz (IN, SG, MY, ID)</td></tr>
+                <tr><td>F4</td><td>South Atlantic</td><td>None</td><td>ICASA (ZA)</td><td>433 + 2.4 GHz (ZA); Antarctica: coordination required</td></tr>
+                <tr><td>F5</td><td>Africa / Middle East</td><td>ITU Region 1</td><td>ATU East · ASMG · CCK (KE) · TCRA (TZ) · MCIT (SA) · TRA (AE)</td><td>433 + 2.4 GHz</td></tr>
+                <tr><td>F6</td><td>South America</td><td>ITU Region 2</td><td>Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</td><td>902–928 + 2.4 GHz; BR split-band</td></tr>
+                <tr><td>F7</td><td>Eastern Australia</td><td>ITU Region 3</td><td>ACMA (AU) · MCIT (PG)</td><td>915–928 MHz (AU) + 2.4 GHz</td></tr>
+                <tr><td>F8</td><td>Southern Indian Ocean</td><td>None</td><td>ACMA (AU)</td><td>915–928 MHz (AU) + 2.4 GHz; Antarctica: coordination required</td></tr>
+                <tr><td>F9</td><td>West Africa</td><td>ITU Region 1</td><td>ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td><td>433 + 2.4 GHz; north-east Brazil: 902–928 + 2.4 GHz</td></tr>
+                <tr><td>F10</td><td>Central Pacific</td><td>ITU Region 2</td><td>FCC (US: Hawaii)</td><td>902–928 + 2.4 GHz</td></tr>
+                <tr><td>F11</td><td>North Pacific</td><td>ITU Region 3</td><td>MIC (JP) · Roskomnadzor (RU) · FCC (US: Alaska)</td><td>JP 920–928 MHz; RU 433 + 2.4 GHz; AK 902–928 + 2.4 GHz</td></tr>
               </tbody>
             </table>
           </section>
           <section anchor="s-net-topology-and-construction" numbered="true" toc="default">
             <name>Net Topology and Construction</name>
-            <t>The net uses a topologically valid unfolding of the dodecahedron. All twelve faces remain connected through their shared fold edges; no face requires cutting and reattaching. It consists of two groups of six faces, face 0 with its five neighbours and face 1 with its five, joined across the edge between faces 8 and 2. The net topology was verified against the true 3D dodecahedron face adjacency graph: each pair of faces in the net that shares a fold edge is confirmed to share a geometric edge in the 3D dodecahedron. Construction proceeds by: (1) printing on US Letter stock, portrait, at 100% scale (do not fit to page); (2) cutting along all solid outer edges; (3) scoring all dashed fold lines firmly with a stylus; (4) folding each face upward along the scored lines; (5) applying adhesive to each grey GLUE tab; and (6) pressing each tab against the inner surface of the mating face. The last fold closes the final seam.</t>
+            <t>The net uses a topologically valid unfolding of the dodecahedron. All twelve faces remain connected through their shared fold edges; no face requires cutting and reattaching. It consists of two groups of six faces, face 0 with its five neighbours and face 1 with its five, joined across the edge between faces 6 and 2. The net topology was verified against the true 3D dodecahedron face adjacency graph: each pair of faces in the net that shares a fold edge is confirmed to share a geometric edge in the 3D dodecahedron. Construction proceeds by: (1) printing on US Letter stock, portrait, at 100% scale (do not fit to page); (2) cutting along all solid outer edges; (3) scoring all dashed fold lines firmly with a stylus; (4) folding each face upward along the scored lines; (5) applying adhesive to each grey GLUE tab; and (6) pressing each tab against the inner surface of the mating face. The last fold closes the final seam.</t>
             <t>The gnomonic projection used for each face maps great-circle arcs to straight line segments. Since the shared edge between any two adjacent dodecahedron faces lies on a great circle of the sphere, that edge projects as a straight line in both adjacent face projections. After alignment of the shared-edge endpoints, geographic features cross the fold edge continuously without discontinuity, distortion artifact, or gap.</t>
             <t>Figure 1 is sized for US Letter, portrait, at 100% scale, which gives each pentagon a circumradius of 25 mm (37.38 degrees of arc). Figure 2, the reference key, carries the ISM band legend, the face index table, the construction instructions and a band quick reference.</t>
           </section>
@@ -411,7 +425,7 @@ Children of triangle (apex, left, right):
           <t>An RSDGGS index is encoded as a CBOR byte string (major type 2) <xref target="RFC8949"/>. The byte string length provides the resolution information at no additional cost, satisfying design goal G5. The compact form is suitable for resource-constrained IoT messages where protocol overhead must be minimized.</t>
           <figure><artwork type="ascii-art"><![CDATA[
   0x41 0x02            -- 1-byte index, face 2 (ITU Region 2)
-  0x43 0x02 0x03 0xC1  -- 3-byte index, 39N 98W, country-level
+  0x43 0x02 0x21 0xF7  -- 3-byte index, 39N 98W, country-level
   0x48 ...             -- 8-byte index, maximum resolution
 ]]></artwork></figure>
         </section>
@@ -419,7 +433,7 @@ Children of triangle (apex, left, right):
           <name>Tagged Form</name>
           <t>Implementations requiring explicit type identification SHOULD use a CBOR tag to mark the byte string as an RSDGGS index. A private-use tag in the range 65536-15309735 SHOULD be used pending IANA assignment. The recommended placeholder tag value is 0xC24D52 (pending registration).</t>
           <figure><artwork type="ascii-art"><![CDATA[
-  0xC2 0x4D 0x52 0x43 0x02 0x03 0xC1
+  0xC2 0x4D 0x52 0x43 0x02 0x21 0xF7
   -- Tagged RSDGGS, 3-byte index
 ]]></artwork></figure>
         </section>
@@ -494,7 +508,7 @@ modulation-type = &(
           <t>The Resolution Sufficiency Level (RSL) for a given face and band specifies the minimum index length at which the regulatory rule set is unambiguous. Devices MUST acquire an index of at least RSL octets before performing a regulatory lookup for that band.</t>
           <table anchor="t-resolution-sufficiency-levels">
             <name>Resolution Sufficiency Levels</name>
-            <thead><tr><th>Band</th><th>Face 2 (N. Am.)</th><th>Face 1 (EU)</th><th>Faces 3/10/11 (Asia/Pac)</th><th>Faces 4/5 (Africa)</th><th>Faces 6/7 (RU/ME)</th></tr></thead>
+            <thead><tr><th>Band</th><th>Face 2 (N. Am.)</th><th>Face 1 (EU)</th><th>Faces 3/7/11 (Asia/Pac)</th><th>Faces 5/9 (Africa)</th><th>RU/ME (within faces 1, 3, 5, 11)</th></tr></thead>
             <tbody>
               <tr><td>433 MHz</td><td>RSL 1 (illegal)</td><td>RSL 2</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 2</td></tr>
               <tr><td>863 MHz</td><td>RSL 1 (illegal)</td><td>RSL 2</td><td>RSL 1 (illegal)</td><td>RSL 3</td><td>RSL 2</td></tr>
@@ -514,14 +528,12 @@ modulation-type = &(
             <tbody>
               <tr><td>Hong Kong (OFCA)</td><td>3</td><td>920-925 MHz, 100 mW vs. CN illegal</td><td>5</td></tr>
               <tr><td>Macau (DSRT)</td><td>3</td><td>ETSI framework in Region 3 face</td><td>5</td></tr>
-              <tr><td>Singapore (IMDA)</td><td>10</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
-              <tr><td>US Virgin Islands (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>5</td></tr>
-              <tr><td>British Virgin Islands</td><td>9</td><td>ICTA rules adjacent to USVI</td><td>5</td></tr>
-              <tr><td>French Guiana (ARCEP)</td><td>8</td><td>ETSI rules in Region 2-A face</td><td>4</td></tr>
-              <tr><td>Ceuta / Melilla (ETSI)</td><td>4</td><td>EU enclave in Africa West face</td><td>6</td></tr>
-              <tr><td>Puerto Rico (FCC)</td><td>9</td><td>FCC rules in Caribbean face</td><td>4</td></tr>
-              <tr><td>Guam / CNMI (FCC)</td><td>3</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
-              <tr><td>French Pacific (ARCEP)</td><td>11</td><td>ETSI rules in Oceania face</td><td>4</td></tr>
+              <tr><td>Singapore (IMDA)</td><td>3</td><td>920-925 MHz, 500 mW; ~50 km state</td><td>4-5</td></tr>
+                            <tr><td>British Virgin Islands</td><td>2</td><td>ICTA rules adjacent to USVI (FCC)</td><td>5</td></tr>
+              <tr><td>French Guiana (ARCEP)</td><td>9</td><td>ETSI rules in West Africa face, beside Brazil</td><td>4</td></tr>
+              <tr><td>Ceuta / Melilla (ETSI)</td><td>1</td><td>EU enclaves bordering Morocco</td><td>6</td></tr>
+                            <tr><td>Guam / CNMI (FCC)</td><td>7</td><td>FCC rules in Region 3 face</td><td>4</td></tr>
+              <tr><td>French Pacific (ARCEP)</td><td>7, 10</td><td>ETSI rules in Pacific faces</td><td>4</td></tr>
             </tbody>
           </table>
         </section>
@@ -1186,9 +1198,9 @@ Enhanced Beacon Frame (abbreviated):
       ... capability fields ...
     Sub-IE: ID = 0x9A (RSDGGS Location)
       Length = 0x03  (3 octets, country-level RSL)
-      Cell   = 0x02 0x03 0xC1
+      Cell   = 0x02 0x21 0xF7
                ^^^^             face 2 = ITU Region 2 / N. America
-                    ^^^^ ^^^^   triangle 0, 6 levels: ~65 km cell
+                    ^^^^ ^^^^   triangle 2, 6 levels: ~65 km cell
   MFR
 ]]></artwork></figure>
         </section>
@@ -1944,37 +1956,138 @@ type Vec3 = [f64; 3];
         </section>
         <section anchor="s-compile-time-constants" numbered="true" toc="default">
           <name>Compile-Time Constants</name>
-          <t>All twelve face center unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in Section 4.3. Face 2 (RSDGGS index 0x02) is centered at (31.43N, 102.48W), with icosahedron vertex 8 (its dual vertex) placed at the regulatory anchor (39N, 98W). These constants are reproduced here at full f64 precision and MUST be used by all conforming implementations. The rotation algorithm from Section 4.3 is not invoked at runtime.</t>
+          <t>The twelve face center unit vectors and the sixty pentagon vertex unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in Section 4.3: face 1 centered at (60.0N, 26.5E), with face 2's center at bearing 304.0 degrees from it. These constants are reproduced here to 15 decimal places and MUST be used by all conforming implementations. The rotation algorithm from Section 4.3 is not invoked at runtime.</t>
           <figure><artwork type="ascii-art"><![CDATA[
 /// Dodecahedron face center unit vectors, in RSDGGS face index order.
-/// Face 2 (ITU Region 2, N. America) is centered near 31.4°N, 102.5°W.
-/// Derived from the unit icosahedron dual with rotation applied to
-/// minimize boundary cuts across the N. American ISM regulatory zone.
+/// The two low-order bits of a face index give its ITU Region
+/// (1, 2, 3), or 0 for none (Section 4.2).
 const FACE_CENTERS: [Vec3; 12] = [
-    // face  0: Antarctic / Polar (~65.6°S, 172°E)
-    [-0.409634135329003,  0.057570323301730, -0.910431509257118],
-    // face  1: ITU Region 1 / Europe core (~65.6°N, 8°W)
-    [ 0.409634135329003, -0.057570323301730,  0.910431509257118],
-    // face  2: ITU Region 2 / N. America (~31.4°N, 102.5°W) ← anchor
-    [-0.184381921838147, -0.833097451659977,  0.521490117774944],
-    // face  3: ITU Region 3 / E. Asia core (~31.4°N, 86.5°E)
-    [ 0.052393499826933,  0.851647214660484,  0.521490117774944],
-    // face  4: Region 1-A / Africa West (~6.2°N, 39.9°W)
-    [ 0.762409412243109, -0.638047427930384,  0.107830273274894],
-    // face  5: Region 1-B / Africa East (~6.2°N, 23.9°E)
-    [ 0.908744670532716,  0.403182038220761,  0.107830273274894],
-    // face  6: Region 1-C / Russia-CAS (~51.0°N, 172°E)
-    [-0.623195888264612,  0.087584470319807,  0.777145961456971],
-    // face  7: Region 1-D / Middle East (~31.4°S, 77.5°E)
-    [ 0.184381921838147,  0.833097451659977, -0.521490117774944],
-    // face  8: Region 2-A / S. America (~31.4°S, 93.5°W)
-    [-0.052393499826933, -0.851647214660484, -0.521490117774944],
-    // face  9: Region 2-B / Caribbean (~6.2°S, 156.1°W)
-    [-0.908744670532716, -0.403182038220761, -0.107830273274894],
-    // face 10: Region 3-A / S-SE Asia (~6.2°S, 140.1°E)
-    [-0.762409412243109,  0.638047427930384, -0.107830273274894],
-    // face 11: Region 3-B / Oceania (~51.0°S, 8°W)
-    [ 0.623195888264612, -0.087584470319807, -0.777145961456971],
+    // face  0: Antarctica / New Zealand (60.00S, 153.50W)
+    [-0.447467180801013, -0.223098906554904, -0.866025403784439],
+    // face  1: Europe (Region 1) (60.00N, 26.50E)
+    [ 0.447467180801013,  0.223098906554904,  0.866025403784439],
+    // face  2: North America (Region 2) (39.60N, 79.28W)
+    [ 0.143335330773340, -0.757103386787452,  0.637377003559956],
+    // face  3: Asia (Region 3) (23.76N, 104.10E)
+    [-0.222927725022592,  0.887676795997717,  0.402905864022206],
+    // face  4: South Atlantic (54.80S, 1.18E)
+    [ 0.576250379942283,  0.011826692425747, -0.817187633877705],
+    // face  5: Africa / Middle East (Region 1) (1.89S, 44.32E)
+    [ 0.715023395428751,  0.698323830480811, -0.032944980985703],
+    // face  6: South America (Region 2) (23.76S, 75.90W)
+    [ 0.222927725022592, -0.887676795997717, -0.402905864022206],
+    // face  7: Eastern Australia (Region 3) (6.43S, 161.32E)
+    [-0.941386412734036,  0.318206226502688, -0.111966152629545],
+    // face  8: Southern Indian Ocean (39.60S, 100.72E)
+    [-0.143335330773340,  0.757103386787452, -0.637377003559956],
+    // face  9: West Africa (Region 1) (6.43N, 18.68W)
+    [ 0.941386412734036, -0.318206226502688,  0.111966152629545],
+    // face 10: Central Pacific (Region 2) (1.89N, 135.68W)
+    [-0.715023395428751, -0.698323830480811,  0.032944980985703],
+    // face 11: North Pacific (Region 3) (54.80N, 178.82W)
+    [-0.576250379942283, -0.011826692425747,  0.817187633877705],
+];
+
+/// Pentagon vertices per face, counter-clockwise as seen from outside
+/// the sphere, starting at the smallest bearing from the face center.
+/// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
+const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
+    // face  0
+    [
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+    ],
+    // face  1
+    [
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+    ],
+    // face  2
+    [
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+    ],
+    // face  3
+    [
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+    ],
+    // face  4
+    [
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+    ],
+    // face  5
+    [
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+    ],
+    // face  6
+    [
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+    ],
+    // face  7
+    [
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+    ],
+    // face  8
+    [
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+    ],
+    // face  9
+    [
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+    ],
+    // face 10
+    [
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+    ],
+    // face 11
+    [
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+    ],
 ];
 
 /// Subdivision child indices (2 bits each).
@@ -2345,30 +2458,28 @@ let cell = encode(sf, 4);
 
 // Expected output:
 //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x4E   sector 4 [7:4]=0100; sub_bits[0]=3 [3:2]=11;
-//                          sub_bits[1]=2 [1:0]=10
-//   cell.bytes[2] = 0xCF   sub_bits[2..6]: 0b11 0b00 0b11 0b11
-//   cell.bytes[3] = 0x4D   sub_bits[6..10]: 0b01 0b00 0b11 0b01
+//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010; sub_bits[0]=1 [3:2]=01;
+//                          sub_bits[1]=1 [1:0]=01
+//   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
+//   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
 //   cell.len      = 4
 
 assert_eq!(cell.bytes[0], 0x02);
-assert_eq!(cell.bytes[1], 0x4E);
-assert_eq!(cell.bytes[2], 0xCF);
-assert_eq!(cell.bytes[3], 0x4D);
+assert_eq!(cell.bytes[1], 0x25);
+assert_eq!(cell.bytes[2], 0xE0);
+assert_eq!(cell.bytes[3], 0xC3);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
 //   London    (51.51°N,   0.13°W) → face 1  (ITU Region 1, Europe)
-//   Tokyo  (35.68°N, 139.69°E) → face 6 (Region 1-C / Russia-CAS)
-//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, E. Asia)
-//   São Paulo (23.55°S,  46.63°W) → face 4  (Region 1-A / Africa West)
+//   Tokyo     (35.68°N, 139.69°E) → face 3  (ITU Region 3, Asia)
+//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, Asia)
+//   São Paulo (23.55°S,  46.63°W) → face 6  (ITU Region 2, S. America)
+//   Sydney    (33.87°S, 151.21°E) → face 7  (Region 3, E. Australia)
 //
-// Note: Tokyo → face 6 (not face 3) due to dodecahedron
-// face geometry places the face-3 center at 31.4°N, 86.5°E — closer to
-// South Asia — while face-6 center is at 51.0°N, 172°E, whose angular
-// proximity to Tokyo is greater than face-3 despite the longitude
-// geometry. This is correct dodecahedral behavior, not an error.
-// The regulatory DB maps face 6 to the correct East Asia rule set.
+// Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
+// is on face 11 (North Pacific). Both faces carry Region 3 in their
+// low two bits (3 & 0x3 = 11 & 0x3 = 3).
 
 // 1-byte truncation (privacy / regulatory coarse lookup):
 let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
@@ -2376,7 +2487,7 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 // Sufficient to determine that 902-928 MHz is legal at this location.
 ]]></artwork></figure>
           <t>The worked example demonstrates the encode path from floating-point coordinate to structured byte sequence. The face-0x02 byte is the ITU Region 2 determination made at single-byte resolution. Truncating to 1 byte is sufficient for ISM band availability determination anywhere in North America, as specified in Section 9 (RSL for 902 MHz, Face 2 = 1 byte).</t>
-          <t>The note on Tokyo illustrates that the dodecahedral face assignment is driven by geometry, not by geographic intuition. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, not a direct encoding of administrative boundaries. Face assignments may be counterintuitive for individual cities near face boundaries, but every face maps unambiguously to a defined set of regulatory bodies in the database.</t>
+          <t>The note on Tokyo illustrates that face assignment is driven by geometry: a jurisdiction near a face boundary can span two faces. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, and its two low-order bits give the ITU Region of the face's principal population, not an encoding of administrative boundaries.</t>
         </section>
       </section>
       <section anchor="s-security-considerations" numbered="true" toc="default">

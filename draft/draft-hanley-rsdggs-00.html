@@ -1237,7 +1237,7 @@ li > p:last-of-type:only-child {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Hanley</td>
-<td class="center">Expires 22 April 2027</td>
+<td class="center">Expires 23 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1250,12 +1250,12 @@ li > p:last-of-type:only-child {
 <dd class="internet-draft">draft-hanley-rsdggs-00</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-19" class="published">19 October 2026</time>
+<time datetime="2026-10-20" class="published">20 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-22">22 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-23">23 April 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1292,7 +1292,7 @@ li > p:last-of-type:only-child {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1973,15 +1973,15 @@ Dodecahedron — 12 pentagonal faces:
   → Region 2 fits within one pentagonal face with
     ~17,300,000 km² margin — accommodates coastal
     and island territories without boundary cuts
-  → 3 faces assigned to ITU Regions (face indices 1, 2, 3)
-  → 9 faces available for sub-region differentiation
-    at level 0: correct cardinality for the
-    10 major regulatory blocs defined in Section 4.2
+  → 3 faces centred on the most populous zone of
+    each ITU Region (face indices 1, 2, 3)
+  → 9 further faces; the two low-order bits of every
+    face index give its ITU Region (Section 4.2)
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a></figcaption></figure>
 <p id="section-4.1.1-4">The icosahedron's 20 faces would require fragmenting each ITU Region across multiple faces at the coarsest level, destroying the direct face-to-region correspondence that is a primary design goal (G1) of RSDGGS. The dodecahedron's 12 faces provide the minimum face count that satisfies the ITU Region alignment constraint while leaving sufficient faces for sub-region differentiation.<a href="#section-4.1.1-4" class="pilcrow">¶</a></p>
-<p id="section-4.1.1-5">The 9 extension faces (4 through 11) of the dodecahedron correspond directly to the major regulatory sub-blocs within the three ITU Regions: four for Region 1 (Europe core, Africa West, Africa East, Russia/Central Asia, Middle East), two for Region 2 (South America, Caribbean), and two for Region 3 (South/Southeast Asia, Oceania). This correspondence is exact and natural for the dodecahedron face count; it would be over-specified with 17 icosahedron extension faces.<a href="#section-4.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-5">The nine extension faces (0 and 4 through 11) are numbered so that the two low-order bits of every face index give the ITU Region of the face's principal population: faces 5 and 9 (Region 1: Africa and the Middle East, West Africa), faces 6 and 10 (Region 2: South America, the Central Pacific), and faces 7 and 11 (Region 3: Eastern Australia, the North Pacific). Faces 0, 4, and 8 cover Antarctica and the southern oceans and carry no Region. Section 4.2 lists the assignments. Twelve faces give each Region exactly three face indices; with the icosahedron's 20 faces the same scheme would leave most indices covering open ocean.<a href="#section-4.1.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-map-projection-distortion-at-face-boundaries">
@@ -2047,7 +2047,7 @@ Dodecahedron pentagonal face:
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">Extension faces for sub-regions</td>
                 <td class="text-left" rowspan="1" colspan="1">17 (over-partitioned)</td>
-                <td class="text-left" rowspan="1" colspan="1">9 (exact fit for regulatory blocs)</td>
+                <td class="text-left" rowspan="1" colspan="1">9 (two more per Region, three with none)</td>
                 <td class="text-left" rowspan="1" colspan="1">Dodecahedron</td>
               </tr>
               <tr>
@@ -2103,7 +2103,7 @@ Dodecahedron pentagonal face:
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Face</th>
-              <th class="text-left" rowspan="1" colspan="1">ITU Parent</th>
+              <th class="text-left" rowspan="1" colspan="1">ITU Region (face &amp; 0x3)</th>
               <th class="text-left" rowspan="1" colspan="1">Primary Name</th>
               <th class="text-left" rowspan="1" colspan="1">Anchor Authority</th>
               <th class="text-left" rowspan="1" colspan="1">Primary Bodies</th>
@@ -2113,9 +2113,9 @@ Dodecahedron pentagonal face:
             <tr>
               <td class="text-left" rowspan="1" colspan="1">0</td>
               <td class="text-left" rowspan="1" colspan="1">—</td>
-              <td class="text-left" rowspan="1" colspan="1">Polar / Antarctic</td>
+              <td class="text-left" rowspan="1" colspan="1">Antarctica / New Zealand</td>
               <td class="text-left" rowspan="1" colspan="1">ITU Special Zone</td>
-              <td class="text-left" rowspan="1" colspan="1">Antarctic Treaty, ITU Art. 48</td>
+              <td class="text-left" rowspan="1" colspan="1">Antarctic Treaty, ITU Art. 48; RSM (NZ)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">1</td>
@@ -2127,78 +2127,78 @@ Dodecahedron pentagonal face:
             <tr>
               <td class="text-left" rowspan="1" colspan="1">2</td>
               <td class="text-left" rowspan="1" colspan="1">R2</td>
-              <td class="text-left" rowspan="1" colspan="1">ITU Region 2 — N. America</td>
+              <td class="text-left" rowspan="1" colspan="1">ITU Region 2 — North America</td>
               <td class="text-left" rowspan="1" colspan="1">FCC / ISED / IFT</td>
               <td class="text-left" rowspan="1" colspan="1">FCC (US), ISED (CA), IFT (MX)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">3</td>
               <td class="text-left" rowspan="1" colspan="1">R3</td>
-              <td class="text-left" rowspan="1" colspan="1">ITU Region 3 — E. Asia</td>
+              <td class="text-left" rowspan="1" colspan="1">ITU Region 3 — Asia</td>
               <td class="text-left" rowspan="1" colspan="1">MIC / MIIT / KCC</td>
-              <td class="text-left" rowspan="1" colspan="1">MIC (JP), MIIT (CN), KCC (KR)</td>
+              <td class="text-left" rowspan="1" colspan="1">MIC (JP), MIIT (CN), KCC (KR), WPC/DoT (IN)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">4</td>
-              <td class="text-left" rowspan="1" colspan="1">R1</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 1-A — Africa West</td>
-              <td class="text-left" rowspan="1" colspan="1">ATU West</td>
-              <td class="text-left" rowspan="1" colspan="1">ARTP, ARCEP (SN), ATU west</td>
+              <td class="text-left" rowspan="1" colspan="1">—</td>
+              <td class="text-left" rowspan="1" colspan="1">South Atlantic</td>
+              <td class="text-left" rowspan="1" colspan="1">ICASA</td>
+              <td class="text-left" rowspan="1" colspan="1">ICASA (ZA)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">5</td>
               <td class="text-left" rowspan="1" colspan="1">R1</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 1-B — Africa East</td>
-              <td class="text-left" rowspan="1" colspan="1">ATU East</td>
-              <td class="text-left" rowspan="1" colspan="1">CA (ET), CCK (KE), TCRA (TZ)</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 1 — Africa / Middle East</td>
+              <td class="text-left" rowspan="1" colspan="1">ATU East / ASMG</td>
+              <td class="text-left" rowspan="1" colspan="1">CA (ET), CCK (KE), TCRA (TZ), MCIT (SA), TRA (AE)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">6</td>
-              <td class="text-left" rowspan="1" colspan="1">R1</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 1-C — Russia / CAS</td>
-              <td class="text-left" rowspan="1" colspan="1">Roskomnadzor / RRT</td>
-              <td class="text-left" rowspan="1" colspan="1">Roskomnadzor (RU), RRT (KZ)</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">7</td>
-              <td class="text-left" rowspan="1" colspan="1">R1</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 1-D — Middle East</td>
-              <td class="text-left" rowspan="1" colspan="1">ASMG</td>
-              <td class="text-left" rowspan="1" colspan="1">MCIT (SA), TRA (AE), NTRA (EG)</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">8</td>
               <td class="text-left" rowspan="1" colspan="1">R2</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 2-A — S. America</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 2 — South America</td>
               <td class="text-left" rowspan="1" colspan="1">ANATEL / ENACOM</td>
               <td class="text-left" rowspan="1" colspan="1">Anatel (BR), ENACOM (AR)</td>
             </tr>
             <tr>
+              <td class="text-left" rowspan="1" colspan="1">7</td>
+              <td class="text-left" rowspan="1" colspan="1">R3</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 3 — Eastern Australia</td>
+              <td class="text-left" rowspan="1" colspan="1">ACMA</td>
+              <td class="text-left" rowspan="1" colspan="1">ACMA (AU), SPC</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">8</td>
+              <td class="text-left" rowspan="1" colspan="1">—</td>
+              <td class="text-left" rowspan="1" colspan="1">Southern Indian Ocean</td>
+              <td class="text-left" rowspan="1" colspan="1">ACMA</td>
+              <td class="text-left" rowspan="1" colspan="1">ACMA (AU: Melbourne, Adelaide, Perth)</td>
+            </tr>
+            <tr>
               <td class="text-left" rowspan="1" colspan="1">9</td>
-              <td class="text-left" rowspan="1" colspan="1">R2</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 2-B — Caribbean</td>
-              <td class="text-left" rowspan="1" colspan="1">NTRC Cluster</td>
-              <td class="text-left" rowspan="1" colspan="1">NTRC, Caribbean authorities</td>
+              <td class="text-left" rowspan="1" colspan="1">R1</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 1 — West Africa</td>
+              <td class="text-left" rowspan="1" colspan="1">ATU West</td>
+              <td class="text-left" rowspan="1" colspan="1">ARTP, ARCEP (SN), NCC (NG), ATU west</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">10</td>
-              <td class="text-left" rowspan="1" colspan="1">R3</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 3-A — S/SE Asia</td>
-              <td class="text-left" rowspan="1" colspan="1">WPC / MCMC</td>
-              <td class="text-left" rowspan="1" colspan="1">DoT/WPC (IN), MCMC (MY)</td>
+              <td class="text-left" rowspan="1" colspan="1">R2</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 2 — Central Pacific</td>
+              <td class="text-left" rowspan="1" colspan="1">FCC</td>
+              <td class="text-left" rowspan="1" colspan="1">FCC (US: Hawaii)</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">11</td>
               <td class="text-left" rowspan="1" colspan="1">R3</td>
-              <td class="text-left" rowspan="1" colspan="1">Region 3-B — Oceania</td>
-              <td class="text-left" rowspan="1" colspan="1">ACMA / RSM</td>
-              <td class="text-left" rowspan="1" colspan="1">ACMA (AU), RSM (NZ), SPC</td>
+              <td class="text-left" rowspan="1" colspan="1">Region 3 — North Pacific</td>
+              <td class="text-left" rowspan="1" colspan="1">MIC / Roskomnadzor</td>
+              <td class="text-left" rowspan="1" colspan="1">MIC (JP), Roskomnadzor (RU), FCC (US: Alaska)</td>
             </tr>
           </tbody>
         </table>
 </div>
-<p id="section-4.2-3">Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership. Extension faces 4 through 11 subdivide the large ITU regions into coherent regulatory blocs whose parent region is encoded in the regulatory database rather than the index itself.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">Face 0 is reserved for polar and Antarctic zones, which are subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">Face indices 1, 2, and 3 carry the ITU Region number directly, establishing a direct correspondence between a single-octet RSDGGS index and ITU Region membership for the most populous zone of each Region. Every other face follows the same rule through its two low-order bits: the ITU Region at single-octet resolution is face &amp; 0x3 (equivalently, Octet 0 &amp; 0x03), where 0 means no Region. The rule gives the Region of the face's principal population; a face may also contain land of another Region (for example, north-east Brazil on face 9, Iran on face 1, and Alaska on face 11), and there the regulatory database, not the face index, determines the Region and the rules.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">Face 0 holds the largest part of Antarctica, which is subject to ITU Article 48 special coordination procedures rather than national regulatory frameworks; faces 4 and 8 hold most of the rest. Face 0 also contains New Zealand, whose rules come from the regulatory database like those of any other jurisdiction.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-face-center-orientation">
@@ -2207,42 +2207,53 @@ Dodecahedron pentagonal face:
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-face-center-orientation" class="section-name selfRef">Face Center Orientation</a>
         </h3>
 <p id="section-4.3-1">The dodecahedron is constructed as the dual of the unit icosahedron. The twelve face centers of the dodecahedron correspond to the twelve vertices of the icosahedron after normalization to the unit sphere. The icosahedron is defined by the golden ratio phi = (1 + sqrt(5)) / 2, with twelve vertices at the normalized forms of (0, +-1, +-phi), (+-1, +-phi, 0), and (+-phi, 0, +-1).<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.3-2">A three-step rotation is applied to the entire icosahedron to orient the dodecahedron for ITU regulatory alignment. The rotation places icosahedron vertex 8 -- the normalized form of [phi, 0, 1] -- at geographic coordinates (39 degrees North, 98 degrees West), the approximate centroid of the contiguous United States. As a consequence, RSDGGS Face 2, whose center is the centroid of the five icosahedron triangles surrounding vertex 8, lands at approximately (31.43 degrees North, 102.48 degrees West). This orientation minimizes dodecahedron edge intersections across the harmonized FCC / ISED / IFT regulatory zone of North America, satisfying design goal G2.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
-<p id="section-4.3-3">In the default (unrotated) icosahedron, vertex 8 at [phi, 0, 1] normalizes to latitude arctan(1/phi) = 31.7175 degrees North, longitude 0 degrees (on the prime meridian). The orientation rotation proceeds in three steps applied to every icosahedron vertex:<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">The orientation places the three most populous regulatory zones each on a single face: Europe on face 1, North America on face 2, and the core of ITU Region 3 (China, India, Japan, Korea, and their neighbours) on face 3. It is fixed by two parameters, the position of the face 1 center and the bearing from it to the face 2 center:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 <figure id="figure-3">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-4.3-4.1">
+          <div class="alignLeft art-ascii-art art-text artwork" id="section-4.3-3.1">
 <pre>
-Step 1: rot_z(0)           Vertex 8 is already at lon = 0; no-op.
-Step 2: rot_x(+7.2825 deg) Raise vertex 8 from 31.7175N to 39.0N.
-                            Angle = 39.0 - arctan(1/phi) = 7.2825 deg.
-Step 3: rot_z(-98.0 deg)   Place vertex 8 at 98.0W longitude.
+Face 1 center:  60.0000N, 26.5000E
+Face 2 center:  initial bearing 304.0000 deg (true) from the
+                face 1 center, at the angular distance between
+                adjacent face centers, arctan(2) = 63.4349 deg
 
-rot_x(a): [x, y*cos(a) - z*sin(a), y*sin(a) + z*cos(a)]
-rot_z(a): [x*cos(a) - y*sin(a), x*sin(a) + y*cos(a), z]
+1. Take any icosahedron vertex A and an adjacent vertex B,
+   so that dot(A, B) = 1/sqrt(5).
+2. Rotate the icosahedron by the rotation that maps A to the
+   face 1 center and B to the face 2 center: the rotation
+   taking the orthonormal frame (A, B', A x B') to (F1, F2',
+   F1 x F2'), where B' and F2' are B and F2 made orthogonal
+   to A and F1 and normalized. The icosahedral rotation group
+   acts simply transitively on ordered pairs of adjacent
+   vertices, so the choice of A and B does not matter.
+3. The rotated vertices are the twelve face centers. Number
+   them as below (each face is the one whose center is nearest
+   the listed position).
+4. The dodecahedron's vertices are the normalized centroids of
+   the twenty rotated icosahedron triangles. A face's five
+   vertices are those nearest its center; they are ordered
+   counter-clockwise as seen from outside the sphere, starting
+   with the vertex at the smallest bearing (clockwise from
+   true north) from the face center. Triangle k of a face is
+   (center, v[k], v[(k+1) mod 5]).
 
-Result after rotation:
-  Vertex 8 (anchor):   39.0000N, 98.0000W
-  Face 2 center:       31.4323N, 102.4796W
+Resulting face centers:
+  Face  0    60.00S, 153.50W   Antarctica / New Zealand
+  Face  1     60.00N, 26.50E   Europe (Region 1)
+  Face  2     39.60N, 79.28W   North America (Region 2)
+  Face  3    23.76N, 104.10E   Asia (Region 3)
+  Face  4      54.80S, 1.18E   South Atlantic
+  Face  5      1.89S, 44.32E   Africa / Middle East (Region 1)
+  Face  6     23.76S, 75.90W   South America (Region 2)
+  Face  7     6.43S, 161.32E   Eastern Australia (Region 3)
+  Face  8    39.60S, 100.72E   Southern Indian Ocean
+  Face  9      6.43N, 18.68W   West Africa (Region 1)
+  Face 10     1.89N, 135.68W   Central Pacific (Region 2)
+  Face 11    54.80N, 178.82W   North Pacific (Region 3)
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a></figcaption></figure>
-<p id="section-4.3-5">This rotation procedure is normative for the purpose of independently verifying or regenerating the FACE_CENTERS compile-time constants defined in Section 18.2, and for deriving face center coordinates for non-Earth celestial bodies using a different regulatory anchor (Section 5.5). Implementations MUST use the precomputed FACE_CENTERS constants in Section 18.2 for all runtime face assignment. The rotation itself is never performed at runtime.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
-<p id="section-4.3-6">The in-plane orientation of Face 2's pentagon -- that is, the compass bearings at which its five vertices point when viewed from the face center -- is not a separate parameter and is not independently configurable. It is a direct geometric consequence of the icosahedron's structure once the anchor vertex position is fixed. Icosahedron vertex 8, which dual-maps to Face 2, has five neighbouring triangular faces arranged at azimuths determined by the icosahedron's fixed symmetry. After the three-step rotation places vertex 8 at 39N, 98W, those five neighbouring centroids land at the following fixed geographic positions, forming the pentagon boundary:<a href="#section-4.3-6" class="pilcrow">¶</a></p>
-<figure id="figure-4">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-4.3-7.1">
-<pre>
-V0: 67.92N, 116.36W  (bearing 351.5 NNW -- interior BC / Alaska border)
-V1: 40.23N,  57.13W  (bearing  63.5 ENE -- mid-North Atlantic)
-V2: 29.97N, 146.21W  (bearing 279.5 WNW -- North Pacific)
-V3:  2.59S, 118.75W  (bearing 207.5 SSW -- Central Pacific)
-V4:  2.59N,  77.25W  (bearing 135.5 SE  -- Colombia coast)
-
-Pentagon tilt: ~63.5 deg clockwise from point-up (no vertex due north).
-Pentagon circumradius: 37.38 degrees of arc from face center.
-</pre>
-</div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a></figcaption></figure>
-<p id="section-4.3-8">This orientation places the entire conterminous United States, all of Canada south of approximately 62 degrees North, Mexico, Cuba, the Bahamas, and most of the Greater Antilles within Face 2, coinciding with the FCC, ISED, and IFT regulatory jurisdictions. Unavoidable boundary crossings include Alaska (crosses into Face 6), Hawaii (Face 9), and Puerto Rico and the US Virgin Islands (Face 4). These are the minimum achievable boundary exceptions for any dodecahedral face covering the North American regulatory zone. The FACE_PENTAGON_VERTS compile-time constants in Section 18.2 encode these five boundary vertex positions explicitly and are used at runtime during triangle-sector assignment (Section 6.2). No runtime computation of the icosahedron rotation is ever required.<a href="#section-4.3-8" class="pilcrow">¶</a></p>
+<p id="section-4.3-4">Weighted by the population of the Natural Earth populated places dataset (version 5.1.2), face 1 holds 99.6 percent of the population of Europe (including European Russia and Turkey), face 2 holds 99.4 percent of that of the United States, Canada, and Mexico, and face 3 holds 93 percent of that of the Region 3 core. The parts of these zones on other faces are the Canary Islands, Madeira, and the Azores (face 9); Hawaii (face 10); most of Alaska and the far north-west of Canada (face 11); and, for Region 3, Iran (mostly face 1), northern Japan (face 11), Australia (faces 7 and 8), and New Zealand (face 0). Australia and New Zealand cannot share face 3: Sydney is 74 degrees from its center, twice a face's circumradius of 37.38 degrees. Puerto Rico and the US Virgin Islands are on face 2.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<p id="section-4.3-5">This rotation procedure is normative for the purpose of independently verifying or regenerating the FACE_CENTERS and FACE_PENTAGON_VERTS compile-time constants defined in Section 18.2, and for deriving face orientations for non-Earth celestial bodies (Section 5.5). Implementations MUST use the precomputed constants in Section 18.2 for all runtime face and triangle assignment. The rotation itself is never performed at runtime. The reference implementation generates its constants with tools/gen_constants.py.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-pentagonal-face-subdivision">
@@ -2260,7 +2271,7 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
 <a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-isosceles-triangle-hierarch" class="section-name selfRef">Isosceles Triangle Hierarchy</a>
         </h3>
 <p id="section-4.5-1">The isosceles triangles produced by pentagonal subdivision are golden gnomon triangles: the ratio of their leg length to base length equals the golden ratio phi. These triangles admit a natural 4-fold recursive subdivision by connecting the midpoints of all three sides, producing four congruent child triangles.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
-<figure id="figure-5">
+<figure id="figure-4">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-4.5-2.1">
 <pre>
          apex
@@ -2275,7 +2286,7 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
   /--------3--------\
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a></figcaption></figure>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a></figcaption></figure>
 <p id="section-4.5-3">Child 3, the central inverted triangle, has inverted orientation relative to its parent. This inversion is intrinsic to 4-fold triangle subdivision and must be tracked for correct neighbor computation. Each child triangle is geometrically similar to the parent, scaled by one-half in linear dimension and one-quarter in area.<a href="#section-4.5-3" class="pilcrow">¶</a></p>
 <p id="section-4.5-4">The 2-bit child index values are defined as follows: 00 denotes the apex child, 01 denotes the left base child, 10 denotes the right base child, and 11 denotes the central inverted child.<a href="#section-4.5-4" class="pilcrow">¶</a></p>
 </section>
@@ -2374,87 +2385,87 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
             <tbody>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F0</td>
-                <td class="text-left" rowspan="1" colspan="1">Polar / Antarctic</td>
-                <td class="text-left" rowspan="1" colspan="1">Special</td>
-                <td class="text-left" rowspan="1" colspan="1">Antarctic Treaty — no standard ISM allocations</td>
-                <td class="text-left" rowspan="1" colspan="1">Coordination required</td>
+                <td class="text-left" rowspan="1" colspan="1">Antarctica / New Zealand</td>
+                <td class="text-left" rowspan="1" colspan="1">Special (no Region)</td>
+                <td class="text-left" rowspan="1" colspan="1">Antarctic Treaty · RSM (NZ)</td>
+                <td class="text-left" rowspan="1" colspan="1">Antarctica: coordination required; NZ: 915–928 + 2.4 GHz</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F1</td>
                 <td class="text-left" rowspan="1" colspan="1">Europe</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
                 <td class="text-left" rowspan="1" colspan="1">ETSI · Ofcom (UK) · ARCEP (FR) · BNetzA (DE)</td>
-                <td class="text-left" rowspan="1" colspan="1">433 + 868 + 2.4 GHz</td>
+                <td class="text-left" rowspan="1" colspan="1">433 + 868 + 2.4 GHz; 433 + 2.4 GHz (RU, TR, Maghreb)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F2</td>
-                <td class="text-left" rowspan="1" colspan="1">N. America</td>
+                <td class="text-left" rowspan="1" colspan="1">North America</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 2</td>
                 <td class="text-left" rowspan="1" colspan="1">FCC (US) · ISED (CA) · IFT (MX)</td>
                 <td class="text-left" rowspan="1" colspan="1">902–928 + 2.4 GHz</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F3</td>
-                <td class="text-left" rowspan="1" colspan="1">E. Asia</td>
+                <td class="text-left" rowspan="1" colspan="1">Asia</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 3</td>
-                <td class="text-left" rowspan="1" colspan="1">MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)</td>
-                <td class="text-left" rowspan="1" colspan="1">2.4 GHz; JP 920–928 MHz; TW 902–928 MHz</td>
+                <td class="text-left" rowspan="1" colspan="1">MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW) · WPC/DoT (IN)</td>
+                <td class="text-left" rowspan="1" colspan="1">2.4 GHz; JP 920–928 MHz; TW 902–928 MHz; some: 920–925 MHz (IN, SG, MY, ID)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F4</td>
-                <td class="text-left" rowspan="1" colspan="1">Africa West</td>
-                <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
-                <td class="text-left" rowspan="1" colspan="1">ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td>
-                <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz</td>
+                <td class="text-left" rowspan="1" colspan="1">South Atlantic</td>
+                <td class="text-left" rowspan="1" colspan="1">None</td>
+                <td class="text-left" rowspan="1" colspan="1">ICASA (ZA)</td>
+                <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz (ZA); Antarctica: coordination required</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F5</td>
-                <td class="text-left" rowspan="1" colspan="1">Africa East</td>
+                <td class="text-left" rowspan="1" colspan="1">Africa / Middle East</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
-                <td class="text-left" rowspan="1" colspan="1">ATU East · CCK (KE) · TCRA (TZ) · CA (ET)</td>
+                <td class="text-left" rowspan="1" colspan="1">ATU East · ASMG · CCK (KE) · TCRA (TZ) · MCIT (SA) · TRA (AE)</td>
                 <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F6</td>
-                <td class="text-left" rowspan="1" colspan="1">Russia / CAS</td>
-                <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
-                <td class="text-left" rowspan="1" colspan="1">Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)</td>
-                <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz</td>
-              </tr>
-              <tr>
-                <td class="text-left" rowspan="1" colspan="1">F7</td>
-                <td class="text-left" rowspan="1" colspan="1">Middle East</td>
-                <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
-                <td class="text-left" rowspan="1" colspan="1">ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)</td>
-                <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz</td>
-              </tr>
-              <tr>
-                <td class="text-left" rowspan="1" colspan="1">F8</td>
-                <td class="text-left" rowspan="1" colspan="1">S. America</td>
+                <td class="text-left" rowspan="1" colspan="1">South America</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 2</td>
                 <td class="text-left" rowspan="1" colspan="1">Anatel (BR) · ENACOM (AR) · SUBTEL (CL)</td>
                 <td class="text-left" rowspan="1" colspan="1">902–928 + 2.4 GHz; BR split-band</td>
               </tr>
               <tr>
+                <td class="text-left" rowspan="1" colspan="1">F7</td>
+                <td class="text-left" rowspan="1" colspan="1">Eastern Australia</td>
+                <td class="text-left" rowspan="1" colspan="1">ITU Region 3</td>
+                <td class="text-left" rowspan="1" colspan="1">ACMA (AU) · MCIT (PG)</td>
+                <td class="text-left" rowspan="1" colspan="1">915–928 MHz (AU) + 2.4 GHz</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">F8</td>
+                <td class="text-left" rowspan="1" colspan="1">Southern Indian Ocean</td>
+                <td class="text-left" rowspan="1" colspan="1">None</td>
+                <td class="text-left" rowspan="1" colspan="1">ACMA (AU)</td>
+                <td class="text-left" rowspan="1" colspan="1">915–928 MHz (AU) + 2.4 GHz; Antarctica: coordination required</td>
+              </tr>
+              <tr>
                 <td class="text-left" rowspan="1" colspan="1">F9</td>
-                <td class="text-left" rowspan="1" colspan="1">Caribbean</td>
-                <td class="text-left" rowspan="1" colspan="1">ITU Region 2</td>
-                <td class="text-left" rowspan="1" colspan="1">NTRC cluster · FCC (PR/USVI) · BIPT (AW)</td>
-                <td class="text-left" rowspan="1" colspan="1">902–928 + 2.4 GHz</td>
+                <td class="text-left" rowspan="1" colspan="1">West Africa</td>
+                <td class="text-left" rowspan="1" colspan="1">ITU Region 1</td>
+                <td class="text-left" rowspan="1" colspan="1">ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)</td>
+                <td class="text-left" rowspan="1" colspan="1">433 + 2.4 GHz; north-east Brazil: 902–928 + 2.4 GHz</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F10</td>
-                <td class="text-left" rowspan="1" colspan="1">S/SE Asia</td>
-                <td class="text-left" rowspan="1" colspan="1">ITU Region 3</td>
-                <td class="text-left" rowspan="1" colspan="1">WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)</td>
-                <td class="text-left" rowspan="1" colspan="1">2.4 GHz; some: 920–925 MHz</td>
+                <td class="text-left" rowspan="1" colspan="1">Central Pacific</td>
+                <td class="text-left" rowspan="1" colspan="1">ITU Region 2</td>
+                <td class="text-left" rowspan="1" colspan="1">FCC (US: Hawaii)</td>
+                <td class="text-left" rowspan="1" colspan="1">902–928 + 2.4 GHz</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">F11</td>
-                <td class="text-left" rowspan="1" colspan="1">Oceania</td>
+                <td class="text-left" rowspan="1" colspan="1">North Pacific</td>
                 <td class="text-left" rowspan="1" colspan="1">ITU Region 3</td>
-                <td class="text-left" rowspan="1" colspan="1">ACMA (AU) · RSM (NZ) · MCIT (PG)</td>
-                <td class="text-left" rowspan="1" colspan="1">915–928 MHz (AU/NZ) + 2.4 GHz</td>
+                <td class="text-left" rowspan="1" colspan="1">MIC (JP) · Roskomnadzor (RU) · FCC (US: Alaska)</td>
+                <td class="text-left" rowspan="1" colspan="1">JP 920–928 MHz; RU 433 + 2.4 GHz; AK 902–928 + 2.4 GHz</td>
               </tr>
             </tbody>
           </table>
@@ -2466,7 +2477,7 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
           <h4 id="name-net-topology-and-constructi">
 <a href="#section-4.6.3" class="section-number selfRef">4.6.3. </a><a href="#name-net-topology-and-constructi" class="section-name selfRef">Net Topology and Construction</a>
           </h4>
-<p id="section-4.6.3-1">The net uses a topologically valid unfolding of the dodecahedron. All twelve faces remain connected through their shared fold edges; no face requires cutting and reattaching. It consists of two groups of six faces, face 0 with its five neighbours and face 1 with its five, joined across the edge between faces 8 and 2. The net topology was verified against the true 3D dodecahedron face adjacency graph: each pair of faces in the net that shares a fold edge is confirmed to share a geometric edge in the 3D dodecahedron. Construction proceeds by: (1) printing on US Letter stock, portrait, at 100% scale (do not fit to page); (2) cutting along all solid outer edges; (3) scoring all dashed fold lines firmly with a stylus; (4) folding each face upward along the scored lines; (5) applying adhesive to each grey GLUE tab; and (6) pressing each tab against the inner surface of the mating face. The last fold closes the final seam.<a href="#section-4.6.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.6.3-1">The net uses a topologically valid unfolding of the dodecahedron. All twelve faces remain connected through their shared fold edges; no face requires cutting and reattaching. It consists of two groups of six faces, face 0 with its five neighbours and face 1 with its five, joined across the edge between faces 6 and 2. The net topology was verified against the true 3D dodecahedron face adjacency graph: each pair of faces in the net that shares a fold edge is confirmed to share a geometric edge in the 3D dodecahedron. Construction proceeds by: (1) printing on US Letter stock, portrait, at 100% scale (do not fit to page); (2) cutting along all solid outer edges; (3) scoring all dashed fold lines firmly with a stylus; (4) folding each face upward along the scored lines; (5) applying adhesive to each grey GLUE tab; and (6) pressing each tab against the inner surface of the mating face. The last fold closes the final seam.<a href="#section-4.6.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.6.3-2">The gnomonic projection used for each face maps great-circle arcs to straight line segments. Since the shared edge between any two adjacent dodecahedron faces lies on a great circle of the sphere, that edge projects as a straight line in both adjacent face projections. After alignment of the shared-edge endpoints, geographic features cross the fold edge continuously without discontinuity, distortion artifact, or gap.<a href="#section-4.6.3-2" class="pilcrow">¶</a></p>
 <p id="section-4.6.3-3">Figure 1 is sized for US Letter, portrait, at 100% scale, which gives each pentagon a circumradius of 25 mm (37.38 degrees of arc). Figure 2, the reference key, carries the ISM band legend, the face index table, the construction instructions and a band quick reference.<a href="#section-4.6.3-3" class="pilcrow">¶</a></p>
 </section>
@@ -2486,7 +2497,7 @@ Pentagon circumradius: 37.38 degrees of arc from face center.
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-octet-array-format" class="section-name selfRef">Octet Array Format</a>
         </h3>
 <p id="section-5.1-1">An RSDGGS index is a byte array of 1 to 8 octets. The interpretation of each octet is as follows:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-6">
+<figure id="figure-5">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-5.1-2.1">
 <pre>
 Octet 0:        Bits 7-4: Celestial body selector, values 0-15.
@@ -2508,7 +2519,7 @@ Octets 2-7:     Packed subdivision levels, 2 bits per level, MSB-first.
                 complete bit-field layout.
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a></figcaption></figure>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a></figcaption></figure>
 <p id="section-5.1-3">When stored as a uint64_t for in-memory computation, Octet 0 occupies the most significant byte (big-endian octet order). Every bit of an index of a given length is significant; there are no unused bits. When an index is held in a wider container (for example, a uint64_t), the octets beyond its length MUST be zero and MUST be ignored by receivers. A receiver MUST reject an index whose triangle index is a reserved value (5-15).<a href="#section-5.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.1-4">The four-bit celestial body selector in bits 7-4 of Octet 0 partitions the RSDGGS index space into sixteen independent dodecahedral grids, one per celestial body. Body 0x0 (Earth) is the default and backward-compatible value: all existing RSDGGS indices have Octet 0 in the range 0x00-0x0B, which corresponds to body=0, face=0-11. Implementations that predate this field definition will continue to decode these indices correctly as Earth face indices.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
 <p id="section-5.1-5">The body selector enables RSDGGS to serve as a unified location encoding for operations on the Moon, Mars, and future celestial bodies where wireless regulatory coordination may be required under the Outer Space Treaty (1967) and subsequent ITU coordination frameworks. The dodecahedral grid geometry is body-agnostic: the same 12-face topology and subdivision hierarchy applies to any approximately spherical body, with face assignments and regulatory databases defined independently per body. New body selector values are assigned by IANA under the "RSDGGS Celestial Body Selector" sub-registry defined in Section 20.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
@@ -2594,7 +2605,7 @@ Octets 2-7:     Packed subdivision levels, 2 bits per level, MSB-first.
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-bit-field-layout" class="section-name selfRef">Bit-Field Layout</a>
         </h3>
 <p id="section-5.3-1">The following table provides the normative bit-field definition for a maximum-resolution 8-octet RSDGGS index stored as a uint64_t. Octet 0 occupies bits 63-56 (most significant byte, big-endian). Bits 63-60 of Octet 0 carry the four-bit celestial body selector; bits 59-56 carry the four-bit face index. The triangle index occupies the high nibble of Octet 1, and every subdivision level lies entirely within one octet. All 64 bits are significant.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-7">
+<figure id="figure-6">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-5.3-2.1">
 <pre>
 Bits 63-60:  Octet 0 bits 7-4 — Celestial body selector [0..15]
@@ -2628,7 +2639,7 @@ Bits  3-2:   Subdivision level 25
 Bits  1-0:   Subdivision level 26
 </pre>
 </div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a></figcaption></figure>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a></figcaption></figure>
 <p id="section-5.3-3">At 26 subdivision levels, the minimum triangle area is approximately 9 square centimeters, representing a linear cell dimension of roughly 3 centimeters on Earth's surface.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2656,7 +2667,7 @@ Bits  1-0:   Subdivision level 26
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-face-assignment" class="section-name selfRef">Face Assignment</a>
         </h3>
 <p id="section-6.1-1">Given a geographic coordinate (latitude, longitude) in decimal degrees, the face index is determined by finding the dodecahedron face whose center has the maximum dot product with the unit vector corresponding to the coordinate. This is equivalent to finding the nearest face center on the unit sphere.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-8">
+<figure id="figure-7">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-6.1-2.1">
 <pre>
 1. Convert (lat, lon) to unit Cartesian vector:
@@ -2670,7 +2681,7 @@ Bits  1-0:   Subdivision level 26
 3. face = argmax(d_i)
 </pre>
 </div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a></figcaption></figure>
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a></figcaption></figure>
 <p id="section-6.1-3">Face centers are precomputed from the rotated icosahedron vertex positions as described in Section 4.3. Implementations SHOULD store all twelve face center vectors as compile-time constants to avoid runtime trigonometric computation on constrained devices.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2690,7 +2701,7 @@ Bits  1-0:   Subdivision level 26
 <a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-recursive-subdivision" class="section-name selfRef">Recursive Subdivision</a>
         </h3>
 <p id="section-6.3-1">Given the face and triangle sector, the coordinate is recursively assigned to child triangles to the depth required by the desired index length. At each level, the three edge midpoints of the current triangle are computed by normalizing the mean of the two endpoint vectors:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-9">
+<figure id="figure-8">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-6.3-2.1">
 <pre>
 mid(A, B) = normalize(A + B)
@@ -2703,7 +2714,7 @@ Children of triangle (apex, left, right):
                                       [inverted orientation]
 </pre>
 </div>
-<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a></figcaption></figure>
 <p id="section-6.3-3">The child containing the point is determined by the same spherical excess containment test used in Section 6.2. The 2-bit child index is appended to the index bit stream. This process repeats until the required number of subdivision levels have been encoded.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
 <p id="section-6.3-4">Implementations targeting constrained environments SHOULD use integer approximations of the normalized midpoint computation, such as fixed-point arithmetic with sufficient precision for the target resolution depth. For resolutions of 4 octets or fewer, 32-bit fixed-point arithmetic is sufficient. For resolutions of 6 octets or greater, 64-bit arithmetic is RECOMMENDED.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
 </section>
@@ -2721,15 +2732,15 @@ Children of triangle (apex, left, right):
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-compact-form" class="section-name selfRef">Compact Form</a>
         </h3>
 <p id="section-7.1-1">An RSDGGS index is encoded as a CBOR byte string (major type 2) <span>[<a href="#RFC8949" class="cite xref">RFC8949</a>]</span>. The byte string length provides the resolution information at no additional cost, satisfying design goal G5. The compact form is suitable for resource-constrained IoT messages where protocol overhead must be minimized.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-10">
+<figure id="figure-9">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-7.1-2.1">
 <pre>
   0x41 0x02            -- 1-byte index, face 2 (ITU Region 2)
-  0x43 0x02 0x03 0xC1  -- 3-byte index, 39N 98W, country-level
+  0x43 0x02 0x21 0xF7  -- 3-byte index, 39N 98W, country-level
   0x48 ...             -- 8-byte index, maximum resolution
 </pre>
 </div>
-<figcaption><a href="#figure-10" class="selfRef">Figure 10</a></figcaption></figure>
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
 </section>
 </div>
 <div id="s-tagged-form">
@@ -2738,14 +2749,14 @@ Children of triangle (apex, left, right):
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-tagged-form" class="section-name selfRef">Tagged Form</a>
         </h3>
 <p id="section-7.2-1">Implementations requiring explicit type identification SHOULD use a CBOR tag to mark the byte string as an RSDGGS index. A private-use tag in the range 65536-15309735 SHOULD be used pending IANA assignment. The recommended placeholder tag value is 0xC24D52 (pending registration).<a href="#section-7.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-11">
+<figure id="figure-10">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-7.2-2.1">
 <pre>
-  0xC2 0x4D 0x52 0x43 0x02 0x03 0xC1
+  0xC2 0x4D 0x52 0x43 0x02 0x21 0xF7
   -- Tagged RSDGGS, 3-byte index
 </pre>
 </div>
-<figcaption><a href="#figure-11" class="selfRef">Figure 11</a></figcaption></figure>
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a></figcaption></figure>
 </section>
 </div>
 <div id="s-cddl-schema">
@@ -2754,7 +2765,7 @@ Children of triangle (apex, left, right):
 <a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-cddl-schema" class="section-name selfRef">CDDL Schema</a>
         </h3>
 <p id="section-7.3-1">The following CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> schema defines the wire format for RSDGGS-bearing messages:<a href="#section-7.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-12">
+<figure id="figure-11">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-7.3-2.1">
 <pre>
 rsdggs-cell  = bstr .size (1..8)
@@ -2779,7 +2790,7 @@ beacon-frame = {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-12" class="selfRef">Figure 12</a></figcaption></figure>
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a></figcaption></figure>
 </section>
 </div>
 </section>
@@ -2795,7 +2806,7 @@ beacon-frame = {
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-band-entry-schema" class="section-name selfRef">Band Entry Schema</a>
         </h3>
 <p id="section-8.1-1">The regulatory database maps RSDGGS cells to rule sets. Each rule set entry contains the complete regulatory parameters for one ISM band in one jurisdiction. Regulatory databases are body-specific: an Earth database contains only Earth cell indices (Octet 0 body selector = 0x0), and a future Lunar database would contain only Lunar cell indices (body selector = 0x1). Implementations MUST NOT apply an Earth regulatory database to a non-Earth RSDGGS index. The body selector in Octet 0 MUST be checked before any database lookup, and an unknown body selector MUST result in an error response rather than a default or fallback regulatory rule set. The following CDDL schema defines a band entry:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-13">
+<figure id="figure-12">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-8.1-2.1">
 <pre>
 band-entry = {
@@ -2831,7 +2842,7 @@ modulation-type = &amp;(
 )
 </pre>
 </div>
-<figcaption><a href="#figure-13" class="selfRef">Figure 13</a></figcaption></figure>
+<figcaption><a href="#figure-12" class="selfRef">Figure 12</a></figcaption></figure>
 </section>
 </div>
 <div id="s-resolution-sufficiency-levels">
@@ -2851,9 +2862,9 @@ modulation-type = &amp;(
               <th class="text-left" rowspan="1" colspan="1">Band</th>
               <th class="text-left" rowspan="1" colspan="1">Face 2 (N. Am.)</th>
               <th class="text-left" rowspan="1" colspan="1">Face 1 (EU)</th>
-              <th class="text-left" rowspan="1" colspan="1">Faces 3/10/11 (Asia/Pac)</th>
-              <th class="text-left" rowspan="1" colspan="1">Faces 4/5 (Africa)</th>
-              <th class="text-left" rowspan="1" colspan="1">Faces 6/7 (RU/ME)</th>
+              <th class="text-left" rowspan="1" colspan="1">Faces 3/7/11 (Asia/Pac)</th>
+              <th class="text-left" rowspan="1" colspan="1">Faces 5/9 (Africa)</th>
+              <th class="text-left" rowspan="1" colspan="1">RU/ME (within faces 1, 3, 5, 11)</th>
             </tr>
           </thead>
           <tbody>
@@ -2938,50 +2949,38 @@ modulation-type = &amp;(
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">Singapore (IMDA)</td>
-              <td class="text-left" rowspan="1" colspan="1">10</td>
+              <td class="text-left" rowspan="1" colspan="1">3</td>
               <td class="text-left" rowspan="1" colspan="1">920-925 MHz, 500 mW; ~50 km state</td>
               <td class="text-left" rowspan="1" colspan="1">4-5</td>
             </tr>
             <tr>
-              <td class="text-left" rowspan="1" colspan="1">US Virgin Islands (FCC)</td>
-              <td class="text-left" rowspan="1" colspan="1">9</td>
-              <td class="text-left" rowspan="1" colspan="1">FCC rules in Caribbean face</td>
-              <td class="text-left" rowspan="1" colspan="1">5</td>
-            </tr>
-            <tr>
               <td class="text-left" rowspan="1" colspan="1">British Virgin Islands</td>
-              <td class="text-left" rowspan="1" colspan="1">9</td>
-              <td class="text-left" rowspan="1" colspan="1">ICTA rules adjacent to USVI</td>
+              <td class="text-left" rowspan="1" colspan="1">2</td>
+              <td class="text-left" rowspan="1" colspan="1">ICTA rules adjacent to USVI (FCC)</td>
               <td class="text-left" rowspan="1" colspan="1">5</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">French Guiana (ARCEP)</td>
-              <td class="text-left" rowspan="1" colspan="1">8</td>
-              <td class="text-left" rowspan="1" colspan="1">ETSI rules in Region 2-A face</td>
+              <td class="text-left" rowspan="1" colspan="1">9</td>
+              <td class="text-left" rowspan="1" colspan="1">ETSI rules in West Africa face, beside Brazil</td>
               <td class="text-left" rowspan="1" colspan="1">4</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">Ceuta / Melilla (ETSI)</td>
-              <td class="text-left" rowspan="1" colspan="1">4</td>
-              <td class="text-left" rowspan="1" colspan="1">EU enclave in Africa West face</td>
+              <td class="text-left" rowspan="1" colspan="1">1</td>
+              <td class="text-left" rowspan="1" colspan="1">EU enclaves bordering Morocco</td>
               <td class="text-left" rowspan="1" colspan="1">6</td>
             </tr>
             <tr>
-              <td class="text-left" rowspan="1" colspan="1">Puerto Rico (FCC)</td>
-              <td class="text-left" rowspan="1" colspan="1">9</td>
-              <td class="text-left" rowspan="1" colspan="1">FCC rules in Caribbean face</td>
-              <td class="text-left" rowspan="1" colspan="1">4</td>
-            </tr>
-            <tr>
               <td class="text-left" rowspan="1" colspan="1">Guam / CNMI (FCC)</td>
-              <td class="text-left" rowspan="1" colspan="1">3</td>
+              <td class="text-left" rowspan="1" colspan="1">7</td>
               <td class="text-left" rowspan="1" colspan="1">FCC rules in Region 3 face</td>
               <td class="text-left" rowspan="1" colspan="1">4</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">French Pacific (ARCEP)</td>
-              <td class="text-left" rowspan="1" colspan="1">11</td>
-              <td class="text-left" rowspan="1" colspan="1">ETSI rules in Oceania face</td>
+              <td class="text-left" rowspan="1" colspan="1">7, 10</td>
+              <td class="text-left" rowspan="1" colspan="1">ETSI rules in Pacific faces</td>
               <td class="text-left" rowspan="1" colspan="1">4</td>
             </tr>
           </tbody>
@@ -3322,7 +3321,7 @@ modulation-type = &amp;(
 <a href="#section-10.1.2" class="section-number selfRef">10.1.2. </a><a href="#name-bilateral-and-multilateral-" class="section-name selfRef">Bilateral and Multilateral Coordination Agreements</a>
           </h4>
 <p id="section-10.1.2-1">Below the ITU level, neighboring administrations negotiate bilateral arrangements governing specific bands along their shared borders. These agreements establish coordination zones — geographic areas on both sides of the border within which proposed assignments require prior approval from the neighboring administration. The zone extent varies by band and agreement:<a href="#section-10.1.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-14">
+<figure id="figure-13">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-10.1.2-2.1">
 <pre>
 US-Canada (FCC / ISED, per 47 CFR § 1.928 and Arrangements A-Q):
@@ -3344,7 +3343,7 @@ EU internal borders (CEPT/ECC):
   EU/Russia border: coordination required; no harmonization
 </pre>
 </div>
-<figcaption><a href="#figure-14" class="selfRef">Figure 14</a></figcaption></figure>
+<figcaption><a href="#figure-13" class="selfRef">Figure 13</a></figcaption></figure>
 <p id="section-10.1.2-3">The 47 CFR § 90.619 power-flux-density limit of -107 dB(W/m²) at the US/Mexico border for the 896-940 MHz band is directly applicable to ISM-adjacent operations. The 110 km coordination zone for 800 MHz band operations represents a precision requirement of approximately 3-4 bytes of RSDGGS resolution to determine border-zone membership accurately.<a href="#section-10.1.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3470,7 +3469,7 @@ EU internal borders (CEPT/ECC):
 <a href="#section-10.3" class="section-number selfRef">10.3. </a><a href="#name-boundary-proximity-function" class="section-name selfRef">Boundary Proximity Function</a>
         </h3>
 <p id="section-10.3-1">RSDGGS defines a boundary proximity function B(cell, band) that returns the distance in RSDGGS resolution steps between a given cell and the nearest cell boundary at which the applicable rule set for the specified band changes. The function is evaluated against the regulatory database exception table (Section 8.3) and the bilateral coordination zone table.<a href="#section-10.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-15">
+<figure id="figure-14">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-10.3-2.1">
 <pre>
 B(cell, band):
@@ -3502,7 +3501,7 @@ Recommended THRESHOLD_STEPS by coordination zone:
   12 nm territorial sea:      B &lt;= 5  (5-byte resolution)
 </pre>
 </div>
-<figcaption><a href="#figure-15" class="selfRef">Figure 15</a></figcaption></figure>
+<figcaption><a href="#figure-14" class="selfRef">Figure 14</a></figcaption></figure>
 </section>
 </div>
 <div id="s-adaptive-power-control-at-regulatory-boundaries">
@@ -3517,7 +3516,7 @@ Recommended THRESHOLD_STEPS by coordination zone:
 <a href="#section-10.4.1" class="section-number selfRef">10.4.1. </a><a href="#name-power-reduction-profile" class="section-name selfRef">Power Reduction Profile</a>
           </h4>
 <p id="section-10.4.1-1">The transmitted power at proximity step B is:<a href="#section-10.4.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-16">
+<figure id="figure-15">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-10.4.1-2.1">
 <pre>
 P_tx(B) = min(P_max_local, P_max_neighbor) - G(B)
@@ -3544,7 +3543,7 @@ This continuous form requires 5-byte resolution to evaluate
 with adequate precision (cell diameter ~260 m).
 </pre>
 </div>
-<figcaption><a href="#figure-16" class="selfRef">Figure 16</a></figcaption></figure>
+<figcaption><a href="#figure-15" class="selfRef">Figure 15</a></figcaption></figure>
 <p id="section-10.4.1-3">The minimum neighbor power constraint (taking the minimum of the two rule sets at B=0) is the most conservative applicable interpretation of cross-border coordination obligations. It corresponds to the principle that a device straddling a boundary cannot claim the more permissive of two jurisdictions and must comply with both simultaneously.<a href="#section-10.4.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3554,7 +3553,7 @@ with adequate precision (cell diameter ~260 m).
 <a href="#section-10.4.2" class="section-number selfRef">10.4.2. </a><a href="#name-duty-cycle-and-dwell-constr" class="section-name selfRef">Duty Cycle and Dwell Constraints</a>
           </h4>
 <p id="section-10.4.2-1">In addition to power reduction, boundary-aware operation applies the more restrictive duty cycle and dwell constraints of the two adjacent rule sets. This is particularly significant at EU/non-EU boundaries where the ETSI 868 MHz sub-band duty cycle limits (0.1% to 10%) differ materially from non-EU frameworks that may impose no duty cycle constraint.<a href="#section-10.4.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-17">
+<figure id="figure-16">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-10.4.2-2.1">
 <pre>
 At B = 0 (boundary cell), apply:
@@ -3574,7 +3573,7 @@ Example: EU/Switzerland border, 868 MHz band
   → Exception table entry flags as RSL 5 for verification
 </pre>
 </div>
-<figcaption><a href="#figure-17" class="selfRef">Figure 17</a></figcaption></figure>
+<figcaption><a href="#figure-16" class="selfRef">Figure 16</a></figcaption></figure>
 </section>
 </div>
 </section>
@@ -3585,7 +3584,7 @@ Example: EU/Switzerland border, 868 MHz band
 <a href="#section-10.5" class="section-number selfRef">10.5. </a><a href="#name-rsdggs-resolution-escalatio" class="section-name selfRef">RSDGGS Resolution Escalation Near Boundaries</a>
         </h3>
 <p id="section-10.5-1">The closer a device is to a regulatory boundary, the finer the resolution required to accurately determine its position relative to that boundary. RSDGGS defines a resolution escalation requirement: the device MUST maintain a RSDGGS index at a resolution sufficient to resolve its boundary proximity function to at least one non-zero value.<a href="#section-10.5-1" class="pilcrow">¶</a></p>
-<figure id="figure-18">
+<figure id="figure-17">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-10.5-2.1">
 <pre>
 Resolution escalation rule:
@@ -3611,7 +3610,7 @@ Resolution escalation rule:
     7 bytes (~1 m)   — adequate for all practical land borders
 </pre>
 </div>
-<figcaption><a href="#figure-18" class="selfRef">Figure 18</a></figcaption></figure>
+<figcaption><a href="#figure-17" class="selfRef">Figure 17</a></figcaption></figure>
 <p id="section-10.5-3">The resolution escalation requirement means that a device moving toward a regulatory boundary will autonomously increase its index precision as it approaches, consuming more power in the cooperative localization process (Section 12) but ensuring that its compliance determination remains accurate. For fixed devices, this escalation occurs once at commissioning and the resulting high-resolution index is stored permanently.<a href="#section-10.5-3" class="pilcrow">¶</a></p>
 <p id="section-10.5-4">The escalation is bounded: for the vast majority of IoT deployments, 3-byte resolution is sufficient for all regulatory decisions and boundary detection. Resolution escalation beyond 5 bytes is only required for devices within approximately 260 m of a land border between jurisdictions with conflicting ISM band rules — a scenario that affects only a small fraction of deployed devices.<a href="#section-10.5-4" class="pilcrow">¶</a></p>
 </section>
@@ -3622,7 +3621,7 @@ Resolution escalation rule:
 <a href="#section-10.6" class="section-number selfRef">10.6. </a><a href="#name-cddl-schema-for-boundary-aw" class="section-name selfRef">CDDL Schema for Boundary-Aware Operation</a>
         </h3>
 <p id="section-10.6-1">The following CDDL extensions define the data structures for boundary-aware operation:<a href="#section-10.6-1" class="pilcrow">¶</a></p>
-<figure id="figure-19">
+<figure id="figure-18">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-10.6-2.1">
 <pre>
 boundary-context = {
@@ -3651,7 +3650,7 @@ boundary-entry = {              ; in regulatory database
 }
 </pre>
 </div>
-<figcaption><a href="#figure-19" class="selfRef">Figure 19</a></figcaption></figure>
+<figcaption><a href="#figure-18" class="selfRef">Figure 18</a></figcaption></figure>
 <p id="section-10.6-3">The boundary-entry table in the regulatory database is indexed by the pair (cell-a, cell-b) at the finest resolution at which the two cells are adjacent cells. For face-edge boundaries (ITU Region boundaries), the index is at byte 0 (face only). For bilateral coordination zone boundaries, the index is at bytes 3-4. For land border crossing point exceptions, the index may be at bytes 5-6.<a href="#section-10.6-3" class="pilcrow">¶</a></p>
 <p id="section-10.6-4">The boundary-entry pfd-limit-dbwm2 field enables a device with knowledge of its antenna characteristics and propagation environment to compute the maximum transmit power that keeps its signal below the applicable PFD limit at the boundary. For IoT devices using typical isotropic or near-isotropic antennas, a simplified free-space path loss model is sufficient for this computation. Implementations SHOULD implement the free-space PFD computation as a compile-time table indexed by (distance-to-boundary-km, P_tx-dBm) to avoid floating-point computation on constrained devices.<a href="#section-10.6-4" class="pilcrow">¶</a></p>
 </section>
@@ -3828,7 +3827,7 @@ boundary-entry = {              ; in regulatory database
         </h3>
 <p id="section-13.2-1">Each beacon received from a peer carries an RSDGGS cell at the RSL depth for the transmitting channel. The Naive Device accumulates received cells and maintains the geographic intersection of all received cells as a constraint on its own position.<a href="#section-13.2-1" class="pilcrow">¶</a></p>
 <p id="section-13.2-2">The intersection of two RSDGGS cells is defined as the longest common prefix of their bit representations. If two cells share a common prefix of length L bits, then any point within both cells must lie within the geographic region represented by that L-bit prefix. The intersection cell is that prefix, truncated to the nearest byte boundary. Every octet boundary is a subdivision-level boundary (Section 5.1), so the truncated prefix is always a valid index.<a href="#section-13.2-2" class="pilcrow">¶</a></p>
-<figure id="figure-20">
+<figure id="figure-19">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-13.2-3.1">
 <pre>
 Cell intersection algorithm:
@@ -3850,7 +3849,7 @@ Cell intersection algorithm:
   inferred_cell    = intersection &gt;&gt; (64 - resolution_bytes*8)
 </pre>
 </div>
-<figcaption><a href="#figure-20" class="selfRef">Figure 20</a></figcaption></figure>
+<figcaption><a href="#figure-19" class="selfRef">Figure 19</a></figcaption></figure>
 <p id="section-13.2-4">As additional peers are heard, valid_bits can only decrease or remain constant, monotonically converging toward the finest common prefix. When peers at higher resolution (more bytes) are heard, the intersection tightens. A Naive Device SHOULD advertise its inferred cell at the current resolution once it has received cells from at least three peers, to assist other Naive Devices in the vicinity.<a href="#section-13.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3865,7 +3864,7 @@ Cell intersection algorithm:
           <h4 id="name-round-trip-rssi-exchange-pr">
 <a href="#section-13.3.1" class="section-number selfRef">13.3.1. </a><a href="#name-round-trip-rssi-exchange-pr" class="section-name selfRef">Round-Trip RSSI Exchange Procedure</a>
           </h4>
-<figure id="figure-21">
+<figure id="figure-20">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.3.1-1.1">
 <pre>
 Initiator A                          Responder B
@@ -3880,7 +3879,7 @@ Initiator A                          Responder B
    Path loss = (RSSI_tx_A - RSSI_B_rx + RSSI_tx_B - RSSI_A_rx) / 2
 </pre>
 </div>
-<figcaption><a href="#figure-21" class="selfRef">Figure 21</a></figcaption></figure>
+<figcaption><a href="#figure-20" class="selfRef">Figure 20</a></figcaption></figure>
 </section>
 </div>
 <div id="s-range-estimation">
@@ -3889,7 +3888,7 @@ Initiator A                          Responder B
 <a href="#section-13.3.2" class="section-number selfRef">13.3.2. </a><a href="#name-range-estimation" class="section-name selfRef">Range Estimation</a>
           </h4>
 <p id="section-13.3.2-1">The range estimate from bidirectional path loss is computed using the log-distance model. Path loss exponent n and reference path loss PL(d0) at reference distance d0 are environmental parameters stored in device configuration.<a href="#section-13.3.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-22">
+<figure id="figure-21">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.3.2-2.1">
 <pre>
 PL = (TX_power_A - RSSI_B_rx + TX_power_B - RSSI_A_rx) / 2  [dB]
@@ -3909,7 +3908,7 @@ Recommended defaults (absent site survey):
   sigma = 6.0 dB
 </pre>
 </div>
-<figcaption><a href="#figure-22" class="selfRef">Figure 22</a></figcaption></figure>
+<figcaption><a href="#figure-21" class="selfRef">Figure 21</a></figcaption></figure>
 <p id="section-13.3.2-3">The range estimate d and uncertainty sigma_d from each peer constitute one range measurement for input to the multilateration engine in Section 11.6. Multiple round-trip exchanges with the same peer SHOULD be averaged to reduce the contribution of sigma_PL. The minimum recommended number of exchanges per peer before using the range in multilateration is three.<a href="#section-13.3.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3927,7 +3926,7 @@ Recommended defaults (absent site survey):
 <a href="#section-13.4.1" class="section-number selfRef">13.4.1. </a><a href="#name-double-sided-two-way-rangin" class="section-name selfRef">Double-Sided Two-Way Ranging (DS-TWR)</a>
           </h4>
 <p id="section-13.4.1-1">Double-Sided Two-Way Ranging eliminates the first-order clock offset bias present in Single-Sided TWR. It requires three messages: Poll, Response, and Final, with optional Report for enhanced bias cancellation.<a href="#section-13.4.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-23">
+<figure id="figure-22">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.4.1-2.1">
 <pre>
 Initiator A                          Responder B
@@ -3953,7 +3952,7 @@ Range = ToF * c   (c = 299,792,458 m/s)
 Typical precision: +/- 10 cm LoS, +/- 30-50 cm NLoS
 </pre>
 </div>
-<figcaption><a href="#figure-23" class="selfRef">Figure 23</a></figcaption></figure>
+<figcaption><a href="#figure-22" class="selfRef">Figure 22</a></figcaption></figure>
 </section>
 </div>
 <div id="s-sts-authentication-802-15-4z">
@@ -3972,7 +3971,7 @@ Typical precision: +/- 10 cm LoS, +/- 30-50 cm NLoS
 <a href="#section-13.4.3" class="section-number selfRef">13.4.3. </a><a href="#name-phase-difference-of-arrival" class="section-name selfRef">Phase Difference of Arrival (PDOA) Angle Estimation</a>
           </h4>
 <p id="section-13.4.3-1">Devices equipped with two or more UWB antennas separated by a known baseline d_ant MAY compute the angle of arrival of a UWB signal using the phase difference between antennas. The angle estimate provides a directional constraint that supplements the scalar range measurement.<a href="#section-13.4.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-24">
+<figure id="figure-23">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.4.3-2.1">
 <pre>
 PDOA angle estimation:
@@ -3989,7 +3988,7 @@ PDOA angle estimation:
   Typical: +/- 5 degrees at 50 cm baseline, +/- 2 degrees at 1.25 m
 </pre>
 </div>
-<figcaption><a href="#figure-24" class="selfRef">Figure 24</a></figcaption></figure>
+<figcaption><a href="#figure-23" class="selfRef">Figure 23</a></figcaption></figure>
 <p id="section-13.4.3-3">The PDOA angle theta and uncertainty sigma_theta from each UWB-capable peer constitute an angular measurement for input to the multilateration engine. The combination of DS-TWR range and PDOA angle from a single peer provides a 2D position fix relative to that peer, without requiring a second ranging peer.<a href="#section-13.4.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -4092,7 +4091,7 @@ PDOA angle estimation:
 <a href="#section-13.6.2" class="section-number selfRef">13.6.2. </a><a href="#name-weighted-least-squares-posi" class="section-name selfRef">Weighted Least Squares Position Update</a>
           </h4>
 <p id="section-13.6.2-1">Given ranges {r_i} or {R_i} to N peers at known cells {C_i}, the position update minimizes the weighted sum of squared residuals:<a href="#section-13.6.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-25">
+<figure id="figure-24">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.6.2-2.1">
 <pre>
 Minimize: sum_i ( w_i * (d(pos, C_i_center) - r_i)^2 )
@@ -4111,7 +4110,7 @@ Minimum peers required for 2D fix:
   M3 (range + PDOA):    1 peer  (2D fix relative to peer)
 </pre>
 </div>
-<figcaption><a href="#figure-25" class="selfRef">Figure 25</a></figcaption></figure>
+<figcaption><a href="#figure-24" class="selfRef">Figure 24</a></figcaption></figure>
 <p id="section-13.6.2-3">For constrained devices, a closed-form linearized solution is RECOMMENDED over iterative nonlinear solvers. The linearization uses the current position estimate as the operating point and applies a first-order Taylor expansion of the range function, reducing the problem to a linear least squares system solvable by the normal equations. This requires only integer arithmetic in RSDGGS cell units and is implementable on Cortex-M0 class devices.<a href="#section-13.6.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -4128,7 +4127,7 @@ Minimum peers required for 2D fix:
           <h4 id="name-state-vector">
 <a href="#section-13.7.1" class="section-number selfRef">13.7.1. </a><a href="#name-state-vector" class="section-name selfRef">State Vector</a>
           </h4>
-<figure id="figure-26">
+<figure id="figure-25">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.7.1-1.1">
 <pre>
 State vector x = [cell_index, velocity_cells_per_sec, sigma_cells]
@@ -4139,7 +4138,7 @@ State vector x = [cell_index, velocity_cells_per_sec, sigma_cells]
   sigma_cells:         uint16_t, position uncertainty radius in cells
 </pre>
 </div>
-<figcaption><a href="#figure-26" class="selfRef">Figure 26</a></figcaption></figure>
+<figcaption><a href="#figure-25" class="selfRef">Figure 25</a></figcaption></figure>
 </section>
 </div>
 <div id="s-prediction-step">
@@ -4147,7 +4146,7 @@ State vector x = [cell_index, velocity_cells_per_sec, sigma_cells]
           <h4 id="name-prediction-step">
 <a href="#section-13.7.2" class="section-number selfRef">13.7.2. </a><a href="#name-prediction-step" class="section-name selfRef">Prediction Step</a>
           </h4>
-<figure id="figure-27">
+<figure id="figure-26">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-13.7.2-1.1">
 <pre>
 Prediction (between measurements, interval dt seconds):
@@ -4165,7 +4164,7 @@ Prediction (between measurements, interval dt seconds):
     derived from dodecahedron subdivision adjacency
 </pre>
 </div>
-<figcaption><a href="#figure-27" class="selfRef">Figure 27</a></figcaption></figure>
+<figcaption><a href="#figure-26" class="selfRef">Figure 26</a></figcaption></figure>
 </section>
 </div>
 <div id="s-update-step">
@@ -4207,7 +4206,7 @@ Prediction (between measurements, interval dt seconds):
 <p id="section-14.1-1">IEEE 802.15.4-2020 defines two classes of Information Elements (IEs) that may be included in MAC frames. Header IEs carry type 0 with IDs in the range 0x00 to 0x7E and a maximum payload of 127 octets. Payload IEs carry type 1 with Group IDs in the range 0x00 to 0x0F and a maximum payload of 2047 octets. Payload IEs may contain nested Sub-IEs.<a href="#section-14.1-1" class="pilcrow">¶</a></p>
 <p id="section-14.1-2">The MLME Payload IE (Group ID 0x01) is the standard container for MAC-layer management sub-elements including the SUN (Smart Utility Network) Device Description Sub-IEs defined in IEEE 802.15.4g and extended in IEEE 802.15.4-2020 Section 7.4. RSDGGS location information is carried as a new Sub-IE nested within this container.<a href="#section-14.1-2" class="pilcrow">¶</a></p>
 <p id="section-14.1-3">The Sub-IE header structure is two octets:<a href="#section-14.1-3" class="pilcrow">¶</a></p>
-<figure id="figure-28">
+<figure id="figure-27">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-14.1-4.1">
 <pre>
 Sub-IE Header (2 octets):
@@ -4222,7 +4221,7 @@ and therefore directly encodes the spatial resolution of the index,
 consistent with the CBOR encoding defined in Section 7.
 </pre>
 </div>
-<figcaption><a href="#figure-28" class="selfRef">Figure 28</a></figcaption></figure>
+<figcaption><a href="#figure-27" class="selfRef">Figure 27</a></figcaption></figure>
 </section>
 </div>
 <div id="s-rsdggs-location-sub-ie-definition">
@@ -4285,7 +4284,7 @@ consistent with the CBOR encoding defined in Section 7.
 <p id="section-14.3-1">The SUN Device Description IE (Sub-IE ID 0x08 within the MLME Payload IE group) is transmitted by SUN devices during PAN formation and association to advertise device capabilities. The RSDGGS Location Sub-IE SHALL be included in the SUN Device Description payload of any device that has resolved its regulatory context.<a href="#section-14.3-1" class="pilcrow">¶</a></p>
 <p id="section-14.3-2">The resolution at which the RSDGGS cell is encoded in the Sub-IE SHALL be the Resolution Sufficiency Level (RSL) for the ISM band on which the frame is transmitted, as defined in Section 8.2. This ensures that the regulatory cell carried in the IE is sufficient for a receiving device to determine the applicable rule set, while not disclosing more precise location than required for regulatory purposes.<a href="#section-14.3-2" class="pilcrow">¶</a></p>
 <p id="section-14.3-3">The Sub-IE Length field thus serves three simultaneous functions: it specifies the IE payload length as required by the 802.15.4 framing specification; it encodes the RSDGGS resolution level implicitly; and it signals the privacy posture of the transmitting device (a shorter cell = coarser location = more privacy-preserving).<a href="#section-14.3-3" class="pilcrow">¶</a></p>
-<figure id="figure-29">
+<figure id="figure-28">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-14.3-4.1">
 <pre>
 Enhanced Beacon Frame (abbreviated):
@@ -4295,13 +4294,13 @@ Enhanced Beacon Frame (abbreviated):
       ... capability fields ...
     Sub-IE: ID = 0x9A (RSDGGS Location)
       Length = 0x03  (3 octets, country-level RSL)
-      Cell   = 0x02 0x03 0xC1
+      Cell   = 0x02 0x21 0xF7
                ^^^^             face 2 = ITU Region 2 / N. America
-                    ^^^^ ^^^^   triangle 0, 6 levels: ~65 km cell
+                    ^^^^ ^^^^   triangle 2, 6 levels: ~65 km cell
   MFR
 </pre>
 </div>
-<figcaption><a href="#figure-29" class="selfRef">Figure 29</a></figcaption></figure>
+<figcaption><a href="#figure-28" class="selfRef">Figure 28</a></figcaption></figure>
 </section>
 </div>
 <div id="s-mac-layer-regulatory-bootstrap">
@@ -4339,7 +4338,7 @@ Enhanced Beacon Frame (abbreviated):
 <a href="#section-15.1" class="section-number selfRef">15.1. </a><a href="#name-address-structure" class="section-name selfRef">Address Structure</a>
         </h3>
 <p id="section-15.1-1">An RSDGGS Geographic IPv6 address is structured as follows:<a href="#section-15.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-30">
+<figure id="figure-29">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-15.1-2.1">
 <pre>
  0                   1                   2                   3
@@ -4353,7 +4352,7 @@ Enhanced Beacon Frame (abbreviated):
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 </div>
-<figcaption><a href="#figure-30" class="selfRef">Figure 30</a></figcaption></figure>
+<figcaption><a href="#figure-29" class="selfRef">Figure 29</a></figcaption></figure>
 <p id="section-15.1-3">The upper 64 bits form the network prefix, which identifies the address as belonging to the RSDGGS geographic address space. This prefix is to be assigned from the IANA Special-Purpose Address Registry <span>[<a href="#RFC6890" class="cite xref">RFC6890</a>]</span> for use with this specification. The placeholder prefix GEO::/64 is used in this document pending IANA assignment.<a href="#section-15.1-3" class="pilcrow">¶</a></p>
 <p id="section-15.1-4">The lower 64 bits are the RSDGGS cell index in the 8-octet encoding defined in Section 5, with the most significant byte (Octet 0, the face byte) placed in the most significant octet of the IID. Unused subdivision bits in the terminal resolution level are set to zero.<a href="#section-15.1-4" class="pilcrow">¶</a></p>
 <p id="section-15.1-5">The address is self-describing at any prefix length: the geographic region corresponding to a /N prefix is the set of RSDGGS cells sharing the same upper N bits of their IID. This is directly equivalent to RSDGGS index truncation at the corresponding resolution level.<a href="#section-15.1-5" class="pilcrow">¶</a></p>
@@ -4447,7 +4446,7 @@ Enhanced Beacon Frame (abbreviated):
 <a href="#section-15.3" class="section-number selfRef">15.3. </a><a href="#name-geographic-greedy-forwardin" class="section-name selfRef">Geographic Greedy Forwarding</a>
         </h3>
 <p id="section-15.3-1">A forwarder holding an RSDGGS Geographic IPv6 address for itself and receiving a packet destined for another geographic address can make a forwarding decision purely from address arithmetic, without a routing table.<a href="#section-15.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-31">
+<figure id="figure-30">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-15.3-2.1">
 <pre>
 Forwarding algorithm:
@@ -4470,7 +4469,7 @@ Forwarding algorithm:
     invoke void handling (perimeter routing or buffer-and-wait)
 </pre>
 </div>
-<figcaption><a href="#figure-31" class="selfRef">Figure 31</a></figcaption></figure>
+<figcaption><a href="#figure-30" class="selfRef">Figure 30</a></figcaption></figure>
 <p id="section-15.3-3">The progress metric is purely a comparison of common prefix lengths. No trigonometric computation is required at forwarding time. The geographic distance relationship is encoded in the shared prefix structure of the RSDGGS hierarchy: a longer common prefix means a smaller shared cell means geographic proximity.<a href="#section-15.3-3" class="pilcrow">¶</a></p>
 <p id="section-15.3-4">This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <span>[<a href="#GPSR" class="cite xref">GPSR</a>]</span> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count — operations available as single instructions on all target architectures including constrained microcontrollers.<a href="#section-15.3-4" class="pilcrow">¶</a></p>
 </section>
@@ -4483,7 +4482,7 @@ Forwarding algorithm:
 <p id="section-15.4-1">The geographic address carries implicit regulatory information through the face byte of the IID. A forwarder can extract the face byte of the destination address to determine the ITU Region of the destination, and therefore the ISM band availability at the destination.<a href="#section-15.4-1" class="pilcrow">¶</a></p>
 <p id="section-15.4-2">When a packet is forwarded toward a destination in a different regulatory cell, the forwarding node SHOULD select a transmission channel that is legal in both its own regulatory cell and the next-hop's regulatory cell. If no such channel exists (for example, forwarding from an EU 868 MHz network toward a US 915 MHz network), the forwarder MUST NOT transmit on a channel that is illegal in either jurisdiction.<a href="#section-15.4-2" class="pilcrow">¶</a></p>
 <p id="section-15.4-3">In practice, cross-regulatory-region forwarding at the ISM layer requires either a gateway device provisioned for both regulatory environments, or an application-layer relay. The geographic address structure makes this boundary explicit and machine-readable: a mismatch in the face byte of the IID between source and destination indicates a cross-regulatory-region path that requires special handling.<a href="#section-15.4-3" class="pilcrow">¶</a></p>
-<figure id="figure-32">
+<figure id="figure-31">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-15.4-4.1">
 <pre>
 Regulatory boundary detection:
@@ -4497,7 +4496,7 @@ Regulatory boundary detection:
     // Select channel legal in both faces or flag for gateway
 </pre>
 </div>
-<figcaption><a href="#figure-32" class="selfRef">Figure 32</a></figcaption></figure>
+<figcaption><a href="#figure-31" class="selfRef">Figure 31</a></figcaption></figure>
 </section>
 </div>
 <div id="s-relationship-to-existing-standards">
@@ -4543,7 +4542,7 @@ Regulatory boundary detection:
           <h4 id="name-gaps-addressed-by-rsdggs">
 <a href="#section-16.1.2" class="section-number selfRef">16.1.2. </a><a href="#name-gaps-addressed-by-rsdggs" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-33">
+<figure id="figure-32">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.1.2-1.1">
 <pre>
 Dimension            RFC 2009                  RSDGGS
@@ -4558,7 +4557,7 @@ Privacy              Not addressed             Truncation gradient
 Status               Experimental / Legacy     Informational (this doc)
 </pre>
 </div>
-<figcaption><a href="#figure-33" class="selfRef">Figure 33</a></figcaption></figure>
+<figcaption><a href="#figure-32" class="selfRef">Figure 32</a></figcaption></figure>
 <p id="section-16.1.2-2">RFC 2009's polygon-based service areas require floating-point computation for containment tests and polygon intersection, making them unsuitable for the Cortex-M0 class devices that constitute the majority of 802.15.4 IoT deployments. The IGPSMP protocol requires routers to maintain geographic routing tables that grow with network size, whereas RSDGGS geographic addressing enables stateless forwarding decisions from address arithmetic alone.<a href="#section-16.1.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.1.2-3">RFC 2009 does not address regulatory spectrum management, band availability, or the use of geographic addressing to encode regulatory jurisdiction. RSDGGS is the first specification to treat these as primary design goals of a geographic addressing system.<a href="#section-16.1.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4585,7 +4584,7 @@ Status               Experimental / Legacy     Informational (this doc)
           <h4 id="name-gaps-addressed-by-rsdggs-2">
 <a href="#section-16.2.2" class="section-number selfRef">16.2.2. </a><a href="#name-gaps-addressed-by-rsdggs-2" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-34">
+<figure id="figure-33">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.2.2-1.1">
 <pre>
 Dimension            RFC 5870 'geo' URI        RSDGGS
@@ -4600,7 +4599,7 @@ Constrained devices  Text parsing required     Integer extraction only
 Hierarchical index   None                      Full hier. in bits
 </pre>
 </div>
-<figcaption><a href="#figure-34" class="selfRef">Figure 34</a></figcaption></figure>
+<figcaption><a href="#figure-33" class="selfRef">Figure 33</a></figcaption></figure>
 <p id="section-16.2.2-2">RFC 5870 explicitly states that the number of decimal digits in coordinate values MUST NOT be interpreted as an indication of accuracy. RSDGGS takes the opposite position: the number of bytes in the index IS the precision indicator, by design. This makes the RSDGGS encoding self-describing in a way that 'geo' URIs are not.<a href="#section-16.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.2.2-3">The 'geo' URI text encoding (typically 20-30 bytes for a full coordinate) is impractical for 802.15.4 MAC frames and CBOR-encoded IoT messages where wire efficiency is critical. The RSDGGS 1-8 byte binary encoding is 4-30 times more compact for equivalent precision.<a href="#section-16.2.2-3" class="pilcrow">¶</a></p>
 <p id="section-16.2.2-4">RSDGGS MAY expose a 'geo' URI mapping for interoperability: an RSDGGS cell center can be expressed as a 'geo' URI with the u= parameter set to the cell radius. This mapping is lossy (the 'geo' URI does not encode the cell boundary shape) but suitable for human-readable display and web interoperability contexts. Implementations SHOULD provide this mapping for diagnostic and display purposes.<a href="#section-16.2.2-4" class="pilcrow">¶</a></p>
@@ -4628,7 +4627,7 @@ Hierarchical index   None                      Full hier. in bits
           <h4 id="name-gaps-addressed-by-rsdggs-3">
 <a href="#section-16.3.2" class="section-number selfRef">16.3.2. </a><a href="#name-gaps-addressed-by-rsdggs-3" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-35">
+<figure id="figure-34">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.3.2-1.1">
 <pre>
 Dimension            RFC 6442 / PIDF-LO        RSDGGS
@@ -4643,7 +4642,7 @@ Uncertainty          PIDF-LO conf/method       Implicit in byte length
 Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
 </pre>
 </div>
-<figcaption><a href="#figure-35" class="selfRef">Figure 35</a></figcaption></figure>
+<figcaption><a href="#figure-34" class="selfRef">Figure 34</a></figcaption></figure>
 <p id="section-16.3.2-2">RFC 6442's PIDF-LO XML representation is orders of magnitude larger than RSDGGS and requires XML parsing infrastructure wholly impractical on constrained IoT devices. The consent model defined in RFC 6442, requiring user authorization before location disclosure, addresses a real privacy concern. RSDGGS addresses the same concern through the truncation model: devices share only the resolution necessary for the purpose, with no infrastructure required to enforce the policy.<a href="#section-16.3.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.3.2-3">RFC 6442's Geolocation-Routing header enables SIP routing based on location. This is a routing hint at the application layer, not an address-arithmetic property of the network address itself. RSDGGS geographic IPv6 addressing (Section 13) achieves location-based routing at the network layer without any signaling overhead, as the routing metric is embedded in the destination address.<a href="#section-16.3.2-3" class="pilcrow">¶</a></p>
 <p id="section-16.3.2-4">The two specifications are complementary: a SIP-capable IoT gateway MAY translate an RSDGGS cell to a PIDF-LO for interfaces toward SIP-based emergency services infrastructure, and vice versa. The translation is defined by the cell-center-to-lat/lon mapping with uncertainty equal to the cell radius.<a href="#section-16.3.2-4" class="pilcrow">¶</a></p>
@@ -4671,7 +4670,7 @@ Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
           <h4 id="name-gaps-addressed-by-rsdggs-4">
 <a href="#section-16.4.2" class="section-number selfRef">16.4.2. </a><a href="#name-gaps-addressed-by-rsdggs-4" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-36">
+<figure id="figure-35">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.4.2-1.1">
 <pre>
 Dimension            RFC 9179 YANG grouping    RSDGGS
@@ -4686,7 +4685,7 @@ Uncertainty          coord-accuracy (m)        Implicit in byte length
 Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 </pre>
 </div>
-<figcaption><a href="#figure-36" class="selfRef">Figure 36</a></figcaption></figure>
+<figcaption><a href="#figure-35" class="selfRef">Figure 35</a></figcaption></figure>
 <p id="section-16.4.2-2">RFC 9179's decimal64 latitude and longitude fields (16 fraction-digits) provide sub-nanometer theoretical precision, far exceeding GPS capability. RSDGGS at 8 bytes provides 6 cm precision, which matches or exceeds operational GPS accuracy for IoT applications. The YANG encoding overhead (XML or JSON field names plus decimal values) is typically 60-100 bytes per location fix versus 1-8 bytes for RSDGGS.<a href="#section-16.4.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.4.2-3">RFC 9179 does not define a hierarchical structure for location data and provides no support for location-based routing. The RSDGGS cell index has no analog in the RFC 9179 model. An RSDGGS extension to the RFC 9179 grouping is a potential future work item, adding an optional rsdggs-cell leaf of type binary with length constraint 1..8 to the geo-location grouping, enabling network elements to carry RSDGGS regulatory context alongside their WGS-84 coordinates in YANG data models.<a href="#section-16.4.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4713,7 +4712,7 @@ Velocity             v-north, v-east, v-up     EKF state (Sec.11)
           <h4 id="name-gaps-addressed-by-rsdggs-5">
 <a href="#section-16.5.2" class="section-number selfRef">16.5.2. </a><a href="#name-gaps-addressed-by-rsdggs-5" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-37">
+<figure id="figure-36">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.5.2-1.1">
 <pre>
 Dimension            RFC 9632 Geofeed          RSDGGS
@@ -4728,7 +4727,7 @@ Device class         BGP routers, servers      Constrained IoT (M)
 Routing              Not defined               See Section 13
 </pre>
 </div>
-<figcaption><a href="#figure-37" class="selfRef">Figure 37</a></figcaption></figure>
+<figcaption><a href="#figure-36" class="selfRef">Figure 36</a></figcaption></figure>
 <p id="section-16.5.2-2">RFC 9632 and RSDGGS address fundamentally different layers of the same problem. RFC 9632 maps IP address blocks — which are administratively assigned and may not correspond to the physical location of the device using them — to geographic designators, for the purpose of correcting commercial geolocation database errors. RSDGGS encodes the physical location of an IoT device directly in a binary index that travels with every message the device sends, for the purpose of regulatory compliance determination at the MAC layer.<a href="#section-16.5.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.5.2-3">A meaningful integration point exists: RSDGGS-IPv6 geographic addresses (Section 13) are by definition location-accurate. An operator deploying RSDGGS-IPv6 addresses could publish a geofeed file trivially, as the address prefix directly encodes the geographic region. A /72 RSDGGS-IPv6 prefix geofeed entry maps to a single dodecahedron face (ITU Region); a /88 prefix maps to a country-scale cell. This makes RSDGGS-IPv6 deployments inherently geofeed-compliant without the mismatch that arises when administratively assigned IP prefixes are spread across multiple geographic regions.<a href="#section-16.5.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4755,7 +4754,7 @@ Routing              Not defined               See Section 13
           <h4 id="name-gaps-addressed-by-rsdggs-6">
 <a href="#section-16.6.2" class="section-number selfRef">16.6.2. </a><a href="#name-gaps-addressed-by-rsdggs-6" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-38">
+<figure id="figure-37">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.6.2-1.1">
 <pre>
 Dimension            RFC 8805 Geofeed Format   RSDGGS
@@ -4769,7 +4768,7 @@ Constrained devices  Not applicable            Primary target
 Precision            Administrative boundary   Physical loc, metered
 </pre>
 </div>
-<figcaption><a href="#figure-38" class="selfRef">Figure 38</a></figcaption></figure>
+<figcaption><a href="#figure-37" class="selfRef">Figure 37</a></figcaption></figure>
 <p id="section-16.6.2-2">RFC 8805 and RSDGGS share the property of being self-published: an IP address holder publishes a geofeed file asserting the location of their prefix, and an IoT device encodes its RSDGGS cell asserting its own location. The trust models differ significantly: geofeed authenticity in RFC 8805 relies on RPKI (via RFC 9632) binding the file to the address holder's certificate; RSDGGS cell authenticity in peer-assisted scenarios relies on the MAC-layer STS authentication defined in Section 11.4.2 and the multi-peer confidence model of Section 10.3.<a href="#section-16.6.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.6.2-3">As noted in Section 15.5, RSDGGS-IPv6 geographic addresses (Section 13) are inherently geofeed-compatible: the address prefix encodes geographic location by definition, eliminating the mismatch between administratively assigned IP prefixes and their physical locations that RFC 8805 was designed to correct.<a href="#section-16.6.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4796,7 +4795,7 @@ Precision            Administrative boundary   Physical loc, metered
           <h4 id="name-gaps-addressed-by-rsdggs-7">
 <a href="#section-16.7.2" class="section-number selfRef">16.7.2. </a><a href="#name-gaps-addressed-by-rsdggs-7" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-39">
+<figure id="figure-38">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.7.2-1.1">
 <pre>
 Dimension            RFC 5808 LbyR Req.        RSDGGS
@@ -4810,7 +4809,7 @@ Privacy model        Rule Maker + LIS policy   Structural (truncation)
 Location form        PIDF-LO (after deref)     CBOR bstr (direct)
 </pre>
 </div>
-<figcaption><a href="#figure-39" class="selfRef">Figure 39</a></figcaption></figure>
+<figcaption><a href="#figure-38" class="selfRef">Figure 38</a></figcaption></figure>
 <p id="section-16.7.2-2">The LbyR architecture requires persistent network connectivity to a Location Information Server for location dereferencing. This is fundamentally incompatible with the operational model of 802.15.4 IoT devices, which may operate in disconnected or intermittently connected environments, cannot carry TCP/TLS stacks required for HTTPS dereferencing, and must determine regulatory context before establishing any network connection at all.<a href="#section-16.7.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.7.2-3">RSDGGS takes the Location-by-Value position for IoT: the location index is carried directly in the MAC frame or IPv6 address. The RSDGGS cooperative localization mechanism (Section 11) is analogous to the LIS in the RFC 5808 architecture, but is fully distributed and requires no server infrastructure: the network of peers collectively provides the location determination function that RFC 5808 centralizes in a LIS.<a href="#section-16.7.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4837,7 +4836,7 @@ Location form        PIDF-LO (after deref)     CBOR bstr (direct)
           <h4 id="name-gaps-addressed-by-rsdggs-8">
 <a href="#section-16.8.2" class="section-number selfRef">16.8.2. </a><a href="#name-gaps-addressed-by-rsdggs-8" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-40">
+<figure id="figure-39">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.8.2-1.1">
 <pre>
 Dimension            RFC 5491 PIDF-LO Usage    RSDGGS
@@ -4852,7 +4851,7 @@ Regulatory context   Absent                    Primary design goal
 Constrained devices  Not addressed             Primary target
 </pre>
 </div>
-<figcaption><a href="#figure-40" class="selfRef">Figure 40</a></figcaption></figure>
+<figcaption><a href="#figure-39" class="selfRef">Figure 39</a></figcaption></figure>
 <p id="section-16.8.2-2">RFC 5491's Rule 7 — coarse location MUST precede fine location in compound PIDF-LO — is structurally expressed in RSDGGS by the bit layout itself: Byte 0 (coarsest) precedes Byte 7 (finest), and truncation from the right always yields the coarser representation. RSDGGS embodies Rule 7 as an invariant property of the encoding rather than an application-layer behavioral requirement.<a href="#section-16.8.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.8.2-3">RFC 5491 supports civic location (floor number, room identifier) as a compound element alongside geodetic coordinates. RSDGGS does not encode civic location. For indoor deployments requiring floor-level regulatory distinction (which is uncommon for ISM band rules but relevant for UWB power limits in some jurisdictions), a civic layer MAY be carried as a separate CBOR field alongside the RSDGGS cell, using the PIDF-LO civic format or a simplified representation.<a href="#section-16.8.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4879,7 +4878,7 @@ Constrained devices  Not addressed             Primary target
           <h4 id="name-gaps-addressed-by-rsdggs-9">
 <a href="#section-16.9.2" class="section-number selfRef">16.9.2. </a><a href="#name-gaps-addressed-by-rsdggs-9" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-41">
+<figure id="figure-40">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.9.2-1.1">
 <pre>
 Dimension            RFC 6280 GEOPRIV Arch.    RSDGGS
@@ -4894,7 +4893,7 @@ Rule distribution    XCAP/presence protocol    Not applicable
 Trust model          Centralized (LS)          Distributed (peer mesh)
 </pre>
 </div>
-<figcaption><a href="#figure-41" class="selfRef">Figure 41</a></figcaption></figure>
+<figcaption><a href="#figure-40" class="selfRef">Figure 40</a></figcaption></figure>
 <p id="section-16.9.2-2">The GEOPRIV architecture's privacy model requires that the Rule Maker express privacy preferences, that the Location Server enforce them, and that Location Recipients honor them. This three-party trust model requires persistent infrastructure that is unavailable to constrained IoT devices operating in disconnected environments.<a href="#section-16.9.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.9.2-3">RSDGGS replaces the GEOPRIV rule-based privacy model with structural privacy: a device that shares a 3-byte RSDGGS cell is physically incapable of disclosing more than country-level location, regardless of recipient behavior. No rules, servers, or trust relationships are required to enforce this property. The privacy level is determined by the sender's choice of index length, not by the recipient's compliance with transmitted rules.<a href="#section-16.9.2-3" class="pilcrow">¶</a></p>
 <p id="section-16.9.2-4">This structural approach is both stronger (cannot be violated by a non-compliant recipient) and weaker (cannot express nuanced rules like 'share with spouse but not employer') than the GEOPRIV model. For ISM regulatory compliance, where the only required disclosure is 'am I in ITU Region 2?', the structural model is entirely sufficient. RSDGGS implementations that require nuanced privacy rules for non-regulatory purposes MAY layer a RFC 6772 geolocation policy document alongside the RSDGGS cell in application-layer CBOR messages.<a href="#section-16.9.2-4" class="pilcrow">¶</a></p>
@@ -4922,7 +4921,7 @@ Trust model          Centralized (LS)          Distributed (peer mesh)
           <h4 id="name-gaps-addressed-by-rsdggs-10">
 <a href="#section-16.10.2" class="section-number selfRef">16.10.2. </a><a href="#name-gaps-addressed-by-rsdggs-10" class="section-name selfRef">Gaps Addressed by RSDGGS</a>
           </h4>
-<figure id="figure-42">
+<figure id="figure-41">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-16.10.2-1.1">
 <pre>
 Dimension            RFC 6772 Geoloc. Policy   RSDGGS
@@ -4937,7 +4936,7 @@ Regulatory context   Absent                    Primary design goal
 Policy expressive.   High (identity+loc.)      Single dim (resolution)
 </pre>
 </div>
-<figcaption><a href="#figure-42" class="selfRef">Figure 42</a></figcaption></figure>
+<figcaption><a href="#figure-41" class="selfRef">Figure 41</a></figcaption></figure>
 <p id="section-16.10.2-2">RFC 6772's location obfuscation mechanism — reducing precision in the transformation element of a policy rule — is conceptually identical to RSDGGS truncation, but implemented through a server-side XML transformation rather than a structural property of the encoding. The RFC 6772 approach requires a Location Server to apply the transformation rule; the RSDGGS approach requires the transmitting device to select an index length. The RSDGGS approach is implementable on a 32-byte RAM microcontroller with no server dependency.<a href="#section-16.10.2-2" class="pilcrow">¶</a></p>
 <p id="section-16.10.2-3">RFC 6772's location-based conditions — rules that apply differently depending on where the Target is — have a direct analogy in RSDGGS: the RSL (Resolution Sufficiency Level) table defines location-dependent disclosure requirements for regulatory purposes. A device in Face 2 (North America) needs to disclose only 1 byte to establish 902 MHz legality; a device in Face 3 (East Asia) needs 3 bytes to distinguish Japan from China. The RSDGGS RSL table is a regulatory-specific, infrastructure-free analog to RFC 6772's location-based policy conditions.<a href="#section-16.10.2-3" class="pilcrow">¶</a></p>
 <p id="section-16.10.2-4">The two mechanisms are composable for deployments requiring both regulatory compliance and user privacy management: RSDGGS provides the minimum regulatory disclosure at the MAC layer; a separate RFC 6772 geolocation policy governs higher-precision disclosure for application-layer services requiring richer location context.<a href="#section-16.10.2-4" class="pilcrow">¶</a></p>
@@ -5211,7 +5210,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 <a href="#section-18.1.1" class="section-number selfRef">18.1.1. </a><a href="#name-us-patent-4939726-metricom-" class="section-name selfRef">US Patent 4,939,726 — Metricom, Inc. (Expired 2007)</a>
           </h4>
 <p id="section-18.1.1-1">Title: Method for Routing Packets in a Packet Communication Network. Inventors: Flammer, Kalkwarf. Assignee: Metricom, Inc. (later Proxim Wireless Corp.). Filed 1989, granted July 3, 1990, expired 2007. Companion patent US 5,115,433 (Baran, Flammer, Kalkwarf — Metricom, 1992) is also expired.<a href="#section-18.1.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-43">
+<figure id="figure-42">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.1.1-2.1">
 <pre>
 Key claims (now public domain):
@@ -5229,7 +5228,7 @@ US 5,115,433 adds (also public domain):
   data priority — richer than Claim 3 of 4,939,726
 </pre>
 </div>
-<figcaption><a href="#figure-43" class="selfRef">Figure 43</a></figcaption></figure>
+<figcaption><a href="#figure-42" class="selfRef">Figure 42</a></figcaption></figure>
 <p id="section-18.1.1-3">RSDGGS improvement opportunity — Link Quality Weighted Forwarding: US 4,939,726 Claim 3 and US 5,115,433 define a link quality (LQ) factor incorporating distance, power, retry history, throughput, and delay. RSDGGS Section 15.3 defines geographic greedy forwarding using only common-prefix-length as the progress metric. Incorporating a link quality weighting that prefers the LQ-best neighbor among those making geographic progress would improve real-world routing performance in dense ISM-band deployments where RSSI and retry rates vary significantly. This enhancement is freely implementable from the expired public domain claims and should be noted as a normative extension candidate for follow-on standards-track work.<a href="#section-18.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -5254,7 +5253,7 @@ US 5,115,433 adds (also public domain):
 <a href="#section-18.2.1" class="section-number selfRef">18.2.1. </a><a href="#name-us-patent-10306400-applicat" class="section-name selfRef">US Patent 10,306,400 / Application 2014/0162692 — Wirelesss Regulatory Compliance (Active until ~2035)</a>
           </h4>
 <p id="section-18.2.1-1">Title: Systems and Methods for Enforcing Wireless Regulatory Compliance. Assignee not publicly confirmed from application number alone; the issued patent US 10,306,400 covers a thermostat and home network device context. Filed as US Application 20140162692 approximately 2013-2014. The issued patent family includes related grants US 9,794,738 and US 9,654,965. Active.<a href="#section-18.2.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-44">
+<figure id="figure-43">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.1-2.1">
 <pre>
 Core claim element (all related patents):
@@ -5272,7 +5271,7 @@ US 9,654,965 adds:
   indirect AP location, or cell tower information
 </pre>
 </div>
-<figcaption><a href="#figure-44" class="selfRef">Figure 44</a></figcaption></figure>
+<figcaption><a href="#figure-43" class="selfRef">Figure 43</a></figcaption></figure>
 <p id="section-18.2.1-3">RSDGGS freedom to operate: RSDGGS does not use power line frequency as a location verification mechanism. The core novelty of this patent family is the AC frequency verification step, which is absent from RSDGGS entirely. RSDGGS derives location from: pre-provisioned cell index (Section 12), peer-received RSDGGS beacons (Section 11), or cooperative ranging (Section 13). None of these mechanisms involve power line analysis. No claim element reads on RSDGGS.<a href="#section-18.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-4">RSDGGS improvement opportunity — Lookup Table Architecture: US 9,654,965 explicitly discloses the architecture of a location-to-regulations lookup table stored locally on the device, optionally small enough to fit in embedded memory, potentially updated from network. This is directly analogous to the RSDGGS regulatory database architecture defined in Section 8. The patent discloses this as a WLAN channel compliance mechanism; RSDGGS generalizes it to ISM bands with a hierarchical geographic index as the lookup key. Because 9,654,965 is active, RSDGGS implementations MUST NOT incorporate AC power line frequency as a location verification step alongside the lookup table. The lookup table architecture itself predates 9,654,965 as prior art (RFC 2009 describes location-to-routing-table mapping from 1996), but the specific combination of local storage + network update + GNSS/MCC/AP location sources for the lookup key is a design pattern that RSDGGS implementations should credit to this work in any patent prosecution.<a href="#section-18.2.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -5283,7 +5282,7 @@ US 9,654,965 adds:
 <a href="#section-18.2.2" class="section-number selfRef">18.2.2. </a><a href="#name-us-patent-10812365-geohyper" class="section-name selfRef">US Patent 10,812,365 — Geohyperbolic Routing (Northeastern University, Active until 2037)</a>
           </h4>
 <p id="section-18.2.2-1">Title: Geohyperbolic Routing and Addressing Schemes for Networks. Inventors: Dmitri Krioukov, Ivan Voitalov. Assignee: Northeastern University, Boston. Filed November 16, 2017. Granted October 20, 2020. Active, expires December 25, 2037.<a href="#section-18.2.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-45">
+<figure id="figure-44">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.2-2.1">
 <pre>
 Core claim elements:
@@ -5306,7 +5305,7 @@ RSDGGS distinguishing elements (no infringement):
     power-law topology reproduction
 </pre>
 </div>
-<figcaption><a href="#figure-45" class="selfRef">Figure 45</a></figcaption></figure>
+<figcaption><a href="#figure-44" class="selfRef">Figure 44</a></figcaption></figure>
 <p id="section-18.2.2-3">RSDGGS improvement opportunity — None applicable: The geohyperbolic model is specifically optimized for large-scale Internet backbone topology reproduction, using population-density centrality to reproduce power-law degree distributions. RSDGGS targets constrained 802.15.4 IoT mesh networks with no backbone topology requirements and no population-density data available at compile time on embedded devices. The mathematical approaches are incompatible at a fundamental level: hyperbolic geometry requires floating-point (r, theta, phi) arithmetic, whereas RSDGGS's design goal G4 requires no-FPU integer arithmetic. No improvement opportunity from this patent is applicable to RSDGGS.<a href="#section-18.2.2-3" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-4">Backward citations of interest: US 10,812,365 cites US 8,284,788 (Krioukov et al., hyperbolic network embedding, 2012) as a predecessor. The academic paper by Krioukov et al. 'Hyperbolic Geometry of Complex Networks' (Physical Review E, 2010) is the underlying research. Both establish that hyperbolic geometry for Internet-scale routing is a well-developed research area distinct from RSDGGS's approach.<a href="#section-18.2.2-4" class="pilcrow">¶</a></p>
 </section>
@@ -5317,7 +5316,7 @@ RSDGGS distinguishing elements (no infringement):
 <a href="#section-18.2.3" class="section-number selfRef">18.2.3. </a><a href="#name-us-patent-11652742-ghost-ro" class="section-name selfRef">US Patent 11,652,742 — Ghost Routing (Microsoft, Active until 2041)</a>
           </h4>
 <p id="section-18.2.3-1">Title: Ghost Routing. Assignee: Microsoft Technology Licensing LLC. Inventors: Padhye, Jayaraman, Bai, Singh, Beckett, et al. Filed October 16, 2020. Granted May 16, 2023. Active, expires January 1, 2041.<a href="#section-18.2.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-46">
+<figure id="figure-45">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.3-2.1">
 <pre>
 Core claim elements:
@@ -5337,7 +5336,7 @@ RSDGGS relationship: ZERO OVERLAP
   This is a cloud network change management patent
 </pre>
 </div>
-<figcaption><a href="#figure-46" class="selfRef">Figure 46</a></figcaption></figure>
+<figcaption><a href="#figure-45" class="selfRef">Figure 45</a></figcaption></figure>
 <p id="section-18.2.3-3">RSDGGS improvement opportunity — None: Ghost routing addresses verification of network configuration changes in cloud datacenter switching infrastructure. It has no technical concepts, no claim elements, and no CPC classifications that overlap with RSDGGS. The name superficially resembles geographic routing but the technical subject matter is entirely unrelated. No improvement opportunity exists.<a href="#section-18.2.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -5347,7 +5346,7 @@ RSDGGS relationship: ZERO OVERLAP
 <a href="#section-18.2.4" class="section-number selfRef">18.2.4. </a><a href="#name-cn101923801b-method-for-gen" class="section-name selfRef">CN101923801B — Method for Generating a Regular Dodecahedron Map Projection (Expired)</a>
           </h4>
 <p id="section-18.2.4-1">Assignee: Wuhan University (WHU), Wuhan, China. Inventors: Hu Peng, Li Yunxiang, Zhu Fuli. Application number: CN2009100626550A. Filing and priority date: 10 June 2009. Grant date: 29 February 2012. Jurisdiction: China only (no PCT application, no US, EP, or other national-phase equivalents identified). Legal status: Expired — Fee Related. Anticipated statutory expiration: 10 June 2029 (20-year term from filing). Actual status: lapsed prior to statutory expiration due to non-payment of annual maintenance fees.<a href="#section-18.2.4-1" class="pilcrow">¶</a></p>
-<figure id="figure-47">
+<figure id="figure-46">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.4-2.1">
 <pre>
 Legal status note:
@@ -5367,9 +5366,9 @@ Jurisdiction note:
   States, European Union, or other IETF-relevant jurisdictions.
 </pre>
 </div>
-<figcaption><a href="#figure-47" class="selfRef">Figure 47</a></figcaption></figure>
+<figcaption><a href="#figure-46" class="selfRef">Figure 46</a></figcaption></figure>
 <p id="section-18.2.4-3">The method disclosed in CN101923801B describes a cartographic rendering pipeline for producing physical dodecahedron map products. The claimed method orients the dodecahedron so that one vertex coincides with the Earth's geographic North Pole and the antipodal vertex with the South Pole, selects a user-defined region of interest to determine each face's central meridian, applies a gnomonic projection per face to transform geographic vector data, clips the result to each pentagonal boundary, and outputs twelve pentagonal paper maps for assembly into a physical dodecahedron. The implementation is explicitly tied to ArcGIS and ESRI Shapefile data formats as the required geographic data pipeline.<a href="#section-18.2.4-3" class="pilcrow">¶</a></p>
-<figure id="figure-48">
+<figure id="figure-47">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.4-4.1">
 <pre>
 Core claim elements (CN101923801B):
@@ -5405,7 +5404,7 @@ RSDGGS distinguishing elements — no claim reads on RSDGGS:
       CN101923801B explicitly claims a paper map assembly step
 </pre>
 </div>
-<figcaption><a href="#figure-48" class="selfRef">Figure 48</a></figcaption></figure>
+<figcaption><a href="#figure-47" class="selfRef">Figure 47</a></figcaption></figure>
 <p id="section-18.2.4-5">Freedom to operate conclusion: CN101923801B presents no freedom-to-operate concern for RSDGGS on three independent grounds, each sufficient alone. First, the patent is expired due to fee non-payment and its claims are in the public domain — no enforcement is possible regardless of claim scope. Second, the patent is China-jurisdiction only with no international equivalents, so even if active it could not be enforced in the United States, European Union, Japan, or any other IETF-process jurisdiction. Third, no claim element of CN101923801B reads on RSDGGS: the patent covers a cartographic rendering pipeline for producing visual map products from geographic vector data using ArcGIS tooling, whereas RSDGGS is a binary integer encoding scheme for IoT device regulatory context with no map output, no GIS pipeline, and no physical artifact. The shared concept of using a dodecahedron as an Earth reference surface is established prior art predating CN101923801B by decades, with the gnomonic polyhedral map projection appearing in academic cartography literature since at least the 1940s (Fuller, 1944, US Patent 2,393,676, expired 1963) and in peer-reviewed cartographic literature through the 1990s.<a href="#section-18.2.4-5" class="pilcrow">¶</a></p>
 <p id="section-18.2.4-6">Prior art note: CN101923801B itself acknowledges that dodecahedron map projection is a known concept by framing its contribution as 'breaking through the limitation that the previous projection surface is a plane and a developable surface.' The gnomonic projection of the Earth onto a regular dodecahedron is explicitly not novel to CN101923801B — the claimed novelty is the specific ArcGIS-based rendering workflow and the face-by-face data extraction pipeline. RSDGGS's use of the dodecahedron as a hierarchical geographic index is therefore independently supported by prior art that predates CN101923801B, in addition to the non-infringement analysis above.<a href="#section-18.2.4-6" class="pilcrow">¶</a></p>
 </section>
@@ -5635,7 +5634,7 @@ RSDGGS distinguishing elements — no claim reads on RSDGGS:
         <h3 id="name-crate-structure-and-types">
 <a href="#section-19.1" class="section-number selfRef">19.1. </a><a href="#name-crate-structure-and-types" class="section-name selfRef">Crate Structure and Types</a>
         </h3>
-<figure id="figure-49">
+<figure id="figure-48">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.1-1.1">
 <pre>
 #![no_std]
@@ -5672,7 +5671,7 @@ pub struct LatLon {
 type Vec3 = [f64; 3];
 </pre>
 </div>
-<figcaption><a href="#figure-49" class="selfRef">Figure 49</a></figcaption></figure>
+<figcaption><a href="#figure-48" class="selfRef">Figure 48</a></figcaption></figure>
 </section>
 </div>
 <div id="s-compile-time-constants">
@@ -5680,39 +5679,140 @@ type Vec3 = [f64; 3];
         <h3 id="name-compile-time-constants">
 <a href="#section-19.2" class="section-number selfRef">19.2. </a><a href="#name-compile-time-constants" class="section-name selfRef">Compile-Time Constants</a>
         </h3>
-<p id="section-19.2-1">All twelve face center unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in Section 4.3. Face 2 (RSDGGS index 0x02) is centered at (31.43N, 102.48W), with icosahedron vertex 8 (its dual vertex) placed at the regulatory anchor (39N, 98W). These constants are reproduced here at full f64 precision and MUST be used by all conforming implementations. The rotation algorithm from Section 4.3 is not invoked at runtime.<a href="#section-19.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-50">
+<p id="section-19.2-1">The twelve face center unit vectors and the sixty pentagon vertex unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in Section 4.3: face 1 centered at (60.0N, 26.5E), with face 2's center at bearing 304.0 degrees from it. These constants are reproduced here to 15 decimal places and MUST be used by all conforming implementations. The rotation algorithm from Section 4.3 is not invoked at runtime.<a href="#section-19.2-1" class="pilcrow">¶</a></p>
+<figure id="figure-49">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.2-2.1">
 <pre>
 /// Dodecahedron face center unit vectors, in RSDGGS face index order.
-/// Face 2 (ITU Region 2, N. America) is centered near 31.4°N, 102.5°W.
-/// Derived from the unit icosahedron dual with rotation applied to
-/// minimize boundary cuts across the N. American ISM regulatory zone.
+/// The two low-order bits of a face index give its ITU Region
+/// (1, 2, 3), or 0 for none (Section 4.2).
 const FACE_CENTERS: [Vec3; 12] = [
-    // face  0: Antarctic / Polar (~65.6°S, 172°E)
-    [-0.409634135329003,  0.057570323301730, -0.910431509257118],
-    // face  1: ITU Region 1 / Europe core (~65.6°N, 8°W)
-    [ 0.409634135329003, -0.057570323301730,  0.910431509257118],
-    // face  2: ITU Region 2 / N. America (~31.4°N, 102.5°W) ← anchor
-    [-0.184381921838147, -0.833097451659977,  0.521490117774944],
-    // face  3: ITU Region 3 / E. Asia core (~31.4°N, 86.5°E)
-    [ 0.052393499826933,  0.851647214660484,  0.521490117774944],
-    // face  4: Region 1-A / Africa West (~6.2°N, 39.9°W)
-    [ 0.762409412243109, -0.638047427930384,  0.107830273274894],
-    // face  5: Region 1-B / Africa East (~6.2°N, 23.9°E)
-    [ 0.908744670532716,  0.403182038220761,  0.107830273274894],
-    // face  6: Region 1-C / Russia-CAS (~51.0°N, 172°E)
-    [-0.623195888264612,  0.087584470319807,  0.777145961456971],
-    // face  7: Region 1-D / Middle East (~31.4°S, 77.5°E)
-    [ 0.184381921838147,  0.833097451659977, -0.521490117774944],
-    // face  8: Region 2-A / S. America (~31.4°S, 93.5°W)
-    [-0.052393499826933, -0.851647214660484, -0.521490117774944],
-    // face  9: Region 2-B / Caribbean (~6.2°S, 156.1°W)
-    [-0.908744670532716, -0.403182038220761, -0.107830273274894],
-    // face 10: Region 3-A / S-SE Asia (~6.2°S, 140.1°E)
-    [-0.762409412243109,  0.638047427930384, -0.107830273274894],
-    // face 11: Region 3-B / Oceania (~51.0°S, 8°W)
-    [ 0.623195888264612, -0.087584470319807, -0.777145961456971],
+    // face  0: Antarctica / New Zealand (60.00S, 153.50W)
+    [-0.447467180801013, -0.223098906554904, -0.866025403784439],
+    // face  1: Europe (Region 1) (60.00N, 26.50E)
+    [ 0.447467180801013,  0.223098906554904,  0.866025403784439],
+    // face  2: North America (Region 2) (39.60N, 79.28W)
+    [ 0.143335330773340, -0.757103386787452,  0.637377003559956],
+    // face  3: Asia (Region 3) (23.76N, 104.10E)
+    [-0.222927725022592,  0.887676795997717,  0.402905864022206],
+    // face  4: South Atlantic (54.80S, 1.18E)
+    [ 0.576250379942283,  0.011826692425747, -0.817187633877705],
+    // face  5: Africa / Middle East (Region 1) (1.89S, 44.32E)
+    [ 0.715023395428751,  0.698323830480811, -0.032944980985703],
+    // face  6: South America (Region 2) (23.76S, 75.90W)
+    [ 0.222927725022592, -0.887676795997717, -0.402905864022206],
+    // face  7: Eastern Australia (Region 3) (6.43S, 161.32E)
+    [-0.941386412734036,  0.318206226502688, -0.111966152629545],
+    // face  8: Southern Indian Ocean (39.60S, 100.72E)
+    [-0.143335330773340,  0.757103386787452, -0.637377003559956],
+    // face  9: West Africa (Region 1) (6.43N, 18.68W)
+    [ 0.941386412734036, -0.318206226502688,  0.111966152629545],
+    // face 10: Central Pacific (Region 2) (1.89N, 135.68W)
+    [-0.715023395428751, -0.698323830480811,  0.032944980985703],
+    // face 11: North Pacific (Region 3) (54.80N, 178.82W)
+    [-0.576250379942283, -0.011826692425747,  0.817187633877705],
+];
+
+/// Pentagon vertices per face, counter-clockwise as seen from outside
+/// the sphere, starting at the smallest bearing from the face center.
+/// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
+const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
+    // face  0
+    [
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+    ],
+    // face  1
+    [
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+    ],
+    // face  2
+    [
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+    ],
+    // face  3
+    [
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+    ],
+    // face  4
+    [
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+    ],
+    // face  5
+    [
+        [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+    ],
+    // face  6
+    [
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+    ],
+    // face  7
+    [
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+    ],
+    // face  8
+    [
+        [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+        [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+        [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+        [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+        [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+    ],
+    // face  9
+    [
+        [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+        [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+        [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+        [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+        [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+    ],
+    // face 10
+    [
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+        [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+        [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+    ],
+    // face 11
+    [
+        [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+        [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+        [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+        [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+        [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+    ],
 ];
 
 /// Subdivision child indices (2 bits each).
@@ -5726,7 +5826,7 @@ const CHILD_RIGHT:   u8 = 0b10;
 const CHILD_CENTRAL: u8 = 0b11;
 </pre>
 </div>
-<figcaption><a href="#figure-50" class="selfRef">Figure 50</a></figcaption></figure>
+<figcaption><a href="#figure-49" class="selfRef">Figure 49</a></figcaption></figure>
 </section>
 </div>
 <div id="s-coordinate-conversion-primitives">
@@ -5734,7 +5834,7 @@ const CHILD_CENTRAL: u8 = 0b11;
         <h3 id="name-coordinate-conversion-primi">
 <a href="#section-19.3" class="section-number selfRef">19.3. </a><a href="#name-coordinate-conversion-primi" class="section-name selfRef">Coordinate Conversion Primitives</a>
         </h3>
-<figure id="figure-51">
+<figure id="figure-50">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.3-1.1">
 <pre>
 /// Convert WGS-84 decimal degrees to unit Cartesian vector.
@@ -5796,7 +5896,7 @@ fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -&gt; bool {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-51" class="selfRef">Figure 51</a></figcaption></figure>
+<figcaption><a href="#figure-50" class="selfRef">Figure 50</a></figcaption></figure>
 </section>
 </div>
 <div id="s-face-assignment-1">
@@ -5805,7 +5905,7 @@ fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -&gt; bool {
 <a href="#section-19.4" class="section-number selfRef">19.4. </a><a href="#name-face-assignment-2" class="section-name selfRef">Face Assignment</a>
         </h3>
 <p id="section-19.4-1">Face assignment uses a nearest-face-center lookup via dot product. The face whose center unit vector has the maximum dot product with the query point is the face containing the point. This is equivalent to finding the face whose center is closest in angular distance, and requires no table lookup or coordinate transformation beyond the initial Cartesian conversion.<a href="#section-19.4-1" class="pilcrow">¶</a></p>
-<figure id="figure-52">
+<figure id="figure-51">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.4-2.1">
 <pre>
 /// Return the RSDGGS face index [0..11] for a WGS-84 coordinate.
@@ -5829,7 +5929,7 @@ pub fn face_for(ll: LatLon) -&gt; u8 {
 // only finding the maximum of 12 products — no sqrt, no trig.
 </pre>
 </div>
-<figcaption><a href="#figure-52" class="selfRef">Figure 52</a></figcaption></figure>
+<figcaption><a href="#figure-51" class="selfRef">Figure 51</a></figcaption></figure>
 </section>
 </div>
 <div id="s-pentagon-sector-assignment">
@@ -5839,7 +5939,7 @@ pub fn face_for(ll: LatLon) -&gt; u8 {
         </h3>
 <p id="section-19.5-1">Each face is divided into 5 golden gnomon triangular sectors by connecting the face center to each of the 5 pentagon vertices. The pentagon vertices are the centroids of the 5 icosahedron triangles surrounding the face's corresponding icosahedron vertex. These vertices are precomputed as constants for each face.<a href="#section-19.5-1" class="pilcrow">¶</a></p>
 <p id="section-19.5-2">For the reference implementation, the pentagon vertices are derived from the icosahedron face topology at compile time. The sector is found by testing the query point against each of the 5 spherical triangles (face_center, pv[i], pv[(i+1)%5]).<a href="#section-19.5-2" class="pilcrow">¶</a></p>
-<figure id="figure-53">
+<figure id="figure-52">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.5-3.1">
 <pre>
 /// Pentagon vertices for each RSDGGS face.
@@ -5878,7 +5978,7 @@ fn sector_for(face: u8, p: Vec3) -&gt; u8 {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-53" class="selfRef">Figure 53</a></figcaption></figure>
+<figcaption><a href="#figure-52" class="selfRef">Figure 52</a></figcaption></figure>
 </section>
 </div>
 <div id="s-recursive-subdivision-1">
@@ -5888,7 +5988,7 @@ fn sector_for(face: u8, p: Vec3) -&gt; u8 {
         </h3>
 <p id="section-19.6-1">Given the face and sector, the query point is recursively assigned to child triangles. At each level the triangle is split into 4 children by connecting the midpoints of all three sides. The child containing the point is identified by the spherical containment test and its 2-bit index is recorded.<a href="#section-19.6-1" class="pilcrow">¶</a></p>
 <p id="section-19.6-2">The tangent-frame projection used in the reference encoder (projecting onto the north/east tangent plane at the face center) is replaced here by exact spherical triangle subdivision. The spherical midpoint function is used to compute child vertices exactly on the sphere, eliminating distortion accumulation across subdivision levels.<a href="#section-19.6-2" class="pilcrow">¶</a></p>
-<figure id="figure-54">
+<figure id="figure-53">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.6-3.1">
 <pre>
 /// Recursive subdivision state: current triangle vertices.
@@ -5950,7 +6050,7 @@ fn initial_triangle(face: u8, sector: u8) -&gt; Triangle {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-54" class="selfRef">Figure 54</a></figcaption></figure>
+<figcaption><a href="#figure-53" class="selfRef">Figure 53</a></figcaption></figure>
 </section>
 </div>
 <div id="s-top-level-encode-function">
@@ -5959,7 +6059,7 @@ fn initial_triangle(face: u8, sector: u8) -&gt; Triangle {
 <a href="#section-19.7" class="section-number selfRef">19.7. </a><a href="#name-top-level-encode-function" class="section-name selfRef">Top-Level Encode Function</a>
         </h3>
 <p id="section-19.7-1">The encode function takes a WGS-84 coordinate and a desired length in bytes (1 to 8) and returns a populated RsdggsCell. The length parameter controls the resolution: 1 byte encodes face only; byte 1 carries the 4-bit sector and 2 subdivision levels, and each additional byte adds 4 subdivision levels (2 bits per level).<a href="#section-19.7-1" class="pilcrow">¶</a></p>
-<figure id="figure-55">
+<figure id="figure-54">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.7-2.1">
 <pre>
 /// Encode a WGS-84 coordinate as an RSDGGS cell index.
@@ -6016,7 +6116,7 @@ pub fn encode(ll: LatLon, len: u8) -&gt; RsdggsCell {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-55" class="selfRef">Figure 55</a></figcaption></figure>
+<figcaption><a href="#figure-54" class="selfRef">Figure 54</a></figcaption></figure>
 </section>
 </div>
 <div id="s-decode-function">
@@ -6025,7 +6125,7 @@ pub fn encode(ll: LatLon, len: u8) -&gt; RsdggsCell {
 <a href="#section-19.8" class="section-number selfRef">19.8. </a><a href="#name-decode-function" class="section-name selfRef">Decode Function</a>
         </h3>
 <p id="section-19.8-1">The decode function extracts the face, sector, and subdivision level sequence from a populated RsdggsCell. It does not reconstruct the precise geographic coordinate — it returns the cell information sufficient for regulatory database lookup. Geographic coordinate recovery (computing the cell center) is a separate operation not required for regulatory compliance.<a href="#section-19.8-1" class="pilcrow">¶</a></p>
-<figure id="figure-56">
+<figure id="figure-55">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.8-2.1">
 <pre>
 /// Decoded RSDGGS cell contents.
@@ -6068,7 +6168,7 @@ pub fn decode(cell: &amp;RsdggsCell) -&gt; DecodedCell {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-56" class="selfRef">Figure 56</a></figcaption></figure>
+<figcaption><a href="#figure-55" class="selfRef">Figure 55</a></figcaption></figure>
 </section>
 </div>
 <div id="s-boundary-proximity-helper">
@@ -6077,7 +6177,7 @@ pub fn decode(cell: &amp;RsdggsCell) -&gt; DecodedCell {
 <a href="#section-19.9" class="section-number selfRef">19.9. </a><a href="#name-boundary-proximity-helper" class="section-name selfRef">Boundary Proximity Helper</a>
         </h3>
 <p id="section-19.9-1">The boundary proximity function B(cell, band) from Section 9.3 is implemented as a database lookup returning the number of RSDGGS resolution steps to the nearest rule-set-changing boundary. The function signature is shown; the database backend is implementation-defined.<a href="#section-19.9-1" class="pilcrow">¶</a></p>
-<figure id="figure-57">
+<figure id="figure-56">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.9-2.1">
 <pre>
 /// Regulatory band identifier.
@@ -6125,7 +6225,7 @@ pub fn boundary_power_dbm(rule: &amp;RuleSet, nbr_pwr: i8) -&gt; i8 {
 }
 </pre>
 </div>
-<figcaption><a href="#figure-57" class="selfRef">Figure 57</a></figcaption></figure>
+<figcaption><a href="#figure-56" class="selfRef">Figure 56</a></figcaption></figure>
 </section>
 </div>
 <div id="s-worked-example">
@@ -6134,7 +6234,7 @@ pub fn boundary_power_dbm(rule: &amp;RuleSet, nbr_pwr: i8) -&gt; i8 {
 <a href="#section-19.10" class="section-number selfRef">19.10. </a><a href="#name-worked-example" class="section-name selfRef">Worked Example</a>
         </h3>
 <p id="section-19.10-1">The following verification vector is derived from the reference implementation. Implementations MUST produce identical byte values for this input to be considered conformant.<a href="#section-19.10-1" class="pilcrow">¶</a></p>
-<figure id="figure-58">
+<figure id="figure-57">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-19.10-2.1">
 <pre>
 // Input:
@@ -6147,30 +6247,28 @@ let cell = encode(sf, 4);
 
 // Expected output:
 //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x4E   sector 4 [7:4]=0100; sub_bits[0]=3 [3:2]=11;
-//                          sub_bits[1]=2 [1:0]=10
-//   cell.bytes[2] = 0xCF   sub_bits[2..6]: 0b11 0b00 0b11 0b11
-//   cell.bytes[3] = 0x4D   sub_bits[6..10]: 0b01 0b00 0b11 0b01
+//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010; sub_bits[0]=1 [3:2]=01;
+//                          sub_bits[1]=1 [1:0]=01
+//   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
+//   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
 //   cell.len      = 4
 
 assert_eq!(cell.bytes[0], 0x02);
-assert_eq!(cell.bytes[1], 0x4E);
-assert_eq!(cell.bytes[2], 0xCF);
-assert_eq!(cell.bytes[3], 0x4D);
+assert_eq!(cell.bytes[1], 0x25);
+assert_eq!(cell.bytes[2], 0xE0);
+assert_eq!(cell.bytes[3], 0xC3);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
 //   London    (51.51°N,   0.13°W) → face 1  (ITU Region 1, Europe)
-//   Tokyo  (35.68°N, 139.69°E) → face 6 (Region 1-C / Russia-CAS)
-//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, E. Asia)
-//   São Paulo (23.55°S,  46.63°W) → face 4  (Region 1-A / Africa West)
+//   Tokyo     (35.68°N, 139.69°E) → face 3  (ITU Region 3, Asia)
+//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, Asia)
+//   São Paulo (23.55°S,  46.63°W) → face 6  (ITU Region 2, S. America)
+//   Sydney    (33.87°S, 151.21°E) → face 7  (Region 3, E. Australia)
 //
-// Note: Tokyo → face 6 (not face 3) due to dodecahedron
-// face geometry places the face-3 center at 31.4°N, 86.5°E — closer to
-// South Asia — while face-6 center is at 51.0°N, 172°E, whose angular
-// proximity to Tokyo is greater than face-3 despite the longitude
-// geometry. This is correct dodecahedral behavior, not an error.
-// The regulatory DB maps face 6 to the correct East Asia rule set.
+// Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
+// is on face 11 (North Pacific). Both faces carry Region 3 in their
+// low two bits (3 &amp; 0x3 = 11 &amp; 0x3 = 3).
 
 // 1-byte truncation (privacy / regulatory coarse lookup):
 let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
@@ -6178,9 +6276,9 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 // Sufficient to determine that 902-928 MHz is legal at this location.
 </pre>
 </div>
-<figcaption><a href="#figure-58" class="selfRef">Figure 58</a></figcaption></figure>
+<figcaption><a href="#figure-57" class="selfRef">Figure 57</a></figcaption></figure>
 <p id="section-19.10-3">The worked example demonstrates the encode path from floating-point coordinate to structured byte sequence. The face-0x02 byte is the ITU Region 2 determination made at single-byte resolution. Truncating to 1 byte is sufficient for ISM band availability determination anywhere in North America, as specified in Section 9 (RSL for 902 MHz, Face 2 = 1 byte).<a href="#section-19.10-3" class="pilcrow">¶</a></p>
-<p id="section-19.10-4">The note on Tokyo illustrates that the dodecahedral face assignment is driven by geometry, not by geographic intuition. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, not a direct encoding of administrative boundaries. Face assignments may be counterintuitive for individual cities near face boundaries, but every face maps unambiguously to a defined set of regulatory bodies in the database.<a href="#section-19.10-4" class="pilcrow">¶</a></p>
+<p id="section-19.10-4">The note on Tokyo illustrates that face assignment is driven by geometry: a jurisdiction near a face boundary can span two faces. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, and its two low-order bits give the ITU Region of the face's principal population, not an encoding of administrative boundaries.<a href="#section-19.10-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

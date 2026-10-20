@@ -39,23 +39,26 @@ BANDS = [
 ]
 
 FACES = [
-    ("Polar / Antarctic", "Special coordination zone",
-     "Antarctic Treaty area; no standard ISM band allocations"),
+    # Draft section 4.6.2. The low two bits of each face number give its ITU Region (0: none).
+    ("Antarctica / New Zealand", "Antarctic Treaty · RSM (NZ)",
+     "Antarctica: coordination zone; NZ 915–928 MHz + 2.4 GHz"),
     ("ITU R1 — Europe", "ETSI · Ofcom · ARCEP · BNetzA · IDA", "433 MHz + 868 MHz + 2.4 GHz"),
     ("ITU R2 — N. America", "FCC (US) · ISED (CA) · IFT (MX)",
-     "902–928 MHz + 2.4 GHz · 1-byte RSL covers all of R2"),
-    ("ITU R3 — E. Asia", "MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)",
+     "902–928 MHz + 2.4 GHz · 1-byte RSL covers all of face 2"),
+    ("ITU R3 — Asia", "MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW) · WPC (IN)",
      "2.4 GHz universal; 920–928 MHz JP; 915 MHz TW"),
-    ("R1-A Africa West", "ATU West cluster · NCC (NG) · OFCOM (GH)", "433 MHz + 2.4 GHz"),
-    ("R1-B Africa East", "ATU East · CCK (KE) · TCRA (TZ) · CA (ET)", "433 MHz + 2.4 GHz"),
-    ("R1-C Russia / CAS", "Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)", "433 MHz + 2.4 GHz"),
-    ("R1-D Middle East", "ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)", "433 MHz + 2.4 GHz"),
-    ("R2-A S. America", "Anatel (BR) · ENACOM (AR) · SUBTEL (CL)",
+    ("South Atlantic", "ICASA (ZA)", "433 MHz + 2.4 GHz (ZA); Antarctica: coordination zone"),
+    ("R1 — Africa / Middle East", "ATU East · ASMG · CCK (KE) · TCRA (TZ) · TRA (AE)", "433 MHz + 2.4 GHz"),
+    ("R2 — S. America", "Anatel (BR) · ENACOM (AR) · SUBTEL (CL)",
      "902–928 MHz + 2.4 GHz · BR: split 902–907.5 + 915–928 MHz"),
-    ("R2-B Caribbean", "NTRC cluster · FCC (PR/USVI) · BIPT (AW)", "902–928 MHz + 2.4 GHz"),
-    ("R3-A S/SE Asia", "WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)",
-     "2.4 GHz; some: 920–925 MHz (IN, SG, MY, ID)"),
-    ("R3-B Oceania", "ACMA (AU) · RSM (NZ) · MCIT (PG)", "915–928 MHz (AU/NZ) + 2.4 GHz"),
+    ("R3 — Eastern Australia", "ACMA (AU) · MCIT (PG)", "915–928 MHz (AU) + 2.4 GHz"),
+    ("Southern Indian Ocean", "ACMA (AU: Melbourne, Adelaide, Perth)",
+     "915–928 MHz (AU) + 2.4 GHz; Antarctica: coordination zone"),
+    ("R1 — West Africa", "ATU West · NCC (NG) · OFCOM (GH) · ANRT (MA)",
+     "433 MHz + 2.4 GHz; NE Brazil 902–928 MHz"),
+    ("R2 — Central Pacific", "FCC (US: Hawaii)", "902–928 MHz + 2.4 GHz"),
+    ("R3 — North Pacific", "MIC (JP) · Roskomnadzor (RU) · FCC (US: Alaska)",
+     "920–928 MHz JP; 433 MHz RU; 902–928 MHz AK; + 2.4 GHz"),
 ]
 
 STEPS = [
@@ -93,8 +96,8 @@ CARTOGRAPHY = (
 # Resolution per index length follows draft §5.2.
 ABOUT = (
     "RSDGGS (Regulatory Spectrum Discrete Global Grid System) encodes device geographic "
-    "location as a 1–8 byte index rooted in a spherical dodecahedron. Face indices align "
-    "to ITU Radio Region numbers. Index length implies resolution: 1 byte = ITU Region · "
+    "location as a 1–8 byte index rooted in a spherical dodecahedron. The low two bits "
+    "of the face index give the ITU Radio Region. Index length implies resolution: 1 byte = ITU Region · "
     "2 bytes = sub-regional bloc · 3 bytes = country-level · 4+ bytes = sub-national. "
     "Devices derive regulatory ISM band rules directly from their cell index with no "
     "server dependency."

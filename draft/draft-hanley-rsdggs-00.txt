@@ -4,8 +4,8 @@
 
 Independent Submission                                       J.P. Hanley
 Internet-Draft                                       Myelin Networks LLC
-Intended status: Informational                           19 October 2026
-Expires: 22 April 2027
+Intended status: Informational                           20 October 2026
+Expires: 23 April 2027
 
 
         Regulatory Spectrum Discrete Global Grid System (RSDGGS)
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 1]
+Hanley                    Expires 23 April 2027                 [Page 1]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -68,7 +68,7 @@ Internet-Draft                   RSDGGS                     October 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2027.
+   This Internet-Draft will expire on 23 April 2027.
 
 Copyright Notice
 
@@ -105,212 +105,212 @@ Table of Contents
      5.2.  Resolution by Length  . . . . . . . . . . . . . . . . . .  23
      5.3.  Bit-Field Layout  . . . . . . . . . . . . . . . . . . . .  24
      5.4.  Privacy Truncation  . . . . . . . . . . . . . . . . . . .  25
-   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  25
+   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  26
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 2]
+Hanley                    Expires 23 April 2027                 [Page 2]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     6.1.  Face Assignment . . . . . . . . . . . . . . . . . . . . .  25
-     6.2.  Triangle Assignment Within Face . . . . . . . . . . . . .  26
-     6.3.  Recursive Subdivision . . . . . . . . . . . . . . . . . .  26
-   7.  CBOR Wire Encoding  . . . . . . . . . . . . . . . . . . . . .  27
-     7.1.  Compact Form  . . . . . . . . . . . . . . . . . . . . . .  27
-     7.2.  Tagged Form . . . . . . . . . . . . . . . . . . . . . . .  27
-     7.3.  CDDL Schema . . . . . . . . . . . . . . . . . . . . . . .  27
-   8.  Regulatory Database Structure . . . . . . . . . . . . . . . .  28
-     8.1.  Band Entry Schema . . . . . . . . . . . . . . . . . . . .  28
-     8.2.  Resolution Sufficiency Levels . . . . . . . . . . . . . .  29
-     8.3.  Exception Overlay Table . . . . . . . . . . . . . . . . .  30
-     8.4.  Regulatory Database Validity Limitations  . . . . . . . .  31
-   9.  ISM Band Reference  . . . . . . . . . . . . . . . . . . . . .  33
-     9.1.  433.05-434.79 MHz (Center: 433.92 MHz)  . . . . . . . . .  33
-     9.2.  863-870 MHz (ETSI SRD Sub-bands)  . . . . . . . . . . . .  33
-     9.3.  902-928 MHz (Center: 915 MHz) . . . . . . . . . . . . . .  34
-     9.4.  920-928 MHz Regional Variants . . . . . . . . . . . . . .  35
-     9.5.  TV Whitespace Bands (174-216 MHz, 470-608 MHz)  . . . . .  36
-   10. Regulatory Boundary Zones and Adaptive Compliance . . . . . .  36
-     10.1.  Cross-Border Spectrum Governance Framework . . . . . . .  36
-       10.1.1.  ITU Radio Regulations  . . . . . . . . . . . . . . .  37
+     6.1.  Face Assignment . . . . . . . . . . . . . . . . . . . . .  26
+     6.2.  Triangle Assignment Within Face . . . . . . . . . . . . .  27
+     6.3.  Recursive Subdivision . . . . . . . . . . . . . . . . . .  27
+   7.  CBOR Wire Encoding  . . . . . . . . . . . . . . . . . . . . .  28
+     7.1.  Compact Form  . . . . . . . . . . . . . . . . . . . . . .  28
+     7.2.  Tagged Form . . . . . . . . . . . . . . . . . . . . . . .  28
+     7.3.  CDDL Schema . . . . . . . . . . . . . . . . . . . . . . .  28
+   8.  Regulatory Database Structure . . . . . . . . . . . . . . . .  29
+     8.1.  Band Entry Schema . . . . . . . . . . . . . . . . . . . .  29
+     8.2.  Resolution Sufficiency Levels . . . . . . . . . . . . . .  30
+     8.3.  Exception Overlay Table . . . . . . . . . . . . . . . . .  31
+     8.4.  Regulatory Database Validity Limitations  . . . . . . . .  32
+   9.  ISM Band Reference  . . . . . . . . . . . . . . . . . . . . .  34
+     9.1.  433.05-434.79 MHz (Center: 433.92 MHz)  . . . . . . . . .  34
+     9.2.  863-870 MHz (ETSI SRD Sub-bands)  . . . . . . . . . . . .  34
+     9.3.  902-928 MHz (Center: 915 MHz) . . . . . . . . . . . . . .  35
+     9.4.  920-928 MHz Regional Variants . . . . . . . . . . . . . .  36
+     9.5.  TV Whitespace Bands (174-216 MHz, 470-608 MHz)  . . . . .  37
+   10. Regulatory Boundary Zones and Adaptive Compliance . . . . . .  37
+     10.1.  Cross-Border Spectrum Governance Framework . . . . . . .  37
+       10.1.1.  ITU Radio Regulations  . . . . . . . . . . . . . . .  38
        10.1.2.  Bilateral and Multilateral Coordination
-               Agreements  . . . . . . . . . . . . . . . . . . . . .  37
-       10.1.3.  Technical Mitigation Mechanisms  . . . . . . . . . .  38
-     10.2.  Coordination Zone Geometry and RSDGGS Resolution . . . .  39
-     10.3.  Boundary Proximity Function  . . . . . . . . . . . . . .  40
-     10.4.  Adaptive Power Control at Regulatory Boundaries  . . . .  41
-       10.4.1.  Power Reduction Profile  . . . . . . . . . . . . . .  41
-       10.4.2.  Duty Cycle and Dwell Constraints . . . . . . . . . .  42
-     10.5.  RSDGGS Resolution Escalation Near Boundaries . . . . . .  43
-     10.6.  CDDL Schema for Boundary-Aware Operation . . . . . . . .  44
-   11. Peer-Assisted Location Discovery  . . . . . . . . . . . . . .  45
-     11.1.  Beacon Frame Format  . . . . . . . . . . . . . . . . . .  45
-     11.2.  Channel Scanning Protocol  . . . . . . . . . . . . . . .  46
-     11.3.  Regulatory Bootstrap Procedure . . . . . . . . . . . . .  46
-   12. Manufacturing Provisioning Use Case . . . . . . . . . . . . .  47
-   13. Cooperative Localization  . . . . . . . . . . . . . . . . . .  49
-     13.1.  Localization Method Hierarchy  . . . . . . . . . . . . .  49
-     13.2.  RSDGGS Cell Intersection . . . . . . . . . . . . . . . .  50
-     13.3.  Round-Trip RSSI Range Estimation . . . . . . . . . . . .  51
-       13.3.1.  Round-Trip RSSI Exchange Procedure . . . . . . . . .  51
-       13.3.2.  Range Estimation . . . . . . . . . . . . . . . . . .  51
-     13.4.  IEEE 802.15.4a/z UWB Precision Ranging . . . . . . . . .  52
-       13.4.1.  Double-Sided Two-Way Ranging (DS-TWR)  . . . . . . .  52
-       13.4.2.  STS Authentication (802.15.4z) . . . . . . . . . . .  53
+               Agreements  . . . . . . . . . . . . . . . . . . . . .  38
+       10.1.3.  Technical Mitigation Mechanisms  . . . . . . . . . .  39
+     10.2.  Coordination Zone Geometry and RSDGGS Resolution . . . .  40
+     10.3.  Boundary Proximity Function  . . . . . . . . . . . . . .  41
+     10.4.  Adaptive Power Control at Regulatory Boundaries  . . . .  42
+       10.4.1.  Power Reduction Profile  . . . . . . . . . . . . . .  42
+       10.4.2.  Duty Cycle and Dwell Constraints . . . . . . . . . .  43
+     10.5.  RSDGGS Resolution Escalation Near Boundaries . . . . . .  44
+     10.6.  CDDL Schema for Boundary-Aware Operation . . . . . . . .  45
+   11. Peer-Assisted Location Discovery  . . . . . . . . . . . . . .  46
+     11.1.  Beacon Frame Format  . . . . . . . . . . . . . . . . . .  46
+     11.2.  Channel Scanning Protocol  . . . . . . . . . . . . . . .  47
+     11.3.  Regulatory Bootstrap Procedure . . . . . . . . . . . . .  47
+   12. Manufacturing Provisioning Use Case . . . . . . . . . . . . .  48
+   13. Cooperative Localization  . . . . . . . . . . . . . . . . . .  50
+     13.1.  Localization Method Hierarchy  . . . . . . . . . . . . .  50
+     13.2.  RSDGGS Cell Intersection . . . . . . . . . . . . . . . .  51
+     13.3.  Round-Trip RSSI Range Estimation . . . . . . . . . . . .  52
+       13.3.1.  Round-Trip RSSI Exchange Procedure . . . . . . . . .  52
+       13.3.2.  Range Estimation . . . . . . . . . . . . . . . . . .  52
+     13.4.  IEEE 802.15.4a/z UWB Precision Ranging . . . . . . . . .  53
+       13.4.1.  Double-Sided Two-Way Ranging (DS-TWR)  . . . . . . .  53
+       13.4.2.  STS Authentication (802.15.4z) . . . . . . . . . . .  54
        13.4.3.  Phase Difference of Arrival (PDOA) Angle
-               Estimation  . . . . . . . . . . . . . . . . . . . . .  53
-     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  54
+               Estimation  . . . . . . . . . . . . . . . . . . . . .  54
+     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  55
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 3]
+Hanley                    Expires 23 April 2027                 [Page 3]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     13.6.  Weighted Multilateration Engine  . . . . . . . . . . . .  55
-       13.6.1.  Measurement Model  . . . . . . . . . . . . . . . . .  55
-       13.6.2.  Weighted Least Squares Position Update . . . . . . .  55
-     13.7.  Extended Kalman Filter Integration . . . . . . . . . . .  56
-       13.7.1.  State Vector . . . . . . . . . . . . . . . . . . . .  56
-       13.7.2.  Prediction Step  . . . . . . . . . . . . . . . . . .  56
-       13.7.3.  Update Step  . . . . . . . . . . . . . . . . . . . .  57
-     13.8.  Security Considerations for Cooperative Ranging  . . . .  57
-   14. IEEE 802.15.4 Information Element Encoding  . . . . . . . . .  58
-     14.1.  IE Structure and Constraints . . . . . . . . . . . . . .  58
-     14.2.  RSDGGS Location Sub-IE Definition  . . . . . . . . . . .  59
-     14.3.  SUN Device Description Integration . . . . . . . . . . .  60
-     14.4.  MAC-Layer Regulatory Bootstrap . . . . . . . . . . . . .  60
-   15. IPv6 Geographic Addressing  . . . . . . . . . . . . . . . . .  61
-     15.1.  Address Structure  . . . . . . . . . . . . . . . . . . .  61
-     15.2.  Prefix Hierarchy and Aggregation . . . . . . . . . . . .  62
-     15.3.  Geographic Greedy Forwarding . . . . . . . . . . . . . .  64
-     15.4.  Regulatory-Aware Channel Selection for Forwarding  . . .  65
-     15.5.  Relationship to Existing Standards . . . . . . . . . . .  65
-   16. Relationship to Prior Geographic Addressing Work  . . . . . .  66
-     16.1.  RFC 2009: GPS-Based Addressing and Routing . . . . . . .  67
-       16.1.1.  RFC 2009 Technical Approach  . . . . . . . . . . . .  67
-       16.1.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  67
-     16.2.  RFC 5870: The 'geo' URI Scheme . . . . . . . . . . . . .  68
-       16.2.1.  RFC 5870 Technical Approach  . . . . . . . . . . . .  68
-       16.2.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  69
-     16.3.  RFC 6442: Location Conveyance for SIP  . . . . . . . . .  69
-       16.3.1.  RFC 6442 Technical Approach  . . . . . . . . . . . .  70
-       16.3.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  70
-     16.4.  RFC 9179: A YANG Grouping for Geographic Locations . . .  71
-       16.4.1.  RFC 9179 Technical Approach  . . . . . . . . . . . .  71
-       16.4.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  71
-     16.5.  RFC 9632: Finding and Using Geofeed Data . . . . . . . .  72
-       16.5.1.  RFC 9632 Technical Approach  . . . . . . . . . . . .  72
-       16.5.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  72
+     13.6.  Weighted Multilateration Engine  . . . . . . . . . . . .  56
+       13.6.1.  Measurement Model  . . . . . . . . . . . . . . . . .  56
+       13.6.2.  Weighted Least Squares Position Update . . . . . . .  56
+     13.7.  Extended Kalman Filter Integration . . . . . . . . . . .  57
+       13.7.1.  State Vector . . . . . . . . . . . . . . . . . . . .  57
+       13.7.2.  Prediction Step  . . . . . . . . . . . . . . . . . .  57
+       13.7.3.  Update Step  . . . . . . . . . . . . . . . . . . . .  58
+     13.8.  Security Considerations for Cooperative Ranging  . . . .  58
+   14. IEEE 802.15.4 Information Element Encoding  . . . . . . . . .  59
+     14.1.  IE Structure and Constraints . . . . . . . . . . . . . .  59
+     14.2.  RSDGGS Location Sub-IE Definition  . . . . . . . . . . .  60
+     14.3.  SUN Device Description Integration . . . . . . . . . . .  61
+     14.4.  MAC-Layer Regulatory Bootstrap . . . . . . . . . . . . .  61
+   15. IPv6 Geographic Addressing  . . . . . . . . . . . . . . . . .  62
+     15.1.  Address Structure  . . . . . . . . . . . . . . . . . . .  62
+     15.2.  Prefix Hierarchy and Aggregation . . . . . . . . . . . .  63
+     15.3.  Geographic Greedy Forwarding . . . . . . . . . . . . . .  65
+     15.4.  Regulatory-Aware Channel Selection for Forwarding  . . .  66
+     15.5.  Relationship to Existing Standards . . . . . . . . . . .  66
+   16. Relationship to Prior Geographic Addressing Work  . . . . . .  67
+     16.1.  RFC 2009: GPS-Based Addressing and Routing . . . . . . .  68
+       16.1.1.  RFC 2009 Technical Approach  . . . . . . . . . . . .  68
+       16.1.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  68
+     16.2.  RFC 5870: The 'geo' URI Scheme . . . . . . . . . . . . .  69
+       16.2.1.  RFC 5870 Technical Approach  . . . . . . . . . . . .  69
+       16.2.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  70
+     16.3.  RFC 6442: Location Conveyance for SIP  . . . . . . . . .  70
+       16.3.1.  RFC 6442 Technical Approach  . . . . . . . . . . . .  71
+       16.3.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  71
+     16.4.  RFC 9179: A YANG Grouping for Geographic Locations . . .  72
+       16.4.1.  RFC 9179 Technical Approach  . . . . . . . . . . . .  72
+       16.4.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  72
+     16.5.  RFC 9632: Finding and Using Geofeed Data . . . . . . . .  73
+       16.5.1.  RFC 9632 Technical Approach  . . . . . . . . . . . .  73
+       16.5.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  73
      16.6.  RFC 8805: A Format for Self-Published IP Geolocation
-             Feeds . . . . . . . . . . . . . . . . . . . . . . . . .  73
-       16.6.1.  RFC 8805 Technical Approach  . . . . . . . . . . . .  74
-       16.6.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  74
+             Feeds . . . . . . . . . . . . . . . . . . . . . . . . .  74
+       16.6.1.  RFC 8805 Technical Approach  . . . . . . . . . . . .  75
+       16.6.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  75
      16.7.  RFC 5808: Requirements for a Location-by-Reference
-             Mechanism . . . . . . . . . . . . . . . . . . . . . . .  75
-       16.7.1.  RFC 5808 Technical Approach  . . . . . . . . . . . .  75
-       16.7.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  75
+             Mechanism . . . . . . . . . . . . . . . . . . . . . . .  76
+       16.7.1.  RFC 5808 Technical Approach  . . . . . . . . . . . .  76
+       16.7.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
      16.8.  RFC 5491: GEOPRIV PIDF-LO Usage Clarification,
-             Considerations, and Recommendations . . . . . . . . . .  76
-       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  76
-       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
+             Considerations, and Recommendations . . . . . . . . . .  77
+       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  77
+       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  77
 
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 4]
+Hanley                    Expires 23 April 2027                 [Page 4]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
      16.9.  RFC 6280: An Architecture for Location and Location
-             Privacy in Internet Applications  . . . . . . . . . . .  77
-       16.9.1.  RFC 6280 Technical Approach  . . . . . . . . . . . .  77
-       16.9.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  78
+             Privacy in Internet Applications  . . . . . . . . . . .  78
+       16.9.1.  RFC 6280 Technical Approach  . . . . . . . . . . . .  78
+       16.9.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  79
      16.10. RFC 6772: Geolocation Policy: A Document Format for
              Expressing Privacy Preferences for Location
-             Information . . . . . . . . . . . . . . . . . . . . . .  78
-       16.10.1.  RFC 6772 Technical Approach . . . . . . . . . . . .  79
-       16.10.2.  Gaps Addressed by RSDGGS  . . . . . . . . . . . . .  79
-     16.11. Gap Analysis Summary . . . . . . . . . . . . . . . . . .  80
+             Information . . . . . . . . . . . . . . . . . . . . . .  79
+       16.10.1.  RFC 6772 Technical Approach . . . . . . . . . . . .  80
+       16.10.2.  Gaps Addressed by RSDGGS  . . . . . . . . . . . . .  80
+     16.11. Gap Analysis Summary . . . . . . . . . . . . . . . . . .  81
    17. Backward Citations: Relevant References Within Cited
-           Documents . . . . . . . . . . . . . . . . . . . . . . . .  82
+           Documents . . . . . . . . . . . . . . . . . . . . . . . .  83
      17.1.  GPSR — Greedy Perimeter Stateless Routing (from US
-            10,812,365)  . . . . . . . . . . . . . . . . . . . . . .  82
+            10,812,365)  . . . . . . . . . . . . . . . . . . . . . .  83
      17.2.  IEEE 802.11d — Country Information Elements (from US
-            10,306,400 family) . . . . . . . . . . . . . . . . . . .  82
+            10,306,400 family) . . . . . . . . . . . . . . . . . . .  83
      17.3.  IEEE 802.11h — DFS and TPC (from US 10,306,400
-            family)  . . . . . . . . . . . . . . . . . . . . . . . .  83
+            family)  . . . . . . . . . . . . . . . . . . . . . . . .  84
      17.4.  RFC 3693 — GEOPRIV Requirements (from RFC 6442 and RFC
-            6280)  . . . . . . . . . . . . . . . . . . . . . . . . .  83
+            6280)  . . . . . . . . . . . . . . . . . . . . . . . . .  84
      17.5.  RFC 3825 — DHCP Geodetic Location Option (from RFC 5870
-            and RFC 5808)  . . . . . . . . . . . . . . . . . . . . .  84
+            and RFC 5808)  . . . . . . . . . . . . . . . . . . . . .  85
      17.6.  RFC 4632 — CIDR: Classless Inter-Domain Routing (from RFC
-            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  85
+            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
      17.7.  RFC 6269 — Issues with IP Address Sharing (from RFC
-            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  85
+            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
      17.8.  GeoCast — Geographic Addressing and Routing (from RFC
-            2009)  . . . . . . . . . . . . . . . . . . . . . . . . .  85
-     17.9.  Summary of Newly Identified References . . . . . . . . .  86
-   18. Freedom to Operate and Prior Art Considerations . . . . . . .  88
-     18.1.  Expired Patents — Public Domain Prior Art  . . . . . . .  88
+            2009)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
+     17.9.  Summary of Newly Identified References . . . . . . . . .  87
+   18. Freedom to Operate and Prior Art Considerations . . . . . . .  89
+     18.1.  Expired Patents — Public Domain Prior Art  . . . . . . .  89
        18.1.1.  US Patent 4,939,726 — Metricom, Inc. (Expired
-               2007) . . . . . . . . . . . . . . . . . . . . . . . .  88
-       18.1.2.  US Patent 6,982,966 — Status Unconfirmed . . . . . .  89
-     18.2.  Active Patents — Detailed Analysis . . . . . . . . . . .  89
+               2007) . . . . . . . . . . . . . . . . . . . . . . . .  89
+       18.1.2.  US Patent 6,982,966 — Status Unconfirmed . . . . . .  90
+     18.2.  Active Patents — Detailed Analysis . . . . . . . . . . .  90
        18.2.1.  US Patent 10,306,400 / Application 2014/0162692 —
-               Wirelesss Regulatory Compliance (Active until ~2035)   89
+               Wirelesss Regulatory Compliance (Active until ~2035)   90
        18.2.2.  US Patent 10,812,365 — Geohyperbolic Routing
-               (Northeastern University, Active until 2037)  . . . .  90
+               (Northeastern University, Active until 2037)  . . . .  91
        18.2.3.  US Patent 11,652,742 — Ghost Routing (Microsoft,
-               Active until 2041)  . . . . . . . . . . . . . . . . .  91
+               Active until 2041)  . . . . . . . . . . . . . . . . .  92
        18.2.4.  CN101923801B — Method for Generating a Regular
-               Dodecahedron Map Projection (Expired) . . . . . . . .  92
-     18.3.  RFC Citation Improvement Opportunities . . . . . . . . .  95
+               Dodecahedron Map Projection (Expired) . . . . . . . .  93
+     18.3.  RFC Citation Improvement Opportunities . . . . . . . . .  96
        18.3.1.  RFC 2009 — GPS-Based Addressing (1996, Experimental/
-               Legacy) . . . . . . . . . . . . . . . . . . . . . . .  95
-       18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)  .  96
+               Legacy) . . . . . . . . . . . . . . . . . . . . . . .  96
+       18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)  .  97
 
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 5]
+Hanley                    Expires 23 April 2027                 [Page 5]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
        18.3.3.  RFC 6442 — Location Conveyance for SIP (2011,
-               Standards Track)  . . . . . . . . . . . . . . . . . .  96
+               Standards Track)  . . . . . . . . . . . . . . . . . .  97
        18.3.4.  RFC 9179 — YANG Grouping for Geographic Locations
-               (2022, Standards Track) . . . . . . . . . . . . . . .  97
-       18.3.5.  RFC 9632 / RFC 8805 — Geofeed Data (2024 / 2020) . .  97
+               (2022, Standards Track) . . . . . . . . . . . . . . .  98
+       18.3.5.  RFC 9632 / RFC 8805 — Geofeed Data (2024 / 2020) . .  98
        18.3.6.  RFC 5808 — Location-by-Reference Requirements (2010,
-               Informational)  . . . . . . . . . . . . . . . . . . .  97
-       18.3.7.  RFC 5491 — PIDF-LO Usage (2009, Standards Track) . .  98
-       18.3.8.  RFC 6280 — GEOPRIV Architecture (2011, BCP)  . . . .  98
+               Informational)  . . . . . . . . . . . . . . . . . . .  98
+       18.3.7.  RFC 5491 — PIDF-LO Usage (2009, Standards Track) . .  99
+       18.3.8.  RFC 6280 — GEOPRIV Architecture (2011, BCP)  . . . .  99
        18.3.9.  RFC 6772 — Geolocation Policy (2013, Standards
-               Track)  . . . . . . . . . . . . . . . . . . . . . . .  98
-     18.4.  Summary of Improvement Opportunities . . . . . . . . . .  99
-     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 100
-   19. Reference Implementation (Rust Pseudocode)  . . . . . . . . . 102
-     19.1.  Crate Structure and Types  . . . . . . . . . . . . . . . 102
-     19.2.  Compile-Time Constants . . . . . . . . . . . . . . . . . 103
-     19.3.  Coordinate Conversion Primitives . . . . . . . . . . . . 104
-     19.4.  Face Assignment  . . . . . . . . . . . . . . . . . . . . 106
-     19.5.  Pentagon Sector Assignment . . . . . . . . . . . . . . . 107
-     19.6.  Recursive Subdivision  . . . . . . . . . . . . . . . . . 108
-     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 109
-     19.8.  Decode Function  . . . . . . . . . . . . . . . . . . . . 111
-     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 112
-     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 114
-   20. Security Considerations . . . . . . . . . . . . . . . . . . . 115
-   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 116
-   22. Normative References  . . . . . . . . . . . . . . . . . . . . 117
-   23. Informative References  . . . . . . . . . . . . . . . . . . . 117
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 119
+               Track)  . . . . . . . . . . . . . . . . . . . . . . .  99
+     18.4.  Summary of Improvement Opportunities . . . . . . . . . . 100
+     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 101
+   19. Reference Implementation (Rust Pseudocode)  . . . . . . . . . 103
+     19.1.  Crate Structure and Types  . . . . . . . . . . . . . . . 103
+     19.2.  Compile-Time Constants . . . . . . . . . . . . . . . . . 104
+     19.3.  Coordinate Conversion Primitives . . . . . . . . . . . . 108
+     19.4.  Face Assignment  . . . . . . . . . . . . . . . . . . . . 109
+     19.5.  Pentagon Sector Assignment . . . . . . . . . . . . . . . 110
+     19.6.  Recursive Subdivision  . . . . . . . . . . . . . . . . . 111
+     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 112
+     19.8.  Decode Function  . . . . . . . . . . . . . . . . . . . . 114
+     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 115
+     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 117
+   20. Security Considerations . . . . . . . . . . . . . . . . . . . 118
+   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 119
+   22. Normative References  . . . . . . . . . . . . . . . . . . . . 120
+   23. Informative References  . . . . . . . . . . . . . . . . . . . 120
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 122
 
 1.  Introduction
 
@@ -333,7 +333,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 6]
+Hanley                    Expires 23 April 2027                 [Page 6]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -389,7 +389,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 7]
+Hanley                    Expires 23 April 2027                 [Page 7]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -445,7 +445,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 8]
+Hanley                    Expires 23 April 2027                 [Page 8]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -501,7 +501,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                 [Page 9]
+Hanley                    Expires 23 April 2027                 [Page 9]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -536,10 +536,10 @@ Internet-Draft                   RSDGGS                     October 2026
      → Region 2 fits within one pentagonal face with
        ~17,300,000 km² margin — accommodates coastal
        and island territories without boundary cuts
-     → 3 faces assigned to ITU Regions (face indices 1, 2, 3)
-     → 9 faces available for sub-region differentiation
-       at level 0: correct cardinality for the
-       10 major regulatory blocs defined in Section 4.2
+     → 3 faces centred on the most populous zone of
+       each ITU Region (face indices 1, 2, 3)
+     → 9 further faces; the two low-order bits of every
+       face index give its ITU Region (Section 4.2)
 
                                   Figure 1
 
@@ -550,22 +550,24 @@ Internet-Draft                   RSDGGS                     October 2026
    that satisfies the ITU Region alignment constraint while leaving
    sufficient faces for sub-region differentiation.
 
-   The 9 extension faces (4 through 11) of the dodecahedron correspond
-   directly to the major regulatory sub-blocs within the three ITU
-   Regions: four for Region 1 (Europe core, Africa West, Africa East,
-   Russia/Central Asia, Middle East), two for Region 2 (South America,
+   The nine extension faces (0 and 4 through 11) are numbered so that
+   the two low-order bits of every face index give the ITU Region of the
+   face's principal population: faces 5 and 9 (Region 1: Africa and the
+   Middle East, West Africa), faces 6 and 10 (Region 2: South America,
 
 
 
-Hanley                    Expires 22 April 2027                [Page 10]
+Hanley                    Expires 23 April 2027                [Page 10]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   Caribbean), and two for Region 3 (South/Southeast Asia, Oceania).
-   This correspondence is exact and natural for the dodecahedron face
-   count; it would be over-specified with 17 icosahedron extension
-   faces.
+   the Central Pacific), and faces 7 and 11 (Region 3: Eastern
+   Australia, the North Pacific).  Faces 0, 4, and 8 cover Antarctica
+   and the southern oceans and carry no Region.  Section 4.2 lists the
+   assignments.  Twelve faces give each Region exactly three face
+   indices; with the icosahedron's 20 faces the same scheme would leave
+   most indices covering open ocean.
 
 4.1.2.  Map Projection Distortion at Face Boundaries
 
@@ -604,24 +606,18 @@ Internet-Draft                   RSDGGS                     October 2026
 
                                   Figure 2
 
-
-
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 11]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    Both polyhedra produce identical maximum distortion at their vertices
    (~1.80x gnomonic scale factor at ~41.8 degrees angular radius),
    because the vertices of the dodecahedron and the vertices of its dual
    icosahedron lie at the same angular distance from their respective
+
+
+
+Hanley                    Expires 23 April 2027                [Page 11]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    face centers on the unit sphere.  The critical difference is the
    vertex-to-edge-midpoint distance ratio: 2.00 for the equilateral
    triangle versus 1.24 for the regular pentagon.
@@ -656,50 +652,53 @@ Internet-Draft                   RSDGGS                     October 2026
 
 4.1.3.  Summary of Design Decision
 
-   +=============+====================+================+==============+
-   | Property    | Icosahedron (20    | Dodecahedron   | Winner       |
-   |             | triangles)         | (12 pentagons) |              |
-   +=============+====================+================+==============+
-   | Face count  | 20 faces / 3       | 12 faces / 3   | Dodecahedron |
-   | vs. ITU     | regions (excess)   | regions        |              |
-   | Regions     |                    | (correct)      |              |
-   +-------------+--------------------+----------------+--------------+
-   | Extension   | 17 (over-          | 9 (exact fit   | Dodecahedron |
-   | faces for   | partitioned)       | for regulatory |              |
+   +=============+====================+=================+==============+
+   | Property    | Icosahedron (20    | Dodecahedron    | Winner       |
+   |             | triangles)         | (12             |              |
+   |             |                    | pentagons)      |              |
+   +=============+====================+=================+==============+
+   | Face count  | 20 faces / 3       | 12 faces / 3    | Dodecahedron |
+   | vs. ITU     | regions (excess)   | regions         |              |
+   | Regions     |                    | (correct)       |              |
+   +-------------+--------------------+-----------------+--------------+
+   | Extension   | 17 (over-          | 9 (two more     | Dodecahedron |
+   | faces for   | partitioned)       | per Region,     |              |
+   | sub-regions |                    | three with      |              |
+   |             |                    | none)           |              |
+   +-------------+--------------------+-----------------+--------------+
 
 
 
-Hanley                    Expires 22 April 2027                [Page 12]
+Hanley                    Expires 23 April 2027                [Page 12]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   | sub-regions |                    | blocs)         |              |
-   +-------------+--------------------+----------------+--------------+
-   | Face area   | ~25.5M km² (tight  | ~42M km²       | Dodecahedron |
-   | vs. Region  | fit)               | (ample margin) |              |
-   | 2           |                    |                |              |
-   +-------------+--------------------+----------------+--------------+
-   | Max         | 1.80x (same)       | 1.80x (same)   | Tie          |
-   | boundary    |                    |                |              |
-   | distortion  |                    |                |              |
-   +-------------+--------------------+----------------+--------------+
-   | Distortion  | 1.57x (high        | 1.30x (low     | Dodecahedron |
-   | ratio       | variation)         | variation)     |              |
-   | vertex/     |                    |                |              |
-   | midpoint    |                    |                |              |
-   +-------------+--------------------+----------------+--------------+
-   | Interior    | 60 degrees (sharp) | 108 degrees    | Dodecahedron |
-   | angle at    |                    | (obtuse)       |              |
-   | boundary    |                    |                |              |
-   | corner      |                    |                |              |
-   +-------------+--------------------+----------------+--------------+
-   | Subdivision | Triangle (direct)  | Triangle       | Tie          |
-   | primitive   |                    | (derived, apex | (different   |
-   |             |                    | at center)     | placement)   |
-   +-------------+--------------------+----------------+--------------+
+   | Face area   | ~25.5M km² (tight  | ~42M km²        | Dodecahedron |
+   | vs. Region  | fit)               | (ample          |              |
+   | 2           |                    | margin)         |              |
+   +-------------+--------------------+-----------------+--------------+
+   | Max         | 1.80x (same)       | 1.80x (same)    | Tie          |
+   | boundary    |                    |                 |              |
+   | distortion  |                    |                 |              |
+   +-------------+--------------------+-----------------+--------------+
+   | Distortion  | 1.57x (high        | 1.30x (low      | Dodecahedron |
+   | ratio       | variation)         | variation)      |              |
+   | vertex/     |                    |                 |              |
+   | midpoint    |                    |                 |              |
+   +-------------+--------------------+-----------------+--------------+
+   | Interior    | 60 degrees (sharp) | 108 degrees     | Dodecahedron |
+   | angle at    |                    | (obtuse)        |              |
+   | boundary    |                    |                 |              |
+   | corner      |                    |                 |              |
+   +-------------+--------------------+-----------------+--------------+
+   | Subdivision | Triangle (direct)  | Triangle        | Tie          |
+   | primitive   |                    | (derived,       | (different   |
+   |             |                    | apex at         | placement)   |
+   |             |                    | center)         |              |
+   +-------------+--------------------+-----------------+--------------+
 
-                  Table 1: Icosahedron vs. Dodecahedron
+                   Table 1: Icosahedron vs. Dodecahedron
 
    The dodecahedron satisfies both requirements that the icosahedron
    fails: it provides the correct face count for direct ITU Region
@@ -715,87 +714,95 @@ Internet-Draft                   RSDGGS                     October 2026
    the surface of a unit sphere.  A regular dodecahedron has twelve
    pentagonal faces.  RSDGGS assigns these faces as follows:
 
+   +======+============+=============+==============+==================+
+   | Face | ITU Region | Primary     | Anchor       | Primary Bodies   |
+   |      | (face &    | Name        | Authority    |                  |
+   |      | 0x3)       |             |              |                  |
+   +======+============+=============+==============+==================+
+   | 0    | —          | Antarctica  | ITU Special  | Antarctic        |
+   |      |            | / New       | Zone         | Treaty, ITU Art. |
+   |      |            | Zealand     |              | 48; RSM (NZ)     |
 
 
 
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 13]
+Hanley                    Expires 23 April 2027                [Page 13]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   +======+========+===============+==============+===================+
-   | Face | ITU    | Primary Name  | Anchor       | Primary Bodies    |
-   |      | Parent |               | Authority    |                   |
-   +======+========+===============+==============+===================+
-   | 0    | —      | Polar /       | ITU Special  | Antarctic Treaty, |
-   |      |        | Antarctic     | Zone         | ITU Art. 48       |
-   +------+--------+---------------+--------------+-------------------+
-   | 1    | R1     | ITU Region 1  | ETSI / CEPT  | ETSI, Ofcom,      |
-   |      |        | — Europe      |              | ARCEP, BNetzA     |
-   +------+--------+---------------+--------------+-------------------+
-   | 2    | R2     | ITU Region 2  | FCC / ISED / | FCC (US), ISED    |
-   |      |        | — N.  America | IFT          | (CA), IFT (MX)    |
-   +------+--------+---------------+--------------+-------------------+
-   | 3    | R3     | ITU Region 3  | MIC / MIIT / | MIC (JP), MIIT    |
-   |      |        | — E.  Asia    | KCC          | (CN), KCC (KR)    |
-   +------+--------+---------------+--------------+-------------------+
-   | 4    | R1     | Region 1-A —  | ATU West     | ARTP, ARCEP (SN), |
-   |      |        | Africa West   |              | ATU west          |
-   +------+--------+---------------+--------------+-------------------+
-   | 5    | R1     | Region 1-B —  | ATU East     | CA (ET), CCK      |
-   |      |        | Africa East   |              | (KE), TCRA (TZ)   |
-   +------+--------+---------------+--------------+-------------------+
-   | 6    | R1     | Region 1-C —  | Roskomnadzor | Roskomnadzor      |
-   |      |        | Russia / CAS  | / RRT        | (RU), RRT (KZ)    |
-   +------+--------+---------------+--------------+-------------------+
-   | 7    | R1     | Region 1-D —  | ASMG         | MCIT (SA), TRA    |
-   |      |        | Middle East   |              | (AE), NTRA (EG)   |
-   +------+--------+---------------+--------------+-------------------+
-   | 8    | R2     | Region 2-A —  | ANATEL /     | Anatel (BR),      |
-   |      |        | S.  America   | ENACOM       | ENACOM (AR)       |
-   +------+--------+---------------+--------------+-------------------+
-   | 9    | R2     | Region 2-B —  | NTRC Cluster | NTRC, Caribbean   |
-   |      |        | Caribbean     |              | authorities       |
-   +------+--------+---------------+--------------+-------------------+
-   | 10   | R3     | Region 3-A —  | WPC / MCMC   | DoT/WPC (IN),     |
-   |      |        | S/SE Asia     |              | MCMC (MY)         |
-   +------+--------+---------------+--------------+-------------------+
-   | 11   | R3     | Region 3-B —  | ACMA / RSM   | ACMA (AU), RSM    |
-   |      |        | Oceania       |              | (NZ), SPC         |
-   +------+--------+---------------+--------------+-------------------+
+   +------+------------+-------------+--------------+------------------+
+   | 1    | R1         | ITU Region  | ETSI / CEPT  | ETSI, Ofcom,     |
+   |      |            | 1 — Europe  |              | ARCEP, BNetzA    |
+   +------+------------+-------------+--------------+------------------+
+   | 2    | R2         | ITU Region  | FCC / ISED / | FCC (US), ISED   |
+   |      |            | 2 — North   | IFT          | (CA), IFT (MX)   |
+   |      |            | America     |              |                  |
+   +------+------------+-------------+--------------+------------------+
+   | 3    | R3         | ITU Region  | MIC / MIIT / | MIC (JP), MIIT   |
+   |      |            | 3 — Asia    | KCC          | (CN), KCC (KR),  |
+   |      |            |             |              | WPC/DoT (IN)     |
+   +------+------------+-------------+--------------+------------------+
+   | 4    | —          | South       | ICASA        | ICASA (ZA)       |
+   |      |            | Atlantic    |              |                  |
+   +------+------------+-------------+--------------+------------------+
+   | 5    | R1         | Region 1 —  | ATU East /   | CA (ET), CCK     |
+   |      |            | Africa /    | ASMG         | (KE), TCRA (TZ), |
+   |      |            | Middle      |              | MCIT (SA), TRA   |
+   |      |            | East        |              | (AE)             |
+   +------+------------+-------------+--------------+------------------+
+   | 6    | R2         | Region 2 —  | ANATEL /     | Anatel (BR),     |
+   |      |            | South       | ENACOM       | ENACOM (AR)      |
+   |      |            | America     |              |                  |
+   +------+------------+-------------+--------------+------------------+
+   | 7    | R3         | Region 3 —  | ACMA         | ACMA (AU), SPC   |
+   |      |            | Eastern     |              |                  |
+   |      |            | Australia   |              |                  |
+   +------+------------+-------------+--------------+------------------+
+   | 8    | —          | Southern    | ACMA         | ACMA (AU:        |
+   |      |            | Indian      |              | Melbourne,       |
+   |      |            | Ocean       |              | Adelaide, Perth) |
+   +------+------------+-------------+--------------+------------------+
+   | 9    | R1         | Region 1 —  | ATU West     | ARTP, ARCEP      |
+   |      |            | West        |              | (SN), NCC (NG),  |
+   |      |            | Africa      |              | ATU west         |
+   +------+------------+-------------+--------------+------------------+
+   | 10   | R2         | Region 2 —  | FCC          | FCC (US: Hawaii) |
+   |      |            | Central     |              |                  |
+   |      |            | Pacific     |              |                  |
+   +------+------------+-------------+--------------+------------------+
+   | 11   | R3         | Region 3 —  | MIC /        | MIC (JP),        |
+   |      |            | North       | Roskomnadzor | Roskomnadzor     |
+   |      |            | Pacific     |              | (RU), FCC (US:   |
+   |      |            |             |              | Alaska)          |
+   +------+------------+-------------+--------------+------------------+
 
-                        Table 2: Face Assignments
-
-
-
-
-
-
-
+                         Table 2: Face Assignments
 
 
-Hanley                    Expires 22 April 2027                [Page 14]
+
+
+Hanley                    Expires 23 April 2027                [Page 14]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
    Face indices 1, 2, and 3 carry the ITU Region number directly,
    establishing a direct correspondence between a single-octet RSDGGS
-   index and ITU Region membership.  Extension faces 4 through 11
-   subdivide the large ITU regions into coherent regulatory blocs whose
-   parent region is encoded in the regulatory database rather than the
-   index itself.
+   index and ITU Region membership for the most populous zone of each
+   Region.  Every other face follows the same rule through its two low-
+   order bits: the ITU Region at single-octet resolution is face & 0x3
+   (equivalently, Octet 0 & 0x03), where 0 means no Region.  The rule
+   gives the Region of the face's principal population; a face may also
+   contain land of another Region (for example, north-east Brazil on
+   face 9, Iran on face 1, and Alaska on face 11), and there the
+   regulatory database, not the face index, determines the Region and
+   the rules.
 
-   Face 0 is reserved for polar and Antarctic zones, which are subject
-   to ITU Article 48 special coordination procedures rather than
-   national regulatory frameworks.
+   Face 0 holds the largest part of Antarctica, which is subject to ITU
+   Article 48 special coordination procedures rather than national
+   regulatory frameworks; faces 4 and 8 hold most of the rest.  Face 0
+   also contains New Zealand, whose rules come from the regulatory
+   database like those of any other jurisdiction.
 
 4.3.  Face Center Orientation
 
@@ -806,97 +813,105 @@ Internet-Draft                   RSDGGS                     October 2026
    2, with twelve vertices at the normalized forms of (0, +-1, +-phi),
    (+-1, +-phi, 0), and (+-phi, 0, +-1).
 
-   A three-step rotation is applied to the entire icosahedron to orient
-   the dodecahedron for ITU regulatory alignment.  The rotation places
-   icosahedron vertex 8 -- the normalized form of [phi, 0, 1] -- at
-   geographic coordinates (39 degrees North, 98 degrees West), the
-   approximate centroid of the contiguous United States.  As a
-   consequence, RSDGGS Face 2, whose center is the centroid of the five
-   icosahedron triangles surrounding vertex 8, lands at approximately
-   (31.43 degrees North, 102.48 degrees West).  This orientation
-   minimizes dodecahedron edge intersections across the harmonized FCC /
-   ISED / IFT regulatory zone of North America, satisfying design goal
-   G2.
-
-   In the default (unrotated) icosahedron, vertex 8 at [phi, 0, 1]
-   normalizes to latitude arctan(1/phi) = 31.7175 degrees North,
-   longitude 0 degrees (on the prime meridian).  The orientation
-   rotation proceeds in three steps applied to every icosahedron vertex:
-
-  Step 1: rot_z(0)           Vertex 8 is already at lon = 0; no-op.
-  Step 2: rot_x(+7.2825 deg) Raise vertex 8 from 31.7175N to 39.0N.
-                              Angle = 39.0 - arctan(1/phi) = 7.2825 deg.
-  Step 3: rot_z(-98.0 deg)   Place vertex 8 at 98.0W longitude.
-
-  rot_x(a): [x, y*cos(a) - z*sin(a), y*sin(a) + z*cos(a)]
-  rot_z(a): [x*cos(a) - y*sin(a), x*sin(a) + y*cos(a), z]
-
-  Result after rotation:
-    Vertex 8 (anchor):   39.0000N, 98.0000W
-    Face 2 center:       31.4323N, 102.4796W
+   The orientation places the three most populous regulatory zones each
+   on a single face: Europe on face 1, North America on face 2, and the
+   core of ITU Region 3 (China, India, Japan, Korea, and their
+   neighbours) on face 3.  It is fixed by two parameters, the position
+   of the face 1 center and the bearing from it to the face 2 center:
 
 
 
-Hanley                    Expires 22 April 2027                [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 15]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                                 Figure 3
+   Face 1 center:  60.0000N, 26.5000E
+   Face 2 center:  initial bearing 304.0000 deg (true) from the
+                   face 1 center, at the angular distance between
+                   adjacent face centers, arctan(2) = 63.4349 deg
+
+   1. Take any icosahedron vertex A and an adjacent vertex B,
+      so that dot(A, B) = 1/sqrt(5).
+   2. Rotate the icosahedron by the rotation that maps A to the
+      face 1 center and B to the face 2 center: the rotation
+      taking the orthonormal frame (A, B', A x B') to (F1, F2',
+      F1 x F2'), where B' and F2' are B and F2 made orthogonal
+      to A and F1 and normalized. The icosahedral rotation group
+      acts simply transitively on ordered pairs of adjacent
+      vertices, so the choice of A and B does not matter.
+   3. The rotated vertices are the twelve face centers. Number
+      them as below (each face is the one whose center is nearest
+      the listed position).
+   4. The dodecahedron's vertices are the normalized centroids of
+      the twenty rotated icosahedron triangles. A face's five
+      vertices are those nearest its center; they are ordered
+      counter-clockwise as seen from outside the sphere, starting
+      with the vertex at the smallest bearing (clockwise from
+      true north) from the face center. Triangle k of a face is
+      (center, v[k], v[(k+1) mod 5]).
+
+   Resulting face centers:
+     Face  0    60.00S, 153.50W   Antarctica / New Zealand
+     Face  1     60.00N, 26.50E   Europe (Region 1)
+     Face  2     39.60N, 79.28W   North America (Region 2)
+     Face  3    23.76N, 104.10E   Asia (Region 3)
+     Face  4      54.80S, 1.18E   South Atlantic
+     Face  5      1.89S, 44.32E   Africa / Middle East (Region 1)
+     Face  6     23.76S, 75.90W   South America (Region 2)
+     Face  7     6.43S, 161.32E   Eastern Australia (Region 3)
+     Face  8    39.60S, 100.72E   Southern Indian Ocean
+     Face  9      6.43N, 18.68W   West Africa (Region 1)
+     Face 10     1.89N, 135.68W   Central Pacific (Region 2)
+     Face 11    54.80N, 178.82W   North Pacific (Region 3)
+
+                                  Figure 3
+
+   Weighted by the population of the Natural Earth populated places
+   dataset (version 5.1.2), face 1 holds 99.6 percent of the population
+   of Europe (including European Russia and Turkey), face 2 holds 99.4
+   percent of that of the United States, Canada, and Mexico, and face 3
+   holds 93 percent of that of the Region 3 core.  The parts of these
+   zones on other faces are the Canary Islands, Madeira, and the Azores
+   (face 9); Hawaii (face 10); most of Alaska and the far north-west of
+
+
+
+Hanley                    Expires 23 April 2027                [Page 16]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   Canada (face 11); and, for Region 3, Iran (mostly face 1), northern
+   Japan (face 11), Australia (faces 7 and 8), and New Zealand (face 0).
+   Australia and New Zealand cannot share face 3: Sydney is 74 degrees
+   from its center, twice a face's circumradius of 37.38 degrees.
+   Puerto Rico and the US Virgin Islands are on face 2.
 
    This rotation procedure is normative for the purpose of independently
-   verifying or regenerating the FACE_CENTERS compile-time constants
-   defined in Section 18.2, and for deriving face center coordinates for
-   non-Earth celestial bodies using a different regulatory anchor
-   (Section 5.5).  Implementations MUST use the precomputed FACE_CENTERS
-   constants in Section 18.2 for all runtime face assignment.  The
-   rotation itself is never performed at runtime.
-
-   The in-plane orientation of Face 2's pentagon -- that is, the compass
-   bearings at which its five vertices point when viewed from the face
-   center -- is not a separate parameter and is not independently
-   configurable.  It is a direct geometric consequence of the
-   icosahedron's structure once the anchor vertex position is fixed.
-   Icosahedron vertex 8, which dual-maps to Face 2, has five
-   neighbouring triangular faces arranged at azimuths determined by the
-   icosahedron's fixed symmetry.  After the three-step rotation places
-   vertex 8 at 39N, 98W, those five neighbouring centroids land at the
-   following fixed geographic positions, forming the pentagon boundary:
-
- V0: 67.92N, 116.36W  (bearing 351.5 NNW -- interior BC / Alaska border)
- V1: 40.23N,  57.13W  (bearing  63.5 ENE -- mid-North Atlantic)
- V2: 29.97N, 146.21W  (bearing 279.5 WNW -- North Pacific)
- V3:  2.59S, 118.75W  (bearing 207.5 SSW -- Central Pacific)
- V4:  2.59N,  77.25W  (bearing 135.5 SE  -- Colombia coast)
-
- Pentagon tilt: ~63.5 deg clockwise from point-up (no vertex due north).
- Pentagon circumradius: 37.38 degrees of arc from face center.
-
-                                Figure 4
-
-   This orientation places the entire conterminous United States, all of
-   Canada south of approximately 62 degrees North, Mexico, Cuba, the
-   Bahamas, and most of the Greater Antilles within Face 2, coinciding
-   with the FCC, ISED, and IFT regulatory jurisdictions.  Unavoidable
-   boundary crossings include Alaska (crosses into Face 6), Hawaii (Face
-   9), and Puerto Rico and the US Virgin Islands (Face 4).  These are
-   the minimum achievable boundary exceptions for any dodecahedral face
-   covering the North American regulatory zone.  The FACE_PENTAGON_VERTS
-   compile-time constants in Section 18.2 encode these five boundary
-   vertex positions explicitly and are used at runtime during triangle-
-   sector assignment (Section 6.2).  No runtime computation of the
-   icosahedron rotation is ever required.
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 16]
-
-Internet-Draft                   RSDGGS                     October 2026
-
+   verifying or regenerating the FACE_CENTERS and FACE_PENTAGON_VERTS
+   compile-time constants defined in Section 18.2, and for deriving face
+   orientations for non-Earth celestial bodies (Section 5.5).
+   Implementations MUST use the precomputed constants in Section 18.2
+   for all runtime face and triangle assignment.  The rotation itself is
+   never performed at runtime.  The reference implementation generates
+   its constants with tools/gen_constants.py.
 
 4.4.  Pentagonal Face Subdivision
 
@@ -930,7 +945,14 @@ Internet-Draft                   RSDGGS                     October 2026
       /      \/      \
      /--------3--------\
 
-                                  Figure 5
+                                  Figure 4
+
+
+
+Hanley                    Expires 23 April 2027                [Page 17]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
    Child 3, the central inverted triangle, has inverted orientation
    relative to its parent.  This inversion is intrinsic to 4-fold
@@ -942,17 +964,6 @@ Internet-Draft                   RSDGGS                     October 2026
    The 2-bit child index values are defined as follows: 00 denotes the
    apex child, 01 denotes the left base child, 10 denotes the right base
    child, and 11 denotes the central inverted child.
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 17]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 4.6.  RSDGGS Dodecahedron Net — ISM Band Regulatory Coverage Map
 
@@ -994,18 +1005,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 18]
+Hanley                    Expires 23 April 2027                [Page 18]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1061,84 +1061,88 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 19]
+Hanley                    Expires 23 April 2027                [Page 19]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   +======+============+=============+==================+==============+
-   | Face | Geographic | ITU         | Principal        | ISM Bands    |
-   |      | Region     | Designation | Regulatory       |              |
-   |      |            |             | Bodies           |              |
-   +======+============+=============+==================+==============+
-   | F0   | Polar /    | Special     | Antarctic        | Coordination |
-   |      | Antarctic  |             | Treaty — no      | required     |
-   |      |            |             | standard ISM     |              |
-   |      |            |             | allocations      |              |
-   +------+------------+-------------+------------------+--------------+
-   | F1   | Europe     | ITU Region  | ETSI · Ofcom     | 433 + 868 +  |
-   |      |            | 1           | (UK) · ARCEP     | 2.4 GHz      |
-   |      |            |             | (FR) ·           |              |
-   |      |            |             | BNetzA (DE)      |              |
-   +------+------------+-------------+------------------+--------------+
-   | F2   | N.         | ITU Region  | FCC (US) ·       | 902–928 +    |
-   |      | America    | 2           | ISED (CA) ·      | 2.4 GHz      |
-   |      |            |             | IFT (MX)         |              |
-   +------+------------+-------------+------------------+--------------+
-   | F3   | E.  Asia   | ITU Region  | MIC (JP) ·       | 2.4 GHz; JP  |
-   |      |            | 3           | MIIT (CN) ·      | 920–928 MHz; |
-   |      |            |             | KCC (KR) ·       | TW 902–928   |
-   |      |            |             | NCC (TW)         | MHz          |
-   +------+------------+-------------+------------------+--------------+
-   | F4   | Africa     | ITU Region  | ATU West ·       | 433 + 2.4    |
-   |      | West       | 1           | NCC (NG) ·       | GHz          |
-   |      |            |             | OFCOM (GH) ·     |              |
-   |      |            |             | ANRT (MA)        |              |
-   +------+------------+-------------+------------------+--------------+
-   | F5   | Africa     | ITU Region  | ATU East ·       | 433 + 2.4    |
-   |      | East       | 1           | CCK (KE) ·       | GHz          |
-   |      |            |             | TCRA (TZ) ·      |              |
-   |      |            |             | CA (ET)          |              |
-   +------+------------+-------------+------------------+--------------+
-   | F6   | Russia /   | ITU Region  | Roskomnadzor     | 433 + 2.4    |
-   |      | CAS        | 1           | (RU) · RRT       | GHz          |
-   |      |            |             | (KZ) · MCI       |              |
-   |      |            |             | (UZ)             |              |
-   +------+------------+-------------+------------------+--------------+
-   | F7   | Middle     | ITU Region  | ASMG · TRA       | 433 + 2.4    |
-   |      | East       | 1           | (AE) · MCIT      | GHz          |
-   |      |            |             | (SA) · NTRA      |              |
-   |      |            |             | (EG)             |              |
-   +------+------------+-------------+------------------+--------------+
-   | F8   | S.         | ITU Region  | Anatel (BR)      | 902–928 +    |
-   |      | America    | 2           | · ENACOM         | 2.4 GHz; BR  |
-   |      |            |             | (AR) ·           | split-band   |
-   |      |            |             | SUBTEL (CL)      |              |
+   +======+============+=============+==============+=================+
+   | Face | Geographic | ITU         | Principal    | ISM Bands       |
+   |      | Region     | Designation | Regulatory   |                 |
+   |      |            |             | Bodies       |                 |
+   +======+============+=============+==============+=================+
+   | F0   | Antarctica | Special (no | Antarctic    | Antarctica:     |
+   |      | / New      | Region)     | Treaty · RSM | coordination    |
+   |      | Zealand    |             | (NZ)         | required; NZ:   |
+   |      |            |             |              | 915–928 + 2.4   |
+   |      |            |             |              | GHz             |
+   +------+------------+-------------+--------------+-----------------+
+   | F1   | Europe     | ITU Region  | ETSI · Ofcom | 433 + 868 + 2.4 |
+   |      |            | 1           | (UK) · ARCEP | GHz; 433 + 2.4  |
+   |      |            |             | (FR) ·       | GHz (RU, TR,    |
+   |      |            |             | BNetzA (DE)  | Maghreb)        |
+   +------+------------+-------------+--------------+-----------------+
+   | F2   | North      | ITU Region  | FCC (US) ·   | 902–928 + 2.4   |
+   |      | America    | 2           | ISED (CA) ·  | GHz             |
+   |      |            |             | IFT (MX)     |                 |
+   +------+------------+-------------+--------------+-----------------+
+   | F3   | Asia       | ITU Region  | MIC (JP) ·   | 2.4 GHz; JP     |
+   |      |            | 3           | MIIT (CN) ·  | 920–928 MHz; TW |
+   |      |            |             | KCC (KR) ·   | 902–928 MHz;    |
+   |      |            |             | NCC (TW) ·   | some: 920–925   |
+   |      |            |             | WPC/DoT (IN) | MHz (IN, SG,    |
+   |      |            |             |              | MY, ID)         |
+   +------+------------+-------------+--------------+-----------------+
+   | F4   | South      | None        | ICASA (ZA)   | 433 + 2.4 GHz   |
+   |      | Atlantic   |             |              | (ZA);           |
+   |      |            |             |              | Antarctica:     |
+   |      |            |             |              | coordination    |
+   |      |            |             |              | required        |
+   +------+------------+-------------+--------------+-----------------+
+   | F5   | Africa /   | ITU Region  | ATU East ·   | 433 + 2.4 GHz   |
+   |      | Middle     | 1           | ASMG · CCK   |                 |
+   |      | East       |             | (KE) · TCRA  |                 |
+   |      |            |             | (TZ) · MCIT  |                 |
+   |      |            |             | (SA) · TRA   |                 |
+   |      |            |             | (AE)         |                 |
+   +------+------------+-------------+--------------+-----------------+
+   | F6   | South      | ITU Region  | Anatel (BR)  | 902–928 + 2.4   |
+   |      | America    | 2           | · ENACOM     | GHz; BR split-  |
+   |      |            |             | (AR) ·       | band            |
+   |      |            |             | SUBTEL (CL)  |                 |
+   +------+------------+-------------+--------------+-----------------+
+   | F7   | Eastern    | ITU Region  | ACMA (AU) ·  | 915–928 MHz     |
+   |      | Australia  | 3           | MCIT (PG)    | (AU) + 2.4 GHz  |
+   +------+------------+-------------+--------------+-----------------+
 
 
 
-Hanley                    Expires 22 April 2027                [Page 20]
+Hanley                    Expires 23 April 2027                [Page 20]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   +------+------------+-------------+------------------+--------------+
-   | F9   | Caribbean  | ITU Region  | NTRC cluster     | 902–928 +    |
-   |      |            | 2           | · FCC (PR/       | 2.4 GHz      |
-   |      |            |             | USVI) · BIPT     |              |
-   |      |            |             | (AW)             |              |
-   +------+------------+-------------+------------------+--------------+
-   | F10  | S/SE Asia  | ITU Region  | WPC/DoT (IN)     | 2.4 GHz;     |
-   |      |            | 3           | · MCMC (MY)      | some:        |
-   |      |            |             | · IMDA (SG)      | 920–925 MHz  |
-   |      |            |             | · NTC (PH)       |              |
-   +------+------------+-------------+------------------+--------------+
-   | F11  | Oceania    | ITU Region  | ACMA (AU) ·      | 915–928 MHz  |
-   |      |            | 3           | RSM (NZ) ·       | (AU/NZ) +    |
-   |      |            |             | MCIT (PG)        | 2.4 GHz      |
-   +------+------------+-------------+------------------+--------------+
+   | F8   | Southern   | None        | ACMA (AU)    | 915–928 MHz     |
+   |      | Indian     |             |              | (AU) + 2.4 GHz; |
+   |      | Ocean      |             |              | Antarctica:     |
+   |      |            |             |              | coordination    |
+   |      |            |             |              | required        |
+   +------+------------+-------------+--------------+-----------------+
+   | F9   | West       | ITU Region  | ATU West ·   | 433 + 2.4 GHz;  |
+   |      | Africa     | 1           | NCC (NG) ·   | north-east      |
+   |      |            |             | OFCOM (GH) · | Brazil: 902–928 |
+   |      |            |             | ANRT (MA)    | + 2.4 GHz       |
+   +------+------------+-------------+--------------+-----------------+
+   | F10  | Central    | ITU Region  | FCC (US:     | 902–928 + 2.4   |
+   |      | Pacific    | 2           | Hawaii)      | GHz             |
+   +------+------------+-------------+--------------+-----------------+
+   | F11  | North      | ITU Region  | MIC (JP) ·   | JP 920–928 MHz; |
+   |      | Pacific    | 3           | Roskomnadzor | RU 433 + 2.4    |
+   |      |            |             | (RU) · FCC   | GHz; AK 902–928 |
+   |      |            |             | (US: Alaska) | + 2.4 GHz       |
+   +------+------------+-------------+--------------+-----------------+
 
-              Table 4: Face Assignments and Regulatory Bodies
+             Table 4: Face Assignments and Regulatory Bodies
 
 4.6.3.  Net Topology and Construction
 
@@ -1146,7 +1150,7 @@ Internet-Draft                   RSDGGS                     October 2026
    All twelve faces remain connected through their shared fold edges; no
    face requires cutting and reattaching.  It consists of two groups of
    six faces, face 0 with its five neighbours and face 1 with its five,
-   joined across the edge between faces 8 and 2.  The net topology was
+   joined across the edge between faces 6 and 2.  The net topology was
    verified against the true 3D dodecahedron face adjacency graph: each
    pair of faces in the net that shares a fold edge is confirmed to
    share a geometric edge in the 3D dodecahedron.  Construction proceeds
@@ -1165,18 +1169,20 @@ Internet-Draft                   RSDGGS                     October 2026
    geographic features cross the fold edge continuously without
    discontinuity, distortion artifact, or gap.
 
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 21]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    Figure 1 is sized for US Letter, portrait, at 100% scale, which gives
    each pentagon a circumradius of 25 mm (37.38 degrees of arc).
    Figure 2, the reference key, carries the ISM band legend, the face
    index table, the construction instructions and a band quick
    reference.
-
-
-
-Hanley                    Expires 22 April 2027                [Page 21]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 5.  Index Encoding
 
@@ -1203,7 +1209,7 @@ Internet-Draft                   RSDGGS                     October 2026
                  straddles an octet boundary. See Section 5.3 for the
                  complete bit-field layout.
 
-                                Figure 6
+                                Figure 5
 
    When stored as a uint64_t for in-memory computation, Octet 0 occupies
    the most significant byte (big-endian octet order).  Every bit of an
@@ -1221,19 +1227,18 @@ Internet-Draft                   RSDGGS                     October 2026
    face=0-11.  Implementations that predate this field definition will
    continue to decode these indices correctly as Earth face indices.
 
+
+
+Hanley                    Expires 23 April 2027                [Page 22]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    The body selector enables RSDGGS to serve as a unified location
    encoding for operations on the Moon, Mars, and future celestial
    bodies where wireless regulatory coordination may be required under
    the Outer Space Treaty (1967) and subsequent ITU coordination
    frameworks.  The dodecahedral grid geometry is body-agnostic: the
-
-
-
-Hanley                    Expires 22 April 2027                [Page 22]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    same 12-face topology and subdivision hierarchy applies to any
    approximately spherical body, with face assignments and regulatory
    databases defined independently per body.  New body selector values
@@ -1248,6 +1253,42 @@ Internet-Draft                   RSDGGS                     October 2026
    vary across a face; the values below were measured at 39°N 98°W with
    the reference implementation, for a dodecahedron face area of
    approximately 42 million square kilometers:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 23]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
       +==========+=============+===============+===================+
       | Length   | Subdivision | Approx.  Cell | Primary Use       |
@@ -1283,13 +1324,6 @@ Internet-Draft                   RSDGGS                     October 2026
 
                       Table 5: Resolution by Length
 
-
-
-Hanley                    Expires 22 April 2027                [Page 23]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
 5.3.  Bit-Field Layout
 
    The following table provides the normative bit-field definition for a
@@ -1299,6 +1333,18 @@ Internet-Draft                   RSDGGS                     October 2026
    59-56 carry the four-bit face index.  The triangle index occupies the
    high nibble of Octet 1, and every subdivision level lies entirely
    within one octet.  All 64 bits are significant.
+
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 24]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
    Bits 63-60:  Octet 0 bits 7-4 — Celestial body selector [0..15]
    Bits 59-56:  Octet 0 bits 3-0 — Face index [0..11] on selected body
@@ -1330,21 +1376,11 @@ Internet-Draft                   RSDGGS                     October 2026
    Bits  3-2:   Subdivision level 25
    Bits  1-0:   Subdivision level 26
 
-                                  Figure 7
+                                  Figure 6
 
    At 26 subdivision levels, the minimum triangle area is approximately
    9 square centimeters, representing a linear cell dimension of roughly
    3 centimeters on Earth's surface.
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 24]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 5.4.  Privacy Truncation
 
@@ -1353,6 +1389,18 @@ Internet-Draft                   RSDGGS                     October 2026
    the coarser resolution corresponding to its new length.  No metadata
    is lost by truncation, as the resolution is fully recoverable from
    the length of the remaining bytes.
+
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 25]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
    Truncation is performed by removing trailing octets; no bits of the
    remaining octets change.  Because no subdivision level spans an octet
@@ -1393,19 +1441,22 @@ Internet-Draft                   RSDGGS                     October 2026
 
    3. face = argmax(d_i)
 
-                                  Figure 8
-
-
-
-Hanley                    Expires 22 April 2027                [Page 25]
-
-Internet-Draft                   RSDGGS                     October 2026
-
+                                  Figure 7
 
    Face centers are precomputed from the rotated icosahedron vertex
    positions as described in Section 4.3.  Implementations SHOULD store
    all twelve face center vectors as compile-time constants to avoid
    runtime trigonometric computation on constrained devices.
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 26]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 6.2.  Triangle Assignment Within Face
 
@@ -1442,21 +1493,12 @@ Internet-Draft                   RSDGGS                     October 2026
      Child 3: (mid(left,right), mid(apex,right),  mid(apex,left))
                                          [inverted orientation]
 
-                                  Figure 9
+                                  Figure 8
 
    The child containing the point is determined by the same spherical
    excess containment test used in Section 6.2.  The 2-bit child index
    is appended to the index bit stream.  This process repeats until the
    required number of subdivision levels have been encoded.
-
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 26]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
    Implementations targeting constrained environments SHOULD use integer
    approximations of the normalized midpoint computation, such as fixed-
@@ -1464,6 +1506,13 @@ Internet-Draft                   RSDGGS                     October 2026
    depth.  For resolutions of 4 octets or fewer, 32-bit fixed-point
    arithmetic is sufficient.  For resolutions of 6 octets or greater,
    64-bit arithmetic is RECOMMENDED.
+
+
+
+Hanley                    Expires 23 April 2027                [Page 27]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 7.  CBOR Wire Encoding
 
@@ -1476,10 +1525,10 @@ Internet-Draft                   RSDGGS                     October 2026
    protocol overhead must be minimized.
 
      0x41 0x02            -- 1-byte index, face 2 (ITU Region 2)
-     0x43 0x02 0x03 0xC1  -- 3-byte index, 39N 98W, country-level
+     0x43 0x02 0x21 0xF7  -- 3-byte index, 39N 98W, country-level
      0x48 ...             -- 8-byte index, maximum resolution
 
-                                 Figure 10
+                                  Figure 9
 
 7.2.  Tagged Form
 
@@ -1489,10 +1538,10 @@ Internet-Draft                   RSDGGS                     October 2026
    assignment.  The recommended placeholder tag value is 0xC24D52
    (pending registration).
 
-     0xC2 0x4D 0x52 0x43 0x02 0x03 0xC1
+     0xC2 0x4D 0x52 0x43 0x02 0x21 0xF7
      -- Tagged RSDGGS, 3-byte index
 
-                                 Figure 11
+                                 Figure 10
 
 7.3.  CDDL Schema
 
@@ -1509,7 +1558,14 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 27]
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 28]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1535,7 +1591,7 @@ Internet-Draft                   RSDGGS                     October 2026
      ? seq:     uint,            ; sequence number, optional
    }
 
-                                 Figure 12
+                                 Figure 11
 
 8.  Regulatory Database Structure
 
@@ -1565,7 +1621,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 28]
+Hanley                    Expires 23 April 2027                [Page 29]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1602,7 +1658,7 @@ modulation-type = &(
   ofdm: 4, ook: 5, bpsk: 6, any: 255
 )
 
-                              Figure 13
+                              Figure 12
 
 8.2.  Resolution Sufficiency Levels
 
@@ -1621,16 +1677,16 @@ modulation-type = &(
 
 
 
-Hanley                    Expires 22 April 2027                [Page 29]
+Hanley                    Expires 23 April 2027                [Page 30]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
    +============+=========+=========+==========+===========+===========+
-   | Band       |Face 2   |Face 1   |Faces     | Faces 4/5 | Faces 6/7 |
-   |            |(N.  Am.)|(EU)     |3/10/11   | (Africa)  | (RU/ME)   |
-   |            |         |         |(Asia/    |           |           |
-   |            |         |         |Pac)      |           |           |
+   | Band       |Face 2   |Face 1   |Faces     | Faces 5/9 | RU/ME     |
+   |            |(N.  Am.)|(EU)     |3/7/11    | (Africa)  | (within   |
+   |            |         |         |(Asia/    |           | faces 1,  |
+   |            |         |         |Pac)      |           | 3, 5, 11) |
    +============+=========+=========+==========+===========+===========+
    | 433 MHz    |RSL 1    |RSL 2    |RSL 1     | RSL 3     | RSL 2     |
    |            |(illegal)|         |(illegal) |           |           |
@@ -1677,45 +1733,39 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 30]
+Hanley                    Expires 23 April 2027                [Page 31]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   +================+======+===================+=======================+
-   | Location       | Face | Issue             | Min RSL for           |
-   |                |      |                   | Exception             |
-   +================+======+===================+=======================+
-   | Hong Kong      | 3    | 920-925 MHz, 100  | 5                     |
-   | (OFCA)         |      | mW vs. CN illegal |                       |
-   +----------------+------+-------------------+-----------------------+
-   | Macau (DSRT)   | 3    | ETSI framework in | 5                     |
-   |                |      | Region 3 face     |                       |
-   +----------------+------+-------------------+-----------------------+
-   | Singapore      | 10   | 920-925 MHz, 500  | 4-5                   |
-   | (IMDA)         |      | mW; ~50 km state  |                       |
-   +----------------+------+-------------------+-----------------------+
-   | US Virgin      | 9    | FCC rules in      | 5                     |
-   | Islands (FCC)  |      | Caribbean face    |                       |
-   +----------------+------+-------------------+-----------------------+
-   | British Virgin | 9    | ICTA rules        | 5                     |
-   | Islands        |      | adjacent to USVI  |                       |
-   +----------------+------+-------------------+-----------------------+
-   | French Guiana  | 8    | ETSI rules in     | 4                     |
-   | (ARCEP)        |      | Region 2-A face   |                       |
-   +----------------+------+-------------------+-----------------------+
-   | Ceuta /        | 4    | EU enclave in     | 6                     |
-   | Melilla (ETSI) |      | Africa West face  |                       |
-   +----------------+------+-------------------+-----------------------+
-   | Puerto Rico    | 9    | FCC rules in      | 4                     |
-   | (FCC)          |      | Caribbean face    |                       |
-   +----------------+------+-------------------+-----------------------+
-   | Guam / CNMI    | 3    | FCC rules in      | 4                     |
-   | (FCC)          |      | Region 3 face     |                       |
-   +----------------+------+-------------------+-----------------------+
-   | French Pacific | 11   | ETSI rules in     | 4                     |
-   | (ARCEP)        |      | Oceania face      |                       |
-   +----------------+------+-------------------+-----------------------+
+    +================+======+===========================+=============+
+    | Location       | Face | Issue                     | Min RSL for |
+    |                |      |                           | Exception   |
+    +================+======+===========================+=============+
+    | Hong Kong      | 3    | 920-925 MHz, 100 mW vs.   | 5           |
+    | (OFCA)         |      | CN illegal                |             |
+    +----------------+------+---------------------------+-------------+
+    | Macau (DSRT)   | 3    | ETSI framework in Region  | 5           |
+    |                |      | 3 face                    |             |
+    +----------------+------+---------------------------+-------------+
+    | Singapore      | 3    | 920-925 MHz, 500 mW; ~50  | 4-5         |
+    | (IMDA)         |      | km state                  |             |
+    +----------------+------+---------------------------+-------------+
+    | British Virgin | 2    | ICTA rules adjacent to    | 5           |
+    | Islands        |      | USVI (FCC)                |             |
+    +----------------+------+---------------------------+-------------+
+    | French Guiana  | 9    | ETSI rules in West Africa | 4           |
+    | (ARCEP)        |      | face, beside Brazil       |             |
+    +----------------+------+---------------------------+-------------+
+    | Ceuta /        | 1    | EU enclaves bordering     | 6           |
+    | Melilla (ETSI) |      | Morocco                   |             |
+    +----------------+------+---------------------------+-------------+
+    | Guam / CNMI    | 7    | FCC rules in Region 3     | 4           |
+    | (FCC)          |      | face                      |             |
+    +----------------+------+---------------------------+-------------+
+    | French Pacific | 7,   | ETSI rules in Pacific     | 4           |
+    | (ARCEP)        | 10   | faces                     |             |
+    +----------------+------+---------------------------+-------------+
 
                       Table 7: Exception Overlay Table
 
@@ -1727,17 +1777,26 @@ Internet-Draft                   RSDGGS                     October 2026
    of the following limitations inherent to any static regulatory
    database.
 
-   *Regulatory change:* National spectrum regulations, ITU Radio
-   Regulation allocations, and bilateral coordination agreements change
-   over time through legislative action, treaty revision, ITU World
 
 
 
-Hanley                    Expires 22 April 2027                [Page 31]
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 23 April 2027                [Page 32]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   *Regulatory change:* National spectrum regulations, ITU Radio
+   Regulation allocations, and bilateral coordination agreements change
+   over time through legislative action, treaty revision, ITU World
    Radiocommunication Conference (WRC) decisions, and emergency
    administrative orders.  A database that was accurate at device
    manufacture may no longer correctly represent the regulatory
@@ -1782,18 +1841,19 @@ Internet-Draft                   RSDGGS                     October 2026
    framework.  Operators remain legally responsible for the compliance
    of their deployments.
 
-   Implementations intended for safety-critical or licensed-spectrum
-   applications SHOULD implement a database version timestamp field and
-   a configurable maximum database age, defaulting to a deployment-
-   class-appropriate value (for example, 365 days for fixed
 
 
 
-Hanley                    Expires 22 April 2027                [Page 32]
+
+Hanley                    Expires 23 April 2027                [Page 33]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   Implementations intended for safety-critical or licensed-spectrum
+   applications SHOULD implement a database version timestamp field and
+   a configurable maximum database age, defaulting to a deployment-
+   class-appropriate value (for example, 365 days for fixed
    infrastructure, 90 days for mobile equipment).  Implementations
    SHOULD expose the database version and age to management interfaces
    so that operators can audit fleet-wide database currency.
@@ -1841,11 +1901,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-
-
-
-Hanley                    Expires 22 April 2027                [Page 33]
+Hanley                    Expires 23 April 2027                [Page 34]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1901,7 +1957,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 34]
+Hanley                    Expires 23 April 2027                [Page 35]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1957,7 +2013,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 35]
+Hanley                    Expires 23 April 2027                [Page 36]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2013,7 +2069,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 36]
+Hanley                    Expires 23 April 2027                [Page 37]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2069,7 +2125,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 37]
+Hanley                    Expires 23 April 2027                [Page 38]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2092,7 +2148,7 @@ Internet-Draft                   RSDGGS                     October 2026
      required for intra-EU 868 MHz SRD operation
      EU/Russia border: coordination required; no harmonization
 
-                                 Figure 14
+                                 Figure 13
 
    The 47 CFR § 90.619 power-flux-density limit of -107 dB(W/m²) at the
    US/Mexico border for the 896-940 MHz band is directly applicable to
@@ -2125,7 +2181,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 38]
+Hanley                    Expires 23 April 2027                [Page 39]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2181,7 +2237,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 39]
+Hanley                    Expires 23 April 2027                [Page 40]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2237,7 +2293,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 40]
+Hanley                    Expires 23 April 2027                [Page 41]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2270,7 +2326,7 @@ Internet-Draft                   RSDGGS                     October 2026
      30 km protection zone:      B <= 4  (4-byte resolution)
      12 nm territorial sea:      B <= 5  (5-byte resolution)
 
-                                 Figure 15
+                                 Figure 14
 
 10.4.  Adaptive Power Control at Regulatory Boundaries
 
@@ -2293,7 +2349,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 41]
+Hanley                    Expires 23 April 2027                [Page 42]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2321,7 +2377,7 @@ Internet-Draft                   RSDGGS                     October 2026
    This continuous form requires 5-byte resolution to evaluate
    with adequate precision (cell diameter ~260 m).
 
-                                 Figure 16
+                                 Figure 15
 
    The minimum neighbor power constraint (taking the minimum of the two
    rule sets at B=0) is the most conservative applicable interpretation
@@ -2349,7 +2405,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 42]
+Hanley                    Expires 23 April 2027                [Page 43]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2370,7 +2426,7 @@ Internet-Draft                   RSDGGS                     October 2026
      → Effectively identical, no reduction needed
      → Exception table entry flags as RSL 5 for verification
 
-                                 Figure 17
+                                 Figure 16
 
 10.5.  RSDGGS Resolution Escalation Near Boundaries
 
@@ -2405,12 +2461,12 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 43]
+Hanley                    Expires 23 April 2027                [Page 44]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                                 Figure 18
+                                 Figure 17
 
    The resolution escalation requirement means that a device moving
    toward a regulatory boundary will autonomously increase its index
@@ -2457,11 +2513,11 @@ Internet-Draft                   RSDGGS                     October 2026
      dc-b:          nil / float,       ; duty cycle in cell-b
    }
 
-                                 Figure 19
+                                 Figure 18
 
 
 
-Hanley                    Expires 22 April 2027                [Page 44]
+Hanley                    Expires 23 April 2027                [Page 45]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2517,7 +2573,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 45]
+Hanley                    Expires 23 April 2027                [Page 46]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2573,7 +2629,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 46]
+Hanley                    Expires 23 April 2027                [Page 47]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2629,7 +2685,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 47]
+Hanley                    Expires 23 April 2027                [Page 48]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2685,7 +2741,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 48]
+Hanley                    Expires 23 April 2027                [Page 49]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2741,7 +2797,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 49]
+Hanley                    Expires 23 April 2027                [Page 50]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2786,7 +2842,7 @@ Internet-Draft                   RSDGGS                     October 2026
      resolution_bytes = valid_bits / 8  // floor
      inferred_cell    = intersection >> (64 - resolution_bytes*8)
 
-                                 Figure 20
+                                 Figure 19
 
    As additional peers are heard, valid_bits can only decrease or remain
    constant, monotonically converging toward the finest common prefix.
@@ -2797,7 +2853,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 50]
+Hanley                    Expires 23 April 2027                [Page 51]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2822,7 +2878,7 @@ Initiator A                          Responder B
    Both nodes now hold (RSSI_B_rx, RSSI_A_rx)
    Path loss = (RSSI_tx_A - RSSI_B_rx + RSSI_tx_B - RSSI_A_rx) / 2
 
-                              Figure 21
+                              Figure 20
 
 13.3.2.  Range Estimation
 
@@ -2847,13 +2903,13 @@ Initiator A                          Responder B
      n     = 2.7      (light indoor / suburban)
      sigma = 6.0 dB
 
-                                 Figure 22
+                                 Figure 21
 
 
 
 
 
-Hanley                    Expires 22 April 2027                [Page 51]
+Hanley                    Expires 23 April 2027                [Page 52]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2903,13 +2959,13 @@ Internet-Draft                   RSDGGS                     October 2026
 
    Typical precision: +/- 10 cm LoS, +/- 30-50 cm NLoS
 
-                                 Figure 23
+                                 Figure 22
 
 
 
 
 
-Hanley                    Expires 22 April 2027                [Page 52]
+Hanley                    Expires 23 April 2027                [Page 53]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2956,7 +3012,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
      Typical: +/- 5 degrees at 50 cm baseline, +/- 2 degrees at 1.25 m
 
-                                 Figure 24
+                                 Figure 23
 
 
 
@@ -2965,7 +3021,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 53]
+Hanley                    Expires 23 April 2027                [Page 54]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3021,7 +3077,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 54]
+Hanley                    Expires 23 April 2027                [Page 55]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3077,7 +3133,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 55]
+Hanley                    Expires 23 April 2027                [Page 56]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3097,7 +3153,7 @@ Internet-Draft                   RSDGGS                     October 2026
      M3 (UWB range only):  2 peers (+ PDOA) or 3 peers (range only)
      M3 (range + PDOA):    1 peer  (2D fix relative to peer)
 
-                                 Figure 25
+                                 Figure 24
 
    For constrained devices, a closed-form linearized solution is
    RECOMMENDED over iterative nonlinear solvers.  The linearization uses
@@ -3123,7 +3179,7 @@ Internet-Draft                   RSDGGS                     October 2026
                           zero for fixed devices
      sigma_cells:         uint16_t, position uncertainty radius in cells
 
-                                 Figure 26
+                                 Figure 25
 
 13.7.2.  Prediction Step
 
@@ -3133,7 +3189,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 56]
+Hanley                    Expires 23 April 2027                [Page 57]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3152,7 +3208,7 @@ Internet-Draft                   RSDGGS                     October 2026
        neighbor cell in direction of velocity vector
        derived from dodecahedron subdivision adjacency
 
-                                 Figure 27
+                                 Figure 26
 
 13.7.3.  Update Step
 
@@ -3189,7 +3245,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 57]
+Hanley                    Expires 23 April 2027                [Page 58]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3245,7 +3301,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 58]
+Hanley                    Expires 23 April 2027                [Page 59]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3261,7 +3317,7 @@ Internet-Draft                   RSDGGS                     October 2026
    and therefore directly encodes the spatial resolution of the index,
    consistent with the CBOR encoding defined in Section 7.
 
-                                 Figure 28
+                                 Figure 27
 
 14.2.  RSDGGS Location Sub-IE Definition
 
@@ -3301,7 +3357,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 59]
+Hanley                    Expires 23 April 2027                [Page 60]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3341,12 +3397,12 @@ Internet-Draft                   RSDGGS                     October 2026
          ... capability fields ...
        Sub-IE: ID = 0x9A (RSDGGS Location)
          Length = 0x03  (3 octets, country-level RSL)
-         Cell   = 0x02 0x03 0xC1
+         Cell   = 0x02 0x21 0xF7
                   ^^^^             face 2 = ITU Region 2 / N. America
-                       ^^^^ ^^^^   triangle 0, 6 levels: ~65 km cell
+                       ^^^^ ^^^^   triangle 2, 6 levels: ~65 km cell
      MFR
 
-                                 Figure 29
+                                 Figure 28
 
 14.4.  MAC-Layer Regulatory Bootstrap
 
@@ -3357,7 +3413,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 60]
+Hanley                    Expires 23 April 2027                [Page 61]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3413,7 +3469,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 61]
+Hanley                    Expires 23 April 2027                [Page 62]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3428,7 +3484,7 @@ Internet-Draft                   RSDGGS                     October 2026
    |  [face][triangle][subdiv level 1]..[subdiv level 26][rsvd]    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-                                 Figure 30
+                                 Figure 29
 
    The upper 64 bits form the network prefix, which identifies the
    address as belonging to the RSDGGS geographic address space.  This
@@ -3469,7 +3525,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 62]
+Hanley                    Expires 23 April 2027                [Page 63]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3525,7 +3581,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 63]
+Hanley                    Expires 23 April 2027                [Page 64]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3556,7 +3612,7 @@ Internet-Draft                   RSDGGS                     October 2026
      If no progress possible:
        invoke void handling (perimeter routing or buffer-and-wait)
 
-                                 Figure 31
+                                 Figure 30
 
    The progress metric is purely a comparison of common prefix lengths.
    No trigonometric computation is required at forwarding time.  The
@@ -3581,7 +3637,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 64]
+Hanley                    Expires 23 April 2027                [Page 65]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3620,7 +3676,7 @@ Internet-Draft                   RSDGGS                     October 2026
        // Consult RSL table for band compatibility
        // Select channel legal in both faces or flag for gateway
 
-                                 Figure 32
+                                 Figure 31
 
 15.5.  Relationship to Existing Standards
 
@@ -3637,7 +3693,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 65]
+Hanley                    Expires 23 April 2027                [Page 66]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3693,7 +3749,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 66]
+Hanley                    Expires 23 April 2027                [Page 67]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3749,7 +3805,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 67]
+Hanley                    Expires 23 April 2027                [Page 68]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3765,7 +3821,7 @@ Indoor location      Beacon GPS addr copy      Cell + UWB ranging
 Privacy              Not addressed             Truncation gradient
 Status               Experimental / Legacy     Informational (this doc)
 
-                              Figure 33
+                              Figure 32
 
    RFC 2009's polygon-based service areas require floating-point
    computation for containment tests and polygon intersection, making
@@ -3805,7 +3861,7 @@ Status               Experimental / Legacy     Informational (this doc)
 
 
 
-Hanley                    Expires 22 April 2027                [Page 68]
+Hanley                    Expires 23 April 2027                [Page 69]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3828,7 +3884,7 @@ Routing use          Not defined               See Section 13
 Constrained devices  Text parsing required     Integer extraction only
 Hierarchical index   None                      Full hier. in bits
 
-                              Figure 34
+                              Figure 33
 
    RFC 5870 explicitly states that the number of decimal digits in
    coordinate values MUST NOT be interpreted as an indication of
@@ -3861,7 +3917,7 @@ Hierarchical index   None                      Full hier. in bits
 
 
 
-Hanley                    Expires 22 April 2027                [Page 69]
+Hanley                    Expires 23 April 2027                [Page 70]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3896,7 +3952,7 @@ Privacy              Consent/by-ref URI        Trunc., RSL disclosure
 Uncertainty          PIDF-LO conf/method       Implicit in byte length
 Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
 
-                              Figure 35
+                              Figure 34
 
    RFC 6442's PIDF-LO XML representation is orders of magnitude larger
    than RSDGGS and requires XML parsing infrastructure wholly
@@ -3917,7 +3973,7 @@ Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
 
 
 
-Hanley                    Expires 22 April 2027                [Page 70]
+Hanley                    Expires 23 April 2027                [Page 71]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3968,12 +4024,12 @@ Constrained devices  Not applicable            Primary target
 Uncertainty          coord-accuracy (m)        Implicit in byte length
 Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 
-                              Figure 36
+                              Figure 35
 
 
 
 
-Hanley                    Expires 22 April 2027                [Page 71]
+Hanley                    Expires 23 April 2027                [Page 72]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4029,7 +4085,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 72]
+Hanley                    Expires 23 April 2027                [Page 73]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4045,7 +4101,7 @@ Real-time use        Batch/periodic fetch      Per-frame/per-packet
 Device class         BGP routers, servers      Constrained IoT (M)
 Routing              Not defined               See Section 13
 
-                              Figure 37
+                              Figure 36
 
    RFC 9632 and RSDGGS address fundamentally different layers of the
    same problem.  RFC 9632 maps IP address blocks — which are
@@ -4085,7 +4141,7 @@ Routing              Not defined               See Section 13
 
 
 
-Hanley                    Expires 22 April 2027                [Page 73]
+Hanley                    Expires 23 April 2027                [Page 74]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4120,7 +4176,7 @@ Regulatory context   Absent                    Primary design goal
 Constrained devices  Not applicable            Primary target
 Precision            Administrative boundary   Physical loc, metered
 
-                              Figure 38
+                              Figure 37
 
    RFC 8805 and RSDGGS share the property of being self-published: an IP
    address holder publishes a geofeed file asserting the location of
@@ -4141,7 +4197,7 @@ Precision            Administrative boundary   Physical loc, metered
 
 
 
-Hanley                    Expires 22 April 2027                [Page 74]
+Hanley                    Expires 23 April 2027                [Page 75]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4184,7 +4240,7 @@ Regulatory context   Absent                    Primary design goal
 Privacy model        Rule Maker + LIS policy   Structural (truncation)
 Location form        PIDF-LO (after deref)     CBOR bstr (direct)
 
-                              Figure 39
+                              Figure 38
 
    The LbyR architecture requires persistent network connectivity to a
    Location Information Server for location dereferencing.  This is
@@ -4197,7 +4253,7 @@ Location form        PIDF-LO (after deref)     CBOR bstr (direct)
 
 
 
-Hanley                    Expires 22 April 2027                [Page 75]
+Hanley                    Expires 23 April 2027                [Page 76]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4253,12 +4309,12 @@ Constrained devices  Not addressed             Primary target
 
 
 
-Hanley                    Expires 22 April 2027                [Page 76]
+Hanley                    Expires 23 April 2027                [Page 77]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                              Figure 40
+                              Figure 39
 
    RFC 5491's Rule 7 — coarse location MUST precede fine location in
    compound PIDF-LO — is structurally expressed in RSDGGS by the bit
@@ -4309,7 +4365,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 77]
+Hanley                    Expires 23 April 2027                [Page 78]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4327,7 +4383,7 @@ Regulatory context   Absent                    Primary design goal
 Rule distribution    XCAP/presence protocol    Not applicable
 Trust model          Centralized (LS)          Distributed (peer mesh)
 
-                              Figure 41
+                              Figure 40
 
    The GEOPRIV architecture's privacy model requires that the Rule Maker
    express privacy preferences, that the Location Server enforce them,
@@ -4365,7 +4421,7 @@ Trust model          Centralized (LS)          Distributed (peer mesh)
 
 
 
-Hanley                    Expires 22 April 2027                [Page 78]
+Hanley                    Expires 23 April 2027                [Page 79]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4404,7 +4460,7 @@ Encoding             XML (hundreds of bytes)   N/A (no policy doc)
 Regulatory context   Absent                    Primary design goal
 Policy expressive.   High (identity+loc.)      Single dim (resolution)
 
-                              Figure 42
+                              Figure 41
 
    RFC 6772's location obfuscation mechanism — reducing precision in the
    transformation element of a policy rule — is conceptually identical
@@ -4421,7 +4477,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 
 
 
-Hanley                    Expires 22 April 2027                [Page 79]
+Hanley                    Expires 23 April 2027                [Page 80]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4477,7 +4533,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 80]
+Hanley                    Expires 23 April 2027                [Page 81]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4533,7 +4589,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 81]
+Hanley                    Expires 23 April 2027                [Page 82]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4589,7 +4645,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 82]
+Hanley                    Expires 23 April 2027                [Page 83]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4645,7 +4701,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 83]
+Hanley                    Expires 23 April 2027                [Page 84]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4701,7 +4757,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 84]
+Hanley                    Expires 23 April 2027                [Page 85]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4757,7 +4813,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 85]
+Hanley                    Expires 23 April 2027                [Page 86]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4813,7 +4869,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 86]
+Hanley                    Expires 23 April 2027                [Page 87]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4869,7 +4925,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 87]
+Hanley                    Expires 23 April 2027                [Page 88]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4925,12 +4981,12 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 88]
+Hanley                    Expires 23 April 2027                [Page 89]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                                 Figure 43
+                                 Figure 42
 
    RSDGGS improvement opportunity — Link Quality Weighted Forwarding: US
    4,939,726 Claim 3 and US 5,115,433 define a link quality (LQ) factor
@@ -4981,7 +5037,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 89]
+Hanley                    Expires 23 April 2027                [Page 90]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5000,7 +5056,7 @@ Internet-Draft                   RSDGGS                     October 2026
      Location determined from GNSS, MCC, AP country codes,
      indirect AP location, or cell tower information
 
-                                 Figure 44
+                                 Figure 43
 
    RSDGGS freedom to operate: RSDGGS does not use power line frequency
    as a location verification mechanism.  The core novelty of this
@@ -5037,7 +5093,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 90]
+Hanley                    Expires 23 April 2027                [Page 91]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5061,7 +5117,7 @@ Internet-Draft                   RSDGGS                     October 2026
      Face assignment = ITU regulatory zones, not Internet-scale
        power-law topology reproduction
 
-                                 Figure 45
+                                 Figure 44
 
    RSDGGS improvement opportunity — None applicable: The geohyperbolic
    model is specifically optimized for large-scale Internet backbone
@@ -5093,7 +5149,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 91]
+Hanley                    Expires 23 April 2027                [Page 92]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5114,7 +5170,7 @@ Internet-Draft                   RSDGGS                     October 2026
      No datacenter/cloud concepts of any kind
      This is a cloud network change management patent
 
-                                 Figure 46
+                                 Figure 45
 
    RSDGGS improvement opportunity — None: Ghost routing addresses
    verification of network configuration changes in cloud datacenter
@@ -5149,7 +5205,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 92]
+Hanley                    Expires 23 April 2027                [Page 93]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5170,7 +5226,7 @@ Internet-Draft                   RSDGGS                     October 2026
      be limited to China and could not be enforced in the United
      States, European Union, or other IETF-relevant jurisdictions.
 
-                                 Figure 47
+                                 Figure 46
 
    The method disclosed in CN101923801B describes a cartographic
    rendering pipeline for producing physical dodecahedron map products.
@@ -5205,7 +5261,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 93]
+Hanley                    Expires 23 April 2027                [Page 94]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5242,7 +5298,7 @@ Internet-Draft                   RSDGGS                     October 2026
      D6: Physical artifact — RSDGGS specifies no physical object;
          CN101923801B explicitly claims a paper map assembly step
 
-                                 Figure 48
+                                 Figure 47
 
    Freedom to operate conclusion: CN101923801B presents no freedom-to-
    operate concern for RSDGGS on three independent grounds, each
@@ -5261,7 +5317,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 94]
+Hanley                    Expires 23 April 2027                [Page 95]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5317,7 +5373,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 95]
+Hanley                    Expires 23 April 2027                [Page 96]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5373,7 +5429,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 96]
+Hanley                    Expires 23 April 2027                [Page 97]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5429,7 +5485,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 97]
+Hanley                    Expires 23 April 2027                [Page 98]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5485,7 +5541,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 98]
+Hanley                    Expires 23 April 2027                [Page 99]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5541,7 +5597,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027                [Page 99]
+Hanley                    Expires 23 April 2027               [Page 100]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5597,7 +5653,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 100]
+Hanley                    Expires 23 April 2027               [Page 101]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5653,7 +5709,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 101]
+Hanley                    Expires 23 April 2027               [Page 102]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5709,7 +5765,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 102]
+Hanley                    Expires 23 April 2027               [Page 103]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5747,17 +5803,17 @@ Internet-Draft                   RSDGGS                     October 2026
    /// Unit vector on the unit sphere.
    type Vec3 = [f64; 3];
 
-                                 Figure 49
+                                 Figure 48
 
 19.2.  Compile-Time Constants
 
-   All twelve face center unit vectors are precomputed constants derived
-   from the dodecahedron orientation procedure defined in Section 4.3.
-   Face 2 (RSDGGS index 0x02) is centered at (31.43N, 102.48W), with
-   icosahedron vertex 8 (its dual vertex) placed at the regulatory
-   anchor (39N, 98W).  These constants are reproduced here at full f64
-   precision and MUST be used by all conforming implementations.  The
-   rotation algorithm from Section 4.3 is not invoked at runtime.
+   The twelve face center unit vectors and the sixty pentagon vertex
+   unit vectors are precomputed constants derived from the dodecahedron
+   orientation procedure defined in Section 4.3: face 1 centered at
+   (60.0N, 26.5E), with face 2's center at bearing 304.0 degrees from
+   it.  These constants are reproduced here to 15 decimal places and
+   MUST be used by all conforming implementations.  The rotation
+   algorithm from Section 4.3 is not invoked at runtime.
 
 
 
@@ -5765,66 +5821,180 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 103]
+Hanley                    Expires 23 April 2027               [Page 104]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
- /// Dodecahedron face center unit vectors, in RSDGGS face index order.
- /// Face 2 (ITU Region 2, N. America) is centered near 31.4°N, 102.5°W.
- /// Derived from the unit icosahedron dual with rotation applied to
- /// minimize boundary cuts across the N. American ISM regulatory zone.
- const FACE_CENTERS: [Vec3; 12] = [
-     // face  0: Antarctic / Polar (~65.6°S, 172°E)
-     [-0.409634135329003,  0.057570323301730, -0.910431509257118],
-     // face  1: ITU Region 1 / Europe core (~65.6°N, 8°W)
-     [ 0.409634135329003, -0.057570323301730,  0.910431509257118],
-     // face  2: ITU Region 2 / N. America (~31.4°N, 102.5°W) ← anchor
-     [-0.184381921838147, -0.833097451659977,  0.521490117774944],
-     // face  3: ITU Region 3 / E. Asia core (~31.4°N, 86.5°E)
-     [ 0.052393499826933,  0.851647214660484,  0.521490117774944],
-     // face  4: Region 1-A / Africa West (~6.2°N, 39.9°W)
-     [ 0.762409412243109, -0.638047427930384,  0.107830273274894],
-     // face  5: Region 1-B / Africa East (~6.2°N, 23.9°E)
-     [ 0.908744670532716,  0.403182038220761,  0.107830273274894],
-     // face  6: Region 1-C / Russia-CAS (~51.0°N, 172°E)
-     [-0.623195888264612,  0.087584470319807,  0.777145961456971],
-     // face  7: Region 1-D / Middle East (~31.4°S, 77.5°E)
-     [ 0.184381921838147,  0.833097451659977, -0.521490117774944],
-     // face  8: Region 2-A / S. America (~31.4°S, 93.5°W)
-     [-0.052393499826933, -0.851647214660484, -0.521490117774944],
-     // face  9: Region 2-B / Caribbean (~6.2°S, 156.1°W)
-     [-0.908744670532716, -0.403182038220761, -0.107830273274894],
-     // face 10: Region 3-A / S-SE Asia (~6.2°S, 140.1°E)
-     [-0.762409412243109,  0.638047427930384, -0.107830273274894],
-     // face 11: Region 3-B / Oceania (~51.0°S, 8°W)
-     [ 0.623195888264612, -0.087584470319807, -0.777145961456971],
- ];
+  /// Dodecahedron face center unit vectors, in RSDGGS face index order.
+  /// The two low-order bits of a face index give its ITU Region
+  /// (1, 2, 3), or 0 for none (Section 4.2).
+  const FACE_CENTERS: [Vec3; 12] = [
+      // face  0: Antarctica / New Zealand (60.00S, 153.50W)
+      [-0.447467180801013, -0.223098906554904, -0.866025403784439],
+      // face  1: Europe (Region 1) (60.00N, 26.50E)
+      [ 0.447467180801013,  0.223098906554904,  0.866025403784439],
+      // face  2: North America (Region 2) (39.60N, 79.28W)
+      [ 0.143335330773340, -0.757103386787452,  0.637377003559956],
+      // face  3: Asia (Region 3) (23.76N, 104.10E)
+      [-0.222927725022592,  0.887676795997717,  0.402905864022206],
+      // face  4: South Atlantic (54.80S, 1.18E)
+      [ 0.576250379942283,  0.011826692425747, -0.817187633877705],
+      // face  5: Africa / Middle East (Region 1) (1.89S, 44.32E)
+      [ 0.715023395428751,  0.698323830480811, -0.032944980985703],
+      // face  6: South America (Region 2) (23.76S, 75.90W)
+      [ 0.222927725022592, -0.887676795997717, -0.402905864022206],
+      // face  7: Eastern Australia (Region 3) (6.43S, 161.32E)
+      [-0.941386412734036,  0.318206226502688, -0.111966152629545],
+      // face  8: Southern Indian Ocean (39.60S, 100.72E)
+      [-0.143335330773340,  0.757103386787452, -0.637377003559956],
+      // face  9: West Africa (Region 1) (6.43N, 18.68W)
+      [ 0.941386412734036, -0.318206226502688,  0.111966152629545],
+      // face 10: Central Pacific (Region 2) (1.89N, 135.68W)
+      [-0.715023395428751, -0.698323830480811,  0.032944980985703],
+      // face 11: North Pacific (Region 3) (54.80N, 178.82W)
+      [-0.576250379942283, -0.011826692425747,  0.817187633877705],
+  ];
 
- /// Subdivision child indices (2 bits each).
- /// 0b00 = apex child (toward face center apex of parent triangle)
- /// 0b01 = left base child
- /// 0b10 = right base child
- /// 0b11 = central inverted child
- const CHILD_APEX:    u8 = 0b00;
- const CHILD_LEFT:    u8 = 0b01;
- const CHILD_RIGHT:   u8 = 0b10;
- const CHILD_CENTRAL: u8 = 0b11;
+  /// Pentagon vertices per face, counter-clockwise as seen from outside
+  /// the sphere, starting at the smallest bearing from the face center.
+  /// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
+  const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
+      // face  0
+      [
+          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+      ],
+      // face  1
+      [
+          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
 
-                               Figure 50
+
+
+Hanley                    Expires 23 April 2027               [Page 105]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+      ],
+      // face  2
+      [
+          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+      ],
+      // face  3
+      [
+          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+      ],
+      // face  4
+      [
+          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+      ],
+      // face  5
+      [
+          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+      ],
+      // face  6
+      [
+          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+      ],
+      // face  7
+      [
+          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+
+
+
+Hanley                    Expires 23 April 2027               [Page 106]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+      ],
+      // face  8
+      [
+          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+      ],
+      // face  9
+      [
+          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+      ],
+      // face 10
+      [
+          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+      ],
+      // face 11
+      [
+          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+      ],
+  ];
+
+  /// Subdivision child indices (2 bits each).
+  /// 0b00 = apex child (toward face center apex of parent triangle)
+  /// 0b01 = left base child
+  /// 0b10 = right base child
+  /// 0b11 = central inverted child
+  const CHILD_APEX:    u8 = 0b00;
+  const CHILD_LEFT:    u8 = 0b01;
+  const CHILD_RIGHT:   u8 = 0b10;
+  const CHILD_CENTRAL: u8 = 0b11;
+
+                                Figure 49
+
+
+
+
+Hanley                    Expires 23 April 2027               [Page 107]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 19.3.  Coordinate Conversion Primitives
-
-
-
-
-
-
-
-Hanley                    Expires 22 April 2027               [Page 104]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
   /// Convert WGS-84 decimal degrees to unit Cartesian vector.
   /// lat in [-90.0, +90.0], lon in [-180.0, +180.0].
@@ -5873,15 +6043,14 @@ Internet-Draft                   RSDGGS                     October 2026
       dot(cross(a, b), p)
   }
 
-  /// Test whether point p lies within the spherical triangle (a, b, c).
 
 
-
-Hanley                    Expires 22 April 2027               [Page 105]
+Hanley                    Expires 23 April 2027               [Page 108]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+  /// Test whether point p lies within the spherical triangle (a, b, c).
   /// The winding of (a, b, c) must be consistent (all CCW or all CW).
   #[inline]
   fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -> bool {
@@ -5892,7 +6061,7 @@ Internet-Draft                   RSDGGS                     October 2026
       || (s1 < 0.0 && s2 < 0.0 && s3 < 0.0)
   }
 
-                                Figure 51
+                                Figure 50
 
 19.4.  Face Assignment
 
@@ -5923,7 +6092,7 @@ pub fn face_for(ll: LatLon) -> u8 {
 // [-1.0, +1.0], representable exactly in Q2.30. The comparison requires
 // only finding the maximum of 12 products — no sqrt, no trig.
 
-                              Figure 52
+                              Figure 51
 
 
 
@@ -5932,8 +6101,7 @@ pub fn face_for(ll: LatLon) -> u8 {
 
 
 
-
-Hanley                    Expires 22 April 2027               [Page 106]
+Hanley                    Expires 23 April 2027               [Page 109]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5989,12 +6157,12 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 107]
+Hanley                    Expires 23 April 2027               [Page 110]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                                 Figure 53
+                                 Figure 52
 
 19.6.  Recursive Subdivision
 
@@ -6045,7 +6213,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 108]
+Hanley                    Expires 23 April 2027               [Page 111]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6077,7 +6245,7 @@ Internet-Draft                   RSDGGS                     October 2026
       }
   }
 
-                                Figure 54
+                                Figure 53
 
 19.7.  Top-Level Encode Function
 
@@ -6101,7 +6269,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 109]
+Hanley                    Expires 23 April 2027               [Page 112]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6148,7 +6316,7 @@ Internet-Draft                   RSDGGS                     October 2026
      cell
  }
 
-                               Figure 55
+                               Figure 54
 
 
 
@@ -6157,7 +6325,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 110]
+Hanley                    Expires 23 April 2027               [Page 113]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6213,12 +6381,12 @@ pub fn decode(cell: &RsdggsCell) -> DecodedCell {
 
 
 
-Hanley                    Expires 22 April 2027               [Page 111]
+Hanley                    Expires 23 April 2027               [Page 114]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                              Figure 56
+                              Figure 55
 
 19.9.  Boundary Proximity Helper
 
@@ -6269,7 +6437,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 112]
+Hanley                    Expires 23 April 2027               [Page 115]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6318,14 +6486,14 @@ Internet-Draft                   RSDGGS                     October 2026
        rule.power_dbm - reduction_db
    }
 
-                                 Figure 57
+                                 Figure 56
 
 
 
 
 
 
-Hanley                    Expires 22 April 2027               [Page 113]
+Hanley                    Expires 23 April 2027               [Page 116]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6346,42 +6514,42 @@ let cell = encode(sf, 4);
 
 // Expected output:
 //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x4E   sector 4 [7:4]=0100; sub_bits[0]=3 [3:2]=11;
-//                          sub_bits[1]=2 [1:0]=10
-//   cell.bytes[2] = 0xCF   sub_bits[2..6]: 0b11 0b00 0b11 0b11
-//   cell.bytes[3] = 0x4D   sub_bits[6..10]: 0b01 0b00 0b11 0b01
+//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010; sub_bits[0]=1 [3:2]=01;
+//                          sub_bits[1]=1 [1:0]=01
+//   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
+//   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
 //   cell.len      = 4
 
 assert_eq!(cell.bytes[0], 0x02);
-assert_eq!(cell.bytes[1], 0x4E);
-assert_eq!(cell.bytes[2], 0xCF);
-assert_eq!(cell.bytes[3], 0x4D);
+assert_eq!(cell.bytes[1], 0x25);
+assert_eq!(cell.bytes[2], 0xE0);
+assert_eq!(cell.bytes[3], 0xC3);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
 //   London    (51.51°N,   0.13°W) → face 1  (ITU Region 1, Europe)
-//   Tokyo  (35.68°N, 139.69°E) → face 6 (Region 1-C / Russia-CAS)
-//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, E. Asia)
-//   São Paulo (23.55°S,  46.63°W) → face 4  (Region 1-A / Africa West)
+//   Tokyo     (35.68°N, 139.69°E) → face 3  (ITU Region 3, Asia)
+//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, Asia)
+//   São Paulo (23.55°S,  46.63°W) → face 6  (ITU Region 2, S. America)
+//   Sydney    (33.87°S, 151.21°E) → face 7  (Region 3, E. Australia)
 //
-// Note: Tokyo → face 6 (not face 3) due to dodecahedron
-// face geometry places the face-3 center at 31.4°N, 86.5°E — closer to
-// South Asia — while face-6 center is at 51.0°N, 172°E, whose angular
-// proximity to Tokyo is greater than face-3 despite the longitude
-// geometry. This is correct dodecahedral behavior, not an error.
-// The regulatory DB maps face 6 to the correct East Asia rule set.
+// Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
+// is on face 11 (North Pacific). Both faces carry Region 3 in their
+// low two bits (3 & 0x3 = 11 & 0x3 = 3).
 
 // 1-byte truncation (privacy / regulatory coarse lookup):
 let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 // A 1-byte index encodes only the face (ITU Region 2).
 // Sufficient to determine that 902-928 MHz is legal at this location.
 
-                              Figure 58
+                              Figure 57
 
 
 
 
-Hanley                    Expires 22 April 2027               [Page 114]
+
+
+Hanley                    Expires 23 April 2027               [Page 117]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6393,13 +6561,12 @@ Internet-Draft                   RSDGGS                     October 2026
    determination anywhere in North America, as specified in Section 9
    (RSL for 902 MHz, Face 2 = 1 byte).
 
-   The note on Tokyo illustrates that the dodecahedral face assignment
-   is driven by geometry, not by geographic intuition.  The regulatory
-   database is the authoritative source for rule set assignment; the
-   face index is a lookup key, not a direct encoding of administrative
-   boundaries.  Face assignments may be counterintuitive for individual
-   cities near face boundaries, but every face maps unambiguously to a
-   defined set of regulatory bodies in the database.
+   The note on Tokyo illustrates that face assignment is driven by
+   geometry: a jurisdiction near a face boundary can span two faces.
+   The regulatory database is the authoritative source for rule set
+   assignment; the face index is a lookup key, and its two low-order
+   bits give the ITU Region of the face's principal population, not an
+   encoding of administrative boundaries.
 
 20.  Security Considerations
 
@@ -6437,7 +6604,8 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 115]
+
+Hanley                    Expires 23 April 2027               [Page 118]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6493,7 +6661,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 116]
+Hanley                    Expires 23 April 2027               [Page 119]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6549,7 +6717,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 117]
+Hanley                    Expires 23 April 2027               [Page 120]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6605,7 +6773,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 22 April 2027               [Page 118]
+Hanley                    Expires 23 April 2027               [Page 121]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6661,4 +6829,4 @@ Author's Address
 
 
 
-Hanley                    Expires 22 April 2027               [Page 119]
+Hanley                    Expires 23 April 2027               [Page 122]

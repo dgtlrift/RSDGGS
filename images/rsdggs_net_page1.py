@@ -47,7 +47,7 @@ TAB_DEPTH = 5.0
 TAB_ANGLE = math.radians(30)      # tab sides stay inside the 36 degree notches of the net
 
 # The net: F0 with its five neighbours, F1 with its five, joined across the F8-F2 edge.
-NET_TREE = {0: [7, 8, 9, 10, 11], 8: [2], 2: [1], 1: [3, 4, 5, 6]}
+NET_TREE = {0: [4, 6, 7, 8, 10], 6: [2], 2: [1], 1: [3, 5, 9, 11]}
 
 INK = "#1A1A2E"
 OCEAN = "#A9D6E5"
@@ -71,24 +71,23 @@ BAND_C_EXTRA = {"AU", "NZ", "TW", "JP", "GU", "MP", "AS", "UM"}
 R1_ASIA = {"Western Asia", "Central Asia", "Southern Asia"}
 
 CITIES = [
-    # name, lat, lon, label offset in points (face 2 is drawn with north to the upper left)
+    # name, lat, lon, label offset in points (face 2 is drawn with north up, tilted left)
     ("Seattle", 47.61, -122.33, (3, -5)),
     ("Vancouver", 49.28, -123.12, (-3, 4)),
     ("Los Angeles", 34.05, -118.24, (4, -1)),
     ("Denver", 39.74, -104.99, (0, 5)),
     ("Dallas", 32.78, -96.80, (4, 0)),
     ("Minneapolis", 44.98, -93.27, (-4, -2)),
-    ("Chicago", 41.88, -87.63, (-4, 3)),
-    ("Toronto", 43.65, -79.38, (-4, 0)),
+    ("Chicago", 41.88, -87.63, (3, -5)),
+    ("Toronto", 43.65, -79.38, (-4, 4)),
     ("New York", 40.71, -74.01, (4, 1)),
     ("Miami", 25.76, -80.19, (4, 0)),
     ("Havana", 23.11, -82.37, (4, -3)),
     ("Mexico City", 19.43, -99.13, (4, 0)),
 ]
 EXCEPTIONS = [
-    ("AK→F6", 61.2, -149.9),
-    ("HI→F9", 21.3, -157.8),
-    ("PR→F4", 18.5, -66.1),
+    ("AK→F11", 61.2, -149.9),
+    ("HI→F10", 21.3, -157.8),
 ]
 
 
@@ -413,7 +412,7 @@ def main():
 
     # Ghost lines for the five top-level triangles. Triangle k is (centre, vertex k,
     # vertex k+1) in the order of FACE_PENTAGON_VERTS, which is the order the encoder
-    # uses for Cell[1] bits 7-4; the winding differs between faces, so do not re-sort.
+    # uses for Cell[1] bits 7-4.
     ghost = dict(color=INK, alpha=0.45, lw=0.45, ls=(0, (2.5, 2)), zorder=6)
     for f in range(12):
         ctr = net.to_page(f, net.c[f])
@@ -448,10 +447,10 @@ def main():
         ax.annotate(label, xy, xytext=(4, 4), textcoords="offset points", fontsize=6,
                     color="#D00000", weight="bold", path_effects=halo("white", 1.6), zorder=9)
 
-    # North arrow on face 2, over the open Pacific south-west of California.
-    assert net.face_of(18.0, -132.0) == 2
-    base = net.to_page(2, unit(18.0, -132.0))
-    tip = net.to_page(2, unit(18.5, -132.0))
+    # North arrow on face 2, over the open Atlantic east of Bermuda.
+    assert net.face_of(31.0, -52.0) == 2
+    base = net.to_page(2, unit(31.0, -52.0))
+    tip = net.to_page(2, unit(31.5, -52.0))
     d = (tip - base) / np.linalg.norm(tip - base)
     ax.annotate("", base + 6 * d, base, zorder=9,
                 arrowprops=dict(arrowstyle="-|>", color="white", lw=1.0, mutation_scale=7,
