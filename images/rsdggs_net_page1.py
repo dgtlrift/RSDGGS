@@ -439,28 +439,33 @@ def shapely_patch(geom, **kw):
     return PathPatch(MplPath(verts, codes), **kw) if verts else None
 
 
+def face_countries(net, f, features):
+    """Each country's land on face f, on the page, as (band class, [shapely geometries])."""
+    face = Polygon(net.outline(f)[0])
+    c = net.c[f]
+    for feat in features:
+        parts = []
+        for poly in polygons(feat):
+            ring3 = [unit(np.asarray(r)[:, 1], np.asarray(r)[:, 0]) for r in poly]
+            if (ring3[0] @ c).max() < 0.2:
+                continue
+            clipped = [clip_ring(r, c) for r in ring3]
+            if len(clipped[0]) < 3:
+                continue
+            holes = [net.to_page(f, r) for r in clipped[1:] if len(r) >= 3]
+            shape = Polygon(net.to_page(f, clipped[0]), holes).buffer(0).intersection(face)
+            if not shape.is_empty:
+                parts.append(shape)
+        if parts:
+            yield band_class(feat["properties"]), parts
+
+
 def draw_land(ax, net, faces, features):
     """Ocean, then each country clipped to each face, coloured by band class (all vector)."""
     for f in faces:
         face = Polygon(net.outline(f)[0])
         ax.add_patch(shapely_patch(face, facecolor=OCEAN, edgecolor=OCEAN, lw=0.2, zorder=2))
-        c = net.c[f]
-        for feat in features:
-            cls = band_class(feat["properties"])
-            parts = []
-            for poly in polygons(feat):
-                ring3 = [unit(np.asarray(r)[:, 1], np.asarray(r)[:, 0]) for r in poly]
-                if (ring3[0] @ c).max() < 0.2:
-                    continue
-                clipped = [clip_ring(r, c) for r in ring3]
-                if len(clipped[0]) < 3:
-                    continue
-                holes = [net.to_page(f, r) for r in clipped[1:] if len(r) >= 3]
-                shape = Polygon(net.to_page(f, clipped[0]), holes).buffer(0).intersection(face)
-                if not shape.is_empty:
-                    parts.append(shape)
-            if not parts:
-                continue
+        for cls, parts in face_countries(net, f, features):
             col = CLASS_COLORS[cls]
             for shape in parts:
                 # The edge in the fill colour closes hairline seams between neighbours.

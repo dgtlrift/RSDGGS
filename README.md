@@ -27,6 +27,8 @@ Click the image for full resolution (2550 × 3300 px). It prints on US Letter at
 
 For a larger globe, [`images/faces/`](images/faces/) has the twelve faces one per US Letter page (SVG, edge 102 mm when printed at 100%). Each edge is labelled with its face and triangle (for example F1·T3), and each glue tab names the edge it goes under.
 
+[`images/bw/`](images/bw/) has black-and-white versions of the net, the key and the twelve face pages, in the SVG profile that RFCs require (RFC 7996: black and white only, no patterns or clipping). The bands are shown by hatching: `/` for 433 MHz, `\` for 868 MHz (crossed with `/` where both apply), horizontal lines for 902–928 MHz, and dots for 2.4 GHz only. To stay readable, countries with the same bands are merged, small islands are left out, and the net has no city names. The draft embeds the black-and-white net as its figure. [`images/rsdggs_bw.py`](images/rsdggs_bw.py) writes them, and `draft/build.sh` checks them with svgcheck.
+
 ---
 
 ## Wire Format
