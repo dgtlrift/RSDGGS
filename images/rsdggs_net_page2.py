@@ -1,4 +1,4 @@
-"""Draw Figure 2 of draft-rsdggs-informational-00: the dodecahedron net reference key.
+"""Draw Figure 2 of draft-hanley-rsdggs-00: the dodecahedron net reference key.
 
     python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png
 
@@ -101,7 +101,7 @@ ABOUT = (
 )
 
 FOOTER = (
-    "RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-rsdggs-informational-00"
+    "RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-00"
     " · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face"
 )
 
@@ -208,7 +208,7 @@ def right(ax, x0, x1):
 
     heading(ax, x0, x1, 1110, "About RSDGGS")
     text(ax, x0, 1148, textwrap.fill(ABOUT, 72), size=9.5)
-    text(ax, x0, 1290, "draft-rsdggs-informational-00 · Independent Submission\n"
+    text(ax, x0, 1290, "draft-hanley-rsdggs-00 · Independent Submission\n"
                        "IEEE 802.15.4 MAC layer · CBOR encoded · Rust reference impl",
          size=9.5)
 
