@@ -9,7 +9,7 @@ Expires: 22 April 2027
 
 
         Regulatory Spectrum Discrete Global Grid System (RSDGGS)
-                     draft-rsdggs-informational-00
+                         draft-hanley-rsdggs-00
 
 Abstract
 
@@ -5642,11 +5642,11 @@ Internet-Draft                   RSDGGS                     October 2026
        IP geofeed CSV entry.  This combination appears novel but has not
        been searched.
 
-   8.  RFC publication of draft-rsdggs-informational-00 establishes a
-       prior art date for all disclosed subject matter including the
-       improvement opportunities listed in Section 17.4.  This is a
-       significant benefit of early publication even before normative
-       follow-on work is complete.
+   8.  RFC publication of draft-hanley-rsdggs-00 establishes a prior art
+       date for all disclosed subject matter including the improvement
+       opportunities listed in Section 17.4.  This is a significant
+       benefit of early publication even before normative follow-on work
+       is complete.
 
 
 
