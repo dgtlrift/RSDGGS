@@ -54,6 +54,14 @@ done
 echo "   images/bw: $(ls ../images/bw/*.svg ../images/bw/faces/*.svg | wc -l) files conform"
 echo "== xml2rfc"
 "$tools/venv/bin/xml2rfc" --text --html "$name.xml"
+# idnits warns about every line with a non-ASCII character (RFC 7997). Inline SVG is
+# not in the text rendering, so the check covers everything else in the XML.
+echo "== ASCII text"
+if LC_ALL=C grep -n '[^[:print:][:space:]]' "$name.txt" >&2; then
+    echo "$name.txt: non-ASCII characters (lines above); use ASCII outside <svg>" >&2
+    exit 1
+fi
+echo "   $name.txt is ASCII"
 
 echo "== docx (LibreOffice)"
 work=$(mktemp -d)

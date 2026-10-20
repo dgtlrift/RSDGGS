@@ -95,7 +95,7 @@ Table of Contents
      4.3.  Face Center Orientation . . . . . . . . . . . . . . . . .  15
      4.4.  Pentagonal Face Subdivision . . . . . . . . . . . . . . .  17
      4.5.  Isosceles Triangle Hierarchy  . . . . . . . . . . . . . .  17
-     4.6.  RSDGGS Dodecahedron Net — ISM Band Regulatory Coverage
+     4.6.  RSDGGS Dodecahedron Net -- ISM Band Regulatory Coverage
            Map . . . . . . . . . . . . . . . . . . . . . . . . . . .  18
        4.6.1.  ISM Band Color Coding . . . . . . . . . . . . . . . .  19
        4.6.2.  Face Assignments and Regulatory Bodies  . . . . . . .  20
@@ -238,42 +238,42 @@ Internet-Draft                   RSDGGS                     October 2026
      16.11. Gap Analysis Summary . . . . . . . . . . . . . . . . . .  81
    17. Backward Citations: Relevant References Within Cited
            Documents . . . . . . . . . . . . . . . . . . . . . . . .  83
-     17.1.  GPSR — Greedy Perimeter Stateless Routing (from US
+     17.1.  GPSR -- Greedy Perimeter Stateless Routing (from US
             10,812,365)  . . . . . . . . . . . . . . . . . . . . . .  83
-     17.2.  IEEE 802.11d — Country Information Elements (from US
-            10,306,400 family) . . . . . . . . . . . . . . . . . . .  83
-     17.3.  IEEE 802.11h — DFS and TPC (from US 10,306,400
+     17.2.  IEEE 802.11d -- Country Information Elements (from US
+            10,306,400 family) . . . . . . . . . . . . . . . . . . .  84
+     17.3.  IEEE 802.11h -- DFS and TPC (from US 10,306,400
             family)  . . . . . . . . . . . . . . . . . . . . . . . .  84
-     17.4.  RFC 3693 — GEOPRIV Requirements (from RFC 6442 and RFC
+     17.4.  RFC 3693 -- GEOPRIV Requirements (from RFC 6442 and RFC
             6280)  . . . . . . . . . . . . . . . . . . . . . . . . .  84
-     17.5.  RFC 3825 — DHCP Geodetic Location Option (from RFC 5870
+     17.5.  RFC 3825 -- DHCP Geodetic Location Option (from RFC 5870
             and RFC 5808)  . . . . . . . . . . . . . . . . . . . . .  85
-     17.6.  RFC 4632 — CIDR: Classless Inter-Domain Routing (from RFC
+     17.6.  RFC 4632 -- CIDR: Classless Inter-Domain Routing (from RFC
             9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
-     17.7.  RFC 6269 — Issues with IP Address Sharing (from RFC
+     17.7.  RFC 6269 -- Issues with IP Address Sharing (from RFC
             9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
-     17.8.  GeoCast — Geographic Addressing and Routing (from RFC
+     17.8.  GeoCast -- Geographic Addressing and Routing (from RFC
             2009)  . . . . . . . . . . . . . . . . . . . . . . . . .  86
      17.9.  Summary of Newly Identified References . . . . . . . . .  87
    18. Freedom to Operate and Prior Art Considerations . . . . . . .  89
-     18.1.  Expired Patents — Public Domain Prior Art  . . . . . . .  89
-       18.1.1.  US Patent 4,939,726 — Metricom, Inc. (Expired
+     18.1.  Expired Patents -- Public Domain Prior Art . . . . . . .  89
+       18.1.1.  US Patent 4,939,726 -- Metricom, Inc. (Expired
                2007) . . . . . . . . . . . . . . . . . . . . . . . .  89
-       18.1.2.  US Patent 6,982,966 — Status Unconfirmed . . . . . .  90
-     18.2.  Active Patents — Detailed Analysis . . . . . . . . . . .  90
-       18.2.1.  US Patent 10,306,400 / Application 2014/0162692 —
-               Wirelesss Regulatory Compliance (Active until ~2035)   90
-       18.2.2.  US Patent 10,812,365 — Geohyperbolic Routing
+       18.1.2.  US Patent 6,982,966 -- Status Unconfirmed  . . . . .  90
+     18.2.  Active Patents -- Detailed Analysis  . . . . . . . . . .  90
+       18.2.1.  US Patent 10,306,400 / Application 2014/0162692 --
+               Wireless Regulatory Compliance (Active until ~2035) .  90
+       18.2.2.  US Patent 10,812,365 -- Geohyperbolic Routing
                (Northeastern University, Active until 2037)  . . . .  91
-       18.2.3.  US Patent 11,652,742 — Ghost Routing (Microsoft,
+       18.2.3.  US Patent 11,652,742 -- Ghost Routing (Microsoft,
                Active until 2041)  . . . . . . . . . . . . . . . . .  92
-       18.2.4.  CN101923801B — Method for Generating a Regular
+       18.2.4.  CN101923801B -- Method for Generating a Regular
                Dodecahedron Map Projection (Expired) . . . . . . . .  93
      18.3.  RFC Citation Improvement Opportunities . . . . . . . . .  96
-       18.3.1.  RFC 2009 — GPS-Based Addressing (1996, Experimental/
+       18.3.1.  RFC 2009 -- GPS-Based Addressing (1996, Experimental/
                Legacy) . . . . . . . . . . . . . . . . . . . . . . .  96
-       18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)  .  97
-
+       18.3.2.  RFC 5870 -- geo URI Scheme (2010, Standards
+               Track)  . . . . . . . . . . . . . . . . . . . . . . .  97
 
 
 
@@ -282,16 +282,16 @@ Hanley                    Expires 23 April 2027                 [Page 5]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-       18.3.3.  RFC 6442 — Location Conveyance for SIP (2011,
+       18.3.3.  RFC 6442 -- Location Conveyance for SIP (2011,
                Standards Track)  . . . . . . . . . . . . . . . . . .  97
-       18.3.4.  RFC 9179 — YANG Grouping for Geographic Locations
+       18.3.4.  RFC 9179 -- YANG Grouping for Geographic Locations
                (2022, Standards Track) . . . . . . . . . . . . . . .  98
-       18.3.5.  RFC 9632 / RFC 8805 — Geofeed Data (2024 / 2020) . .  98
-       18.3.6.  RFC 5808 — Location-by-Reference Requirements (2010,
+       18.3.5.  RFC 9632 / RFC 8805 -- Geofeed Data (2024 / 2020)  .  98
+       18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
                Informational)  . . . . . . . . . . . . . . . . . . .  98
-       18.3.7.  RFC 5491 — PIDF-LO Usage (2009, Standards Track) . .  99
-       18.3.8.  RFC 6280 — GEOPRIV Architecture (2011, BCP)  . . . .  99
-       18.3.9.  RFC 6772 — Geolocation Policy (2013, Standards
+       18.3.7.  RFC 5491 -- PIDF-LO Usage (2009, Standards Track)  .  99
+       18.3.8.  RFC 6280 -- GEOPRIV Architecture (2011, BCP) . . . .  99
+       18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards
                Track)  . . . . . . . . . . . . . . . . . . . . . . .  99
      18.4.  Summary of Improvement Opportunities . . . . . . . . . . 100
      18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 101
@@ -402,44 +402,44 @@ Internet-Draft                   RSDGGS                     October 2026
 
    The design of RSDGGS is driven by the following goals:
 
-   G1 — Regulatory Alignment: The coarsest index level MUST correspond
+   G1 -- Regulatory Alignment: The coarsest index level MUST correspond
    to ITU Radio Region boundaries.  Face indices 1, 2, and 3 SHALL
    correspond to ITU Regions 1, 2, and 3 respectively, enabling a
    single-octet lookup to determine gross band availability for most ISM
    bands.
 
-   G2 — Self-Describing Resolution: The length of the index in octets
+   G2 -- Self-Describing Resolution: The length of the index in octets
    SHALL implicitly encode its resolution.  No explicit resolution field
    is required.  This enables resolution to be communicated through the
    CBOR byte string length header at zero additional cost.
 
-   G3 — Privacy Truncation: Truncating the index from the right SHALL
+   G3 -- Privacy Truncation: Truncating the index from the right SHALL
    yield a valid, coarser-resolution index.  Devices MAY share a
    truncated index to disclose only the precision required for the
    intended purpose, protecting precise location from unnecessary
    disclosure.
 
-   G4 — Embedded Deployment: The encoding and decoding algorithms SHALL
+   G4 -- Embedded Deployment: The encoding and decoding algorithms SHALL
    be implementable in constrained environments with no heap allocation
    (no_std, no_alloc in Rust; fixed stack in C).  The index fits within
    a uint64_t.
 
-   G5 — CBOR Integration: The index SHALL serialize naturally as a CBOR
+   G5 -- CBOR Integration: The index SHALL serialize naturally as a CBOR
    byte string (major type 2), with the CBOR length header providing
    resolution information to the receiver at no additional encoding
    cost.
 
-   G6 — Peer-Assisted Discovery: Location-unaware devices SHALL be able
+   G6 -- Peer-Assisted Discovery: Location-unaware devices SHALL be able
    to derive their applicable regulatory parameters by receiving a
    beacon from a location-aware peer, using only the ISM channels
    permitted at the beacon device's location.
 
-   G7 — Manufacturing Provisionability: Fixed-deployment IoT devices
+   G7 -- Manufacturing Provisionability: Fixed-deployment IoT devices
    SHALL be provisionable with their RSDGGS index at manufacturing time,
    enabling a single hardware SKU to configure itself correctly based on
    deployment location without firmware variants.
 
-   G8 — Decentralized, Infrastructure-Independent Operation: RSDGGS
+   G8 -- Decentralized, Infrastructure-Independent Operation: RSDGGS
    regulatory context discovery MUST NOT require any centralized server,
    directory, or management system.  All mechanisms for a device to
 
@@ -469,11 +469,11 @@ Internet-Draft                   RSDGGS                     October 2026
    converge on a valid regulatory context solely through the peer-
    assisted mechanism defined in Section 11.
 
-   G9 — Extraterrestrial Extensibility: The RSDGGS index format SHALL be
-   extensible to celestial bodies beyond Earth without changing the wire
-   format, adding version bits, or breaking backward compatibility with
-   existing Earth indices.  The four most-significant bits of Octet 0
-   are designated as the celestial body selector, allowing up to 16
+   G9 -- Extraterrestrial Extensibility: The RSDGGS index format SHALL
+   be extensible to celestial bodies beyond Earth without changing the
+   wire format, adding version bits, or breaking backward compatibility
+   with existing Earth indices.  The four most-significant bits of Octet
+   0 are designated as the celestial body selector, allowing up to 16
    independent dodecahedral grids (one per body) to coexist within a
    single 8-octet index space.  A body selector value of 0x0 (Earth) is
    the default and preserves full backward compatibility: all RSDGGS
@@ -520,25 +520,25 @@ Internet-Draft                   RSDGGS                     October 2026
    face, with face indices numerically matching Region numbers.  This
    constraint drives the face count requirement:
 
-   Icosahedron — 20 triangular faces:
-     Face area  ≈ 1/20 of sphere ≈ 25,500,000 km²
-     ITU Region 2 (Americas) area ≈ 24,700,000 km²
-     → Region 2 barely fits in one triangular face
-     → Remaining 17 faces: over-partitions ITU regions at level 0
-     → 3 faces assigned to ITU Regions; 17 faces available for
-       sub-regions — excessive granularity at coarsest level
-     → Triangle shape forces boundary cuts through
+   Icosahedron -- 20 triangular faces:
+     Face area  ~ 1/20 of sphere ~ 25,500,000 km^2
+     ITU Region 2 (Americas) area ~ 24,700,000 km^2
+     -> Region 2 barely fits in one triangular face
+     -> Remaining 17 faces: over-partitions ITU regions at level 0
+     -> 3 faces assigned to ITU Regions; 17 faces available for
+       sub-regions -- excessive granularity at coarsest level
+     -> Triangle shape forces boundary cuts through
        regulatory zones at 60-degree corner angles
 
-   Dodecahedron — 12 pentagonal faces:
-     Face area  ≈ 1/12 of sphere ≈ 42,000,000 km²
-     ITU Region 2 (Americas) area ≈ 24,700,000 km²
-     → Region 2 fits within one pentagonal face with
-       ~17,300,000 km² margin — accommodates coastal
+   Dodecahedron -- 12 pentagonal faces:
+     Face area  ~ 1/12 of sphere ~ 42,000,000 km^2
+     ITU Region 2 (Americas) area ~ 24,700,000 km^2
+     -> Region 2 fits within one pentagonal face with
+       ~17,300,000 km^2 margin -- accommodates coastal
        and island territories without boundary cuts
-     → 3 faces centred on the most populous zone of
+     -> 3 faces centred on the most populous zone of
        each ITU Region (face indices 1, 2, 3)
-     → 9 further faces; the two low-order bits of every
+     -> 9 further faces; the two low-order bits of every
        face index give its ITU Region (Section 4.2)
 
                                   Figure 1
@@ -591,16 +591,16 @@ Internet-Draft                   RSDGGS                     October 2026
    Icosahedron triangular face:
      Angular radius, face center to edge midpoint:  ~20.9 deg
      Angular radius, face center to vertex:         ~41.8 deg
-     Gnomonic scale at edge midpoint: 1/cos²(20.9°) ≈ 1.15
-     Gnomonic scale at vertex:        1/cos²(41.8°) ≈ 1.80
+     Gnomonic scale at edge midpoint: 1/cos^2(20.9 deg) ~ 1.15
+     Gnomonic scale at vertex:        1/cos^2(41.8 deg) ~ 1.80
      Vertex-to-midpoint distance ratio:             2.00
      Distortion ratio (vertex/midpoint scale):      1.57
 
    Dodecahedron pentagonal face:
      Angular radius, face center to edge midpoint:  ~31.7 deg
      Angular radius, face center to vertex:         ~41.8 deg
-     Gnomonic scale at edge midpoint: 1/cos²(31.7°) ≈ 1.38
-     Gnomonic scale at vertex:        1/cos²(41.8°) ≈ 1.80
+     Gnomonic scale at edge midpoint: 1/cos^2(31.7 deg) ~ 1.38
+     Gnomonic scale at vertex:        1/cos^2(41.8 deg) ~ 1.80
      Vertex-to-midpoint distance ratio:             1.24
      Distortion ratio (vertex/midpoint scale):      1.30
 
@@ -638,8 +638,8 @@ Internet-Draft                   RSDGGS                     October 2026
    corner-adjacent cells and edge-midpoint-adjacent cells experience
    only 30 percent more scale variation.  The progressive 4-fold
    triangular subdivision of each pentagonal sector (Section 4.5) places
-   triangle apices at the face center — a fixed interior point — rather
-   than at face corners, further reducing the population of high-
+   triangle apices at the face center -- a fixed interior point --
+   rather than at face corners, further reducing the population of high-
    distortion boundary cells in the subdivision hierarchy.
 
    For regulatory compliance applications, distortion at cell boundaries
@@ -674,7 +674,7 @@ Hanley                    Expires 23 April 2027                [Page 12]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   | Face area   | ~25.5M km² (tight  | ~42M km²        | Dodecahedron |
+   | Face area   | ~25.5M km^2 (tight | ~42M km^2       | Dodecahedron |
    | vs. Region  | fit)               | (ample          |              |
    | 2           |                    | margin)         |              |
    +-------------+--------------------+-----------------+--------------+
@@ -719,7 +719,7 @@ Internet-Draft                   RSDGGS                     October 2026
    |      | (face &    | Name        | Authority    |                  |
    |      | 0x3)       |             |              |                  |
    +======+============+=============+==============+==================+
-   | 0    | —          | Antarctica  | ITU Special  | Antarctic        |
+   | 0    | --         | Antarctica  | ITU Special  | Antarctic        |
    |      |            | / New       | Zone         | Treaty, ITU Art. |
    |      |            | Zealand     |              | 48; RSM (NZ)     |
 
@@ -732,52 +732,52 @@ Internet-Draft                   RSDGGS                     October 2026
 
    +------+------------+-------------+--------------+------------------+
    | 1    | R1         | ITU Region  | ETSI / CEPT  | ETSI, Ofcom,     |
-   |      |            | 1 — Europe  |              | ARCEP, BNetzA    |
+   |      |            | 1 --        |              | ARCEP, BNetzA    |
+   |      |            | Europe      |              |                  |
    +------+------------+-------------+--------------+------------------+
    | 2    | R2         | ITU Region  | FCC / ISED / | FCC (US), ISED   |
-   |      |            | 2 — North   | IFT          | (CA), IFT (MX)   |
+   |      |            | 2 -- North  | IFT          | (CA), IFT (MX)   |
    |      |            | America     |              |                  |
    +------+------------+-------------+--------------+------------------+
    | 3    | R3         | ITU Region  | MIC / MIIT / | MIC (JP), MIIT   |
-   |      |            | 3 — Asia    | KCC          | (CN), KCC (KR),  |
+   |      |            | 3 -- Asia   | KCC          | (CN), KCC (KR),  |
    |      |            |             |              | WPC/DoT (IN)     |
    +------+------------+-------------+--------------+------------------+
-   | 4    | —          | South       | ICASA        | ICASA (ZA)       |
+   | 4    | --         | South       | ICASA        | ICASA (ZA)       |
    |      |            | Atlantic    |              |                  |
    +------+------------+-------------+--------------+------------------+
-   | 5    | R1         | Region 1 —  | ATU East /   | CA (ET), CCK     |
-   |      |            | Africa /    | ASMG         | (KE), TCRA (TZ), |
-   |      |            | Middle      |              | MCIT (SA), TRA   |
+   | 5    | R1         | Region 1    | ATU East /   | CA (ET), CCK     |
+   |      |            | -- Africa   | ASMG         | (KE), TCRA (TZ), |
+   |      |            | / Middle    |              | MCIT (SA), TRA   |
    |      |            | East        |              | (AE)             |
    +------+------------+-------------+--------------+------------------+
-   | 6    | R2         | Region 2 —  | ANATEL /     | Anatel (BR),     |
-   |      |            | South       | ENACOM       | ENACOM (AR)      |
+   | 6    | R2         | Region 2    | ANATEL /     | Anatel (BR),     |
+   |      |            | -- South    | ENACOM       | ENACOM (AR)      |
    |      |            | America     |              |                  |
    +------+------------+-------------+--------------+------------------+
-   | 7    | R3         | Region 3 —  | ACMA         | ACMA (AU), SPC   |
-   |      |            | Eastern     |              |                  |
+   | 7    | R3         | Region 3    | ACMA         | ACMA (AU), SPC   |
+   |      |            | -- Eastern  |              |                  |
    |      |            | Australia   |              |                  |
    +------+------------+-------------+--------------+------------------+
-   | 8    | —          | Southern    | ACMA         | ACMA (AU:        |
+   | 8    | --         | Southern    | ACMA         | ACMA (AU:        |
    |      |            | Indian      |              | Melbourne,       |
    |      |            | Ocean       |              | Adelaide, Perth) |
    +------+------------+-------------+--------------+------------------+
-   | 9    | R1         | Region 1 —  | ATU West     | ARTP, ARCEP      |
-   |      |            | West        |              | (SN), NCC (NG),  |
+   | 9    | R1         | Region 1    | ATU West     | ARTP, ARCEP      |
+   |      |            | -- West     |              | (SN), NCC (NG),  |
    |      |            | Africa      |              | ATU west         |
    +------+------------+-------------+--------------+------------------+
-   | 10   | R2         | Region 2 —  | FCC          | FCC (US: Hawaii) |
-   |      |            | Central     |              |                  |
+   | 10   | R2         | Region 2    | FCC          | FCC (US: Hawaii) |
+   |      |            | -- Central  |              |                  |
    |      |            | Pacific     |              |                  |
    +------+------------+-------------+--------------+------------------+
-   | 11   | R3         | Region 3 —  | MIC /        | MIC (JP),        |
-   |      |            | North       | Roskomnadzor | Roskomnadzor     |
+   | 11   | R3         | Region 3    | MIC /        | MIC (JP),        |
+   |      |            | -- North    | Roskomnadzor | Roskomnadzor     |
    |      |            | Pacific     |              | (RU), FCC (US:   |
    |      |            |             |              | Alaska)          |
    +------+------------+-------------+--------------+------------------+
 
                          Table 2: Face Assignments
-
 
 
 
@@ -965,7 +965,7 @@ Internet-Draft                   RSDGGS                     October 2026
    apex child, 01 denotes the left base child, 10 denotes the right base
    child, and 11 denotes the central inverted child.
 
-4.6.  RSDGGS Dodecahedron Net — ISM Band Regulatory Coverage Map
+4.6.  RSDGGS Dodecahedron Net -- ISM Band Regulatory Coverage Map
 
    Figure 5 shows the RSDGGS dodecahedron as a cut-and-fold net.  The
    net shows all twelve faces in their correct topological adjacency,
@@ -976,8 +976,8 @@ Internet-Draft                   RSDGGS                     October 2026
    across every fold edge: a coastline, national border, or regulatory
    boundary that crosses from one face to an adjacent face appears as an
    unbroken line on both faces.  Geographic continuity across all eleven
-   fold edges was verified to within 0.006° of arc (numerical precision
-   only).
+   fold edges was verified to within 0.006 deg of arc (numerical
+   precision only).
 
       The net is a drawing; see the HTML or PDF rendering of this
       document, or the image files listed below.
@@ -1030,14 +1030,14 @@ Internet-Draft                   RSDGGS                     October 2026
    |Color    |Black and  |Band    | Frequency Range | Primary         |
    |         |white      |        |                 | Coverage        |
    +=========+===========+========+=================+=================+
-   |Deep red |Diagonal   |Band A  | 433.050–434.790 | ITU Region 1:   |
+   |Deep red |Diagonal   |Band A  | 433.050-434.790 | ITU Region 1:   |
    |(#CC2222)|lines,     |        | MHz             | Europe, Africa, |
    |         |rising to  |        |                 | Middle East,    |
    |         |the right  |        |                 | Russia, Central |
    |         |(/)        |        |                 | Asia, Indian    |
    |         |           |        |                 | Subcontinent    |
    +---------+-----------+--------+-----------------+-----------------+
-   |Deep teal|Diagonal   |Band B  | 863–870 MHz     | EU/CEPT/EEA     |
+   |Deep teal|Diagonal   |Band B  | 863-870 MHz     | EU/CEPT/EEA     |
    |(#1A7A5E)|lines,     |        | (ETSI SRD)      | member states   |
    |         |falling to |        |                 | and ETSI-       |
    |         |the right  |        |                 | aligned partner |
@@ -1045,16 +1045,16 @@ Internet-Draft                   RSDGGS                     October 2026
    |         |map only   |        |                 |                 |
    |         |with Band A|        |                 |                 |
    +---------+-----------+--------+-----------------+-----------------+
-   |Orange   |Horizontal |Band C  | 902–928 MHz     | ITU Region 2    |
+   |Orange   |Horizontal |Band C  | 902-928 MHz     | ITU Region 2    |
    |(#D4780A)|lines      |        |                 | (Americas) plus |
    |         |           |        |                 | Australia, New  |
    |         |           |        |                 | Zealand,        |
    |         |           |        |                 | Taiwan, and     |
-   |         |           |        |                 | Japan (920–928  |
+   |         |           |        |                 | Japan (920-928  |
    |         |           |        |                 | MHz only)       |
    +---------+-----------+--------+-----------------+-----------------+
-   |Navy blue|None       |Band D  | 2400–2500 MHz   | Global          |
-   |(#1A3580)|(available |        |                 | allocation —    |
+   |Navy blue|None       |Band D  | 2400-2500 MHz   | Global          |
+   |(#1A3580)|(available |        |                 | allocation --   |
    |         |everywhere)|        |                 | all countries   |
    |         |           |        |                 | (informational  |
    |         |           |        |                 | baseline,       |
@@ -1068,7 +1068,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
    |         |           |        |                 | universal)      |
    +---------+-----------+--------+-----------------+-----------------+
-   |Steel    |Dots       |2.4 GHz | 2400–2500 MHz   | No sub-GHz ISM  |
+   |Steel    |Dots       |2.4 GHz | 2400-2500 MHz   | No sub-GHz ISM  |
    |blue     |           |only    |                 | band allocated  |
    |(#B0C8DC)|           |        |                 | (most of Asia/  |
    |         |           |        |                 | Pacific)        |
@@ -1088,7 +1088,7 @@ Internet-Draft                   RSDGGS                     October 2026
 4.6.2.  Face Assignments and Regulatory Bodies
 
    Each face of the RSDGGS dodecahedron is labeled with its face index
-   (0–11).  The face index is the RSDGGS encoding value returned for any
+   (0-11).  The face index is the RSDGGS encoding value returned for any
    coordinate within that face at 1-byte resolution.  The following
    table maps each face index to its geographic coverage and the
    principal national regulatory bodies whose ISM band rules apply
@@ -1100,18 +1100,18 @@ Internet-Draft                   RSDGGS                     October 2026
    |      |            |             | Bodies       |                 |
    +======+============+=============+==============+=================+
    | F0   | Antarctica | Special (no | Antarctic    | Antarctica:     |
-   |      | / New      | Region)     | Treaty · RSM | coordination    |
+   |      | / New      | Region)     | Treaty, RSM  | coordination    |
    |      | Zealand    |             | (NZ)         | required; NZ:   |
-   |      |            |             |              | 915–928 + 2.4   |
+   |      |            |             |              | 915-928 + 2.4   |
    |      |            |             |              | GHz             |
    +------+------------+-------------+--------------+-----------------+
-   | F1   | Europe     | ITU Region  | ETSI · Ofcom | 433 + 868 + 2.4 |
-   |      |            | 1           | (UK) · ARCEP | GHz; 433 + 2.4  |
-   |      |            |             | (FR) ·       | GHz (RU, TR,    |
-   |      |            |             | BNetzA (DE)  | Maghreb)        |
+   | F1   | Europe     | ITU Region  | ETSI, Ofcom  | 433 + 868 + 2.4 |
+   |      |            | 1           | (UK), ARCEP  | GHz; 433 + 2.4  |
+   |      |            |             | (FR), BNetzA | GHz (RU, TR,    |
+   |      |            |             | (DE)         | Maghreb)        |
    +------+------------+-------------+--------------+-----------------+
-   | F2   | North      | ITU Region  | FCC (US) ·   | 902–928 + 2.4   |
-   |      | America    | 2           | ISED (CA) ·  | GHz             |
+   | F2   | North      | ITU Region  | FCC (US),    | 902-928 + 2.4   |
+   |      | America    | 2           | ISED (CA),   | GHz             |
    |      |            |             | IFT (MX)     |                 |
    +------+------------+-------------+--------------+-----------------+
 
@@ -1122,10 +1122,10 @@ Hanley                    Expires 23 April 2027                [Page 20]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   | F3   | Asia       | ITU Region  | MIC (JP) ·   | 2.4 GHz; JP     |
-   |      |            | 3           | MIIT (CN) ·  | 920–928 MHz; TW |
-   |      |            |             | KCC (KR) ·   | 902–928 MHz;    |
-   |      |            |             | NCC (TW) ·   | some: 920–925   |
+   | F3   | Asia       | ITU Region  | MIC (JP),    | 2.4 GHz; JP     |
+   |      |            | 3           | MIIT (CN),   | 920-928 MHz; TW |
+   |      |            |             | KCC (KR),    | 902-928 MHz;    |
+   |      |            |             | NCC (TW),    | some: 920-925   |
    |      |            |             | WPC/DoT (IN) | MHz (IN, SG,    |
    |      |            |             |              | MY, ID)         |
    +------+------------+-------------+--------------+-----------------+
@@ -1135,41 +1135,41 @@ Internet-Draft                   RSDGGS                     October 2026
    |      |            |             |              | coordination    |
    |      |            |             |              | required        |
    +------+------------+-------------+--------------+-----------------+
-   | F5   | Africa /   | ITU Region  | ATU East ·   | 433 + 2.4 GHz   |
-   |      | Middle     | 1           | ASMG · CCK   |                 |
-   |      | East       |             | (KE) · TCRA  |                 |
-   |      |            |             | (TZ) · MCIT  |                 |
-   |      |            |             | (SA) · TRA   |                 |
+   | F5   | Africa /   | ITU Region  | ATU East,    | 433 + 2.4 GHz   |
+   |      | Middle     | 1           | ASMG, CCK    |                 |
+   |      | East       |             | (KE), TCRA   |                 |
+   |      |            |             | (TZ), MCIT   |                 |
+   |      |            |             | (SA), TRA    |                 |
    |      |            |             | (AE)         |                 |
    +------+------------+-------------+--------------+-----------------+
-   | F6   | South      | ITU Region  | Anatel (BR)  | 902–928 + 2.4   |
-   |      | America    | 2           | · ENACOM     | GHz; BR split-  |
-   |      |            |             | (AR) ·       | band            |
-   |      |            |             | SUBTEL (CL)  |                 |
+   | F6   | South      | ITU Region  | Anatel (BR), | 902-928 + 2.4   |
+   |      | America    | 2           | ENACOM (AR), | GHz; BR split-  |
+   |      |            |             | SUBTEL (CL)  | band            |
    +------+------------+-------------+--------------+-----------------+
-   | F7   | Eastern    | ITU Region  | ACMA (AU) ·  | 915–928 MHz     |
+   | F7   | Eastern    | ITU Region  | ACMA (AU),   | 915-928 MHz     |
    |      | Australia  | 3           | MCIT (PG)    | (AU) + 2.4 GHz  |
    +------+------------+-------------+--------------+-----------------+
-   | F8   | Southern   | None        | ACMA (AU)    | 915–928 MHz     |
+   | F8   | Southern   | None        | ACMA (AU)    | 915-928 MHz     |
    |      | Indian     |             |              | (AU) + 2.4 GHz; |
    |      | Ocean      |             |              | Antarctica:     |
    |      |            |             |              | coordination    |
    |      |            |             |              | required        |
    +------+------------+-------------+--------------+-----------------+
-   | F9   | West       | ITU Region  | ATU West ·   | 433 + 2.4 GHz;  |
-   |      | Africa     | 1           | NCC (NG) ·   | north-east      |
-   |      |            |             | OFCOM (GH) · | Brazil: 902–928 |
+   | F9   | West       | ITU Region  | ATU West,    | 433 + 2.4 GHz;  |
+   |      | Africa     | 1           | NCC (NG),    | north-east      |
+   |      |            |             | OFCOM (GH),  | Brazil: 902-928 |
    |      |            |             | ANRT (MA)    | + 2.4 GHz       |
    +------+------------+-------------+--------------+-----------------+
-   | F10  | Central    | ITU Region  | FCC (US:     | 902–928 + 2.4   |
+   | F10  | Central    | ITU Region  | FCC (US:     | 902-928 + 2.4   |
    |      | Pacific    | 2           | Hawaii)      | GHz             |
    +------+------------+-------------+--------------+-----------------+
-   | F11  | North      | ITU Region  | MIC (JP) ·   | JP 920–928 MHz; |
+   | F11  | North      | ITU Region  | MIC (JP),    | JP 920-928 MHz; |
    |      | Pacific    | 3           | Roskomnadzor | RU 433 + 2.4    |
-   |      |            |             | (RU) · FCC   | GHz; AK 902–928 |
+   |      |            |             | (RU), FCC    | GHz; AK 902-928 |
    |      |            |             | (US: Alaska) | + 2.4 GHz       |
    +------+------------+-------------+--------------+-----------------+
 
+             Table 4: Face Assignments and Regulatory Bodies
 
 
 
@@ -1177,8 +1177,6 @@ Hanley                    Expires 23 April 2027                [Page 21]
 
 Internet-Draft                   RSDGGS                     October 2026
 
-
-             Table 4: Face Assignments and Regulatory Bodies
 
 4.6.3.  Net Topology and Construction
 
@@ -1216,6 +1214,8 @@ Internet-Draft                   RSDGGS                     October 2026
 
    An RSDGGS index is a byte array of 1 to 8 octets.  The interpretation
    of each octet is as follows:
+
+
 
 
 
@@ -1295,7 +1295,7 @@ Internet-Draft                   RSDGGS                     October 2026
    The spatial resolution of an RSDGGS index is determined entirely by
    its length in octets.  Each octet after Octet 1 adds four subdivision
    levels, reducing the linear cell size by a factor of 16.  Cell sizes
-   vary across a face; the values below were measured at 39°N 98°W with
+   vary across a face; the values below were measured at 39N 98W with
    the reference implementation, for a dodecahedron face area of
    approximately 42 million square kilometers:
 
@@ -1356,9 +1356,9 @@ Internet-Draft                   RSDGGS                     October 2026
    high nibble of Octet 1, and every subdivision level lies entirely
    within one octet.  All 64 bits are significant.
 
-   Bits 63-60:  Octet 0 bits 7-4 — Celestial body selector [0..15]
-   Bits 59-56:  Octet 0 bits 3-0 — Face index [0..11] on selected body
-   Bits 55-52:  Octet 1 bits 7-4 — Triangle index [0..4]; 5-15 reserved
+   Bits 63-60:  Octet 0 bits 7-4 -- Celestial body selector [0..15]
+   Bits 59-56:  Octet 0 bits 3-0 -- Face index [0..11] on selected body
+   Bits 55-52:  Octet 1 bits 7-4 -- Triangle index [0..4]; 5-15 reserved
    Bits 51-50:  Subdivision level  1
    Bits 49-48:  Subdivision level  2
    Bits 47-46:  Subdivision level  3
@@ -1721,15 +1721,15 @@ Internet-Draft                   RSDGGS                     October 2026
    the primary database lookup when the band-entry exception flag is
    set.
 
-   +================+===========+=========================+===========+
-   | Location       | Face      | Issue                   | Min RSL   |
-   |                |           |                         | for       |
-   |                |           |                         | Exception |
-   +================+===========+=========================+===========+
-   | Hong Kong      | 3         | 920-925 MHz, 100 mW vs. | 5         |
-   | (OFCA)         |           | CN illegal              |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Macau (DSRT)   | 3         | ETSI framework in       | 5         |
+    +================+===========+=======================+===========+
+    | Location       | Face      | Issue                 | Min RSL   |
+    |                |           |                       | for       |
+    |                |           |                       | Exception |
+    +================+===========+=======================+===========+
+    | Hong Kong      | 3         | 920-925 MHz, 100 mW   | 5         |
+    | (OFCA)         |           | vs. CN illegal        |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Macau (DSRT)   | 3         | ETSI framework in     | 5         |
 
 
 
@@ -1738,43 +1738,44 @@ Hanley                    Expires 23 April 2027                [Page 31]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   |                |           | Region 3 face           |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Singapore      | 3         | 920-925 MHz, 500 mW;    | 4-5       |
-   | (IMDA)         |           | ~50 km state            |           |
-   +----------------+-----------+-------------------------+-----------+
-   | British Virgin | 2         | ICTA rules adjacent to  | 5         |
-   | Islands        |           | USVI (FCC)              |           |
-   +----------------+-----------+-------------------------+-----------+
-   | French Guiana  | 9         | ETSI rules in West      | 4         |
-   | (ARCEP)        |           | Africa face, beside     |           |
-   |                |           | Brazil                  |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Ceuta /        | 1         | EU enclaves bordering   | 6         |
-   | Melilla (ETSI) |           | Morocco                 |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Guam / CNMI    | 7         | FCC rules in Region 3   | 4         |
-   | (FCC)          |           | face                    |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Alaska / Yukon | 11,       | Region 2 rules in       | 2         |
-   | (FCC, ISED)    | triangles | Region 3 face; the      |           |
-   |                | 2–4       | triangles hold no other |           |
-   |                |           | land                    |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Russian Far    | 11,       | Region 1 rules in       | 2         |
-   | East           | triangle  | Region 3 face; triangle |           |
-   | (Roskomnadzor) | 0         | 0 is 97% Russian land   |           |
-   +----------------+-----------+-------------------------+-----------+
-   | Alaska North   | 11,       | Region 2 inside the     | 5         |
-   | Slope,         | triangle  | triangle 0 Region 1     |           |
-   | Canadian       | 0         | exception; the          |           |
-   | Arctic (FCC,   |           | US–Russia border passes |           |
-   | ISED)          |           | between the Diomede     |           |
-   |                |           | Islands, 3.8 km apart   |           |
-   +----------------+-----------+-------------------------+-----------+
-   | French Pacific | 7, 10     | ETSI rules in Pacific   | 4         |
-   | (ARCEP)        |           | faces                   |           |
-   +----------------+-----------+-------------------------+-----------+
+    |                |           | Region 3 face         |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Singapore      | 3         | 920-925 MHz, 500 mW;  | 4-5       |
+    | (IMDA)         |           | ~50 km state          |           |
+    +----------------+-----------+-----------------------+-----------+
+    | British Virgin | 2         | ICTA rules adjacent   | 5         |
+    | Islands        |           | to USVI (FCC)         |           |
+    +----------------+-----------+-----------------------+-----------+
+    | French Guiana  | 9         | ETSI rules in West    | 4         |
+    | (ARCEP)        |           | Africa face, beside   |           |
+    |                |           | Brazil                |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Ceuta /        | 1         | EU enclaves bordering | 6         |
+    | Melilla (ETSI) |           | Morocco               |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Guam / CNMI    | 7         | FCC rules in Region 3 | 4         |
+    | (FCC)          |           | face                  |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Alaska / Yukon | 11,       | Region 2 rules in     | 2         |
+    | (FCC, ISED)    | triangles | Region 3 face; the    |           |
+    |                | 2-4       | triangles hold no     |           |
+    |                |           | other land            |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Russian Far    | 11,       | Region 1 rules in     | 2         |
+    | East           | triangle  | Region 3 face;        |           |
+    | (Roskomnadzor) | 0         | triangle 0 is 97%     |           |
+    |                |           | Russian land          |           |
+    +----------------+-----------+-----------------------+-----------+
+    | Alaska North   | 11,       | Region 2 inside the   | 5         |
+    | Slope,         | triangle  | triangle 0 Region 1   |           |
+    | Canadian       | 0         | exception; the US-    |           |
+    | Arctic (FCC,   |           | Russia border passes  |           |
+    | ISED)          |           | between the Diomede   |           |
+    |                |           | Islands, 3.8 km apart |           |
+    +----------------+-----------+-----------------------+-----------+
+    | French Pacific | 7, 10     | ETSI rules in Pacific | 4         |
+    | (ARCEP)        |           | faces                 |           |
+    +----------------+-----------+-----------------------+-----------+
 
                      Table 7: Exception Overlay Table
 
@@ -1785,7 +1786,6 @@ Internet-Draft                   RSDGGS                     October 2026
    compilation or last update.  Implementers and operators MUST be aware
    of the following limitations inherent to any static regulatory
    database.
-
 
 
 
@@ -1878,13 +1878,13 @@ Internet-Draft                   RSDGGS                     October 2026
     | Ofcom IR 2030   | 10 mW       | ERP   | 10%    | Post-Brexit    |
     | (UK)            |             |       |        | mirrors ETSI   |
     +-----------------+-------------+-------+--------+----------------+
-    | Roskomnadzor    | 10 mW       | —     | None   | GOST-R         |
+    | Roskomnadzor    | 10 mW       | --    | None   | GOST-R         |
     | (RU)            |             |       | stated | framework      |
     +-----------------+-------------+-------+--------+----------------+
     | UCRF (UA)       | 10 mW       | ERP   | 10%    | EU-aligned     |
     |                 |             |       |        | post-2022      |
     +-----------------+-------------+-------+--------+----------------+
-    | Most of Africa  | —           | —     | —      | No harmonized  |
+    | Most of Africa  | --          | --    | --     | No harmonized  |
     |                 |             |       |        | ISM rule       |
     +-----------------+-------------+-------+--------+----------------+
 
@@ -1930,7 +1930,7 @@ Internet-Draft                   RSDGGS                     October 2026
    | 869.65-869.7    | 25 mW  | <0.1%               | Alarms          |
    | MHz             | ERP    |                     |                 |
    +-----------------+--------+---------------------+-----------------+
-   | 869.7-870.0 MHz | 5 mW   | —                   | Non-specific    |
+   | 869.7-870.0 MHz | 5 mW   | --                  | Non-specific    |
    |                 | ERP    |                     | SRD             |
    +-----------------+--------+---------------------+-----------------+
 
@@ -2102,7 +2102,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
    Below the ITU level, neighboring administrations negotiate bilateral
    arrangements governing specific bands along their shared borders.
-   These agreements establish coordination zones — geographic areas on
+   These agreements establish coordination zones -- geographic areas on
    both sides of the border within which proposed assignments require
    prior approval from the neighboring administration.  The zone extent
    varies by band and agreement:
@@ -2130,27 +2130,27 @@ Hanley                    Expires 23 April 2027                [Page 38]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   US-Canada (FCC / ISED, per 47 CFR § 1.928 and Arrangements A-Q):
+   US-Canada (FCC / ISED, per 47 CFR 1.928 and Arrangements A-Q):
      Coordination zone:  100-140 km either side of border
-     800 MHz band zone:  110 km (47 CFR § 90.619)
+     800 MHz band zone:  110 km (47 CFR 90.619)
      Power limit:        ERP and antenna height tables
                          (varies by antenna height above terrain)
-     PFD limit at border: -107 dB(W/m²) for 896-940 MHz
+     PFD limit at border: -107 dB(W/m^2) for 896-940 MHz
 
-   US-Mexico (FCC / IFT, per 47 CFR § 90.619):
+   US-Mexico (FCC / IFT, per 47 CFR 90.619):
      Sharing zone:       110 km from US/Mexico border
      800 MHz primary:    Channels divided US/MX primary access
-     PFD limit at border: -107 dB(W/m²) for 896-940 MHz
+     PFD limit at border: -107 dB(W/m^2) for 896-940 MHz
      Sub-5W stations:    Coordinated only on request
 
    EU internal borders (CEPT/ECC):
-     ETSI EN 300 220 harmonized across EU — no coordination
+     ETSI EN 300 220 harmonized across EU -- no coordination
      required for intra-EU 868 MHz SRD operation
      EU/Russia border: coordination required; no harmonization
 
                                  Figure 14
 
-   The 47 CFR § 90.619 power-flux-density limit of -107 dB(W/m²) at the
+   The 47 CFR 90.619 power-flux-density limit of -107 dB(W/m^2) at the
    US/Mexico border for the 896-940 MHz band is directly applicable to
    ISM-adjacent operations.  The 110 km coordination zone for 800 MHz
    band operations represents a precision requirement of approximately
@@ -2186,29 +2186,29 @@ Hanley                    Expires 23 April 2027                [Page 39]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   +===============+==========================+========================+
-   | Mechanism     | Traditional              | RSDGGS IoT Analog      |
-   |               | Deployment               |                        |
-   +===============+==========================+========================+
-   | Power flux-   | Fixed limit at           | Computed from distance |
-   | density limit | border line (e.g.,       | to boundary cell edge  |
-   |               | -107 dBW/m²)             | + TX power             |
-   +---------------+--------------------------+------------------------+
-   | ERP reduction | Graduated by             | Graduated by RSDGGS    |
-   |               | antenna height           | resolution steps to    |
-   |               | above terrain            | boundary               |
-   +---------------+--------------------------+------------------------+
-   | Directional   | Beam steering away       | Not applicable to omni |
-   | antenna null  | from border              | IoT devices            |
-   +---------------+--------------------------+------------------------+
-   | Antenna       | Lowers line-of-          | 802.15.4 TX power      |
-   | height        | sight range              | reduction achieves     |
-   | restriction   |                          | equivalent range limit |
-   +---------------+--------------------------+------------------------+
-   | Duty cycle    | Border-zone              | Tighter duty cycle     |
-   | restriction   | operational limit        | from neighboring rule  |
-   |               |                          | set applied            |
-   +---------------+--------------------------+------------------------+
+      +===============+====================+========================+
+      | Mechanism     | Traditional        | RSDGGS IoT Analog      |
+      |               | Deployment         |                        |
+      +===============+====================+========================+
+      | Power flux-   | Fixed limit at     | Computed from distance |
+      | density limit | border line (e.g., | to boundary cell edge  |
+      |               | -107 dBW/m^2)      | + TX power             |
+      +---------------+--------------------+------------------------+
+      | ERP reduction | Graduated by       | Graduated by RSDGGS    |
+      |               | antenna height     | resolution steps to    |
+      |               | above terrain      | boundary               |
+      +---------------+--------------------+------------------------+
+      | Directional   | Beam steering away | Not applicable to omni |
+      | antenna null  | from border        | IoT devices            |
+      +---------------+--------------------+------------------------+
+      | Antenna       | Lowers line-of-    | 802.15.4 TX power      |
+      | height        | sight range        | reduction achieves     |
+      | restriction   |                    | equivalent range limit |
+      +---------------+--------------------+------------------------+
+      | Duty cycle    | Border-zone        | Tighter duty cycle     |
+      | restriction   | operational limit  | from neighboring rule  |
+      |               |                    | set applied            |
+      +---------------+--------------------+------------------------+
 
                  Table 12: Technical Mitigation Mechanisms
 
@@ -2299,9 +2299,9 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
    B(cell, band):
-     Input:  cell     — RSDGGS cell index at current resolution R
-             band     — ISM band identifier
-     Output: steps    — number of subdivision levels to nearest
+     Input:  cell     -- RSDGGS cell index at current resolution R
+             band     -- ISM band identifier
+     Output: steps    -- number of subdivision levels to nearest
                         rule-set-changing boundary
                         0 = boundary within current cell
                         1 = boundary in adjacent cell at level R
@@ -2418,13 +2418,13 @@ Internet-Draft                   RSDGGS                     October 2026
    Example: EU/Russia border, 868 MHz band
      EU:     duty_cycle = 1%, lbt = false (EN 300 220)
      Russia: duty_cycle = none, lbt = false (GOST-R)
-     → Apply DC = 1%, lbt = false
+     -> Apply DC = 1%, lbt = false
 
    Example: EU/Switzerland border, 868 MHz band
      EU:          ETSI EN 300 220 in full
      Switzerland: ETSI-aligned (OFCOM, independent)
-     → Effectively identical, no reduction needed
-     → Exception table entry flags as RSL 5 for verification
+     -> Effectively identical, no reduction needed
+     -> Exception table entry flags as RSL 5 for verification
 
                                  Figure 17
 
@@ -2443,21 +2443,21 @@ Internet-Draft                   RSDGGS                     October 2026
        Increase resolution to RSL(face, band).
 
      If B(cell, band) == 0 at current_resolution:
-       // Boundary is within current cell — ambiguous
+       // Boundary is within current cell -- ambiguous
        Increase resolution by one byte.
        Re-evaluate B(cell, band).
        Repeat until B > 0 or resolution == 8 bytes.
 
      If resolution == 8 bytes and B == 0:
        // Device is within ~6 cm of the boundary line
-       // (sub-decimeter precision — effectively on the line)
+       // (sub-decimeter precision -- effectively on the line)
        Apply conservative rule: use minimum of both rule sets.
        Log condition for operator review.
 
      Maximum practical resolution for boundary determination:
-       5 bytes (~260 m) — adequate for bilateral zone classification
-       6 bytes (~16 m)  — adequate for most land borders
-       7 bytes (~1 m)   — adequate for all practical land borders
+       5 bytes (~260 m) -- adequate for bilateral zone classification
+       6 bytes (~16 m)  -- adequate for most land borders
+       7 bytes (~1 m)   -- adequate for all practical land borders
 
 
 
@@ -2480,7 +2480,7 @@ Internet-Draft                   RSDGGS                     October 2026
    3-byte resolution is sufficient for all regulatory decisions and
    boundary detection.  Resolution escalation beyond 5 bytes is only
    required for devices within approximately 260 m of a land border
-   between jurisdictions with conflicting ISM band rules — a scenario
+   between jurisdictions with conflicting ISM band rules -- a scenario
    that affects only a small fraction of deployed devices.
 
 10.6.  CDDL Schema for Boundary-Aware Operation
@@ -2506,7 +2506,7 @@ Internet-Draft                   RSDGGS                     October 2026
      band-id:       uint,
      agreement:     tstr,              ; treaty/agreement citation
      zone-km:       uint,              ; coordination zone radius in km
-     pfd-limit-dbwm2: int,             ; PFD limit at boundary dB(W/m²)
+     pfd-limit-dbwm2: int,             ; PFD limit at boundary dB(W/m^2)
      p-max-a-dbm:   int,               ; max EIRP in cell-a
      p-max-b-dbm:   int,               ; max EIRP in cell-b
      dc-a:          nil / float,       ; duty cycle in cell-a
@@ -2544,15 +2544,15 @@ Internet-Draft                   RSDGGS                     October 2026
    Many IoT devices lack GPS receivers or smartphone tethering and have
    no independent means of determining their geographic location.  In
    conformance with design goal G8 (Section 3), RSDGGS is designed so
-   that a device with no external connectivity — no DHCP server, no DNS,
-   no cloud enrollment, no smartphone tether — SHALL be capable of full
-   regulatory self-configuration through peer interaction alone.  RSDGGS
-   defines a peer-assisted discovery mechanism enabling such Naive
-   Devices to derive their applicable regulatory parameters from beacons
-   transmitted by location-aware Beacon Devices in the vicinity.  This
-   mechanism is the primary regulatory bootstrap path, not a fallback:
-   centralized provisioning systems such as DHCP servers are optional
-   accelerators, not dependencies.
+   that a device with no external connectivity -- no DHCP server, no
+   DNS, no cloud enrollment, no smartphone tether -- SHALL be capable of
+   full regulatory self-configuration through peer interaction alone.
+   RSDGGS defines a peer-assisted discovery mechanism enabling such
+   Naive Devices to derive their applicable regulatory parameters from
+   beacons transmitted by location-aware Beacon Devices in the vicinity.
+   This mechanism is the primary regulatory bootstrap path, not a
+   fallback: centralized provisioning systems such as DHCP servers are
+   optional accelerators, not dependencies.
 
 11.1.  Beacon Frame Format
 
@@ -2775,16 +2775,16 @@ Internet-Draft                   RSDGGS                     October 2026
    | Method          | Input         | Typical Precision | 802.15.4   |
    |                 |               |                   | Primitive  |
    +=================+===============+===================+============+
-   | M1 — Cell       | RSDGGS cells  | Cell resolution   | Beacon /   |
+   | M1 -- Cell      | RSDGGS cells  | Cell resolution   | Beacon /   |
    | Intersection    | from peers    | of peers          | Enhanced   |
    |                 |               |                   | Beacon     |
    +-----------------+---------------+-------------------+------------+
-   | M2 — RSSI       | Round-trip    | 10–50 m           | Data frame |
-   | Multilateration | RSSI + path   | (outdoor), 20–100 | + Enhanced |
+   | M2 -- RSSI      | Round-trip    | 10-50 m           | Data frame |
+   | Multilateration | RSSI + path   | (outdoor), 20-100 | + Enhanced |
    |                 | loss model    | m (indoor)        | ACK        |
    +-----------------+---------------+-------------------+------------+
-   | M3 — UWB        | DS-TWR        | 0.1–0.5 m (LoS),  | HRP UWB    |
-   | Ranging         | timestamps    | 0.3–1 m (NLoS)    | ranging    |
+   | M3 -- UWB       | DS-TWR        | 0.1-0.5 m (LoS),  | HRP UWB    |
+   | Ranging         | timestamps    | 0.3-1 m (NLoS)    | ranging    |
    |                 | (802.15.4a/z) |                   | exchange   |
    +-----------------+---------------+-------------------+------------+
 
@@ -2803,10 +2803,10 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
    A device with access only to Method M1 can resolve its RSDGGS cell to
-   the intersection of its peers' cells, typically 2–4 bytes of
+   the intersection of its peers' cells, typically 2-4 bytes of
    resolution.  A device with M2 capability can typically achieve 6-byte
    resolution (~16 m cells) in outdoor environments.  A device with M3
-   capability can achieve 7–8 byte resolution (~1 m to ~6 cm cells) in
+   capability can achieve 7-8 byte resolution (~1 m to ~6 cm cells) in
    line-of-sight conditions.
 
 13.2.  RSDGGS Cell Intersection
@@ -3049,22 +3049,22 @@ Internet-Draft                   RSDGGS                     October 2026
       | > 7,000 km           | 1 byte     | No measurement; prior  |
       |                      | (face)     | only                   |
       +----------------------+------------+------------------------+
-      | 1,000 – 7,000 km     | 2 bytes    | Cell intersection (1-2 |
+      | 1,000 - 7,000 km     | 2 bytes    | Cell intersection (1-2 |
       |                      |            | peers)                 |
       +----------------------+------------+------------------------+
-      | 65 – 1,000 km        | 3 bytes    | Cell intersection (3+  |
+      | 65 - 1,000 km        | 3 bytes    | Cell intersection (3+  |
       |                      |            | peers), RSL sufficient |
       +----------------------+------------+------------------------+
-      | 4 – 65 km            | 4 bytes    | Cell intersection      |
+      | 4 - 65 km            | 4 bytes    | Cell intersection      |
       |                      |            | (dense); coarse RSSI   |
       +----------------------+------------+------------------------+
-      | 260 m – 4 km         | 5 bytes    | RSSI multilateration   |
+      | 260 m - 4 km         | 5 bytes    | RSSI multilateration   |
       |                      |            | (outdoor)              |
       +----------------------+------------+------------------------+
-      | 16 – 260 m           | 6 bytes    | RSSI multilateration   |
+      | 16 - 260 m           | 6 bytes    | RSSI multilateration   |
       |                      |            | (dense urban)          |
       +----------------------+------------+------------------------+
-      | 1 – 16 m             | 7 bytes    | UWB NLoS / dense RSSI  |
+      | 1 - 16 m             | 7 bytes    | UWB NLoS / dense RSSI  |
       +----------------------+------------+------------------------+
       | < 1 m                | 8 bytes    | UWB DS-TWR LoS         |
       |                      | (max)      |                        |
@@ -3228,8 +3228,8 @@ Internet-Draft                   RSDGGS                     October 2026
    For fixed devices, the EKF reduces to a static estimator.  The
    prediction step adds no uncertainty (Q = 0) and successive
    measurements monotonically reduce sigma_cells until the RSDGGS
-   resolution stabilizes at 7–8 bytes for UWB-capable deployments, or
-   5–6 bytes for RSSI-only deployments.
+   resolution stabilizes at 7-8 bytes for UWB-capable deployments, or
+   5-6 bytes for RSSI-only deployments.
 
 13.8.  Security Considerations for Cooperative Ranging
 
@@ -3307,8 +3307,8 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
    Sub-IE Header (2 octets):
-     Bits [15:8]  Sub-IE ID     (8 bits) — assigned by IEEE RA
-     Bits [7:0]   Length         (8 bits) — payload length in octets
+     Bits [15:8]  Sub-IE ID     (8 bits) -- assigned by IEEE RA
+     Bits [7:0]   Length         (8 bits) -- payload length in octets
 
    Sub-IE Payload (1-8 octets):
      RSDGGS cell bytes, variable length
@@ -3334,11 +3334,11 @@ Internet-Draft                   RSDGGS                     October 2026
     | Length     | 7:0  | 0x01 to  | Number of RSDGGS cell octets;    |
     |            |      | 0x08     | encodes resolution               |
     +------------+------+----------+----------------------------------+
-    | Cell[0]    | —    | variable | Celestial body selector (bits    |
+    | Cell[0]    | --   | variable | Celestial body selector (bits    |
     |            |      |          | 7-4) and dodecahedron face index |
     |            |      |          | 0-11 (bits 3-0); mandatory       |
     +------------+------+----------+----------------------------------+
-    | Cell[1..7] | —    | variable | Triangle index (Cell[1] bits     |
+    | Cell[1..7] | --   | variable | Triangle index (Cell[1] bits     |
     |            |      |          | 7-4) and subdivision levels,     |
     |            |      |          | present per Length field         |
     +------------+------+----------+----------------------------------+
@@ -3480,7 +3480,7 @@ Internet-Draft                   RSDGGS                     October 2026
    |         RSDGGS Geographic Prefix (64 bits)                    |
    |         Identifies this as a geographic address space          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |         RSDGGS Cell Index — Interface Identifier (64 bits)    |
+   |         RSDGGS Cell Index -- Interface Identifier (64 bits)    |
    |  [face][triangle][subdiv level 1]..[subdiv level 26][rsvd]    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -3624,7 +3624,7 @@ Internet-Draft                   RSDGGS                     October 2026
    forwarding as used in GPSR [GPSR] and similar protocols, but operates
    on the RSDGGS index structure directly rather than on Euclidean or
    great-circle distance.  The computational cost at each hop is a
-   bitwise XOR and leading-zero count — operations available as single
+   bitwise XOR and leading-zero count -- operations available as single
    instructions on all target architectures including constrained
    microcontrollers.
 
@@ -3811,7 +3811,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 Dimension            RFC 2009                  RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Coordinate system    WGS-84 lat/lon polys      Dodecahedral cell index
 Wire encoding        Float-point GPS coord     1-8 byte int (uint64_t)
 Constrained devices  Not considered            no_std, no_alloc, no FPU
@@ -3874,7 +3874,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.2.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 5870 'geo' URI        RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Representation       'geo:48.2,16.4;u=40'      Binary: 0x01 0x2D 0x35
 Encoding size        20-30 bytes typical       1-8 bytes
 Uncertainty          Float param (u=)          Implicit in byte length
@@ -3911,8 +3911,8 @@ Hierarchical index   None                      Full hier. in bits
    Session Initiation Protocol (SIP).  It is a Standards Track document.
    The primary use case is emergency services (E9-1-1, E1-1-2) and
    presence-based location sharing.  It mandates use of the PIDF-LO
-   (Presence Information Data Format — Location Object, RFC 4119) as the
-   location representation format.
+   (Presence Information Data Format -- Location Object, RFC 4119) as
+   the location representation format.
 
 
 
@@ -3942,7 +3942,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.3.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 6442 / PIDF-LO        RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Target protocol      SIP (session signal.)     802.15.4 MAC, CBOR, IPv6
 Location format      PIDF-LO (~500 bytes)      CBOR bstr (1-8 bytes)
 Regulatory context   Absent                    Primary design goal
@@ -4014,7 +4014,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.4.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 9179 YANG grouping    RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Target context       YANG/NETCONF mgmt         802.15.4 / CBOR / IPv6
 Encoding             XML/JSON (NETCONF)        CBOR bstr (1-8 bytes)
 Precision            decimal64 (16 frac)       6 cm at 8 bytes
@@ -4091,7 +4091,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 Dimension            RFC 9632 Geofeed          RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Address space        IP prefixes (BGP)         802.15.4 / 6LoWPAN / CBOR
 Loc. granularity     Country/region/city       6cm-continental (8B)
 Format               CSV file (HTTPS)          Binary (1-8B in-frame)
@@ -4104,9 +4104,9 @@ Routing              Not defined               See Section 13
                               Figure 37
 
    RFC 9632 and RSDGGS address fundamentally different layers of the
-   same problem.  RFC 9632 maps IP address blocks — which are
+   same problem.  RFC 9632 maps IP address blocks -- which are
    administratively assigned and may not correspond to the physical
-   location of the device using them — to geographic designators, for
+   location of the device using them -- to geographic designators, for
    the purpose of correcting commercial geolocation database errors.
    RSDGGS encodes the physical location of an IoT device directly in a
    binary index that travels with every message the device sends, for
@@ -4152,7 +4152,7 @@ Internet-Draft                   RSDGGS                     October 2026
    URL.  Each non-comment line has the form: ip_prefix, alpha2code,
    region, city, postal_code.  The IP prefix field is required; all
    others are optional.  The format intentionally only allows coarse-
-   level location — political-administrative designators (ISO 3166-1
+   level location -- political-administrative designators (ISO 3166-1
    country code, ISO 3166-2 region code, city name) rather than precise
    coordinates.  Postal code is included for backward compatibility but
    its use is deprecated.  The file is self-published by the IP address
@@ -4167,7 +4167,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.6.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 8805 Geofeed Format   RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Target               IP prefix holders         IoT device manufacturers
 Granularity          Country/region/city       6cm-continental (8B)
 Format               CSV text (HTTPS poll)     Binary (1-8B in-frame)
@@ -4231,7 +4231,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.7.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 5808 LbyR Req.        RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Architecture         LIS + LCP + dereference   Self-contained index
 Infrastructure req.  Location Info. Server     None (no server)
 Location currency    Via dereference           Carried in-frame, updated
@@ -4297,11 +4297,11 @@ Internet-Draft                   RSDGGS                     October 2026
 16.8.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 5491 PIDF-LO Usage    RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Location types       Geodetic + civic (addr.)  Geographic cell only
 Compound location    Rules 4-7 (XML elems)     Single hier. index
 Uncertainty          GML shape (poly/circle)   Implicit in byte length
-Coarse-to-fine       Rule 7 (explicit)         Structural (MSB→LSB)
+Coarse-to-fine       Rule 7 (explicit)         Structural (MSB->LSB)
 Encoding             XML/GML (~2000 bytes)     Binary (1-8 bytes)
 Floor / room         Civic element supported   Not defined
 Regulatory context   Absent                    Primary design goal
@@ -4316,8 +4316,8 @@ Internet-Draft                   RSDGGS                     October 2026
 
                               Figure 40
 
-   RFC 5491's Rule 7 — coarse location MUST precede fine location in
-   compound PIDF-LO — is structurally expressed in RSDGGS by the bit
+   RFC 5491's Rule 7 -- coarse location MUST precede fine location in
+   compound PIDF-LO -- is structurally expressed in RSDGGS by the bit
    layout itself: Byte 0 (coarsest) precedes Byte 7 (finest), and
    truncation from the right always yields the coarser representation.
    RSDGGS embodies Rule 7 as an invariant property of the encoding
@@ -4373,7 +4373,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.9.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 6280 GEOPRIV Arch.    RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Privacy model        Rule-based (RM+LS+LR)     Struct. byte trunc.
 Infrastructure       LG + LS + LR servers      None required
 Enforcement          Honor-system + legal      No over-disclosure
@@ -4435,7 +4435,7 @@ Internet-Draft                   RSDGGS                     October 2026
    transformation component.  Conditions may include identity-based
    conditions (who is requesting) and location-based conditions (where
    the target is).  Transformations specify how the location information
-   should be modified before delivery — for example, reducing precision
+   should be modified before delivery -- for example, reducing precision
    by replacing a precise geodetic coordinate with a less precise one,
    or replacing geodetic coordinates with a civic address.
 
@@ -4450,7 +4450,7 @@ Internet-Draft                   RSDGGS                     October 2026
 16.10.2.  Gaps Addressed by RSDGGS
 
 Dimension            RFC 6772 Geoloc. Policy   RSDGGS
-───────────────────  ────────────────────────  ─────────────────────────
+-------------------  ------------------------  -------------------------
 Privacy mechanism    XML policy rules + XCAP   Struct. byte trunc.
 Infrastructure       XCAP server + LS req.     None
 Loc. obfuscation     Precision reduction       Byte trunc. (binary)
@@ -4462,10 +4462,10 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 
                               Figure 42
 
-   RFC 6772's location obfuscation mechanism — reducing precision in the
-   transformation element of a policy rule — is conceptually identical
-   to RSDGGS truncation, but implemented through a server-side XML
-   transformation rather than a structural property of the encoding.
+   RFC 6772's location obfuscation mechanism -- reducing precision in
+   the transformation element of a policy rule -- is conceptually
+   identical to RSDGGS truncation, but implemented through a server-side
+   XML transformation rather than a structural property of the encoding.
    The RFC 6772 approach requires a Location Server to apply the
    transformation rule; the RSDGGS approach requires the transmitting
    device to select an index length.  The RSDGGS approach is
@@ -4482,8 +4482,8 @@ Hanley                    Expires 23 April 2027                [Page 80]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   RFC 6772's location-based conditions — rules that apply differently
-   depending on where the Target is — have a direct analogy in RSDGGS:
+   RFC 6772's location-based conditions -- rules that apply differently
+   depending on where the Target is -- have a direct analogy in RSDGGS:
    the RSL (Resolution Sufficiency Level) table defines location-
    dependent disclosure requirements for regulatory purposes.  A device
    in Face 2 (North America) needs to disclose only 1 byte to establish
@@ -4598,7 +4598,7 @@ Internet-Draft                   RSDGGS                     October 2026
    Each addresses a distinct protocol layer or use case for which it
    remains the appropriate standard.  RSDGGS fills the gap at the
    intersection of geographic addressing, regulatory compliance
-   encoding, constrained IoT communication, and MAC-layer integration —
+   encoding, constrained IoT communication, and MAC-layer integration --
    a combination not addressed by any prior IETF work.
 
    Implementations are encouraged to support translation between RSDGGS
@@ -4612,11 +4612,12 @@ Internet-Draft                   RSDGGS                     October 2026
 
    Each patent and RFC examined in Section 16 carries its own citation
    list.  This section identifies references within those backward
-   citation chains that are independently relevant to RSDGGS — documents
-   cited by the cited documents that surface additional prior art, gaps,
-   or informative context not already addressed in the specification.
+   citation chains that are independently relevant to RSDGGS --
+   documents cited by the cited documents that surface additional prior
+   art, gaps, or informative context not already addressed in the
+   specification.
 
-17.1.  GPSR — Greedy Perimeter Stateless Routing (from US 10,812,365)
+17.1.  GPSR -- Greedy Perimeter Stateless Routing (from US 10,812,365)
 
    Karp, B. and H.T.  Kung, 'GPSR: Greedy Perimeter Stateless Routing
    for Wireless Networks', MobiCom 2000.  Cited as primary prior art in
@@ -4636,12 +4637,11 @@ Internet-Draft                   RSDGGS                     October 2026
    candidates.  This gap should be documented as a known limitation in
    Section 15.3.
 
-17.2.  IEEE 802.11d — Country Information Elements (from US 10,306,400
-       family)
 
-   IEEE 802.11d-2001, 'Amendment: Specifications for Operation in
-   Additional Regulatory Domains'.  Surfaced through the wireless
-   regulatory compliance patent family (US 10,306,400, US 9,654,965).
+
+
+
+
 
 
 
@@ -4649,6 +4649,13 @@ Hanley                    Expires 23 April 2027                [Page 83]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+17.2.  IEEE 802.11d -- Country Information Elements (from US 10,306,400
+       family)
+
+   IEEE 802.11d-2001, 'Amendment: Specifications for Operation in
+   Additional Regulatory Domains'.  Surfaced through the wireless
+   regulatory compliance patent family (US 10,306,400, US 9,654,965).
 
    Relevance to RSDGGS: IEEE 802.11d defines country information
    elements (Country IE) in Wi-Fi beacon frames.  Each Country IE
@@ -4665,7 +4672,7 @@ Internet-Draft                   RSDGGS                     October 2026
    The RSDGGS Sub-IE should be cited as a hierarchical extension of the
    802.11d Country IE concept to 802.15.4 with ITU-regional alignment.
 
-17.3.  IEEE 802.11h — DFS and TPC (from US 10,306,400 family)
+17.3.  IEEE 802.11h -- DFS and TPC (from US 10,306,400 family)
 
    IEEE 802.11h-2003, 'Spectrum and Transmit Power Management
    Extensions'.  Also surfaced through the wireless regulatory
@@ -4685,19 +4692,12 @@ Internet-Draft                   RSDGGS                     October 2026
    regardless of link quality.  The two mechanisms are complementary and
    both should apply in deployments near regulatory boundaries.
 
-17.4.  RFC 3693 — GEOPRIV Requirements (from RFC 6442 and RFC 6280)
+17.4.  RFC 3693 -- GEOPRIV Requirements (from RFC 6442 and RFC 6280)
 
    Cuellar, J., Morris, J., Mulligan, D., Peterson, J., and J.  Polk,
    'Geopriv Requirements', RFC 3693, February 2004.  Cited as the
    foundational requirements document by both RFC 6442 and RFC 6280.
 
-   Relevance to RSDGGS: RFC 3693 defines the concept of a 'using
-   protocol': any protocol that transmits or acts on location
-   information must satisfy GEOPRIV's authorization, integrity, and
-   privacy requirements.  RSDGGS's 802.15.4 MAC bootstrap (Section 14)
-   qualifies as a using protocol under RFC 3693's definition: it
-   transmits location information (the RSDGGS cell) in MAC frames and
-   acts on it to configure regulatory parameters.  RSDGGS satisfies RFC
 
 
 
@@ -4706,6 +4706,13 @@ Hanley                    Expires 23 April 2027                [Page 84]
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   Relevance to RSDGGS: RFC 3693 defines the concept of a 'using
+   protocol': any protocol that transmits or acts on location
+   information must satisfy GEOPRIV's authorization, integrity, and
+   privacy requirements.  RSDGGS's 802.15.4 MAC bootstrap (Section 14)
+   qualifies as a using protocol under RFC 3693's definition: it
+   transmits location information (the RSDGGS cell) in MAC frames and
+   acts on it to configure regulatory parameters.  RSDGGS satisfies RFC
    3693's privacy requirement through structural truncation (G3, G8)
    rather than policy rules, satisfies the integrity requirement through
    STS-authenticated ranging (Section 13.4.2) rather than digital
@@ -4714,7 +4721,7 @@ Internet-Draft                   RSDGGS                     October 2026
    receive beacon location information).  RFC 3693 should be cited as an
    informative reference in Section 14.
 
-17.5.  RFC 3825 — DHCP Geodetic Location Option (from RFC 5870 and RFC
+17.5.  RFC 3825 -- DHCP Geodetic Location Option (from RFC 5870 and RFC
        5808)
 
    Polk, J., Schnizlein, J., and M.  Linsner, 'Dynamic Host
@@ -4732,8 +4739,8 @@ Internet-Draft                   RSDGGS                     October 2026
 
    The reason is structural: DHCP is a client-server protocol with a
    centralized server as a single point of failure.  If the DHCPv6
-   server is unavailable — due to server failure, network partition, or
-   initial bootstrap before any infrastructure is established —
+   server is unavailable -- due to server failure, network partition, or
+   initial bootstrap before any infrastructure is established --
    onboarding devices cannot acquire their regulatory configuration.
    This violates G8's requirement for complete independence from any
    centralized server.  IPv6 Stateless Address Autoconfiguration (SLAAC,
@@ -4747,13 +4754,6 @@ Internet-Draft                   RSDGGS                     October 2026
    RFC 3825 / DHCPv6 RSDGGS options MAY be implemented as optional
    accelerators in managed infrastructure deployments where the DHCP
    server is always available before devices are deployed.  They MUST
-   NOT be implemented as the sole or primary regulatory provisioning
-   path.  Any RSDGGS implementation that supports DHCPv6 provisioning
-   MUST also implement the peer-assisted bootstrap of Section 11 as a
-   fallback, and MUST fall back to peer-assisted bootstrap automatically
-   if the DHCP server does not respond within a configurable timeout.
-
-
 
 
 
@@ -4762,7 +4762,13 @@ Hanley                    Expires 23 April 2027                [Page 85]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-17.6.  RFC 4632 — CIDR: Classless Inter-Domain Routing (from RFC 9632)
+   NOT be implemented as the sole or primary regulatory provisioning
+   path.  Any RSDGGS implementation that supports DHCPv6 provisioning
+   MUST also implement the peer-assisted bootstrap of Section 11 as a
+   fallback, and MUST fall back to peer-assisted bootstrap automatically
+   if the DHCP server does not respond within a configurable timeout.
+
+17.6.  RFC 4632 -- CIDR: Classless Inter-Domain Routing (from RFC 9632)
 
    Fuller, V. and T.  Li, 'Classless Inter-domain Routing (CIDR): The
    Internet Address Assignment and Aggregation Plan', BCP 122, RFC 4632,
@@ -4776,12 +4782,12 @@ Internet-Draft                   RSDGGS                     October 2026
    geographic cells: a /72 RSDGGS-IPv6 prefix aggregates all devices in
    a single dodecahedron face (ITU Region) into a single routing entry;
    a /88 prefix aggregates all devices in a country-scale cell.  The
-   mathematical relationship is direct — RSDGGS-IPv6 is CIDR for
+   mathematical relationship is direct -- RSDGGS-IPv6 is CIDR for
    geography rather than administrative address allocation.  RFC 4632
    should be cited as an informative reference in Section 15.2 to
    establish this conceptual lineage.
 
-17.7.  RFC 6269 — Issues with IP Address Sharing (from RFC 9632)
+17.7.  RFC 6269 -- Issues with IP Address Sharing (from RFC 9632)
 
    Ford, M., Boucadair, M., Durand, A., Levis, P., and P.  Roberts,
    'Issues with IP Address Sharing', RFC 6269, June 2011.  Cited in RFC
@@ -4791,7 +4797,7 @@ Internet-Draft                   RSDGGS                     October 2026
    IP geolocation databases are unreliable when IP addresses are shared
    (NAT, CGN, mobile carrier address pools) because a shared address
    maps to many physical locations.  RFC 9632 geofeed was designed as a
-   partial solution — operators can publish authoritative location for
+   partial solution -- operators can publish authoritative location for
    their IP prefix.  RSDGGS-IPv6 geographic addressing solves this
    problem categorically for devices using RSDGGS addresses: the lower
    64 bits of the IPv6 address encode the device's geographic cell,
@@ -4799,17 +4805,11 @@ Internet-Draft                   RSDGGS                     October 2026
    inferred.  This should be noted in Section 15 as one of the concrete
    advantages of RSDGGS-IPv6 over commercial geolocation.
 
-17.8.  GeoCast — Geographic Addressing and Routing (from RFC 2009)
+17.8.  GeoCast -- Geographic Addressing and Routing (from RFC 2009)
 
    Navas, J.C. and T.  Imielinski, 'GeoCast: Geographic Addressing and
    Routing', MobiCom 1997.  Cited in RFC 2009 as the companion paper
    describing geographic multicast.
-
-   Relevance to RSDGGS: GeoCast defines geographic multicast: delivering
-   a packet to all nodes currently within a specified geographic
-   polygon.  RSDGGS-IPv6 prefix aggregation enables a direct
-   implementation of GeoCast: a packet addressed to a /72 RSDGGS-IPv6
-   prefix is a GeoCast to all devices in a single ITU Region; a packet
 
 
 
@@ -4818,9 +4818,14 @@ Hanley                    Expires 23 April 2027                [Page 86]
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   Relevance to RSDGGS: GeoCast defines geographic multicast: delivering
+   a packet to all nodes currently within a specified geographic
+   polygon.  RSDGGS-IPv6 prefix aggregation enables a direct
+   implementation of GeoCast: a packet addressed to a /72 RSDGGS-IPv6
+   prefix is a GeoCast to all devices in a single ITU Region; a packet
    addressed to a /88 prefix is a GeoCast to a country-scale cell.  This
-   is lossless GeoCast — the cell boundary is exact, not approximated by
-   a polygon.  GeoCast should be cited as an informative reference in
+   is lossless GeoCast -- the cell boundary is exact, not approximated
+   by a polygon.  GeoCast should be cited as an informative reference in
    Section 15 as an ancestor of RSDGGS geographic multicast capability.
 
 17.9.  Summary of Newly Identified References
@@ -4828,11 +4833,6 @@ Internet-Draft                   RSDGGS                     October 2026
    The following references, surfaced from the backward citation chains
    of documents already examined, should be added to Section 21
    (References) of this draft as informative references:
-
-
-
-
-
 
 
 
@@ -4948,7 +4948,7 @@ Internet-Draft                   RSDGGS                     October 2026
    been blocked by, the referenced work.  All patent analyses are
    informational only and do not constitute legal advice.
 
-18.1.  Expired Patents — Public Domain Prior Art
+18.1.  Expired Patents -- Public Domain Prior Art
 
    The following patents are expired and their full technical
    disclosures are in the public domain.  They constitute prior art
@@ -4956,12 +4956,12 @@ Internet-Draft                   RSDGGS                     October 2026
    disclose, and RSDGGS implementations may freely use these techniques
    without license.
 
-18.1.1.  US Patent 4,939,726 — Metricom, Inc. (Expired 2007)
+18.1.1.  US Patent 4,939,726 -- Metricom, Inc. (Expired 2007)
 
    Title: Method for Routing Packets in a Packet Communication Network.
    Inventors: Flammer, Kalkwarf.  Assignee: Metricom, Inc. (later Proxim
    Wireless Corp.).  Filed 1989, granted July 3, 1990, expired 2007.
-   Companion patent US 5,115,433 (Baran, Flammer, Kalkwarf — Metricom,
+   Companion patent US 5,115,433 (Baran, Flammer, Kalkwarf -- Metricom,
    1992) is also expired.
 
    Key claims (now public domain):
@@ -4976,7 +4976,7 @@ Internet-Draft                   RSDGGS                     October 2026
    US 5,115,433 adds (also public domain):
      Selection of forwarding node by minimum power required
      Link quality criteria include: net data rate, network delay,
-     data priority — richer than Claim 3 of 4,939,726
+     data priority -- richer than Claim 3 of 4,939,726
 
 
 
@@ -4988,19 +4988,20 @@ Internet-Draft                   RSDGGS                     October 2026
 
                                  Figure 43
 
-   RSDGGS improvement opportunity — Link Quality Weighted Forwarding: US
-   4,939,726 Claim 3 and US 5,115,433 define a link quality (LQ) factor
-   incorporating distance, power, retry history, throughput, and delay.
-   RSDGGS Section 15.3 defines geographic greedy forwarding using only
-   common-prefix-length as the progress metric.  Incorporating a link
-   quality weighting that prefers the LQ-best neighbor among those
-   making geographic progress would improve real-world routing
-   performance in dense ISM-band deployments where RSSI and retry rates
-   vary significantly.  This enhancement is freely implementable from
-   the expired public domain claims and should be noted as a normative
-   extension candidate for follow-on standards-track work.
+   RSDGGS improvement opportunity -- Link Quality Weighted Forwarding:
+   US 4,939,726 Claim 3 and US 5,115,433 define a link quality (LQ)
+   factor incorporating distance, power, retry history, throughput, and
+   delay.  RSDGGS Section 15.3 defines geographic greedy forwarding
+   using only common-prefix-length as the progress metric.
+   Incorporating a link quality weighting that prefers the LQ-best
+   neighbor among those making geographic progress would improve real-
+   world routing performance in dense ISM-band deployments where RSSI
+   and retry rates vary significantly.  This enhancement is freely
+   implementable from the expired public domain claims and should be
+   noted as a normative extension candidate for follow-on standards-
+   track work.
 
-18.1.2.  US Patent 6,982,966 — Status Unconfirmed
+18.1.2.  US Patent 6,982,966 -- Status Unconfirmed
 
    This number was not definitively identified in patent database
    searches.  If this patent was cited in relation to geographic routing
@@ -5010,9 +5011,9 @@ Internet-Draft                   RSDGGS                     October 2026
    concepts as public domain.  Independent verification at
    patents.uspto.gov is still recommended.
 
-18.2.  Active Patents — Detailed Analysis
+18.2.  Active Patents -- Detailed Analysis
 
-18.2.1.  US Patent 10,306,400 / Application 2014/0162692 — Wirelesss
+18.2.1.  US Patent 10,306,400 / Application 2014/0162692 -- Wireless
          Regulatory Compliance (Active until ~2035)
 
    Title: Systems and Methods for Enforcing Wireless Regulatory
@@ -5021,7 +5022,6 @@ Internet-Draft                   RSDGGS                     October 2026
    network device context.  Filed as US Application 20140162692
    approximately 2013-2014.  The issued patent family includes related
    grants US 9,794,738 and US 9,654,965.  Active.
-
 
 
 
@@ -5066,7 +5066,7 @@ Internet-Draft                   RSDGGS                     October 2026
    or cooperative ranging (Section 13).  None of these mechanisms
    involve power line analysis.  No claim element reads on RSDGGS.
 
-   RSDGGS improvement opportunity — Lookup Table Architecture: US
+   RSDGGS improvement opportunity -- Lookup Table Architecture: US
    9,654,965 explicitly discloses the architecture of a location-to-
    regulations lookup table stored locally on the device, optionally
    small enough to fit in embedded memory, potentially updated from
@@ -5083,7 +5083,7 @@ Internet-Draft                   RSDGGS                     October 2026
    lookup key is a design pattern that RSDGGS implementations should
    credit to this work in any patent prosecution.
 
-18.2.2.  US Patent 10,812,365 — Geohyperbolic Routing (Northeastern
+18.2.2.  US Patent 10,812,365 -- Geohyperbolic Routing (Northeastern
          University, Active until 2037)
 
    Title: Geohyperbolic Routing and Addressing Schemes for Networks.
@@ -5109,8 +5109,8 @@ Internet-Draft                   RSDGGS                     October 2026
      CPC H04W40/20: route selection based on geographic position
 
    RSDGGS distinguishing elements (no infringement):
-     No hyperbolic space — RSDGGS uses integer cell index
-     No radial centrality component — no population density
+     No hyperbolic space -- RSDGGS uses integer cell index
+     No radial centrality component -- no population density
      Forwarding metric = common-prefix-length (XOR+CLZ), not
        hyperbolic distance
      Topology independent of population density zone ranking
@@ -5119,7 +5119,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
                                  Figure 45
 
-   RSDGGS improvement opportunity — None applicable: The geohyperbolic
+   RSDGGS improvement opportunity -- None applicable: The geohyperbolic
    model is specifically optimized for large-scale Internet backbone
    topology reproduction, using population-density centrality to
    reproduce power-law degree distributions.  RSDGGS targets constrained
@@ -5139,7 +5139,7 @@ Internet-Draft                   RSDGGS                     October 2026
    Internet-scale routing is a well-developed research area distinct
    from RSDGGS's approach.
 
-18.2.3.  US Patent 11,652,742 — Ghost Routing (Microsoft, Active until
+18.2.3.  US Patent 11,652,742 -- Ghost Routing (Microsoft, Active until
          2041)
 
    Title: Ghost Routing.  Assignee: Microsoft Technology Licensing LLC.
@@ -5172,7 +5172,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
                                  Figure 46
 
-   RSDGGS improvement opportunity — None: Ghost routing addresses
+   RSDGGS improvement opportunity -- None: Ghost routing addresses
    verification of network configuration changes in cloud datacenter
    switching infrastructure.  It has no technical concepts, no claim
    elements, and no CPC classifications that overlap with RSDGGS.  The
@@ -5180,14 +5180,14 @@ Internet-Draft                   RSDGGS                     October 2026
    subject matter is entirely unrelated.  No improvement opportunity
    exists.
 
-18.2.4.  CN101923801B — Method for Generating a Regular Dodecahedron Map
-         Projection (Expired)
+18.2.4.  CN101923801B -- Method for Generating a Regular Dodecahedron
+         Map Projection (Expired)
 
    Assignee: Wuhan University (WHU), Wuhan, China.  Inventors: Hu Peng,
    Li Yunxiang, Zhu Fuli.  Application number: CN2009100626550A.  Filing
    and priority date: 10 June 2009.  Grant date: 29 February 2012.
    Jurisdiction: China only (no PCT application, no US, EP, or other
-   national-phase equivalents identified).  Legal status: Expired — Fee
+   national-phase equivalents identified).  Legal status: Expired -- Fee
    Related.  Anticipated statutory expiration: 10 June 2029 (20-year
    term from filing).  Actual status: lapsed prior to statutory
    expiration due to non-payment of annual maintenance fees.
@@ -5211,7 +5211,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
    Legal status note:
-     'Expired — Fee Related' = patent lapsed due to non-payment of
+     'Expired -- Fee Related' = patent lapsed due to non-payment of
      annual maintenance fees under Chinese patent law.
      The claims entered the public domain at the date of lapse.
      The 2029 anticipated expiration date is the statutory maximum;
@@ -5283,19 +5283,19 @@ Internet-Draft                   RSDGGS                     October 2026
    Data pipeline:   ArcGIS / ArcMap / ESRI Shapefile (.lyr, .shp)
    Purpose:         Geographic visualization and education
 
-   RSDGGS distinguishing elements — no claim reads on RSDGGS:
-     D1: Orientation — RSDGGS orients Face 2 at 39°N, 98°W
+   RSDGGS distinguishing elements -- no claim reads on RSDGGS:
+     D1: Orientation -- RSDGGS orients Face 2 at 39N, 98W
          (ITU Region 2 anchor); not North/South Pole alignment
-     D2: Face assignment — RSDGGS faces are fixed to ITU Radio
+     D2: Face assignment -- RSDGGS faces are fixed to ITU Radio
          Regions; no user-selected region of interest or central
          meridian determination step exists in RSDGGS
-     D3: Output — RSDGGS produces a 1-8 byte integer cell index;
+     D3: Output -- RSDGGS produces a 1-8 byte integer cell index;
          it produces no map, no Shapefile, no visual output
-     D4: Pipeline — RSDGGS uses no ArcGIS, ArcMap, or ESRI
+     D4: Pipeline -- RSDGGS uses no ArcGIS, ArcMap, or ESRI
          Shapefile; encoding is pure arithmetic on a unit sphere
-     D5: Purpose — RSDGGS encodes regulatory jurisdiction for
+     D5: Purpose -- RSDGGS encodes regulatory jurisdiction for
          IoT ISM band compliance; CN101923801B renders maps
-     D6: Physical artifact — RSDGGS specifies no physical object;
+     D6: Physical artifact -- RSDGGS specifies no physical object;
          CN101923801B explicitly claims a paper map assembly step
 
                                  Figure 48
@@ -5303,7 +5303,7 @@ Internet-Draft                   RSDGGS                     October 2026
    Freedom to operate conclusion: CN101923801B presents no freedom-to-
    operate concern for RSDGGS on three independent grounds, each
    sufficient alone.  First, the patent is expired due to fee non-
-   payment and its claims are in the public domain — no enforcement is
+   payment and its claims are in the public domain -- no enforcement is
    possible regardless of claim scope.  Second, the patent is China-
    jurisdiction only with no international equivalents, so even if
    active it could not be enforced in the United States, European Union,
@@ -5333,7 +5333,7 @@ Internet-Draft                   RSDGGS                     October 2026
    'breaking through the limitation that the previous projection surface
    is a plane and a developable surface.'  The gnomonic projection of
    the Earth onto a regular dodecahedron is explicitly not novel to
-   CN101923801B — the claimed novelty is the specific ArcGIS-based
+   CN101923801B -- the claimed novelty is the specific ArcGIS-based
    rendering workflow and the face-by-face data extraction pipeline.
    RSDGGS's use of the dodecahedron as a hierarchical geographic index
    is therefore independently supported by prior art that predates
@@ -5347,9 +5347,9 @@ Internet-Draft                   RSDGGS                     October 2026
    those RFCs that RSDGGS could incorporate, extend, or more precisely
    differentiate from.
 
-18.3.1.  RFC 2009 — GPS-Based Addressing (1996, Experimental/Legacy)
+18.3.1.  RFC 2009 -- GPS-Based Addressing (1996, Experimental/Legacy)
 
-   Improvement opportunity — Weak beacon concept: RFC 2009 Section 5.2
+   Improvement opportunity -- Weak beacon concept: RFC 2009 Section 5.2
    defines 'weak radio beacons' that broadcast a GPS address enabling
    indoor devices without GPS to adopt the beacon's address.  This is
    structurally identical to RSDGGS Section 11's peer-assisted location
@@ -5362,7 +5362,7 @@ Internet-Draft                   RSDGGS                     October 2026
    preserves geographic uniqueness.  This distinction strengthens the
    novelty claim of Section 11.
 
-   Improvement opportunity — IGPSMP protocol gap: RFC 2009 proposes
+   Improvement opportunity -- IGPSMP protocol gap: RFC 2009 proposes
    IGPSMP (Internet GPS Management Protocol) for router-to-router
    geographic service area exchange, with a polygon boundary
    representation.  RSDGGS explicitly avoids polygon boundaries in favor
@@ -5378,9 +5378,9 @@ Hanley                    Expires 23 April 2027                [Page 96]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)
+18.3.2.  RFC 5870 -- geo URI Scheme (2010, Standards Track)
 
-   Improvement opportunity — Uncertainty parameter alignment: RFC 5870
+   Improvement opportunity -- Uncertainty parameter alignment: RFC 5870
    Section 3.4 defines the u= parameter as the uncertainty radius in
    meters, explicitly stating that it represents the uncertainty of the
    location rather than a desired precision.  RSDGGS's truncation model
@@ -5390,10 +5390,10 @@ Internet-Draft                   RSDGGS                     October 2026
    cell radius to u=, but must note that RFC 5870 explicitly states u=
    MUST NOT be interpreted as a request for a certain level of precision
    from a location server.  The cell radius is a guaranteed precision
-   bound, not a request — a stronger property than RFC 5870's u=
+   bound, not a request -- a stronger property than RFC 5870's u=
    semantics.
 
-   Improvement opportunity — CRS extensibility: RFC 5870 Section 3.5
+   Improvement opportunity -- CRS extensibility: RFC 5870 Section 3.5
    defines a crs= parameter for alternative coordinate reference systems
    (default WGS-84).  A future RSDGGS-aware geo URI extension could
    define crs=rsdggs as a CRS identifier, with the URI carrying the
@@ -5402,9 +5402,9 @@ Internet-Draft                   RSDGGS                     October 2026
    messaging contexts without loss of the RSDGGS hierarchical structure.
    This is a concrete future work item for Section 21 of the draft.
 
-18.3.3.  RFC 6442 — Location Conveyance for SIP (2011, Standards Track)
+18.3.3.  RFC 6442 -- Location Conveyance for SIP (2011, Standards Track)
 
-   Improvement opportunity — 424 error code applicability: RFC 6442
+   Improvement opportunity -- 424 error code applicability: RFC 6442
    Section 6 defines the 424 (Bad Location Information) SIP response
    code for cases where location cannot be processed.  For RSDGGS-SIP
    integration (a gateway translating RSDGGS cells to PIDF-LO for
@@ -5415,7 +5415,7 @@ Internet-Draft                   RSDGGS                     October 2026
    'insufficient cell resolution' would improve SIP gateway
    interoperability.
 
-   Improvement opportunity — Geolocation-Routing header: RFC 6442
+   Improvement opportunity -- Geolocation-Routing header: RFC 6442
    Section 8 defines a Geolocation-Routing SIP header that can be set to
    'yes' to indicate that the location should influence routing.  RSDGGS
    geographic IPv6 addresses (Section 15) embed routing information in
@@ -5434,21 +5434,21 @@ Hanley                    Expires 23 April 2027                [Page 97]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-18.3.4.  RFC 9179 — YANG Grouping for Geographic Locations (2022,
+18.3.4.  RFC 9179 -- YANG Grouping for Geographic Locations (2022,
          Standards Track)
 
-   Improvement opportunity — Velocity field: RFC 9179 Section 5 defines
+   Improvement opportunity -- Velocity field: RFC 9179 Section 5 defines
    velocity as a first-class field in the geo-location grouping:
    v-north, v-east, and v-up in meters/second with 12 fraction-digits
    precision.  RSDGGS Section 13.7 (Extended Kalman Filter) defines a
    velocity component in the EKF state vector as cells-per-second, but
    the CDDL schema in Section 7.3 does not expose velocity externally.
-   Adding an optional velocity field to the RSDGGS CBOR encoding —
+   Adding an optional velocity field to the RSDGGS CBOR encoding --
    expressed in EKF cell units for constrained devices or as an RFC
-   9179-compatible (v-north, v-east) pair for gateway contexts — would
+   9179-compatible (v-north, v-east) pair for gateway contexts -- would
    improve interoperability with YANG-managed network infrastructure.
 
-   Improvement opportunity — Altitude encoding: RFC 9179 defines height
+   Improvement opportunity -- Altitude encoding: RFC 9179 defines height
    above WGS-84 ellipsoid in meters as a decimal64 field.  RSDGGS
    Section 7.3 includes an optional alt-m float16 field in the location
    CDDL.  Float16 provides only ~3 significant decimal digits of
@@ -5458,9 +5458,9 @@ Internet-Draft                   RSDGGS                     October 2026
    This is a minor schema enhancement that should be noted as a future
    revision item.
 
-18.3.5.  RFC 9632 / RFC 8805 — Geofeed Data (2024 / 2020)
+18.3.5.  RFC 9632 / RFC 8805 -- Geofeed Data (2024 / 2020)
 
-   Improvement opportunity — RSDGGS-IPv6 geofeed compliance: RFC 8805
+   Improvement opportunity -- RSDGGS-IPv6 geofeed compliance: RFC 8805
    Section 2.1 defines the geofeed CSV format with fields: ip_prefix,
    alpha2code, region, city, postal_code.  RFC 9632 Section 4 defines
    how geofeed files are discovered via RPSL inetnum objects.  RSDGGS-
@@ -5473,10 +5473,10 @@ Internet-Draft                   RSDGGS                     October 2026
    RSDGGS-IPv6 deployments automatically RFC 9632-compliant without any
    additional geofeed file maintenance.
 
-18.3.6.  RFC 5808 — Location-by-Reference Requirements (2010,
+18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
          Informational)
 
-   Improvement opportunity — Dereference latency requirement: RFC 5808
+   Improvement opportunity -- Dereference latency requirement: RFC 5808
    Section 4.3 requires that a location URI dereference return the
    current location at the time of dereference, not the location at the
    time the URI was created.  This requirement is irrelevant to RSDGGS
@@ -5498,9 +5498,9 @@ Internet-Draft                   RSDGGS                     October 2026
    semantics.  This is a concrete CDDL enhancement for the next draft
    revision.
 
-18.3.7.  RFC 5491 — PIDF-LO Usage (2009, Standards Track)
+18.3.7.  RFC 5491 -- PIDF-LO Usage (2009, Standards Track)
 
-   Improvement opportunity — Confidence level encoding: RFC 5491
+   Improvement opportunity -- Confidence level encoding: RFC 5491
    Section 5.5 defines a confidence attribute in PIDF-LO location
    shapes, expressing the probability (as a percentage) that the
    described region contains the true location.  RSDGGS implicitly
@@ -5514,9 +5514,9 @@ Internet-Draft                   RSDGGS                     October 2026
    confidence model and would be particularly useful for cells derived
    from the cell intersection method of Section 13.2.
 
-18.3.8.  RFC 6280 — GEOPRIV Architecture (2011, BCP)
+18.3.8.  RFC 6280 -- GEOPRIV Architecture (2011, BCP)
 
-   Improvement opportunity — Rule Maker analog: RFC 6280 Section 5
+   Improvement opportunity -- Rule Maker analog: RFC 6280 Section 5
    defines the Rule Maker role: the entity (typically the device owner)
    who specifies what location information may be disclosed to whom.
    RSDGGS's structural privacy model (byte truncation) does not support
@@ -5529,9 +5529,9 @@ Internet-Draft                   RSDGGS                     October 2026
    recipient type, would provide a RSDGGS-native analog to RFC 6280's
    Rule Maker mechanism without requiring XCAP or a Location Server.
 
-18.3.9.  RFC 6772 — Geolocation Policy (2013, Standards Track)
+18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards Track)
 
-   Improvement opportunity — Location-based condition analog: RFC 6772
+   Improvement opportunity -- Location-based condition analog: RFC 6772
    Section 8 defines location-based conditions in policy rules: rules
    that apply only when the Target is within a specified geographic
    region.  RSDGGS's RSL (Resolution Sufficiency Level) table in
@@ -5563,37 +5563,37 @@ Internet-Draft                   RSDGGS                     October 2026
    | Source     | Opportunity         | Section     | Priority         |
    |            |                     | Affected    |                  |
    +============+=====================+=============+==================+
-   | US         | Link quality        | Section     | High — routing   |
+   | US         | Link quality        | Section     | High -- routing  |
    | 4,939,726  | weighted            | 15.3        | performance      |
    | /          | forwarding          |             |                  |
    | 5,115,433  | (distance +         |             |                  |
    |            | power + retry)      |             |                  |
    +------------+---------------------+-------------+------------------+
-   | US         | Explicit credit     | Section 8,  | Medium — FTO     |
+   | US         | Explicit credit     | Section 8,  | Medium -- FTO    |
    | 10,306,400 | of lookup table     | Patent      | documentation    |
    | /          | architecture        | prosecution |                  |
    | 9,654,965  | pattern             |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 2009   | Distinguish         | Section 11  | Medium — novelty |
-   |            | address adoption    | intro       | clarity          |
+   | RFC 2009   | Distinguish         | Section 11  | Medium --        |
+   |            | address adoption    | intro       | novelty clarity  |
    |            | vs address          |             |                  |
    |            | derivation in       |             |                  |
    |            | peer location       |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 5870   | crs=rsdggs URI      | Section 21  | Low —            |
+   | RFC 5870   | crs=rsdggs URI      | Section 21  | Low --           |
    |            | extension as        | future work | interoperability |
    |            | future work item    |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 6442   | 424 sub-code for    | Section     | Low — SIP        |
+   | RFC 6442   | 424 sub-code for    | Section     | Low -- SIP       |
    |            | insufficient        | 16.3 /      | integration      |
    |            | cell resolution     | gateway     |                  |
    |            | at SIP gateway      | spec        |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 9179   | Velocity field      | Section 7.3 | Medium — YANG    |
+   | RFC 9179   | Velocity field      | Section 7.3 | Medium -- YANG   |
    |            | in CBOR location    | CDDL        | interop          |
    |            | encoding            |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 9179   | Float32 altitude    | Section 7.3 | Low — schema     |
+   | RFC 9179   | Float32 altitude    | Section 7.3 | Low -- schema    |
 
 
 
@@ -5606,37 +5606,37 @@ Internet-Draft                   RSDGGS                     October 2026
    |            | precision           |             |                  |
    |            | applications        |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 9632 / | Formalize           | Section 15  | High —           |
+   | RFC 9632 / | Formalize           | Section 15  | High --          |
    | 8805       | RSDGGS-IPv6         | / new       | deployment       |
    |            | geofeed profile     | appendix    | utility          |
    |            | mapping             |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 5808   | Optional            | Section 7.3 | Medium — LbyV    |
+   | RFC 5808   | Optional            | Section 7.3 | Medium -- LbyV   |
    |            | staleness/          | CDDL        | semantics        |
    |            | timestamp field     |             |                  |
    |            | in CBOR encoding    |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 5491   | Confidence          | Section 7.3 | Medium —         |
+   | RFC 5491   | Confidence          | Section 7.3 | Medium --        |
    |            | percentage field    | CDDL        | cooperative      |
    |            | for peer-derived    |             | location         |
    |            | cells               |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 6280   | Multi-resolution    | Section 7 / | Medium — privacy |
-   |            | CBOR map for        | new section | model            |
+   | RFC 6280   | Multi-resolution    | Section 7 / | Medium --        |
+   |            | CBOR map for        | new section | privacy model    |
    |            | per-recipient       |             |                  |
    |            | disclosure          |             |                  |
    +------------+---------------------+-------------+------------------+
-   | RFC 6772   | Per-cell RSL        | Section 8.3 | Low — policy     |
+   | RFC 6772   | Per-cell RSL        | Section 8.3 | Low -- policy    |
    |            | override in         | / 10        | extension        |
    |            | exception table     |             |                  |
    +------------+---------------------+-------------+------------------+
 
                Table 20: Summary of Improvement Opportunities
 
-   The highest-priority improvements — link quality weighted forwarding,
-   RSDGGS-IPv6 geofeed profile, and the staleness field — represent
-   concrete enhancements to the core specification that should be
-   incorporated in the -01 revision.  The medium-priority items are
+   The highest-priority improvements -- link quality weighted
+   forwarding, RSDGGS-IPv6 geofeed profile, and the staleness field --
+   represent concrete enhancements to the core specification that should
+   be incorporated in the -01 revision.  The medium-priority items are
    suitable for informational notes or future work statements in the
    current -00 draft.  The low-priority items are candidates for
    companion specifications or implementation guidance documents.
@@ -5775,7 +5775,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
    // rsdggs/src/lib.rs
    //
-   // RSDGGS — Regulatory Spectrum Discrete Global Grid System
+   // RSDGGS -- Regulatory Spectrum Discrete Global Grid System
    // Encodes a WGS-84 (latitude, longitude) coordinate into a
    // 1-to-8 byte RSDGGS cell index.
 
@@ -5784,9 +5784,9 @@ Internet-Draft                   RSDGGS                     October 2026
    /// An RSDGGS cell index. Length in [1..=8] bytes.
    /// Byte 0: face index [0..11].
    /// Byte 1: pentagon sector [0..4] in bits [7:5],
-   ///          subdivision levels 1–2 in bits [4:1],
+   ///          subdivision levels 1-2 in bits [4:1],
    ///          subdivision level 3 high bit in bit [0].
-   /// Bytes 2–7: subdivision levels packed 2 bits per level, MSB-first.
+   /// Bytes 2-7: subdivision levels packed 2 bits per level, MSB-first.
    #[derive(Copy, Clone, Debug, PartialEq, Eq)]
    pub struct RsdggsCell {
        pub bytes: [u8; 8],
@@ -6036,8 +6036,8 @@ Internet-Draft                   RSDGGS                     October 2026
       normalize([a[0]+b[0], a[1]+b[1], a[2]+b[2]])
   }
 
-  /// Sign of the scalar triple product [a×b · p].
-  /// Positive if p is on the left side (CCW) of the arc a→b.
+  /// Sign of the scalar triple product [(a x b) . p].
+  /// Positive if p is on the left side (CCW) of the arc a->b.
   #[inline]
   fn signed_angle(p: Vec3, a: Vec3, b: Vec3) -> f64 {
       dot(cross(a, b), p)
@@ -6090,7 +6090,7 @@ pub fn face_for(ll: LatLon) -> u8 {
 // NOTE: On devices without FPU, replace dot() with a 32-bit fixed-point
 // dot product using Q2.30 format. The FACE_CENTERS values are all in
 // [-1.0, +1.0], representable exactly in Q2.30. The comparison requires
-// only finding the maximum of 12 products — no sqrt, no trig.
+// only finding the maximum of 12 products -- no sqrt, no trig.
 
                               Figure 52
 
@@ -6124,16 +6124,16 @@ Internet-Draft                   RSDGGS                     October 2026
    /// Vertices ordered CCW when viewed from outside the sphere.
    /// Precomputed from icosahedron face topology.
    const PENTAGON_VERTS: [[Vec3; 5]; 12] = [
-       // face 0 (Antarctic) — vertices omitted for brevity
+       // face 0 (Antarctic) -- vertices omitted for brevity
        // [[ ... ], [ ... ], [ ... ], [ ... ], [ ... ]],
        // ...
-       // face 2 (N. America) — computed pentagon vertices
+       // face 2 (N. America) -- computed pentagon vertices
        [
-           [ 0.3546, -0.5742,  0.7378],   // pv[0] ~(47.6°N,  58.2°W)
-           [ 0.5936, -0.7722,  0.2235],   // pv[1] ~(12.9°N,  52.5°W)
-           [ 0.6204, -0.7726,  0.1376],   // pv[2] ~( 7.9°N,  51.3°W)
-           [-0.3546, -0.8986, -0.2586],   // pv[3] ~(15.0°S, 111.6°W)
-           [ 0.0523, -0.9954,  0.0805],   // pv[4] ~( 4.6°N, 86.9°W)
+           [ 0.3546, -0.5742,  0.7378],   // pv[0] ~(47.6N,  58.2W)
+           [ 0.5936, -0.7722,  0.2235],   // pv[1] ~(12.9N,  52.5W)
+           [ 0.6204, -0.7726,  0.1376],   // pv[2] ~( 7.9N,  51.3W)
+           [-0.3546, -0.8986, -0.2586],   // pv[3] ~(15.0S, 111.6W)
+           [ 0.0523, -0.9954,  0.0805],   // pv[4] ~( 4.6N, 86.9W)
        ],
        // ... other faces similarly
    ];
@@ -6179,37 +6179,37 @@ Internet-Draft                   RSDGGS                     October 2026
    sphere, eliminating distortion accumulation across subdivision
    levels.
 
-  /// Recursive subdivision state: current triangle vertices.
-  #[derive(Copy, Clone)]
-  struct Triangle {
-      apex:  Vec3,   // top vertex (toward face center at level 0)
-      left:  Vec3,   // left base vertex
-      right: Vec3,   // right base vertex
-      inv:   bool,   // true if this is an inverted (central) child
-  }
+ /// Recursive subdivision state: current triangle vertices.
+ #[derive(Copy, Clone)]
+ struct Triangle {
+     apex:  Vec3,   // top vertex (toward face center at level 0)
+     left:  Vec3,   // left base vertex
+     right: Vec3,   // right base vertex
+     inv:   bool,   // true if this is an inverted (central) child
+ }
 
-  /// Subdivide triangle into 4 children and return the one
-  /// containing point p, plus the 2-bit child index.
-  fn subdivide(tri: Triangle, p: Vec3) -> (Triangle, u8) {
-      let m_al = sph_mid(tri.apex, tri.left);   // midpoint apex-left
-      let m_ar = sph_mid(tri.apex, tri.right);  // midpoint apex-right
-      let m_lr = sph_mid(tri.left, tri.right);  // midpoint left-right
+ /// Subdivide triangle into 4 children and return the one
+ /// containing point p, plus the 2-bit child index.
+ fn subdivide(tri: Triangle, p: Vec3) -> (Triangle, u8) {
+     let m_al = sph_mid(tri.apex, tri.left);   // midpoint apex-left
+     let m_ar = sph_mid(tri.apex, tri.right);  // midpoint apex-right
+     let m_lr = sph_mid(tri.left, tri.right);  // midpoint left-right
 
-      // Child triangles (consistent CCW winding):
-      let apex_child = Triangle {
-          apex: tri.apex, left: m_al, right: m_ar, inv: false
-      };
-      let left_child = Triangle {
-          apex: m_al, left: tri.left, right: m_lr, inv: false
-      };
-      let right_child = Triangle {
-          apex: m_ar, left: m_lr, right: tri.right, inv: false
-      };
-      let central_child = Triangle {
-          apex: m_lr, left: m_ar, right: m_al, inv: true  // inverted
-      };
+     // Child triangles (consistent CCW winding):
+     let apex_child = Triangle {
+         apex: tri.apex, left: m_al, right: m_ar, inv: false
+     };
+     let left_child = Triangle {
+         apex: m_al, left: tri.left, right: m_lr, inv: false
+     };
+     let right_child = Triangle {
+         apex: m_ar, left: m_lr, right: tri.right, inv: false
+     };
+     let central_child = Triangle {
+         apex: m_lr, left: m_ar, right: m_al, inv: true  // inverted
+     };
 
-      // Test containment in order: apex, left, right, central.
+     // Test containment in order: apex, left, right, central.
 
 
 
@@ -6218,34 +6218,34 @@ Hanley                    Expires 23 April 2027               [Page 111]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-      // Central is last — it contains any point not in the other three.
-      if in_sph_tri(p, ac.apex, ac.left, ac.right) {
-          return (apex_child, CHILD_APEX);
-      }
-      if in_sph_tri(p, lc.apex, lc.left, lc.right) {
-          return (left_child, CHILD_LEFT);
-      }
-      if in_sph_tri(p, rc.apex, rc.left, rc.right) {
-          return (right_child, CHILD_RIGHT);
-      }
-      (central_child, CHILD_CENTRAL)
-  }
+     // Central is last -- it contains any point not in the other three.
+     if in_sph_tri(p, ac.apex, ac.left, ac.right) {
+         return (apex_child, CHILD_APEX);
+     }
+     if in_sph_tri(p, lc.apex, lc.left, lc.right) {
+         return (left_child, CHILD_LEFT);
+     }
+     if in_sph_tri(p, rc.apex, rc.left, rc.right) {
+         return (right_child, CHILD_RIGHT);
+     }
+     (central_child, CHILD_CENTRAL)
+ }
 
-  /// Return the initial triangle for a face + sector.
-  /// apex = face center, left/right = adjacent pentagon vertices.
-  fn initial_triangle(face: u8, sector: u8) -> Triangle {
-      let fc   = FACE_CENTERS[face as usize];
-      let pvs  = &PENTAGON_VERTS[face as usize];
-      let s    = sector as usize;
-      Triangle {
-          apex:  fc,
-          left:  pvs[s],
-          right: pvs[(s + 1) % 5],
-          inv:   false,
-      }
-  }
+ /// Return the initial triangle for a face + sector.
+ /// apex = face center, left/right = adjacent pentagon vertices.
+ fn initial_triangle(face: u8, sector: u8) -> Triangle {
+     let fc   = FACE_CENTERS[face as usize];
+     let pvs  = &PENTAGON_VERTS[face as usize];
+     let s    = sector as usize;
+     Triangle {
+         apex:  fc,
+         left:  pvs[s],
+         right: pvs[(s + 1) % 5],
+         inv:   false,
+     }
+ }
 
-                                Figure 54
+                               Figure 54
 
 19.7.  Top-Level Encode Function
 
@@ -6258,8 +6258,8 @@ Internet-Draft                   RSDGGS                     October 2026
  /// Encode a WGS-84 coordinate as an RSDGGS cell index.
  ///
  /// # Arguments
- /// * \x60ll\x60  — latitude/longitude in decimal degrees (WGS-84)
- /// * \x60len\x60 — desired index length in bytes, 1..=8
+ /// * \x60ll\x60  -- latitude/longitude in decimal degrees (WGS-84)
+ /// * \x60len\x60 -- desired index length in bytes, 1..=8
  ///
  /// # Returns
  /// An RsdggsCell with the first \x60len\x60 bytes populated.
@@ -6280,12 +6280,12 @@ Internet-Draft                   RSDGGS                     October 2026
      let mut cell = RsdggsCell { bytes: [0u8; 8], len };
      let p = to_cart(ll.lat, ll.lon);
 
-     // ── Byte 0: face index ──────────────────────────────────────────
+     // -- Byte 0: face index ------------------------------------------
      let face = face_for(ll);
      cell.bytes[0] = face;
      if len == 1 { return cell; }
 
-     // ── Byte 1 [7:4]: pentagon sector ───────────────────────────────
+     // -- Byte 1 [7:4]: pentagon sector -------------------------------
      let sector = sector_for(face, p);
      // Byte 1 layout:
      //   bits [7:4]  sector (4 bits, values 0-4; 5-15 reserved)
@@ -6334,7 +6334,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
    The decode function extracts the face, sector, and subdivision level
    sequence from a populated RsdggsCell.  It does not reconstruct the
-   precise geographic coordinate — it returns the cell information
+   precise geographic coordinate -- it returns the cell information
    sufficient for regulatory database lookup.  Geographic coordinate
    recovery (computing the cell center) is a separate operation not
    required for regulatory compliance.
@@ -6505,8 +6505,8 @@ Internet-Draft                   RSDGGS                     October 2026
    for this input to be considered conformant.
 
 // Input:
-//   latitude  =  37.7749° N  (San Francisco, CA, USA)
-//   longitude = 122.4194° W
+//   latitude  =  37.7749 N  (San Francisco, CA, USA)
+//   longitude = 122.4194 W
 //   length    = 4 bytes
 
 let sf = LatLon { lat: 37.7749, lon: -122.4194 };
@@ -6527,11 +6527,11 @@ assert_eq!(cell.bytes[3], 0xC3);
 assert_eq!(cell.len,      4);
 
 // Verify face lookup for additional reference points:
-//   London    (51.51°N,   0.13°W) → face 1  (ITU Region 1, Europe)
-//   Tokyo     (35.68°N, 139.69°E) → face 3  (ITU Region 3, Asia)
-//   Beijing   (39.91°N, 116.39°E) → face 3  (ITU Region 3, Asia)
-//   São Paulo (23.55°S,  46.63°W) → face 6  (ITU Region 2, S. America)
-//   Sydney    (33.87°S, 151.21°E) → face 7  (Region 3, E. Australia)
+//   London    (51.51N,   0.13W) -> face 1  (ITU Region 1, Europe)
+//   Tokyo     (35.68N, 139.69E) -> face 3  (ITU Region 3, Asia)
+//   Beijing   (39.91N, 116.39E) -> face 3  (ITU Region 3, Asia)
+//   Sao Paulo (23.55S,  46.63W) -> face 6  (ITU Region 2, S. America)
+//   Sydney    (33.87S, 151.21E) -> face 7  (Region 3, E. Australia)
 //
 // Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
 // is on face 11 (North Pacific). Both faces carry Region 3 in their
