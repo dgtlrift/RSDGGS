@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-rsdggs-informational-00"
+     docName="draft-hanley-rsdggs-00"
      ipr="trust200902"
      submissionType="IETF"
      xml:lang="en"
      version="3">
   <front>
     <title abbrev="RSDGGS">Regulatory Spectrum Discrete Global Grid System (RSDGGS)</title>
-    <seriesInfo name="Internet-Draft" value="draft-rsdggs-informational-00"/>
+    <seriesInfo name="Internet-Draft" value="draft-hanley-rsdggs-00"/>
     <author fullname="James Patrick Hanley" initials="J.P." surname="Hanley">
       <organization>Myelin Networks LLC</organization>
       <address><email>James.Hanley@DGtlRift.com</email></address>
@@ -1898,7 +1898,7 @@ RSDGGS distinguishing elements — no claim reads on RSDGGS:
             <li>Search CPC class H04W16/14 (channel plan based on geography) and H04B1/3827 (ISM band operation) for active patents not identified here. This search should be conducted by patent counsel before commercial deployment.</li>
             <li>Search for continuation patents based on US Application 2014/0162692 beyond the identified US 10,306,400, US 9,794,738, and US 9,654,965. The application family may have additional continuations with broader claims.</li>
             <li>For the RSDGGS-IPv6 geofeed profile (improvement opportunity from RFC 9632 / 8805): verify that no active patent covers the specific combination of hierarchical geographic grid prefix as an IP geofeed CSV entry. This combination appears novel but has not been searched.</li>
-            <li>RFC publication of draft-rsdggs-informational-00 establishes a prior art date for all disclosed subject matter including the improvement opportunities listed in Section 17.4. This is a significant benefit of early publication even before normative follow-on work is complete.</li>
+            <li>RFC publication of draft-hanley-rsdggs-00 establishes a prior art date for all disclosed subject matter including the improvement opportunities listed in Section 17.4. This is a significant benefit of early publication even before normative follow-on work is complete.</li>
           </ol>
         </section>
       </section>
