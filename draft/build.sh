@@ -54,7 +54,10 @@ echo "== docx (LibreOffice)"
 work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT
 "$tools/venv/bin/python" docx.py prep "$name.html" "$work/$name.html"
+# Load the HTML as a Writer document. The default (Writer/Web) import can loop forever
+# laying out this draft; a 4-line change to the boilerplate was enough to trigger it.
 soffice --headless --norestore -env:UserInstallation="file://$work/profile" \
+    --infilter="HTML (StarWriter)" \
     --convert-to "docx:MS Word 2007 XML" --outdir "$work" "$work/$name.html" >/dev/null
 "$tools/venv/bin/python" docx.py fix "$work/$name.docx"
 mv "$work/$name.docx" "$name.docx"

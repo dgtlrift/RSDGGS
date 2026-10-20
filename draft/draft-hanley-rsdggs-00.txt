@@ -2,7 +2,7 @@
 
 
 
-Internet Engineering Task Force                              J.P. Hanley
+Independent Submission                                       J.P. Hanley
 Internet-Draft                                       Myelin Networks LLC
 Intended status: Informational                           19 October 2026
 Expires: 22 April 2027
@@ -79,10 +79,7 @@ Copyright Notice
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
    license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
-   and restrictions with respect to this document.  Code Components
-   extracted from this document must include Revised BSD License text as
-   described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Revised BSD License.
+   and restrictions with respect to this document.
 
 Table of Contents
 
@@ -106,6 +103,9 @@ Table of Contents
    5.  Index Encoding  . . . . . . . . . . . . . . . . . . . . . . .  22
      5.1.  Octet Array Format  . . . . . . . . . . . . . . . . . . .  22
      5.2.  Resolution by Length  . . . . . . . . . . . . . . . . . .  23
+     5.3.  Bit-Field Layout  . . . . . . . . . . . . . . . . . . . .  24
+     5.4.  Privacy Truncation  . . . . . . . . . . . . . . . . . . .  25
+   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  25
 
 
 
@@ -114,9 +114,6 @@ Hanley                    Expires 22 April 2027                 [Page 2]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     5.3.  Bit-Field Layout  . . . . . . . . . . . . . . . . . . . .  24
-     5.4.  Privacy Truncation  . . . . . . . . . . . . . . . . . . .  25
-   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  25
      6.1.  Face Assignment . . . . . . . . . . . . . . . . . . . . .  25
      6.2.  Triangle Assignment Within Face . . . . . . . . . . . . .  26
      6.3.  Recursive Subdivision . . . . . . . . . . . . . . . . . .  26
@@ -162,6 +159,9 @@ Internet-Draft                   RSDGGS                     October 2026
      13.4.  IEEE 802.15.4a/z UWB Precision Ranging . . . . . . . . .  52
        13.4.1.  Double-Sided Two-Way Ranging (DS-TWR)  . . . . . . .  52
        13.4.2.  STS Authentication (802.15.4z) . . . . . . . . . . .  53
+       13.4.3.  Phase Difference of Arrival (PDOA) Angle
+               Estimation  . . . . . . . . . . . . . . . . . . . . .  53
+     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  54
 
 
 
@@ -170,9 +170,6 @@ Hanley                    Expires 22 April 2027                 [Page 3]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-       13.4.3.  Phase Difference of Arrival (PDOA) Angle
-               Estimation  . . . . . . . . . . . . . . . . . . . . .  53
-     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  54
      13.6.  Weighted Multilateration Engine  . . . . . . . . . . . .  55
        13.6.1.  Measurement Model  . . . . . . . . . . . . . . . . .  55
        13.6.2.  Weighted Least Squares Position Update . . . . . . .  55
@@ -218,6 +215,9 @@ Internet-Draft                   RSDGGS                     October 2026
        16.7.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  75
      16.8.  RFC 5491: GEOPRIV PIDF-LO Usage Clarification,
              Considerations, and Recommendations . . . . . . . . . .  76
+       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  76
+       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
+
 
 
 
@@ -226,8 +226,6 @@ Hanley                    Expires 22 April 2027                 [Page 4]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  76
-       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
      16.9.  RFC 6280: An Architecture for Location and Location
              Privacy in Internet Applications  . . . . . . . . . . .  77
        16.9.1.  RFC 6280 Technical Approach  . . . . . . . . . . . .  77
@@ -274,6 +272,8 @@ Internet-Draft                   RSDGGS                     October 2026
      18.3.  RFC Citation Improvement Opportunities . . . . . . . . .  95
        18.3.1.  RFC 2009 — GPS-Based Addressing (1996, Experimental/
                Legacy) . . . . . . . . . . . . . . . . . . . . . . .  95
+       18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)  .  96
+
 
 
 
@@ -282,7 +282,6 @@ Hanley                    Expires 22 April 2027                 [Page 5]
 Internet-Draft                   RSDGGS                     October 2026
 
 
-       18.3.2.  RFC 5870 — geo URI Scheme (2010, Standards Track)  .  96
        18.3.3.  RFC 6442 — Location Conveyance for SIP (2011,
                Standards Track)  . . . . . . . . . . . . . . . . . .  96
        18.3.4.  RFC 9179 — YANG Grouping for Geographic Locations
@@ -328,6 +327,7 @@ Internet-Draft                   RSDGGS                     October 2026
    spatial indexing and do not provide a hierarchical structure aligned
    to regulatory boundaries.  They also lack a mechanism for embedding
    regulatory context within the index itself.
+
 
 
 
