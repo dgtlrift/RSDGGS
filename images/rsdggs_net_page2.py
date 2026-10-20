@@ -39,23 +39,30 @@ BANDS = [
 ]
 
 FACES = [
-    ("Polar / Antarctic", "Special coordination zone",
-     "Antarctic Treaty area; no standard ISM band allocations"),
-    ("ITU R1 — Europe", "ETSI · Ofcom · ARCEP · BNetzA · IDA", "433 MHz + 868 MHz + 2.4 GHz"),
-    ("ITU R2 — N. America", "FCC (US) · ISED (CA) · IFT (MX)",
-     "902–928 MHz + 2.4 GHz · 1-byte RSL covers all of R2"),
-    ("ITU R3 — E. Asia", "MIC (JP) · MIIT (CN) · KCC (KR) · NCC (TW)",
-     "2.4 GHz universal; 920–928 MHz JP; 915 MHz TW"),
-    ("R1-A Africa West", "ATU West cluster · NCC (NG) · OFCOM (GH)", "433 MHz + 2.4 GHz"),
-    ("R1-B Africa East", "ATU East · CCK (KE) · TCRA (TZ) · CA (ET)", "433 MHz + 2.4 GHz"),
-    ("R1-C Russia / CAS", "Roskomnadzor (RU) · RRT (KZ) · MCI (UZ)", "433 MHz + 2.4 GHz"),
-    ("R1-D Middle East", "ASMG · TRA (AE) · MCIT (SA) · NTRA (EG)", "433 MHz + 2.4 GHz"),
-    ("R2-A S. America", "Anatel (BR) · ENACOM (AR) · SUBTEL (CL)",
-     "902–928 MHz + 2.4 GHz · BR: split 902–907.5 + 915–928 MHz"),
-    ("R2-B Caribbean", "NTRC cluster · FCC (PR/USVI) · BIPT (AW)", "902–928 MHz + 2.4 GHz"),
-    ("R3-A S/SE Asia", "WPC/DoT (IN) · MCMC (MY) · IMDA (SG) · NTC (PH)",
-     "2.4 GHz; some: 920–925 MHz (IN, SG, MY, ID)"),
-    ("R3-B Oceania", "ACMA (AU) · RSM (NZ) · MCIT (PG)", "915–928 MHz (AU/NZ) + 2.4 GHz"),
+    # Names follow the face geometry (draft section 4.2); see RSDGGS issue #4.
+    ("Antarctica / New Zealand", "Antarctic Treaty · RSM (NZ)",
+     "Antarctica: coordination zone; NZ 915–928 MHz + 2.4 GHz"),
+    ("ITU R1 — Europe / N. Atlantic", "ETSI · Ofcom · ARCEP · BNetzA · Roskomnadzor",
+     "433 + 868 MHz (ETSI); 433 MHz (RU, TR, Maghreb); 902–928 MHz (GL, CA); + 2.4 GHz"),
+    ("ITU R2 — N. & C. America", "FCC (US) · ISED (CA) · IFT (MX)",
+     "902–928 MHz + 2.4 GHz · 1-byte RSL covers this face"),
+    ("ITU R3 — Mainland Asia", "MIIT (CN) · WPC (IN) · PTA (PK) · CRA (IR) · NCC (TW)",
+     "433 MHz (IN, PK, IR, RU); 2.4 GHz only (CN, SE Asia); 902–928 MHz TW"),
+    ("Equatorial Atlantic", "Anatel (BR) · ANE (CO) · CONATEL (VE) · ARTP (SN)",
+     "902–928 MHz (BR split-band, CO, VE); 433 MHz (W. Africa); + 2.4 GHz"),
+    ("Africa / Middle East", "ATU · NCC (NG) · NTRA (EG) · CA (KE) · CST (SA)",
+     "433 MHz + 2.4 GHz"),
+    ("North Pacific", "MIC (JP) · KCC (KR) · Roskomnadzor (RU) · FCC (AK)",
+     "433 MHz (RU); 920–928 MHz JP; 902–928 MHz AK; + 2.4 GHz"),
+    ("Southern Indian Ocean", "ARTEC (MG) · ICTA (MU) · ACMA (AU: WA coast)",
+     "433 MHz (MG); 915–928 MHz AU; + 2.4 GHz"),
+    ("South America", "ENACOM (AR) · SUBTEL (CL) · MTC (PE)", "902–928 MHz + 2.4 GHz"),
+    ("Central Pacific", "FCC (HI, AS) · TAF (FJ) · Pacific island regulators",
+     "902–928 MHz (HI, AS); 433 + 868 MHz (PF); 2.4 GHz only elsewhere"),
+    ("Australia / Maritime SE Asia", "ACMA (AU) · Komdigi (ID) · NTC (PH) · MCMC (MY)",
+     "915–928 MHz AU; 2.4 GHz only (ID, PH, PG); some 920–925 MHz"),
+    ("South Atlantic / S. Africa", "ICASA (ZA) · CRAN (NA)",
+     "433 MHz + 2.4 GHz (ZA, NA); Antarctica: coordination zone"),
 ]
 
 STEPS = [
@@ -93,8 +100,8 @@ CARTOGRAPHY = (
 # Resolution per index length follows draft §5.2.
 ABOUT = (
     "RSDGGS (Regulatory Spectrum Discrete Global Grid System) encodes device geographic "
-    "location as a 1–8 byte index rooted in a spherical dodecahedron. Face indices align "
-    "to ITU Radio Region numbers. Index length implies resolution: 1 byte = ITU Region · "
+    "location as a 1–8 byte index rooted in a spherical dodecahedron. Faces 1, 2 and 3 "
+    "are centred in ITU Radio Regions 1, 2 and 3. Index length implies resolution: 1 byte = ITU Region · "
     "2 bytes = sub-regional bloc · 3 bytes = country-level · 4+ bytes = sub-national. "
     "Devices derive regulatory ISM band rules directly from their cell index with no "
     "server dependency."
@@ -102,7 +109,7 @@ ABOUT = (
 
 FOOTER = (
     "RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-00"
-    " · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face"
+    " · Faces 1–3 centred in ITU Radio Regions 1–3 · Gnomonic projection per face"
 )
 
 

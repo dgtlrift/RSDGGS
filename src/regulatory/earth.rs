@@ -63,7 +63,7 @@ pub static ETSI_868: BandEntry = BandEntry {
     exception:     false,
 };
 
-// ACMA 915-928 MHz (Face 11 — Oceania)
+// ACMA 915-928 MHz (Face 10 — Australia / Maritime SE Asia)
 pub static ACMA_915: BandEntry = BandEntry {
     band_id:       4,
     authority:     "ACMA",
@@ -89,7 +89,7 @@ static EARTH_TABLE: &[(u8, u32, &BandEntry)] = &[
     (2, 1, &FCC_902),
     (1, 2, &ETSI_433),
     (1, 3, &ETSI_868),
-    (10, 4, &ACMA_915), // Face 10 covers Australia/Oceania despite the "S/SE Asia" label in constants.rs
+    (10, 4, &ACMA_915), // Face 10 holds most of Australia, including Sydney and Melbourne
 ];
 
 pub fn lookup_face(face: u8, band_id: u32) -> Option<&'static BandEntry> {

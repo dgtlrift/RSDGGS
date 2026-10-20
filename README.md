@@ -59,20 +59,22 @@ Octet depth (1–8) determines how many bits are significant.  Depth 1 encodes b
 
 The icosahedron is rotated so that **Face 2 is anchored at 39°N 98°W** (central Kansas, USA), chosen as the reference anchor for the Americas ITU Region 2 allocation.
 
-| Face | Region label           | Approximate center     | ITU Region |
-|-----:|------------------------|------------------------|-----------|
-|    0 | Polar/Antarctic        | 65.6°S  172.0°E        | 1 / 3     |
-|    1 | Europe                 | 65.6°N    8.0°W        | 1         |
-|    2 | N. America (anchor)   | 31.4°N  102.5°W        | 2         |
-|    3 | E. Asia                | 31.4°N   86.5°E        | 3         |
-|    4 | Africa West            |  6.2°N   39.9°W        | 1         |
-|    5 | Africa East            |  6.2°N   23.9°E        | 1         |
-|    6 | Russia / C. Asia       | 51.0°N  172.0°E        | 1         |
-|    7 | Middle East            | 31.4°S   77.5°E        | 1 / 3     |
-|    8 | S. America             | 31.4°S   93.5°W        | 2         |
-|    9 | Caribbean / Pacific    |  6.2°S  156.1°W        | 2         |
-|   10 | S/SE Asia & Oceania    |  6.2°S  140.1°E        | 3         |
-|   11 | Oceania / S. Pacific   | 51.0°S    8.0°W        | 3         |
+| Face | Region label                  | Approximate center     | ITU Regions (by land area) |
+|-----:|-------------------------------|------------------------|----------------------------|
+|    0 | Antarctica / New Zealand      | 65.6°S  172.0°E        | — (Antarctica); 3          |
+|    1 | Europe / N. Atlantic          | 65.6°N    8.0°W        | 1; 2                       |
+|    2 | N. & C. America (anchor)      | 31.4°N  102.5°W        | 2                          |
+|    3 | Mainland Asia                 | 31.4°N   86.5°E        | 3; 1                       |
+|    4 | Equatorial Atlantic           |  6.2°N   39.9°W        | 2; 1                       |
+|    5 | Africa / Middle East          |  6.2°N   23.9°E        | 1                          |
+|    6 | North Pacific                 | 51.0°N  172.0°E        | 1; 2; 3                    |
+|    7 | S. Indian Ocean               | 31.4°S   77.5°E        | 1; 3                       |
+|    8 | S. America                    | 31.4°S   93.5°W        | 2                          |
+|    9 | Central Pacific               |  6.2°S  156.1°W        | 3; 2                       |
+|   10 | Australia / Maritime SE Asia  |  6.2°S  140.1°E        | 3                          |
+|   11 | S. Atlantic / S. Africa       | 51.0°S    8.0°W        | 1; — (Antarctica)          |
+
+The labels describe the land each face covers (see the draft, §4.2). Faces 1, 2 and 3 are centred in ITU Regions 1, 2 and 3, but several faces span more than one Region; the regulatory database, not the face index, decides which rules apply.
 
 Face centers and pentagon vertices are stored as f64 unit-vector triples in `src/constants.rs`.  They are derived analytically from the rotated icosahedron; no external dataset is used.
 
@@ -217,7 +219,7 @@ is a static `BandEntry` struct, keyed by RSDGGS face number.
 | 1 | 2 (N. America) | FCC | 902–928 MHz | [47 CFR §15.247](https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-C/section-15.247) |
 | 2 | 1 (Europe) | ETSI | 433.05–434.79 MHz | [ETSI EN 300 220-1](https://www.etsi.org/deliver/etsi_en/300200_300299/30022001/) |
 | 3 | 1 (Europe) | ETSI | 863–870 MHz | [ETSI EN 300 220-2](https://www.etsi.org/deliver/etsi_en/300200_300299/30022002/) |
-| 4 | 10 (S/SE Asia & Oceania) | ACMA | 915–928 MHz | [ACMA Radiocommunications (Low Interference Potential Devices) Class Licence 2015](https://www.legislation.gov.au/Details/F2015L01438) |
+| 4 | 10 (Australia / Maritime SE Asia) | ACMA | 915–928 MHz | [ACMA Radiocommunications (Low Interference Potential Devices) Class Licence 2015](https://www.legislation.gov.au/Details/F2015L01438) |
 
 ### Regulatory Coverage Gaps
 
@@ -226,15 +228,15 @@ Queries against these faces return an empty iterator and a `WARNING` from the to
 
 | Face | Region | Notes |
 |-----:|--------|-------|
-| 0 | Polar/Antarctic | Antarctic Treaty System; no sovereign domestic spectrum authority.  COMNAP/SCAR coordination required. |
-| 3 | E. Asia | MIIT (China), MIC (Japan), KCA (Korea) — distinct national frameworks, not yet entered. |
-| 4 | Africa West | ECOWAS member regulators; most follow ITU R1 432/868 MHz but many lack published ISM rules. |
-| 5 | Africa East | Similar gap to Face 4. |
-| 6 | Russia / C. Asia | Roskomnadzor; 864–865 MHz restricted; 902–928 MHz reserved for military.  Not yet entered. |
-| 7 | Middle East | Fragmented — TDRA (UAE), CITC (Saudi Arabia), TRC (Jordan) differ significantly. |
-| 8 | S. America | ANATEL (Brazil), SUBTEL (Chile), CRC (Colombia) — partial alignment with 902–928 MHz but with national carve-outs. |
-| 9 | Caribbean / Pacific | Mix of FCC-aligned territories and independent regulators (URCA, TRC-BVI). |
-| 11 | Oceania / S. Pacific | RSM (New Zealand) follows ACMA 915–928 MHz but is mapped to Face 10, not Face 11. |
+| 0 | Antarctica / New Zealand | Antarctic Treaty System; no sovereign domestic spectrum authority.  COMNAP/SCAR coordination required.  RSM (New Zealand) follows ACMA 915–928 MHz; New Zealand lies on this face. |
+| 3 | Mainland Asia | MIIT (China), WPC (India), PTA (Pakistan), NCC (Taiwan), IMDA (Singapore) — distinct national frameworks, not yet entered. |
+| 4 | Equatorial Atlantic | ANATEL (Brazil), ANE (Colombia), CONATEL (Venezuela) on 902–928 MHz with national carve-outs; ECOWAS member regulators, most following ITU R1 433/868 MHz but many lacking published ISM rules; FCC (Puerto Rico, USVI). |
+| 5 | Africa / Middle East | ATU members and the Gulf — NCC (Nigeria), NTRA (Egypt), CST (Saudi Arabia) differ significantly. |
+| 6 | North Pacific | MIC (Japan) 920–928 MHz; Roskomnadzor (Russian Far East: 864–865 MHz restricted, 902–928 MHz reserved for military); FCC (Alaska).  Not yet entered. |
+| 7 | S. Indian Ocean | ARTEC (Madagascar), ICTA (Mauritius), and ACMA for the Western Australian coast (Perth). |
+| 8 | S. America | ENACOM (Argentina), SUBTEL (Chile), MTC (Peru) — partial alignment with 902–928 MHz but with national carve-outs. |
+| 9 | Central Pacific | FCC (Hawaii, American Samoa) and independent Pacific island regulators (Fiji, Samoa, Tonga, French Polynesia). |
+| 11 | S. Atlantic / S. Africa | ICASA (South Africa), CRAN (Namibia); the rest is Antarctica and the South Atlantic. |
 
 **Contributing regulatory data:** Add a `BandEntry` constant to `src/regulatory/earth.rs`
 and register it in `EARTH_TABLE` with the appropriate face number.
