@@ -40,7 +40,7 @@
       </section>
       <section anchor="s-terminology" numbered="true" toc="default">
         <name>Terminology</name>
-        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals.</t>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
         <t>RSDGGS: Regulatory Spectrum Discrete Global Grid System. The indexing scheme defined by this document.</t>
         <t>Cell: A geographic region represented by an RSDGGS index. The spatial extent of a cell is determined by the length of its index.</t>
         <t>Face: One of the twelve pentagonal faces of the spherical dodecahedron forming the coarsest level of the grid hierarchy.</t>
@@ -867,7 +867,7 @@ Children of triangle (apex, left, right):
         <section anchor="s-cddl-schema" numbered="true" toc="default">
           <name>CDDL Schema</name>
           <t>The following CDDL <xref target="RFC8610"/> schema defines the wire format for RSDGGS-bearing messages:</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="cddl"><![CDATA[
 rsdggs-cell  = bstr .size (1..8)
 
 location = {
@@ -888,7 +888,7 @@ beacon-frame = {
   power-dbm: int,             ; transmit power in dBm
   ? seq:     uint,            ; sequence number, optional
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
       </section>
       <section anchor="s-regulatory-database-structure" numbered="true" toc="default">
@@ -896,17 +896,17 @@ beacon-frame = {
         <section anchor="s-band-entry-schema" numbered="true" toc="default">
           <name>Band Entry Schema</name>
           <t>The regulatory database maps RSDGGS cells to rule sets. Each rule set entry contains the complete regulatory parameters for one ISM band in one jurisdiction. Regulatory databases are body-specific: an Earth database contains only Earth cell indices (Octet 0 body selector = 0x0), and a future Lunar database would contain only Lunar cell indices (body selector = 0x1). Implementations MUST NOT apply an Earth regulatory database to a non-Earth RSDGGS index. The body selector in Octet 0 MUST be checked before any database lookup, and an unknown body selector MUST result in an error response rather than a default or fallback regulatory rule set. The following CDDL schema defines a band entry:</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="cddl"><![CDATA[
 band-entry = {
   band-id:       uint,
   authority:     tstr,        ; regulatory body name
-  citation:      tstr,        ; rule citation (e.g. "FCC Part 15.247")
+  citation:      tstr,        ; rule citation, e.g. "FCC 15.247"
   freq-lo-khz:   uint,
   freq-hi-khz:   uint,
   power-mw:      uint,
   power-ref:     power-reference,
   duty-cycle:    nil / float, ; fraction 0.0-1.0, nil = unrestricted
-  dwell-s:       nil / float, ; max dwell in seconds, nil = unrestricted
+  dwell-s:       nil / float, ; max dwell (s), nil = unrestricted
   lbt:           bool,        ; listen-before-talk required
   hop-required:  bool,        ; frequency hopping required
   min-hop-set:   nil / uint,  ; minimum hopping channel set size
@@ -928,7 +928,7 @@ modulation-type = &(
   fsk: 0, gfsk: 1, lora: 2, dsss: 3,
   ofdm: 4, ook: 5, bpsk: 6, any: 255
 )
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-resolution-sufficiency-levels" numbered="true" toc="default">
           <name>Resolution Sufficiency Levels</name>
@@ -1212,7 +1212,7 @@ Example: EU/Switzerland border, 868 MHz band
         <section anchor="s-rsdggs-resolution-escalation-near-boundaries" numbered="true" toc="default">
           <name>RSDGGS Resolution Escalation Near Boundaries</name>
           <t>The closer a device is to a regulatory boundary, the finer the resolution required to accurately determine its position relative to that boundary. RSDGGS defines a resolution escalation requirement: the device MUST maintain a RSDGGS index at a resolution sufficient to resolve its boundary proximity function to at least one non-zero value.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="pseudocode"><![CDATA[
 Resolution escalation rule:
 
   If current_resolution < RSL(face, band):
@@ -1234,14 +1234,14 @@ Resolution escalation rule:
     5 bytes (~260 m) -- adequate for bilateral zone classification
     6 bytes (~16 m)  -- adequate for most land borders
     7 bytes (~1 m)   -- adequate for all practical land borders
-]]></artwork></figure>
+]]></sourcecode></figure>
           <t>The resolution escalation requirement means that a device moving toward a regulatory boundary will autonomously increase its index precision as it approaches, consuming more power in the cooperative localization process (Section 12) but ensuring that its compliance determination remains accurate. For fixed devices, this escalation occurs once at commissioning and the resulting high-resolution index is stored permanently.</t>
           <t>The escalation is bounded: for the vast majority of IoT deployments, 3-byte resolution is sufficient for all regulatory decisions and boundary detection. Resolution escalation beyond 5 bytes is only required for devices within approximately 260 m of a land border between jurisdictions with conflicting ISM band rules -- a scenario that affects only a small fraction of deployed devices.</t>
         </section>
         <section anchor="s-cddl-schema-for-boundary-aware-operation" numbered="true" toc="default">
           <name>CDDL Schema for Boundary-Aware Operation</name>
           <t>The following CDDL extensions define the data structures for boundary-aware operation:</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="cddl"><![CDATA[
 boundary-context = {
   cell:          rsdggs-cell,    ; cell at escalated resolution
   B:             uint,              ; boundary proximity steps
@@ -1266,7 +1266,7 @@ boundary-entry = {              ; in regulatory database
   dc-a:          nil / float,       ; duty cycle in cell-a
   dc-b:          nil / float,       ; duty cycle in cell-b
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
           <t>The boundary-entry table in the regulatory database is indexed by the pair (cell-a, cell-b) at the finest resolution at which the two cells are adjacent cells. For face-edge boundaries (ITU Region boundaries), the index is at byte 0 (face only). For bilateral coordination zone boundaries, the index is at bytes 3-4. For land border crossing point exceptions, the index may be at bytes 5-6.</t>
           <t>The boundary-entry pfd-limit-dbwm2 field enables a device with knowledge of its antenna characteristics and propagation environment to compute the maximum transmit power that keeps its signal below the applicable PFD limit at the boundary. For IoT devices using typical isotropic or near-isotropic antennas, a simplified free-space path loss model is sufficient for this computation. Implementations SHOULD implement the free-space PFD computation as a compile-time table indexed by (distance-to-boundary-km, P_tx-dBm) to avoid floating-point computation on constrained devices.</t>
         </section>
@@ -1358,7 +1358,7 @@ boundary-entry = {              ; in regulatory database
           <name>RSDGGS Cell Intersection</name>
           <t>Each beacon received from a peer carries an RSDGGS cell at the RSL depth for the transmitting channel. The Naive Device accumulates received cells and maintains the geographic intersection of all received cells as a constraint on its own position.</t>
           <t>The intersection of two RSDGGS cells is defined as the longest common prefix of their bit representations. If two cells share a common prefix of length L bits, then any point within both cells must lie within the geographic region represented by that L-bit prefix. The intersection cell is that prefix, truncated to the nearest byte boundary. Every octet boundary is a subdivision-level boundary (Section 5.1), so the truncated prefix is always a valid index.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="pseudocode"><![CDATA[
 Cell intersection algorithm:
 
   received_cells: list of (cell_bytes, peer_id)
@@ -1376,7 +1376,7 @@ Cell intersection algorithm:
 
   resolution_bytes = valid_bits / 8  // floor
   inferred_cell    = intersection >> (64 - resolution_bytes*8)
-]]></artwork></figure>
+]]></sourcecode></figure>
           <t>As additional peers are heard, valid_bits can only decrease or remain constant, monotonically converging toward the finest common prefix. When peers at higher resolution (more bytes) are heard, the intersection tightens. A Naive Device SHOULD advertise its inferred cell at the current resolution once it has received cells from at least three peers, to assist other Naive Devices in the vicinity.</t>
         </section>
         <section anchor="s-round-trip-rssi-range-estimation" numbered="true" toc="default">
@@ -1608,11 +1608,11 @@ consistent with the CBOR encoding defined in Section 7.
             <tbody>
               <tr><td>Sub-IE ID</td><td>15:8</td><td>0x9A (TBD)</td><td>RSDGGS Location Sub-IE identifier</td></tr>
               <tr><td>Length</td><td>7:0</td><td>0x01 to 0x08</td><td>Number of RSDGGS cell octets; encodes resolution</td></tr>
-              <tr><td>Cell[0]</td><td>--</td><td>variable</td><td>Celestial body selector (bits 7-4) and dodecahedron face index 0-11 (bits 3-0); mandatory</td></tr>
-              <tr><td>Cell[1..7]</td><td>--</td><td>variable</td><td>Triangle index (Cell[1] bits 7-4) and subdivision levels, present per Length field</td></tr>
+              <tr><td>Cell octet 0</td><td>--</td><td>variable</td><td>Celestial body selector (bits 7-4) and dodecahedron face index 0-11 (bits 3-0); mandatory</td></tr>
+              <tr><td>Cell octets 1-7</td><td>--</td><td>variable</td><td>Triangle index (octet 1 bits 7-4) and subdivision levels, present per Length field</td></tr>
             </tbody>
           </table>
-          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0xC to 0xF in Cell[0] bits 3-0) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (Cell[1] bits 7-4 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
+          <t>A receiver MUST interpret the Length field as the RSDGGS resolution level. A Length of 1 indicates face-only resolution. A Length of 0 is invalid and MUST be rejected. A Length greater than 8 is invalid and MUST be rejected. Reserved face values (0xC to 0xF in bits 3-0 of cell octet 0) MUST be treated as an error condition. A Length of 2 or more with a reserved triangle index (bits 7-4 of cell octet 1 in the range 0x5 to 0xF) MUST be treated as an error condition.</t>
           <t>The Sub-IE MAY appear in any MAC frame type that permits Payload IEs, including Beacon frames, Enhanced Beacon frames, Data frames, and Command frames. It SHALL appear in the SUN Device Description payload of Enhanced Beacon frames transmitted by devices that have resolved their regulatory context.</t>
         </section>
         <section anchor="s-sun-device-description-integration" numbered="true" toc="default">
@@ -1692,12 +1692,12 @@ Enhanced Beacon Frame (abbreviated):
         <section anchor="s-geographic-greedy-forwarding" numbered="true" toc="default">
           <name>Geographic Greedy Forwarding</name>
           <t>A forwarder holding an RSDGGS Geographic IPv6 address for itself and receiving a packet destined for another geographic address can make a forwarding decision purely from address arithmetic, without a routing table.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="pseudocode"><![CDATA[
 Forwarding algorithm:
 
-  G_self  = local RSDGGS cell (from own address IID)
-  G_dest  = destination RSDGGS cell (from packet dest IID)
-  G_next  = next-hop RSDGGS cell (from neighbor table)
+  G_self    = local RSDGGS cell (from own address IID)
+  G_dest    = destination RSDGGS cell (from packet dest IID)
+  G_next(N) = RSDGGS cell of neighbor N (from neighbor table)
 
   common_prefix_len(A, B):
     count of matching most-significant bits in IID of A and B
@@ -1706,12 +1706,12 @@ Forwarding algorithm:
     common_prefix_len(A, target) > common_prefix_len(B, target)
 
   For each candidate next hop N in neighbor table:
-    if progress(G_next[N], G_self, G_dest):
+    if progress(G_next(N), G_self, G_dest):
       forward to N   // N is geographically closer to destination
 
   If no progress possible:
     invoke void handling (perimeter routing or buffer-and-wait)
-]]></artwork></figure>
+]]></sourcecode></figure>
           <t>The progress metric is purely a comparison of common prefix lengths. No trigonometric computation is required at forwarding time. The geographic distance relationship is encoded in the shared prefix structure of the RSDGGS hierarchy: a longer common prefix means a smaller shared cell means geographic proximity.</t>
           <t>This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <xref target="GPSR"/> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count -- operations available as single instructions on all target architectures including constrained microcontrollers.</t>
         </section>
@@ -1720,7 +1720,7 @@ Forwarding algorithm:
           <t>The geographic address carries implicit regulatory information through the face byte of the IID. A forwarder can extract the face byte of the destination address to determine the ITU Region of the destination, and therefore the ISM band availability at the destination.</t>
           <t>When a packet is forwarded toward a destination in a different regulatory cell, the forwarding node SHOULD select a transmission channel that is legal in both its own regulatory cell and the next-hop's regulatory cell. If no such channel exists (for example, forwarding from an EU 868 MHz network toward a US 915 MHz network), the forwarder MUST NOT transmit on a channel that is illegal in either jurisdiction.</t>
           <t>In practice, cross-regulatory-region forwarding at the ISM layer requires either a gateway device provisioned for both regulatory environments, or an application-layer relay. The geographic address structure makes this boundary explicit and machine-readable: a mismatch in the face byte of the IID between source and destination indicates a cross-regulatory-region path that requires special handling.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="pseudocode"><![CDATA[
 Regulatory boundary detection:
 
   src_face  = (src_IID  >> 56) & 0x0F
@@ -1730,7 +1730,7 @@ Regulatory boundary detection:
     // Cross-face (potentially cross-regulatory) forward
     // Consult RSL table for band compatibility
     // Select channel legal in both faces or flag for gateway
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-relationship-to-existing-standards" numbered="true" toc="default">
           <name>Relationship to Existing Standards</name>
@@ -2129,7 +2129,7 @@ US 5,115,433 adds (also public domain):
           </section>
           <section anchor="s-us-patent-6-982-966-status-unconfirmed" numbered="true" toc="default">
             <name>US Patent 6,982,966 -- Status Unconfirmed</name>
-            <t>This number was not definitively identified in patent database searches. If this patent was cited in relation to geographic routing or MANET protocols, the Metricom prior art (4,939,726 and 5,115,433, both expired 2007 and 2009 respectively) predates any 2006-era geographic routing patent by 15+ years and establishes the core concepts as public domain. Independent verification at patents.uspto.gov is still recommended.</t>
+            <t>This number was not definitively identified in patent database searches. If this patent was cited in relation to geographic routing or MANET protocols, the Metricom prior art (4,939,726 and 5,115,433, both expired 2007 and 2009 respectively) predates any 2006-era geographic routing patent by 15+ years and establishes the core concepts as public domain. Independent verification at the USPTO patent database (https://patents.uspto.gov) is still recommended.</t>
           </section>
         </section>
         <section anchor="s-active-patents-detailed-analysis" numbered="true" toc="default">
@@ -2349,7 +2349,7 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
         <t>This is pseudocode intended to specify behavior precisely. A production implementation would require additional error handling, const evaluation of intermediate values, and platform-specific optimizations. The worked example at Section 20.10 provides a concrete verification vector.</t>
         <section anchor="s-crate-structure-and-types" numbered="true" toc="default">
           <name>Crate Structure and Types</name>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 #![no_std]
 #![no_implicit_prelude]
 
@@ -2382,13 +2382,13 @@ pub struct LatLon {
 
 /// Unit vector on the unit sphere.
 type Vec3 = [f64; 3];
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-compile-time-constants" numbered="true" toc="default">
           <name>Compile-Time Constants</name>
           <t>The twelve face center unit vectors and the sixty pentagon vertex unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in Section 4.3: face 1 centered at (60.0N, 26.5E), with face 2's center at bearing 304.0 degrees from it. These constants are reproduced here to 15 decimal places and MUST be used by all conforming implementations. The rotation algorithm from Section 4.3 is not invoked at runtime.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
-/// Dodecahedron face center unit vectors, in RSDGGS face index order.
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
+/// Dodecahedron face center unit vectors, in RSDGGS face order.
 /// The two low-order bits of a face index give its ITU Region
 /// (1, 2, 3), or 0 for none (Section 4.2).
 const FACE_CENTERS: [Vec3; 12] = [
@@ -2418,8 +2418,9 @@ const FACE_CENTERS: [Vec3; 12] = [
     [-0.576250379942283, -0.011826692425747,  0.817187633877705],
 ];
 
-/// Pentagon vertices per face, counter-clockwise as seen from outside
-/// the sphere, starting at the smallest bearing from the face center.
+/// Pentagon vertices per face, counter-clockwise as seen from
+/// outside the sphere, starting at the smallest bearing from the
+/// face center.
 /// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
 const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
     // face  0
@@ -2529,11 +2530,11 @@ const CHILD_APEX:    u8 = 0b00;
 const CHILD_LEFT:    u8 = 0b01;
 const CHILD_RIGHT:   u8 = 0b10;
 const CHILD_CENTRAL: u8 = 0b11;
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-coordinate-conversion-primitives" numbered="true" toc="default">
           <name>Coordinate Conversion Primitives</name>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Convert WGS-84 decimal degrees to unit Cartesian vector.
 /// lat in [-90.0, +90.0], lon in [-180.0, +180.0].
 #[inline]
@@ -2581,7 +2582,7 @@ fn signed_angle(p: Vec3, a: Vec3, b: Vec3) -> f64 {
     dot(cross(a, b), p)
 }
 
-/// Test whether point p lies within the spherical triangle (a, b, c).
+/// Test whether point p lies in the spherical triangle (a, b, c).
 /// The winding of (a, b, c) must be consistent (all CCW or all CW).
 #[inline]
 fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -> bool {
@@ -2591,12 +2592,12 @@ fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -> bool {
     (s1 > 0.0 && s2 > 0.0 && s3 > 0.0)
     || (s1 < 0.0 && s2 < 0.0 && s3 < 0.0)
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-face-assignment-1" numbered="true" toc="default">
           <name>Face Assignment</name>
           <t>Face assignment uses a nearest-face-center lookup via dot product. The face whose center unit vector has the maximum dot product with the query point is the face containing the point. This is equivalent to finding the face whose center is closest in angular distance, and requires no table lookup or coordinate transformation beyond the initial Cartesian conversion.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Return the RSDGGS face index [0..11] for a WGS-84 coordinate.
 pub fn face_for(ll: LatLon) -> u8 {
     let p = to_cart(ll.lat, ll.lon);
@@ -2612,17 +2613,18 @@ pub fn face_for(ll: LatLon) -> u8 {
     best_face
 }
 
-// NOTE: On devices without FPU, replace dot() with a 32-bit fixed-point
-// dot product using Q2.30 format. The FACE_CENTERS values are all in
-// [-1.0, +1.0], representable exactly in Q2.30. The comparison requires
-// only finding the maximum of 12 products -- no sqrt, no trig.
-]]></artwork></figure>
+// NOTE: On devices without FPU, replace dot() with a 32-bit
+// fixed-point dot product using Q2.30 format. The FACE_CENTERS
+// values are all in [-1.0, +1.0], representable exactly in Q2.30.
+// The comparison requires only finding the maximum of 12 products
+// -- no sqrt, no trig.
+]]></sourcecode></figure>
         </section>
         <section anchor="s-pentagon-sector-assignment" numbered="true" toc="default">
           <name>Pentagon Sector Assignment</name>
           <t>Each face is divided into 5 golden gnomon triangular sectors by connecting the face center to each of the 5 pentagon vertices. The pentagon vertices are the centroids of the 5 icosahedron triangles surrounding the face's corresponding icosahedron vertex. These vertices are precomputed as constants for each face.</t>
           <t>For the reference implementation, the pentagon vertices are derived from the icosahedron face topology at compile time. The sector is found by testing the query point against each of the 5 spherical triangles (face_center, pv[i], pv[(i+1)%5]).</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Pentagon vertices for each RSDGGS face.
 /// PENTAGON_VERTS[face][sector] = unit vector of pentagon vertex.
 /// Vertices ordered CCW when viewed from outside the sphere.
@@ -2657,13 +2659,13 @@ fn sector_for(face: u8, p: Vec3) -> u8 {
     // (boundary points are vanishingly rare in practice)
     0
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-recursive-subdivision-1" numbered="true" toc="default">
           <name>Recursive Subdivision</name>
           <t>Given the face and sector, the query point is recursively assigned to child triangles. At each level the triangle is split into 4 children by connecting the midpoints of all three sides. The child containing the point is identified by the spherical containment test and its 2-bit index is recorded.</t>
           <t>The tangent-frame projection used in the reference encoder (projecting onto the north/east tangent plane at the face center) is replaced here by exact spherical triangle subdivision. The spherical midpoint function is used to compute child vertices exactly on the sphere, eliminating distortion accumulation across subdivision levels.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Recursive subdivision state: current triangle vertices.
 #[derive(Copy, Clone)]
 struct Triangle {
@@ -2695,7 +2697,7 @@ fn subdivide(tri: Triangle, p: Vec3) -> (Triangle, u8) {
     };
 
     // Test containment in order: apex, left, right, central.
-    // Central is last -- it contains any point not in the other three.
+    // Central is last: it contains any point not in the other three.
     if in_sph_tri(p, ac.apex, ac.left, ac.right) {
         return (apex_child, CHILD_APEX);
     }
@@ -2721,12 +2723,12 @@ fn initial_triangle(face: u8, sector: u8) -> Triangle {
         inv:   false,
     }
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-top-level-encode-function" numbered="true" toc="default">
           <name>Top-Level Encode Function</name>
           <t>The encode function takes a WGS-84 coordinate and a desired length in bytes (1 to 8) and returns a populated RsdggsCell. The length parameter controls the resolution: 1 byte encodes face only; byte 1 carries the 4-bit sector and 2 subdivision levels, and each additional byte adds 4 subdivision levels (2 bits per level).</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Encode a WGS-84 coordinate as an RSDGGS cell index.
 ///
 /// # Arguments
@@ -2744,12 +2746,12 @@ pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
     let mut cell = RsdggsCell { bytes: [0u8; 8], len };
     let p = to_cart(ll.lat, ll.lon);
 
-    // -- Byte 0: face index ------------------------------------------
+    // -- Byte 0: face index ---------------------------------------
     let face = face_for(ll);
     cell.bytes[0] = face;
     if len == 1 { return cell; }
 
-    // -- Byte 1 [7:4]: pentagon sector -------------------------------
+    // -- Byte 1 [7:4]: pentagon sector ----------------------------
     let sector = sector_for(face, p);
     // Byte 1 layout:
     //   bits [7:4]  sector (4 bits, values 0-4; 5-15 reserved)
@@ -2779,12 +2781,12 @@ pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
 
     cell
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-decode-function" numbered="true" toc="default">
           <name>Decode Function</name>
           <t>The decode function extracts the face, sector, and subdivision level sequence from a populated RsdggsCell. It does not reconstruct the precise geographic coordinate -- it returns the cell information sufficient for regulatory database lookup. Geographic coordinate recovery (computing the cell center) is a separate operation not required for regulatory compliance.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Decoded RSDGGS cell contents.
 #[derive(Debug)]
 pub struct DecodedCell {
@@ -2803,7 +2805,7 @@ pub fn decode(cell: &RsdggsCell) -> DecodedCell {
                              sub_bits: [0u8; 26], sub_levels: 0 };
     }
 
-    let sector = cell.bytes[1] >> 4;            // 5-15 reserved: reject
+    let sector = cell.bytes[1] >> 4;   // 5-15 reserved: reject
 
     // Extract sub_bits from byte 1 [3:0] and bytes 2..len
     let mut sub_bits = [0u8; 26];
@@ -2823,12 +2825,12 @@ pub fn decode(cell: &RsdggsCell) -> DecodedCell {
 
     DecodedCell { face, sector, sub_bits, sub_levels }
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-boundary-proximity-helper" numbered="true" toc="default">
           <name>Boundary Proximity Helper</name>
           <t>The boundary proximity function B(cell, band) from Section 9.3 is implemented as a database lookup returning the number of RSDGGS resolution steps to the nearest rule-set-changing boundary. The function signature is shown; the database backend is implementation-defined.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 /// Regulatory band identifier.
 #[repr(u8)]
 #[derive(Copy, Clone, Debug)]
@@ -2859,7 +2861,7 @@ pub trait RegDatabase {
 /// Apply adaptive power reduction based on boundary proximity.
 /// Returns the adjusted maximum EIRP in dBm.
 pub fn boundary_power_dbm(rule: &RuleSet, nbr_pwr: i8) -> i8 {
-    let p_max = rule.power_dbm.min(neighbor_power_dbm);
+    let p_max = core::cmp::min(rule.power_dbm, nbr_pwr);
     let reduction_db: i8 = match rule.boundary_prox {
         0 => {
             // On boundary: use neighbor power if more restrictive
@@ -2872,12 +2874,12 @@ pub fn boundary_power_dbm(rule: &RuleSet, nbr_pwr: i8) -> i8 {
     };
     rule.power_dbm - reduction_db
 }
-]]></artwork></figure>
+]]></sourcecode></figure>
         </section>
         <section anchor="s-worked-example" numbered="true" toc="default">
           <name>Worked Example</name>
           <t>The following verification vector is derived from the reference implementation. Implementations MUST produce identical byte values for this input to be considered conformant.</t>
-          <figure><artwork type="ascii-art"><![CDATA[
+          <figure><sourcecode type="rust" markers="true"><![CDATA[
 // Input:
 //   latitude  =  37.7749 N  (San Francisco, CA, USA)
 //   longitude = 122.4194 W
@@ -2888,7 +2890,8 @@ let cell = encode(sf, 4);
 
 // Expected output:
 //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010; sub_bits[0]=1 [3:2]=01;
+//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010;
+//                          sub_bits[0]=1 [3:2]=01;
 //                          sub_bits[1]=1 [1:0]=01
 //   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
 //   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
@@ -2904,7 +2907,7 @@ assert_eq!(cell.len,      4);
 //   London    (51.51N,   0.13W) -> face 1  (ITU Region 1, Europe)
 //   Tokyo     (35.68N, 139.69E) -> face 3  (ITU Region 3, Asia)
 //   Beijing   (39.91N, 116.39E) -> face 3  (ITU Region 3, Asia)
-//   Sao Paulo (23.55S,  46.63W) -> face 6  (ITU Region 2, S. America)
+//   Sao Paulo (23.55S,  46.63W) -> face 6  (ITU Region 2, S. Amer.)
 //   Sydney    (33.87S, 151.21E) -> face 7  (Region 3, E. Australia)
 //
 // Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
@@ -2914,8 +2917,8 @@ assert_eq!(cell.len,      4);
 // 1-byte truncation (privacy / regulatory coarse lookup):
 let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 // A 1-byte index encodes only the face (ITU Region 2).
-// Sufficient to determine that 902-928 MHz is legal at this location.
-]]></artwork></figure>
+// Enough to determine that 902-928 MHz is legal at this location.
+]]></sourcecode></figure>
           <t>The worked example demonstrates the encode path from floating-point coordinate to structured byte sequence. The face-0x02 byte is the ITU Region 2 determination made at single-byte resolution. Truncating to 1 byte is sufficient for ISM band availability determination anywhere in North America, as specified in Section 9 (RSL for 902 MHz, Face 2 = 1 byte).</t>
           <t>The note on Tokyo illustrates that face assignment is driven by geometry: a jurisdiction near a face boundary can span two faces. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, and its two low-order bits give the ITU Region of the face's principal population, not an encoding of administrative boundaries.</t>
         </section>
