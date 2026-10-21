@@ -1,4 +1,5 @@
-"""Draw Figure 1 of draft-hanley-rsdggs-00: the dodecahedron net, ISM band coverage.
+"""Draw the dodecahedron net with ISM band coverage, in colour (Figure 5 of the draft is
+the black-and-white version, drawn by rsdggs_bw.py).
 
     python images/rsdggs_net_page1.py    # writes images/rsdggs_net_page1.png and .svg
 

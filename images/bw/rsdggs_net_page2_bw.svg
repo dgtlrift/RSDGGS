@@ -238,8 +238,8 @@
 <text x="1350" y="1228.22" font-size="13.19" fill="black">sub-regional bloc · 3 bytes = country-level · 4+ bytes = sub-national.</text>
 <text x="1350" y="1245.64" font-size="13.19" fill="black">Devices derive regulatory ISM band rules directly from their cell index</text>
 <text x="1350" y="1263.06" font-size="13.19" fill="black">with no server dependency.</text>
-<text x="1350" y="1300.56" font-size="13.19" fill="black">draft-hanley-rsdggs-00 · Independent Submission</text>
+<text x="1350" y="1300.56" font-size="13.19" fill="black">draft-hanley-rsdggs-01 · Independent Submission</text>
 <text x="1350" y="1317.97" font-size="13.19" fill="black">IEEE 802.15.4 MAC layer · CBOR encoded · Rust reference impl</text>
 <path d="M50 1500 1950 1500" fill="none" stroke="black" stroke-width="0.8"/>
-<text x="1000" y="1523.89" font-size="11.11" text-anchor="middle" fill="black">RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-00 · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face</text>
+<text x="1000" y="1523.89" font-size="11.11" text-anchor="middle" fill="black">RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-01 · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face</text>
 </svg>
