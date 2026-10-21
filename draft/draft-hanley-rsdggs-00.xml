@@ -2243,8 +2243,9 @@ Data pipeline:   ArcGIS / ArcMap / ESRI Shapefile (.lyr, .shp)
 Purpose:         Geographic visualization and education
 
 RSDGGS distinguishing elements -- no claim reads on RSDGGS:
-  D1: Orientation -- RSDGGS orients Face 2 at 39N, 98W
-      (ITU Region 2 anchor); not North/South Pole alignment
+  D1: Orientation -- RSDGGS centers Face 1 (ITU Region 1) at
+      60.0N, 26.5E and Face 2 (ITU Region 2) at 39.60N, 79.28W
+      (Section 4.3); no vertex is at either pole
   D2: Face assignment -- RSDGGS faces are fixed to ITU Radio
       Regions; no user-selected region of interest or central
       meridian determination step exists in RSDGGS

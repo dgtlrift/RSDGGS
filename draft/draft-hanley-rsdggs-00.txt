@@ -288,13 +288,13 @@ Internet-Draft                   RSDGGS                     October 2026
                (2022, Standards Track) . . . . . . . . . . . . . . .  98
        18.3.5.  RFC 9632 / RFC 8805 -- Geofeed Data (2024 / 2020)  .  98
        18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
-               Informational)  . . . . . . . . . . . . . . . . . . .  98
+               Informational)  . . . . . . . . . . . . . . . . . . .  99
        18.3.7.  RFC 5491 -- PIDF-LO Usage (2009, Standards Track)  .  99
        18.3.8.  RFC 6280 -- GEOPRIV Architecture (2011, BCP) . . . .  99
        18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards
-               Track)  . . . . . . . . . . . . . . . . . . . . . . .  99
+               Track)  . . . . . . . . . . . . . . . . . . . . . . . 100
      18.4.  Summary of Improvement Opportunities . . . . . . . . . . 100
-     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 101
+     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 102
    19. Reference Implementation (Rust Pseudocode)  . . . . . . . . . 103
      19.1.  Crate Structure and Types  . . . . . . . . . . . . . . . 103
      19.2.  Compile-Time Constants . . . . . . . . . . . . . . . . . 104
@@ -5284,8 +5284,9 @@ Internet-Draft                   RSDGGS                     October 2026
    Purpose:         Geographic visualization and education
 
    RSDGGS distinguishing elements -- no claim reads on RSDGGS:
-     D1: Orientation -- RSDGGS orients Face 2 at 39N, 98W
-         (ITU Region 2 anchor); not North/South Pole alignment
+     D1: Orientation -- RSDGGS centers Face 1 (ITU Region 1) at
+         60.0N, 26.5E and Face 2 (ITU Region 2) at 39.60N, 79.28W
+         (Section 4.3); no vertex is at either pole
      D2: Face assignment -- RSDGGS faces are fixed to ITU Radio
          Regions; no user-selected region of interest or central
          meridian determination step exists in RSDGGS
@@ -5313,7 +5314,6 @@ Internet-Draft                   RSDGGS                     October 2026
    from geographic vector data using ArcGIS tooling, whereas RSDGGS is a
    binary integer encoding scheme for IoT device regulatory context with
    no map output, no GIS pipeline, and no physical artifact.  The shared
-   concept of using a dodecahedron as an Earth reference surface is
 
 
 
@@ -5322,6 +5322,7 @@ Hanley                    Expires 24 April 2027                [Page 95]
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   concept of using a dodecahedron as an Earth reference surface is
    established prior art predating CN101923801B by decades, with the
    gnomonic polyhedral map projection appearing in academic cartography
    literature since at least the 1940s (Fuller, 1944, US Patent
@@ -5362,6 +5363,21 @@ Internet-Draft                   RSDGGS                     October 2026
    preserves geographic uniqueness.  This distinction strengthens the
    novelty claim of Section 11.
 
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 24 April 2027                [Page 96]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    Improvement opportunity -- IGPSMP protocol gap: RFC 2009 proposes
    IGPSMP (Internet GPS Management Protocol) for router-to-router
    geographic service area exchange, with a polygon boundary
@@ -5370,13 +5386,6 @@ Internet-Draft                   RSDGGS                     October 2026
    IGPSMP entirely (routing decisions from address arithmetic, no
    management protocol needed) more precisely characterizes RSDGGS's
    architectural simplification relative to RFC 2009.
-
-
-
-Hanley                    Expires 24 April 2027                [Page 96]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 18.3.2.  RFC 5870 -- geo URI Scheme (2010, Standards Track)
 
@@ -5415,15 +5424,6 @@ Internet-Draft                   RSDGGS                     October 2026
    'insufficient cell resolution' would improve SIP gateway
    interoperability.
 
-   Improvement opportunity -- Geolocation-Routing header: RFC 6442
-   Section 8 defines a Geolocation-Routing SIP header that can be set to
-   'yes' to indicate that the location should influence routing.  RSDGGS
-   geographic IPv6 addresses (Section 15) embed routing information in
-   the address itself, making the Geolocation-Routing header redundant
-   for RSDGGS-addressed traffic.  Explicitly noting this in the draft
-   strengthens the architectural case for RSDGGS-IPv6 as a
-   simplification over SIP-based geographic routing.
-
 
 
 
@@ -5433,6 +5433,15 @@ Hanley                    Expires 24 April 2027                [Page 97]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+   Improvement opportunity -- Geolocation-Routing header: RFC 6442
+   Section 8 defines a Geolocation-Routing SIP header that can be set to
+   'yes' to indicate that the location should influence routing.  RSDGGS
+   geographic IPv6 addresses (Section 15) embed routing information in
+   the address itself, making the Geolocation-Routing header redundant
+   for RSDGGS-addressed traffic.  Explicitly noting this in the draft
+   strengthens the architectural case for RSDGGS-IPv6 as a
+   simplification over SIP-based geographic routing.
 
 18.3.4.  RFC 9179 -- YANG Grouping for Geographic Locations (2022,
          Standards Track)
@@ -5473,6 +5482,14 @@ Internet-Draft                   RSDGGS                     October 2026
    RSDGGS-IPv6 deployments automatically RFC 9632-compliant without any
    additional geofeed file maintenance.
 
+
+
+
+Hanley                    Expires 24 April 2027                [Page 98]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
 18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
          Informational)
 
@@ -5482,14 +5499,6 @@ Internet-Draft                   RSDGGS                     October 2026
    time the URI was created.  This requirement is irrelevant to RSDGGS
    LbyV (Location-by-Value) encoding, but it highlights a gap: RSDGGS
    does not define a staleness indicator for the cell index.  A device
-
-
-
-Hanley                    Expires 24 April 2027                [Page 98]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    that provisioned its cell at manufacturing time (Section 12) and has
    never moved still carries a potentially stale index.  Adding an
    optional timestamp or age field to the CBOR encoding would allow
@@ -5529,6 +5538,14 @@ Internet-Draft                   RSDGGS                     October 2026
    recipient type, would provide a RSDGGS-native analog to RFC 6280's
    Rule Maker mechanism without requiring XCAP or a Location Server.
 
+
+
+
+Hanley                    Expires 24 April 2027                [Page 99]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
 18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards Track)
 
    Improvement opportunity -- Location-based condition analog: RFC 6772
@@ -5538,14 +5555,6 @@ Internet-Draft                   RSDGGS                     October 2026
    Section 8.2 is a regulatory-driven analog to RFC 6772's location-
    based conditions, but applies uniformly without per-device policy
    variation.  For deployments with site-specific privacy requirements
-
-
-
-Hanley                    Expires 24 April 2027                [Page 99]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    (e.g., a factory that requires higher location precision within its
    boundary but coarser precision outside), an RSDGGS extension could
    define per-cell RSL overrides stored in the regulatory database
@@ -5585,6 +5594,14 @@ Internet-Draft                   RSDGGS                     October 2026
    |            | future work item    |             |                  |
    +------------+---------------------+-------------+------------------+
    | RFC 6442   | 424 sub-code for    | Section     | Low -- SIP       |
+
+
+
+Hanley                    Expires 24 April 2027               [Page 100]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    |            | insufficient        | 16.3 /      | integration      |
    |            | cell resolution     | gateway     |                  |
    |            | at SIP gateway      | spec        |                  |
@@ -5594,14 +5611,6 @@ Internet-Draft                   RSDGGS                     October 2026
    |            | encoding            |             |                  |
    +------------+---------------------+-------------+------------------+
    | RFC 9179   | Float32 altitude    | Section 7.3 | Low -- schema    |
-
-
-
-Hanley                    Expires 24 April 2027               [Page 100]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    |            | option for          | CDDL        | extension        |
    |            | precision           |             |                  |
    |            | applications        |             |                  |
@@ -5641,15 +5650,6 @@ Internet-Draft                   RSDGGS                     October 2026
    current -00 draft.  The low-priority items are candidates for
    companion specifications or implementation guidance documents.
 
-18.5.  Recommended Clearance Actions
-
-   Prior to commercial deployment or patent prosecution based on RSDGGS,
-   the following actions are recommended:
-
-
-
-
-
 
 
 
@@ -5657,6 +5657,11 @@ Hanley                    Expires 24 April 2027               [Page 101]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+18.5.  Recommended Clearance Actions
+
+   Prior to commercial deployment or patent prosecution based on RSDGGS,
+   the following actions are recommended:
 
    1.  US 10,812,365 (Northeastern/Krioukov, active until 2037): No
        infringement risk identified.  The hyperbolic geometry, radial
@@ -5698,11 +5703,6 @@ Internet-Draft                   RSDGGS                     October 2026
        IP geofeed CSV entry.  This combination appears novel but has not
        been searched.
 
-   8.  RFC publication of draft-hanley-rsdggs-00 establishes a prior art
-       date for all disclosed subject matter including the improvement
-       opportunities listed in Section 17.4.  This is a significant
-       benefit of early publication even before normative follow-on work
-       is complete.
 
 
 
@@ -5713,6 +5713,12 @@ Hanley                    Expires 24 April 2027               [Page 102]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+   8.  RFC publication of draft-hanley-rsdggs-00 establishes a prior art
+       date for all disclosed subject matter including the improvement
+       opportunities listed in Section 17.4.  This is a significant
+       benefit of early publication even before normative follow-on work
+       is complete.
 
 19.  Reference Implementation (Rust Pseudocode)
 
@@ -5732,12 +5738,6 @@ Internet-Draft                   RSDGGS                     October 2026
    concrete verification vector.
 
 19.1.  Crate Structure and Types
-
-
-
-
-
-
 
 
 
