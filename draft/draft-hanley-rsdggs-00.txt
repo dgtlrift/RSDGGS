@@ -4,8 +4,8 @@
 
 Independent Submission                                       J.P. Hanley
 Internet-Draft                                       Myelin Networks LLC
-Intended status: Informational                           20 October 2026
-Expires: 23 April 2027
+Intended status: Informational                           21 October 2026
+Expires: 24 April 2027
 
 
         Regulatory Spectrum Discrete Global Grid System (RSDGGS)
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 1]
+Hanley                    Expires 24 April 2027                 [Page 1]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -68,7 +68,7 @@ Internet-Draft                   RSDGGS                     October 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2027.
+   This Internet-Draft will expire on 24 April 2027.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 2]
+Hanley                    Expires 24 April 2027                 [Page 2]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -165,7 +165,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 3]
+Hanley                    Expires 24 April 2027                 [Page 3]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -221,7 +221,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 4]
+Hanley                    Expires 24 April 2027                 [Page 4]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -277,7 +277,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 5]
+Hanley                    Expires 24 April 2027                 [Page 5]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -302,15 +302,15 @@ Internet-Draft                   RSDGGS                     October 2026
      19.4.  Face Assignment  . . . . . . . . . . . . . . . . . . . . 109
      19.5.  Pentagon Sector Assignment . . . . . . . . . . . . . . . 110
      19.6.  Recursive Subdivision  . . . . . . . . . . . . . . . . . 111
-     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 112
+     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 113
      19.8.  Decode Function  . . . . . . . . . . . . . . . . . . . . 114
-     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 115
-     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 117
-   20. Security Considerations . . . . . . . . . . . . . . . . . . . 118
-   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 119
-   22. Normative References  . . . . . . . . . . . . . . . . . . . . 120
-   23. Informative References  . . . . . . . . . . . . . . . . . . . 120
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 122
+     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 116
+     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 118
+   20. Security Considerations . . . . . . . . . . . . . . . . . . . 119
+   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 120
+   22. Normative References  . . . . . . . . . . . . . . . . . . . . 121
+   23. Informative References  . . . . . . . . . . . . . . . . . . . 121
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 123
 
 1.  Introduction
 
@@ -333,7 +333,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 6]
+Hanley                    Expires 24 April 2027                 [Page 6]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -356,7 +356,7 @@ Internet-Draft                   RSDGGS                     October 2026
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in BCP
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals.
+   capitals, as shown here.
 
    RSDGGS: Regulatory Spectrum Discrete Global Grid System.  The
    indexing scheme defined by this document.
@@ -389,7 +389,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 7]
+Hanley                    Expires 24 April 2027                 [Page 7]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -445,7 +445,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 8]
+Hanley                    Expires 24 April 2027                 [Page 8]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -501,7 +501,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                 [Page 9]
+Hanley                    Expires 24 April 2027                 [Page 9]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -557,7 +557,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 10]
+Hanley                    Expires 24 April 2027                [Page 10]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -613,7 +613,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 11]
+Hanley                    Expires 24 April 2027                [Page 11]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -669,7 +669,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 12]
+Hanley                    Expires 24 April 2027                [Page 12]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -725,7 +725,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 13]
+Hanley                    Expires 24 April 2027                [Page 13]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -781,7 +781,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 14]
+Hanley                    Expires 24 April 2027                [Page 14]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -837,7 +837,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 15]
+Hanley                    Expires 24 April 2027                [Page 15]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -893,7 +893,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 16]
+Hanley                    Expires 24 April 2027                [Page 16]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -949,7 +949,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 17]
+Hanley                    Expires 24 April 2027                [Page 17]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 18]
+Hanley                    Expires 24 April 2027                [Page 18]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 19]
+Hanley                    Expires 24 April 2027                [Page 19]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 20]
+Hanley                    Expires 24 April 2027                [Page 20]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 21]
+Hanley                    Expires 24 April 2027                [Page 21]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 22]
+Hanley                    Expires 24 April 2027                [Page 22]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 23]
+Hanley                    Expires 24 April 2027                [Page 23]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 24]
+Hanley                    Expires 24 April 2027                [Page 24]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 25]
+Hanley                    Expires 24 April 2027                [Page 25]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 26]
+Hanley                    Expires 24 April 2027                [Page 26]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 27]
+Hanley                    Expires 24 April 2027                [Page 27]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 28]
+Hanley                    Expires 24 April 2027                [Page 28]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1621,44 +1621,44 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 29]
+Hanley                    Expires 24 April 2027                [Page 29]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-band-entry = {
-  band-id:       uint,
-  authority:     tstr,        ; regulatory body name
-  citation:      tstr,        ; rule citation (e.g. "FCC Part 15.247")
-  freq-lo-khz:   uint,
-  freq-hi-khz:   uint,
-  power-mw:      uint,
-  power-ref:     power-reference,
-  duty-cycle:    nil / float, ; fraction 0.0-1.0, nil = unrestricted
-  dwell-s:       nil / float, ; max dwell in seconds, nil = unrestricted
-  lbt:           bool,        ; listen-before-talk required
-  hop-required:  bool,        ; frequency hopping required
-  min-hop-set:   nil / uint,  ; minimum hopping channel set size
-  channels:      nil / [+ channel-entry],
-  modulation:    nil / [+ modulation-type],
-  whitespace-db: nil / tstr,  ; URL for dynamic lookup if required
-  available:     bool,        ; false = band illegal in this cell
-  exception:     bool,        ; true = consult exception overlay
-}
+   band-entry = {
+     band-id:       uint,
+     authority:     tstr,        ; regulatory body name
+     citation:      tstr,        ; rule citation, e.g. "FCC 15.247"
+     freq-lo-khz:   uint,
+     freq-hi-khz:   uint,
+     power-mw:      uint,
+     power-ref:     power-reference,
+     duty-cycle:    nil / float, ; fraction 0.0-1.0, nil = unrestricted
+     dwell-s:       nil / float, ; max dwell (s), nil = unrestricted
+     lbt:           bool,        ; listen-before-talk required
+     hop-required:  bool,        ; frequency hopping required
+     min-hop-set:   nil / uint,  ; minimum hopping channel set size
+     channels:      nil / [+ channel-entry],
+     modulation:    nil / [+ modulation-type],
+     whitespace-db: nil / tstr,  ; URL for dynamic lookup if required
+     available:     bool,        ; false = band illegal in this cell
+     exception:     bool,        ; true = consult exception overlay
+   }
 
-power-reference = &(erp: 0, eirp: 1, conducted: 2)
+   power-reference = &(erp: 0, eirp: 1, conducted: 2)
 
-channel-entry = {
-  cf-khz:        uint,
-  bw-khz:        uint,
-}
+   channel-entry = {
+     cf-khz:        uint,
+     bw-khz:        uint,
+   }
 
-modulation-type = &(
-  fsk: 0, gfsk: 1, lora: 2, dsss: 3,
-  ofdm: 4, ook: 5, bpsk: 6, any: 255
-)
+   modulation-type = &(
+     fsk: 0, gfsk: 1, lora: 2, dsss: 3,
+     ofdm: 4, ook: 5, bpsk: 6, any: 255
+   )
 
-                              Figure 13
+                                 Figure 13
 
 8.2.  Resolution Sufficiency Levels
 
@@ -1677,7 +1677,7 @@ modulation-type = &(
 
 
 
-Hanley                    Expires 23 April 2027                [Page 30]
+Hanley                    Expires 24 April 2027                [Page 30]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1733,7 +1733,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 31]
+Hanley                    Expires 24 April 2027                [Page 31]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1789,7 +1789,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 32]
+Hanley                    Expires 24 April 2027                [Page 32]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1845,7 +1845,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 33]
+Hanley                    Expires 24 April 2027                [Page 33]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1901,7 +1901,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 34]
+Hanley                    Expires 24 April 2027                [Page 34]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1957,7 +1957,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 35]
+Hanley                    Expires 24 April 2027                [Page 35]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2013,7 +2013,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 36]
+Hanley                    Expires 24 April 2027                [Page 36]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2069,7 +2069,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 37]
+Hanley                    Expires 24 April 2027                [Page 37]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2125,7 +2125,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 38]
+Hanley                    Expires 24 April 2027                [Page 38]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2181,7 +2181,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 39]
+Hanley                    Expires 24 April 2027                [Page 39]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2237,7 +2237,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 40]
+Hanley                    Expires 24 April 2027                [Page 40]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2293,7 +2293,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 41]
+Hanley                    Expires 24 April 2027                [Page 41]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2349,7 +2349,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 42]
+Hanley                    Expires 24 April 2027                [Page 42]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2405,7 +2405,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 43]
+Hanley                    Expires 24 April 2027                [Page 43]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2461,7 +2461,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 44]
+Hanley                    Expires 24 April 2027                [Page 44]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2517,7 +2517,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 45]
+Hanley                    Expires 24 April 2027                [Page 45]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2573,7 +2573,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 46]
+Hanley                    Expires 24 April 2027                [Page 46]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2629,7 +2629,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 47]
+Hanley                    Expires 24 April 2027                [Page 47]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2685,7 +2685,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 48]
+Hanley                    Expires 24 April 2027                [Page 48]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2741,7 +2741,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 49]
+Hanley                    Expires 24 April 2027                [Page 49]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2797,7 +2797,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 50]
+Hanley                    Expires 24 April 2027                [Page 50]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2853,7 +2853,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 51]
+Hanley                    Expires 24 April 2027                [Page 51]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2909,7 +2909,7 @@ Initiator A                          Responder B
 
 
 
-Hanley                    Expires 23 April 2027                [Page 52]
+Hanley                    Expires 24 April 2027                [Page 52]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2965,7 +2965,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 53]
+Hanley                    Expires 24 April 2027                [Page 53]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3021,7 +3021,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 54]
+Hanley                    Expires 24 April 2027                [Page 54]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3077,7 +3077,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 55]
+Hanley                    Expires 24 April 2027                [Page 55]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3133,7 +3133,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 56]
+Hanley                    Expires 24 April 2027                [Page 56]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3189,7 +3189,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 57]
+Hanley                    Expires 24 April 2027                [Page 57]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3245,7 +3245,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 58]
+Hanley                    Expires 24 April 2027                [Page 58]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3301,7 +3301,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 59]
+Hanley                    Expires 24 April 2027                [Page 59]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3325,39 +3325,39 @@ Internet-Draft                   RSDGGS                     October 2026
    value is pending assignment by the IEEE Registration Authority.  The
    placeholder value 0x9A is used in this document.
 
-    +============+======+==========+==================================+
-    | Field      | Bits | Value    | Description                      |
-    +============+======+==========+==================================+
-    | Sub-IE ID  | 15:8 | 0x9A     | RSDGGS Location Sub-IE           |
-    |            |      | (TBD)    | identifier                       |
-    +------------+------+----------+----------------------------------+
-    | Length     | 7:0  | 0x01 to  | Number of RSDGGS cell octets;    |
-    |            |      | 0x08     | encodes resolution               |
-    +------------+------+----------+----------------------------------+
-    | Cell[0]    | --   | variable | Celestial body selector (bits    |
-    |            |      |          | 7-4) and dodecahedron face index |
-    |            |      |          | 0-11 (bits 3-0); mandatory       |
-    +------------+------+----------+----------------------------------+
-    | Cell[1..7] | --   | variable | Triangle index (Cell[1] bits     |
-    |            |      |          | 7-4) and subdivision levels,     |
-    |            |      |          | present per Length field         |
-    +------------+------+----------+----------------------------------+
+     +=========+======+==========+==================================+
+     | Field   | Bits | Value    | Description                      |
+     +=========+======+==========+==================================+
+     | Sub-IE  | 15:8 | 0x9A     | RSDGGS Location Sub-IE           |
+     | ID      |      | (TBD)    | identifier                       |
+     +---------+------+----------+----------------------------------+
+     | Length  | 7:0  | 0x01 to  | Number of RSDGGS cell octets;    |
+     |         |      | 0x08     | encodes resolution               |
+     +---------+------+----------+----------------------------------+
+     | Cell    | --   | variable | Celestial body selector (bits    |
+     | octet 0 |      |          | 7-4) and dodecahedron face index |
+     |         |      |          | 0-11 (bits 3-0); mandatory       |
+     +---------+------+----------+----------------------------------+
+     | Cell    | --   | variable | Triangle index (octet 1 bits     |
+     | octets  |      |          | 7-4) and subdivision levels,     |
+     | 1-7     |      |          | present per Length field         |
+     +---------+------+----------+----------------------------------+
 
-                Table 16: RSDGGS Location Sub-IE Definition
+               Table 16: RSDGGS Location Sub-IE Definition
 
    A receiver MUST interpret the Length field as the RSDGGS resolution
    level.  A Length of 1 indicates face-only resolution.  A Length of 0
    is invalid and MUST be rejected.  A Length greater than 8 is invalid
-   and MUST be rejected.  Reserved face values (0xC to 0xF in Cell[0]
-   bits 3-0) MUST be treated as an error condition.  A Length of 2 or
-   more with a reserved triangle index (Cell[1] bits 7-4 in the range
-   0x5 to 0xF) MUST be treated as an error condition.
+   and MUST be rejected.  Reserved face values (0xC to 0xF in bits 3-0
+   of cell octet 0) MUST be treated as an error condition.  A Length of
+   2 or more with a reserved triangle index (bits 7-4 of cell octet 1 in
+   the range 0x5 to 0xF) MUST be treated as an error condition.
 
 
 
 
 
-Hanley                    Expires 23 April 2027                [Page 60]
+Hanley                    Expires 24 April 2027                [Page 60]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3413,7 +3413,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 61]
+Hanley                    Expires 24 April 2027                [Page 61]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3469,7 +3469,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 62]
+Hanley                    Expires 24 April 2027                [Page 62]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3525,7 +3525,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 63]
+Hanley                    Expires 24 April 2027                [Page 63]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3581,7 +3581,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 64]
+Hanley                    Expires 24 April 2027                [Page 64]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3595,9 +3595,9 @@ Internet-Draft                   RSDGGS                     October 2026
 
    Forwarding algorithm:
 
-     G_self  = local RSDGGS cell (from own address IID)
-     G_dest  = destination RSDGGS cell (from packet dest IID)
-     G_next  = next-hop RSDGGS cell (from neighbor table)
+     G_self    = local RSDGGS cell (from own address IID)
+     G_dest    = destination RSDGGS cell (from packet dest IID)
+     G_next(N) = RSDGGS cell of neighbor N (from neighbor table)
 
      common_prefix_len(A, B):
        count of matching most-significant bits in IID of A and B
@@ -3606,7 +3606,7 @@ Internet-Draft                   RSDGGS                     October 2026
        common_prefix_len(A, target) > common_prefix_len(B, target)
 
      For each candidate next hop N in neighbor table:
-       if progress(G_next[N], G_self, G_dest):
+       if progress(G_next(N), G_self, G_dest):
          forward to N   // N is geographically closer to destination
 
      If no progress possible:
@@ -3637,7 +3637,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 65]
+Hanley                    Expires 24 April 2027                [Page 65]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3693,7 +3693,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 66]
+Hanley                    Expires 24 April 2027                [Page 66]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3749,7 +3749,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 67]
+Hanley                    Expires 24 April 2027                [Page 67]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3805,7 +3805,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 68]
+Hanley                    Expires 24 April 2027                [Page 68]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3861,7 +3861,7 @@ Status               Experimental / Legacy     Informational (this doc)
 
 
 
-Hanley                    Expires 23 April 2027                [Page 69]
+Hanley                    Expires 24 April 2027                [Page 69]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3917,7 +3917,7 @@ Hierarchical index   None                      Full hier. in bits
 
 
 
-Hanley                    Expires 23 April 2027                [Page 70]
+Hanley                    Expires 24 April 2027                [Page 70]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3973,7 +3973,7 @@ Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
 
 
 
-Hanley                    Expires 23 April 2027                [Page 71]
+Hanley                    Expires 24 April 2027                [Page 71]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4029,7 +4029,7 @@ Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 
 
 
-Hanley                    Expires 23 April 2027                [Page 72]
+Hanley                    Expires 24 April 2027                [Page 72]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4085,7 +4085,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 73]
+Hanley                    Expires 24 April 2027                [Page 73]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4141,7 +4141,7 @@ Routing              Not defined               See Section 13
 
 
 
-Hanley                    Expires 23 April 2027                [Page 74]
+Hanley                    Expires 24 April 2027                [Page 74]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4197,7 +4197,7 @@ Precision            Administrative boundary   Physical loc, metered
 
 
 
-Hanley                    Expires 23 April 2027                [Page 75]
+Hanley                    Expires 24 April 2027                [Page 75]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4253,7 +4253,7 @@ Location form        PIDF-LO (after deref)     CBOR bstr (direct)
 
 
 
-Hanley                    Expires 23 April 2027                [Page 76]
+Hanley                    Expires 24 April 2027                [Page 76]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4309,7 +4309,7 @@ Constrained devices  Not addressed             Primary target
 
 
 
-Hanley                    Expires 23 April 2027                [Page 77]
+Hanley                    Expires 24 April 2027                [Page 77]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4365,7 +4365,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 78]
+Hanley                    Expires 24 April 2027                [Page 78]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4421,7 +4421,7 @@ Trust model          Centralized (LS)          Distributed (peer mesh)
 
 
 
-Hanley                    Expires 23 April 2027                [Page 79]
+Hanley                    Expires 24 April 2027                [Page 79]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4477,7 +4477,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 
 
 
-Hanley                    Expires 23 April 2027                [Page 80]
+Hanley                    Expires 24 April 2027                [Page 80]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4533,7 +4533,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 81]
+Hanley                    Expires 24 April 2027                [Page 81]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4589,7 +4589,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 82]
+Hanley                    Expires 24 April 2027                [Page 82]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4645,7 +4645,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 83]
+Hanley                    Expires 24 April 2027                [Page 83]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4701,7 +4701,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 84]
+Hanley                    Expires 24 April 2027                [Page 84]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4757,7 +4757,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 85]
+Hanley                    Expires 24 April 2027                [Page 85]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4813,7 +4813,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 86]
+Hanley                    Expires 24 April 2027                [Page 86]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4869,7 +4869,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 87]
+Hanley                    Expires 24 April 2027                [Page 87]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4925,7 +4925,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 88]
+Hanley                    Expires 24 April 2027                [Page 88]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4981,7 +4981,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 89]
+Hanley                    Expires 24 April 2027                [Page 89]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5008,8 +5008,8 @@ Internet-Draft                   RSDGGS                     October 2026
    or MANET protocols, the Metricom prior art (4,939,726 and 5,115,433,
    both expired 2007 and 2009 respectively) predates any 2006-era
    geographic routing patent by 15+ years and establishes the core
-   concepts as public domain.  Independent verification at
-   patents.uspto.gov is still recommended.
+   concepts as public domain.  Independent verification at the USPTO
+   patent database (https://patents.uspto.gov) is still recommended.
 
 18.2.  Active Patents -- Detailed Analysis
 
@@ -5037,7 +5037,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 90]
+Hanley                    Expires 24 April 2027                [Page 90]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5093,7 +5093,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 91]
+Hanley                    Expires 24 April 2027                [Page 91]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5149,7 +5149,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 92]
+Hanley                    Expires 24 April 2027                [Page 92]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5205,7 +5205,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 93]
+Hanley                    Expires 24 April 2027                [Page 93]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5261,7 +5261,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 94]
+Hanley                    Expires 24 April 2027                [Page 94]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5317,7 +5317,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 95]
+Hanley                    Expires 24 April 2027                [Page 95]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5373,7 +5373,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 96]
+Hanley                    Expires 24 April 2027                [Page 96]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5429,7 +5429,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 97]
+Hanley                    Expires 24 April 2027                [Page 97]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5485,7 +5485,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 98]
+Hanley                    Expires 24 April 2027                [Page 98]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5541,7 +5541,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027                [Page 99]
+Hanley                    Expires 24 April 2027                [Page 99]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5597,7 +5597,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 100]
+Hanley                    Expires 24 April 2027               [Page 100]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5653,7 +5653,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 101]
+Hanley                    Expires 24 April 2027               [Page 101]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5709,7 +5709,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 102]
+Hanley                    Expires 24 April 2027               [Page 102]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5765,11 +5765,12 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 103]
+Hanley                    Expires 24 April 2027               [Page 103]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   <CODE BEGINS>
    #![no_std]
    #![no_implicit_prelude]
 
@@ -5802,6 +5803,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
    /// Unit vector on the unit sphere.
    type Vec3 = [f64; 3];
+   <CODE ENDS>
 
                                  Figure 49
 
@@ -5819,249 +5821,252 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-
-Hanley                    Expires 23 April 2027               [Page 104]
+Hanley                    Expires 24 April 2027               [Page 104]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-  /// Dodecahedron face center unit vectors, in RSDGGS face index order.
-  /// The two low-order bits of a face index give its ITU Region
-  /// (1, 2, 3), or 0 for none (Section 4.2).
-  const FACE_CENTERS: [Vec3; 12] = [
-      // face  0: Antarctica / New Zealand (60.00S, 153.50W)
-      [-0.447467180801013, -0.223098906554904, -0.866025403784439],
-      // face  1: Europe (Region 1) (60.00N, 26.50E)
-      [ 0.447467180801013,  0.223098906554904,  0.866025403784439],
-      // face  2: North America (Region 2) (39.60N, 79.28W)
-      [ 0.143335330773340, -0.757103386787452,  0.637377003559956],
-      // face  3: Asia (Region 3) (23.76N, 104.10E)
-      [-0.222927725022592,  0.887676795997717,  0.402905864022206],
-      // face  4: South Atlantic (54.80S, 1.18E)
-      [ 0.576250379942283,  0.011826692425747, -0.817187633877705],
-      // face  5: Africa / Middle East (Region 1) (1.89S, 44.32E)
-      [ 0.715023395428751,  0.698323830480811, -0.032944980985703],
-      // face  6: South America (Region 2) (23.76S, 75.90W)
-      [ 0.222927725022592, -0.887676795997717, -0.402905864022206],
-      // face  7: Eastern Australia (Region 3) (6.43S, 161.32E)
-      [-0.941386412734036,  0.318206226502688, -0.111966152629545],
-      // face  8: Southern Indian Ocean (39.60S, 100.72E)
-      [-0.143335330773340,  0.757103386787452, -0.637377003559956],
-      // face  9: West Africa (Region 1) (6.43N, 18.68W)
-      [ 0.941386412734036, -0.318206226502688,  0.111966152629545],
-      // face 10: Central Pacific (Region 2) (1.89N, 135.68W)
-      [-0.715023395428751, -0.698323830480811,  0.032944980985703],
-      // face 11: North Pacific (Region 3) (54.80N, 178.82W)
-      [-0.576250379942283, -0.011826692425747,  0.817187633877705],
-  ];
+   <CODE BEGINS>
+   /// Dodecahedron face center unit vectors, in RSDGGS face order.
+   /// The two low-order bits of a face index give its ITU Region
+   /// (1, 2, 3), or 0 for none (Section 4.2).
+   const FACE_CENTERS: [Vec3; 12] = [
+       // face  0: Antarctica / New Zealand (60.00S, 153.50W)
+       [-0.447467180801013, -0.223098906554904, -0.866025403784439],
+       // face  1: Europe (Region 1) (60.00N, 26.50E)
+       [ 0.447467180801013,  0.223098906554904,  0.866025403784439],
+       // face  2: North America (Region 2) (39.60N, 79.28W)
+       [ 0.143335330773340, -0.757103386787452,  0.637377003559956],
+       // face  3: Asia (Region 3) (23.76N, 104.10E)
+       [-0.222927725022592,  0.887676795997717,  0.402905864022206],
+       // face  4: South Atlantic (54.80S, 1.18E)
+       [ 0.576250379942283,  0.011826692425747, -0.817187633877705],
+       // face  5: Africa / Middle East (Region 1) (1.89S, 44.32E)
+       [ 0.715023395428751,  0.698323830480811, -0.032944980985703],
+       // face  6: South America (Region 2) (23.76S, 75.90W)
+       [ 0.222927725022592, -0.887676795997717, -0.402905864022206],
+       // face  7: Eastern Australia (Region 3) (6.43S, 161.32E)
+       [-0.941386412734036,  0.318206226502688, -0.111966152629545],
+       // face  8: Southern Indian Ocean (39.60S, 100.72E)
+       [-0.143335330773340,  0.757103386787452, -0.637377003559956],
+       // face  9: West Africa (Region 1) (6.43N, 18.68W)
+       [ 0.941386412734036, -0.318206226502688,  0.111966152629545],
+       // face 10: Central Pacific (Region 2) (1.89N, 135.68W)
+       [-0.715023395428751, -0.698323830480811,  0.032944980985703],
+       // face 11: North Pacific (Region 3) (54.80N, 178.82W)
+       [-0.576250379942283, -0.011826692425747,  0.817187633877705],
+   ];
 
-  /// Pentagon vertices per face, counter-clockwise as seen from outside
-  /// the sphere, starting at the smallest bearing from the face center.
-  /// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
-  const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
-      // face  0
-      [
-          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
-          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
-          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
-          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
-          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
-      ],
-      // face  1
-      [
-          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
-          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
-          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
-          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+   /// Pentagon vertices per face, counter-clockwise as seen from
+   /// outside the sphere, starting at the smallest bearing from the
+   /// face center.
+   /// Triangle k of a face is (center, v[k], v[(k+1) % 5]).
+   const FACE_PENTAGON_VERTS: [[Vec3; 5]; 12] = [
+       // face  0
+       [
+           [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+           [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+           [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+           [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+           [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+       ],
+       // face  1
+       [
+           [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+           [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
 
 
 
-Hanley                    Expires 23 April 2027               [Page 105]
+Hanley                    Expires 24 April 2027               [Page 105]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
-      ],
-      // face  2
-      [
-          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
-          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
-          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
-          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
-          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
-      ],
-      // face  3
-      [
-          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
-          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
-          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
-          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
-          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
-      ],
-      // face  4
-      [
-          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
-          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
-          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
-          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
-          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
-      ],
-      // face  5
-      [
-          [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
-          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
-          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
-          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
-          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
-      ],
-      // face  6
-      [
-          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
-          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
-          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
-          [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
-          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
-      ],
-      // face  7
-      [
-          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
-          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
-          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
-          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+           [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+           [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+           [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+       ],
+       // face  2
+       [
+           [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+           [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+           [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+           [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+           [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+       ],
+       // face  3
+       [
+           [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+           [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+           [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+           [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+           [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+       ],
+       // face  4
+       [
+           [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+           [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+           [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+           [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+           [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+       ],
+       // face  5
+       [
+           [ 0.394117982078212,  0.758862120210154,  0.518458579553611],
+           [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+           [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+           [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+           [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+       ],
+       // face  6
+       [
+           [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+           [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+           [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+           [ 0.147532013987386, -0.460975618311830, -0.875063302950622],
+           [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+       ],
+       // face  7
+       [
+           [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+           [-0.730113769942115,  0.500870240550808,  0.464825650186699],
 
 
 
-Hanley                    Expires 23 April 2027               [Page 106]
+Hanley                    Expires 24 April 2027               [Page 106]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
-      ],
-      // face  8
-      [
-          [-0.548519100282137,  0.823412974961158, -0.145319886083393],
-          [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
-          [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
-          [-0.006104175730659,  0.228959542245713, -0.973416800272773],
-          [-0.642706558944036,  0.357476419605567, -0.677597881133273],
-      ],
-      // face  9
-      [
-          [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
-          [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
-          [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
-          [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
-          [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
-      ],
-      // face 10
-      [
-          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
-          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
-          [-0.882512279371043, -0.253030942615585, -0.396418237267655],
-          [-0.394117982078212, -0.758862120210154, -0.518458579553611],
-          [-0.146294333698268, -0.982860725412106,  0.112172912818419],
-      ],
-      // face 11
-      [
-          [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
-          [-0.147532013987386,  0.460975618311830,  0.875063302950622],
-          [-0.730113769942115,  0.500870240550808,  0.464825650186699],
-          [-0.936532906629690, -0.164408687494709,  0.309638334635768],
-          [-0.481525193076291, -0.615468299264912,  0.623964951766360],
-      ],
-  ];
+           [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+           [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+           [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+       ],
+       // face  8
+       [
+           [-0.548519100282137,  0.823412974961158, -0.145319886083393],
+           [ 0.146294333698268,  0.982860725412106, -0.112172912818419],
+           [ 0.481525193076291,  0.615468299264912, -0.623964951766360],
+           [-0.006104175730659,  0.228959542245713, -0.973416800272773],
+           [-0.642706558944036,  0.357476419605567, -0.677597881133273],
+       ],
+       // face  9
+       [
+           [ 0.882512279371043,  0.253030942615585,  0.396418237267655],
+           [ 0.642706558944036, -0.357476419605567,  0.677597881133273],
+           [ 0.548519100282137, -0.823412974961158,  0.145319886083393],
+           [ 0.730113769942115, -0.500870240550808, -0.464825650186699],
+           [ 0.936532906629690,  0.164408687494709, -0.309638334635768],
+       ],
+       // face 10
+       [
+           [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+           [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+           [-0.882512279371043, -0.253030942615585, -0.396418237267655],
+           [-0.394117982078212, -0.758862120210154, -0.518458579553611],
+           [-0.146294333698268, -0.982860725412106,  0.112172912818419],
+       ],
+       // face 11
+       [
+           [ 0.006104175730659, -0.228959542245713,  0.973416800272773],
+           [-0.147532013987386,  0.460975618311830,  0.875063302950622],
+           [-0.730113769942115,  0.500870240550808,  0.464825650186699],
+           [-0.936532906629690, -0.164408687494709,  0.309638334635768],
+           [-0.481525193076291, -0.615468299264912,  0.623964951766360],
+       ],
+   ];
 
-  /// Subdivision child indices (2 bits each).
-  /// 0b00 = apex child (toward face center apex of parent triangle)
-  /// 0b01 = left base child
-  /// 0b10 = right base child
-  /// 0b11 = central inverted child
-  const CHILD_APEX:    u8 = 0b00;
-  const CHILD_LEFT:    u8 = 0b01;
-  const CHILD_RIGHT:   u8 = 0b10;
-  const CHILD_CENTRAL: u8 = 0b11;
-
-                                Figure 50
-
+   /// Subdivision child indices (2 bits each).
+   /// 0b00 = apex child (toward face center apex of parent triangle)
+   /// 0b01 = left base child
+   /// 0b10 = right base child
+   /// 0b11 = central inverted child
+   const CHILD_APEX:    u8 = 0b00;
+   const CHILD_LEFT:    u8 = 0b01;
+   const CHILD_RIGHT:   u8 = 0b10;
+   const CHILD_CENTRAL: u8 = 0b11;
+   <CODE ENDS>
 
 
 
-Hanley                    Expires 23 April 2027               [Page 107]
+Hanley                    Expires 24 April 2027               [Page 107]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+                                 Figure 50
 
 19.3.  Coordinate Conversion Primitives
 
-  /// Convert WGS-84 decimal degrees to unit Cartesian vector.
-  /// lat in [-90.0, +90.0], lon in [-180.0, +180.0].
-  #[inline]
-  fn to_cart(lat: f64, lon: f64) -> Vec3 {
-      let phi = lat.to_radians();     // elevation angle from equator
-      let lam = lon.to_radians();     // azimuth from prime meridian
-      let cos_phi = phi.cos();
-      [cos_phi * lam.cos(),
-       cos_phi * lam.sin(),
-       phi.sin()]
-  }
+   <CODE BEGINS>
+   /// Convert WGS-84 decimal degrees to unit Cartesian vector.
+   /// lat in [-90.0, +90.0], lon in [-180.0, +180.0].
+   #[inline]
+   fn to_cart(lat: f64, lon: f64) -> Vec3 {
+       let phi = lat.to_radians();     // elevation angle from equator
+       let lam = lon.to_radians();     // azimuth from prime meridian
+       let cos_phi = phi.cos();
+       [cos_phi * lam.cos(),
+        cos_phi * lam.sin(),
+        phi.sin()]
+   }
 
-  /// Dot product of two unit vectors.
-  #[inline]
-  fn dot(a: Vec3, b: Vec3) -> f64 {
-      a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
-  }
+   /// Dot product of two unit vectors.
+   #[inline]
+   fn dot(a: Vec3, b: Vec3) -> f64 {
+       a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
+   }
 
-  /// Cross product of two vectors.
-  #[inline]
-  fn cross(a: Vec3, b: Vec3) -> Vec3 {
-      [a[1]*b[2] - a[2]*b[1],
-       a[2]*b[0] - a[0]*b[2],
-       a[0]*b[1] - a[1]*b[0]]
-  }
+   /// Cross product of two vectors.
+   #[inline]
+   fn cross(a: Vec3, b: Vec3) -> Vec3 {
+       [a[1]*b[2] - a[2]*b[1],
+        a[2]*b[0] - a[0]*b[2],
+        a[0]*b[1] - a[1]*b[0]]
+   }
 
-  /// Normalize a vector to unit length.
-  #[inline]
-  fn normalize(v: Vec3) -> Vec3 {
-      let len = (v[0]*v[0] + v[1]*v[1] + v[2]*v[2]).sqrt();
-      [v[0]/len, v[1]/len, v[2]/len]
-  }
+   /// Normalize a vector to unit length.
+   #[inline]
+   fn normalize(v: Vec3) -> Vec3 {
+       let len = (v[0]*v[0] + v[1]*v[1] + v[2]*v[2]).sqrt();
+       [v[0]/len, v[1]/len, v[2]/len]
+   }
 
-  /// Spherical midpoint (normalized mean) of two unit vectors.
-  /// Used at each subdivision level to find child triangle vertices.
-  #[inline]
-  fn sph_mid(a: Vec3, b: Vec3) -> Vec3 {
-      normalize([a[0]+b[0], a[1]+b[1], a[2]+b[2]])
-  }
+   /// Spherical midpoint (normalized mean) of two unit vectors.
+   /// Used at each subdivision level to find child triangle vertices.
+   #[inline]
+   fn sph_mid(a: Vec3, b: Vec3) -> Vec3 {
+       normalize([a[0]+b[0], a[1]+b[1], a[2]+b[2]])
+   }
 
-  /// Sign of the scalar triple product [(a x b) . p].
-  /// Positive if p is on the left side (CCW) of the arc a->b.
-  #[inline]
-  fn signed_angle(p: Vec3, a: Vec3, b: Vec3) -> f64 {
-      dot(cross(a, b), p)
-  }
+   /// Sign of the scalar triple product [(a x b) . p].
+   /// Positive if p is on the left side (CCW) of the arc a->b.
+   #[inline]
 
 
 
-Hanley                    Expires 23 April 2027               [Page 108]
+Hanley                    Expires 24 April 2027               [Page 108]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-  /// Test whether point p lies within the spherical triangle (a, b, c).
-  /// The winding of (a, b, c) must be consistent (all CCW or all CW).
-  #[inline]
-  fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -> bool {
-      let s1 = signed_angle(p, a, b);
-      let s2 = signed_angle(p, b, c);
-      let s3 = signed_angle(p, c, a);
-      (s1 > 0.0 && s2 > 0.0 && s3 > 0.0)
-      || (s1 < 0.0 && s2 < 0.0 && s3 < 0.0)
-  }
+   fn signed_angle(p: Vec3, a: Vec3, b: Vec3) -> f64 {
+       dot(cross(a, b), p)
+   }
 
-                                Figure 51
+   /// Test whether point p lies in the spherical triangle (a, b, c).
+   /// The winding of (a, b, c) must be consistent (all CCW or all CW).
+   #[inline]
+   fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -> bool {
+       let s1 = signed_angle(p, a, b);
+       let s2 = signed_angle(p, b, c);
+       let s3 = signed_angle(p, c, a);
+       (s1 > 0.0 && s2 > 0.0 && s3 > 0.0)
+       || (s1 < 0.0 && s2 < 0.0 && s3 < 0.0)
+   }
+   <CODE ENDS>
+
+                                 Figure 51
 
 19.4.  Face Assignment
 
@@ -6072,27 +6077,6 @@ Internet-Draft                   RSDGGS                     October 2026
    requires no table lookup or coordinate transformation beyond the
    initial Cartesian conversion.
 
-/// Return the RSDGGS face index [0..11] for a WGS-84 coordinate.
-pub fn face_for(ll: LatLon) -> u8 {
-    let p = to_cart(ll.lat, ll.lon);
-    let mut best_face = 0u8;
-    let mut best_dot  = f64::NEG_INFINITY;
-    for (i, &fc) in FACE_CENTERS.iter().enumerate() {
-        let d = dot(p, fc);
-        if d > best_dot {
-            best_dot  = d;
-            best_face = i as u8;
-        }
-    }
-    best_face
-}
-
-// NOTE: On devices without FPU, replace dot() with a 32-bit fixed-point
-// dot product using Q2.30 format. The FACE_CENTERS values are all in
-// [-1.0, +1.0], representable exactly in Q2.30. The comparison requires
-// only finding the maximum of 12 products -- no sqrt, no trig.
-
-                              Figure 52
 
 
 
@@ -6101,10 +6085,51 @@ pub fn face_for(ll: LatLon) -> u8 {
 
 
 
-Hanley                    Expires 23 April 2027               [Page 109]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 24 April 2027               [Page 109]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+   <CODE BEGINS>
+   /// Return the RSDGGS face index [0..11] for a WGS-84 coordinate.
+   pub fn face_for(ll: LatLon) -> u8 {
+       let p = to_cart(ll.lat, ll.lon);
+       let mut best_face = 0u8;
+       let mut best_dot  = f64::NEG_INFINITY;
+       for (i, &fc) in FACE_CENTERS.iter().enumerate() {
+           let d = dot(p, fc);
+           if d > best_dot {
+               best_dot  = d;
+               best_face = i as u8;
+           }
+       }
+       best_face
+   }
+
+   // NOTE: On devices without FPU, replace dot() with a 32-bit
+   // fixed-point dot product using Q2.30 format. The FACE_CENTERS
+   // values are all in [-1.0, +1.0], representable exactly in Q2.30.
+   // The comparison requires only finding the maximum of 12 products
+   // -- no sqrt, no trig.
+   <CODE ENDS>
+
+                                 Figure 52
 
 19.5.  Pentagon Sector Assignment
 
@@ -6119,6 +6144,25 @@ Internet-Draft                   RSDGGS                     October 2026
    found by testing the query point against each of the 5 spherical
    triangles (face_center, pv[i], pv[(i+1)%5]).
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 24 April 2027               [Page 110]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   <CODE BEGINS>
    /// Pentagon vertices for each RSDGGS face.
    /// PENTAGON_VERTS[face][sector] = unit vector of pentagon vertex.
    /// Vertices ordered CCW when viewed from outside the sphere.
@@ -6153,14 +6197,7 @@ Internet-Draft                   RSDGGS                     October 2026
        // (boundary points are vanishingly rare in practice)
        0
    }
-
-
-
-
-Hanley                    Expires 23 April 2027               [Page 110]
-
-Internet-Draft                   RSDGGS                     October 2026
-
+   <CODE ENDS>
 
                                  Figure 53
 
@@ -6172,6 +6209,15 @@ Internet-Draft                   RSDGGS                     October 2026
    the point is identified by the spherical containment test and its
    2-bit index is recorded.
 
+
+
+
+
+Hanley                    Expires 24 April 2027               [Page 111]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    The tangent-frame projection used in the reference encoder
    (projecting onto the north/east tangent plane at the face center) is
    replaced here by exact spherical triangle subdivision.  The spherical
@@ -6179,73 +6225,75 @@ Internet-Draft                   RSDGGS                     October 2026
    sphere, eliminating distortion accumulation across subdivision
    levels.
 
- /// Recursive subdivision state: current triangle vertices.
- #[derive(Copy, Clone)]
- struct Triangle {
-     apex:  Vec3,   // top vertex (toward face center at level 0)
-     left:  Vec3,   // left base vertex
-     right: Vec3,   // right base vertex
-     inv:   bool,   // true if this is an inverted (central) child
- }
+   <CODE BEGINS>
+   /// Recursive subdivision state: current triangle vertices.
+   #[derive(Copy, Clone)]
+   struct Triangle {
+       apex:  Vec3,   // top vertex (toward face center at level 0)
+       left:  Vec3,   // left base vertex
+       right: Vec3,   // right base vertex
+       inv:   bool,   // true if this is an inverted (central) child
+   }
 
- /// Subdivide triangle into 4 children and return the one
- /// containing point p, plus the 2-bit child index.
- fn subdivide(tri: Triangle, p: Vec3) -> (Triangle, u8) {
-     let m_al = sph_mid(tri.apex, tri.left);   // midpoint apex-left
-     let m_ar = sph_mid(tri.apex, tri.right);  // midpoint apex-right
-     let m_lr = sph_mid(tri.left, tri.right);  // midpoint left-right
+   /// Subdivide triangle into 4 children and return the one
+   /// containing point p, plus the 2-bit child index.
+   fn subdivide(tri: Triangle, p: Vec3) -> (Triangle, u8) {
+       let m_al = sph_mid(tri.apex, tri.left);   // midpoint apex-left
+       let m_ar = sph_mid(tri.apex, tri.right);  // midpoint apex-right
+       let m_lr = sph_mid(tri.left, tri.right);  // midpoint left-right
 
-     // Child triangles (consistent CCW winding):
-     let apex_child = Triangle {
-         apex: tri.apex, left: m_al, right: m_ar, inv: false
-     };
-     let left_child = Triangle {
-         apex: m_al, left: tri.left, right: m_lr, inv: false
-     };
-     let right_child = Triangle {
-         apex: m_ar, left: m_lr, right: tri.right, inv: false
-     };
-     let central_child = Triangle {
-         apex: m_lr, left: m_ar, right: m_al, inv: true  // inverted
-     };
+       // Child triangles (consistent CCW winding):
+       let apex_child = Triangle {
+           apex: tri.apex, left: m_al, right: m_ar, inv: false
+       };
+       let left_child = Triangle {
+           apex: m_al, left: tri.left, right: m_lr, inv: false
+       };
+       let right_child = Triangle {
+           apex: m_ar, left: m_lr, right: tri.right, inv: false
+       };
+       let central_child = Triangle {
+           apex: m_lr, left: m_ar, right: m_al, inv: true  // inverted
+       };
 
-     // Test containment in order: apex, left, right, central.
+       // Test containment in order: apex, left, right, central.
+       // Central is last: it contains any point not in the other three.
+       if in_sph_tri(p, ac.apex, ac.left, ac.right) {
+           return (apex_child, CHILD_APEX);
+       }
+       if in_sph_tri(p, lc.apex, lc.left, lc.right) {
+           return (left_child, CHILD_LEFT);
+       }
+       if in_sph_tri(p, rc.apex, rc.left, rc.right) {
+           return (right_child, CHILD_RIGHT);
 
 
 
-Hanley                    Expires 23 April 2027               [Page 111]
+Hanley                    Expires 24 April 2027               [Page 112]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     // Central is last -- it contains any point not in the other three.
-     if in_sph_tri(p, ac.apex, ac.left, ac.right) {
-         return (apex_child, CHILD_APEX);
-     }
-     if in_sph_tri(p, lc.apex, lc.left, lc.right) {
-         return (left_child, CHILD_LEFT);
-     }
-     if in_sph_tri(p, rc.apex, rc.left, rc.right) {
-         return (right_child, CHILD_RIGHT);
-     }
-     (central_child, CHILD_CENTRAL)
- }
+       }
+       (central_child, CHILD_CENTRAL)
+   }
 
- /// Return the initial triangle for a face + sector.
- /// apex = face center, left/right = adjacent pentagon vertices.
- fn initial_triangle(face: u8, sector: u8) -> Triangle {
-     let fc   = FACE_CENTERS[face as usize];
-     let pvs  = &PENTAGON_VERTS[face as usize];
-     let s    = sector as usize;
-     Triangle {
-         apex:  fc,
-         left:  pvs[s],
-         right: pvs[(s + 1) % 5],
-         inv:   false,
-     }
- }
+   /// Return the initial triangle for a face + sector.
+   /// apex = face center, left/right = adjacent pentagon vertices.
+   fn initial_triangle(face: u8, sector: u8) -> Triangle {
+       let fc   = FACE_CENTERS[face as usize];
+       let pvs  = &PENTAGON_VERTS[face as usize];
+       let s    = sector as usize;
+       Triangle {
+           apex:  fc,
+           left:  pvs[s],
+           right: pvs[(s + 1) % 5],
+           inv:   false,
+       }
+   }
+   <CODE ENDS>
 
-                               Figure 54
+                                 Figure 54
 
 19.7.  Top-Level Encode Function
 
@@ -6255,80 +6303,70 @@ Internet-Draft                   RSDGGS                     October 2026
    carries the 4-bit sector and 2 subdivision levels, and each
    additional byte adds 4 subdivision levels (2 bits per level).
 
- /// Encode a WGS-84 coordinate as an RSDGGS cell index.
- ///
- /// # Arguments
- /// * \x60ll\x60  -- latitude/longitude in decimal degrees (WGS-84)
- /// * \x60len\x60 -- desired index length in bytes, 1..=8
- ///
- /// # Returns
- /// An RsdggsCell with the first \x60len\x60 bytes populated.
- /// Remaining bytes are zero.
- pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
-     debug_assert!(len >= 1 && len <= 8);
+   <CODE BEGINS>
+   /// Encode a WGS-84 coordinate as an RSDGGS cell index.
+   ///
+   /// # Arguments
+   /// * \x60ll\x60  -- latitude/longitude in decimal degrees (WGS-84)
+   /// * \x60len\x60 -- desired index length in bytes, 1..=8
+   ///
+   /// # Returns
+   /// An RsdggsCell with the first \x60len\x60 bytes populated.
+   /// Remaining bytes are zero.
+   pub fn encode(ll: LatLon, len: u8) -> RsdggsCell {
+       debug_assert!(len >= 1 && len <= 8);
+       debug_assert!(ll.lat >= -90.0 && ll.lat <= 90.0);
+       debug_assert!(ll.lon >= -180.0 && ll.lon <= 180.0);
+
+       let mut cell = RsdggsCell { bytes: [0u8; 8], len };
+       let p = to_cart(ll.lat, ll.lon);
+
+       // -- Byte 0: face index ---------------------------------------
 
 
 
-Hanley                    Expires 23 April 2027               [Page 112]
+Hanley                    Expires 24 April 2027               [Page 113]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     debug_assert!(ll.lat >= -90.0 && ll.lat <= 90.0);
-     debug_assert!(ll.lon >= -180.0 && ll.lon <= 180.0);
+       let face = face_for(ll);
+       cell.bytes[0] = face;
+       if len == 1 { return cell; }
 
-     let mut cell = RsdggsCell { bytes: [0u8; 8], len };
-     let p = to_cart(ll.lat, ll.lon);
+       // -- Byte 1 [7:4]: pentagon sector ----------------------------
+       let sector = sector_for(face, p);
+       // Byte 1 layout:
+       //   bits [7:4]  sector (4 bits, values 0-4; 5-15 reserved)
+       //   bits [3:2]  subdiv level 1
+       //   bits [1:0]  subdiv level 2
+       // Bytes 2..len hold 4 levels each.
+       let sub_levels = 2 + (len as usize - 2) * 4;
 
-     // -- Byte 0: face index ------------------------------------------
-     let face = face_for(ll);
-     cell.bytes[0] = face;
-     if len == 1 { return cell; }
+       let mut tri = initial_triangle(face, sector);
+       let mut sub_bits = [0u8; 26];  // max 26 subdivision levels
 
-     // -- Byte 1 [7:4]: pentagon sector -------------------------------
-     let sector = sector_for(face, p);
-     // Byte 1 layout:
-     //   bits [7:4]  sector (4 bits, values 0-4; 5-15 reserved)
-     //   bits [3:2]  subdiv level 1
-     //   bits [1:0]  subdiv level 2
-     // Bytes 2..len hold 4 levels each.
-     let sub_levels = 2 + (len as usize - 2) * 4;
+       for level in 0..sub_levels {
+           let (child_tri, child_idx) = subdivide(tri, p);
+           sub_bits[level] = child_idx;
+           tri = child_tri;
+       }
 
-     let mut tri = initial_triangle(face, sector);
-     let mut sub_bits = [0u8; 26];  // max 26 subdivision levels
+       // Sector then levels, MSB first: exactly 8 * (len - 1) bits,
+       // filling bytes 1..len with no remainder.
+       let mut bits: u64 = sector as u64;
+       for level in 0..sub_levels {
+           bits = (bits << 2) | sub_bits[level] as u64;
+       }
+       for b in 1..len as usize {
+           cell.bytes[b] = (bits >> (8 * (len as usize - 1 - b))) as u8;
+       }
 
-     for level in 0..sub_levels {
-         let (child_tri, child_idx) = subdivide(tri, p);
-         sub_bits[level] = child_idx;
-         tri = child_tri;
-     }
+       cell
+   }
+   <CODE ENDS>
 
-     // Sector then levels, MSB first: exactly 8 * (len - 1) bits,
-     // filling bytes 1..len with no remainder.
-     let mut bits: u64 = sector as u64;
-     for level in 0..sub_levels {
-         bits = (bits << 2) | sub_bits[level] as u64;
-     }
-     for b in 1..len as usize {
-         cell.bytes[b] = (bits >> (8 * (len as usize - 1 - b))) as u8;
-     }
-
-     cell
- }
-
-                               Figure 55
-
-
-
-
-
-
-
-
-Hanley                    Expires 23 April 2027               [Page 113]
-
-Internet-Draft                   RSDGGS                     October 2026
-
+                                 Figure 55
 
 19.8.  Decode Function
 
@@ -6339,54 +6377,70 @@ Internet-Draft                   RSDGGS                     October 2026
    recovery (computing the cell center) is a separate operation not
    required for regulatory compliance.
 
-/// Decoded RSDGGS cell contents.
-#[derive(Debug)]
-pub struct DecodedCell {
-    pub face:       u8,
-    pub sector:     u8,
-    pub sub_bits:   [u8; 26],  // 2 bits each, packed as 0b00..0b11
-    pub sub_levels: usize,
-}
-
-pub fn decode(cell: &RsdggsCell) -> DecodedCell {
-    let face   = cell.bytes[0] & 0x0F;
-    let len    = cell.len as usize;
-
-    if len == 1 {
-        return DecodedCell { face, sector: 0,
-                             sub_bits: [0u8; 26], sub_levels: 0 };
-    }
-
-    let sector = cell.bytes[1] >> 4;            // 5-15 reserved: reject
-
-    // Extract sub_bits from byte 1 [3:0] and bytes 2..len
-    let mut sub_bits = [0u8; 26];
-    let sub_levels = 2 + (len - 2) * 4;
-
-    sub_bits[0] = (cell.bytes[1] >> 2) & 0x03;
-    sub_bits[1] =  cell.bytes[1]       & 0x03;
-
-    let mut sl = 2usize;
-    for b in 2..len {
-        sub_bits[sl    ] = (cell.bytes[b] >> 6) & 0x03;
-        sub_bits[sl + 1] = (cell.bytes[b] >> 4) & 0x03;
-        sub_bits[sl + 2] = (cell.bytes[b] >> 2) & 0x03;
-        sub_bits[sl + 3] = (cell.bytes[b]     ) & 0x03;
-        sl += 4;
-    }
-
-    DecodedCell { face, sector, sub_bits, sub_levels }
-}
 
 
 
 
-Hanley                    Expires 23 April 2027               [Page 114]
+Hanley                    Expires 24 April 2027               [Page 114]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-                              Figure 56
+   <CODE BEGINS>
+   /// Decoded RSDGGS cell contents.
+   #[derive(Debug)]
+   pub struct DecodedCell {
+       pub face:       u8,
+       pub sector:     u8,
+       pub sub_bits:   [u8; 26],  // 2 bits each, packed as 0b00..0b11
+       pub sub_levels: usize,
+   }
+
+   pub fn decode(cell: &RsdggsCell) -> DecodedCell {
+       let face   = cell.bytes[0] & 0x0F;
+       let len    = cell.len as usize;
+
+       if len == 1 {
+           return DecodedCell { face, sector: 0,
+                                sub_bits: [0u8; 26], sub_levels: 0 };
+       }
+
+       let sector = cell.bytes[1] >> 4;   // 5-15 reserved: reject
+
+       // Extract sub_bits from byte 1 [3:0] and bytes 2..len
+       let mut sub_bits = [0u8; 26];
+       let sub_levels = 2 + (len - 2) * 4;
+
+       sub_bits[0] = (cell.bytes[1] >> 2) & 0x03;
+       sub_bits[1] =  cell.bytes[1]       & 0x03;
+
+       let mut sl = 2usize;
+       for b in 2..len {
+           sub_bits[sl    ] = (cell.bytes[b] >> 6) & 0x03;
+           sub_bits[sl + 1] = (cell.bytes[b] >> 4) & 0x03;
+           sub_bits[sl + 2] = (cell.bytes[b] >> 2) & 0x03;
+           sub_bits[sl + 3] = (cell.bytes[b]     ) & 0x03;
+           sl += 4;
+       }
+
+       DecodedCell { face, sector, sub_bits, sub_levels }
+   }
+   <CODE ENDS>
+
+                                 Figure 56
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 24 April 2027               [Page 115]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 19.9.  Boundary Proximity Helper
 
@@ -6437,11 +6491,14 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 115]
+
+
+Hanley                    Expires 24 April 2027               [Page 116]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   <CODE BEGINS>
    /// Regulatory band identifier.
    #[repr(u8)]
    #[derive(Copy, Clone, Debug)]
@@ -6472,7 +6529,7 @@ Internet-Draft                   RSDGGS                     October 2026
    /// Apply adaptive power reduction based on boundary proximity.
    /// Returns the adjusted maximum EIRP in dBm.
    pub fn boundary_power_dbm(rule: &RuleSet, nbr_pwr: i8) -> i8 {
-       let p_max = rule.power_dbm.min(neighbor_power_dbm);
+       let p_max = core::cmp::min(rule.power_dbm, nbr_pwr);
        let reduction_db: i8 = match rule.boundary_prox {
            0 => {
                // On boundary: use neighbor power if more restrictive
@@ -6485,15 +6542,14 @@ Internet-Draft                   RSDGGS                     October 2026
        };
        rule.power_dbm - reduction_db
    }
+   <CODE ENDS>
 
                                  Figure 57
 
 
 
 
-
-
-Hanley                    Expires 23 April 2027               [Page 116]
+Hanley                    Expires 24 April 2027               [Page 117]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6504,52 +6560,52 @@ Internet-Draft                   RSDGGS                     October 2026
    implementation.  Implementations MUST produce identical byte values
    for this input to be considered conformant.
 
-// Input:
-//   latitude  =  37.7749 N  (San Francisco, CA, USA)
-//   longitude = 122.4194 W
-//   length    = 4 bytes
+   <CODE BEGINS>
+   // Input:
+   //   latitude  =  37.7749 N  (San Francisco, CA, USA)
+   //   longitude = 122.4194 W
+   //   length    = 4 bytes
 
-let sf = LatLon { lat: 37.7749, lon: -122.4194 };
-let cell = encode(sf, 4);
+   let sf = LatLon { lat: 37.7749, lon: -122.4194 };
+   let cell = encode(sf, 4);
 
-// Expected output:
-//   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
-//   cell.bytes[1] = 0x25   sector 2 [7:4]=0010; sub_bits[0]=1 [3:2]=01;
-//                          sub_bits[1]=1 [1:0]=01
-//   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
-//   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
-//   cell.len      = 4
+   // Expected output:
+   //   cell.bytes[0] = 0x02   face 2 (ITU Region 2, N. America)
+   //   cell.bytes[1] = 0x25   sector 2 [7:4]=0010;
+   //                          sub_bits[0]=1 [3:2]=01;
+   //                          sub_bits[1]=1 [1:0]=01
+   //   cell.bytes[2] = 0xE0   sub_bits[2..6]: 0b11 0b10 0b00 0b00
+   //   cell.bytes[3] = 0xC3   sub_bits[6..10]: 0b11 0b00 0b00 0b11
+   //   cell.len      = 4
 
-assert_eq!(cell.bytes[0], 0x02);
-assert_eq!(cell.bytes[1], 0x25);
-assert_eq!(cell.bytes[2], 0xE0);
-assert_eq!(cell.bytes[3], 0xC3);
-assert_eq!(cell.len,      4);
+   assert_eq!(cell.bytes[0], 0x02);
+   assert_eq!(cell.bytes[1], 0x25);
+   assert_eq!(cell.bytes[2], 0xE0);
+   assert_eq!(cell.bytes[3], 0xC3);
+   assert_eq!(cell.len,      4);
 
-// Verify face lookup for additional reference points:
-//   London    (51.51N,   0.13W) -> face 1  (ITU Region 1, Europe)
-//   Tokyo     (35.68N, 139.69E) -> face 3  (ITU Region 3, Asia)
-//   Beijing   (39.91N, 116.39E) -> face 3  (ITU Region 3, Asia)
-//   Sao Paulo (23.55S,  46.63W) -> face 6  (ITU Region 2, S. America)
-//   Sydney    (33.87S, 151.21E) -> face 7  (Region 3, E. Australia)
-//
-// Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
-// is on face 11 (North Pacific). Both faces carry Region 3 in their
-// low two bits (3 & 0x3 = 11 & 0x3 = 3).
+   // Verify face lookup for additional reference points:
+   //   London    (51.51N,   0.13W) -> face 1  (ITU Region 1, Europe)
+   //   Tokyo     (35.68N, 139.69E) -> face 3  (ITU Region 3, Asia)
+   //   Beijing   (39.91N, 116.39E) -> face 3  (ITU Region 3, Asia)
+   //   Sao Paulo (23.55S,  46.63W) -> face 6  (ITU Region 2, S. Amer.)
+   //   Sydney    (33.87S, 151.21E) -> face 7  (Region 3, E. Australia)
+   //
+   // Note: Tokyo is 1.3 degrees inside face 3; Sapporo, further north,
+   // is on face 11 (North Pacific). Both faces carry Region 3 in their
+   // low two bits (3 & 0x3 = 11 & 0x3 = 3).
 
-// 1-byte truncation (privacy / regulatory coarse lookup):
-let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
-// A 1-byte index encodes only the face (ITU Region 2).
-// Sufficient to determine that 902-928 MHz is legal at this location.
+   // 1-byte truncation (privacy / regulatory coarse lookup):
+   let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
+   // A 1-byte index encodes only the face (ITU Region 2).
+   // Enough to determine that 902-928 MHz is legal at this location.
+   <CODE ENDS>
 
-                              Figure 58
-
-
-
-
+                                 Figure 58
 
 
-Hanley                    Expires 23 April 2027               [Page 117]
+
+Hanley                    Expires 24 April 2027               [Page 118]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6605,7 +6661,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 118]
+Hanley                    Expires 24 April 2027               [Page 119]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6661,7 +6717,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 119]
+Hanley                    Expires 24 April 2027               [Page 120]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6717,7 +6773,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 120]
+Hanley                    Expires 24 April 2027               [Page 121]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6773,7 +6829,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 23 April 2027               [Page 121]
+Hanley                    Expires 24 April 2027               [Page 122]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6829,4 +6885,4 @@ Author's Address
 
 
 
-Hanley                    Expires 23 April 2027               [Page 122]
+Hanley                    Expires 24 April 2027               [Page 123]
