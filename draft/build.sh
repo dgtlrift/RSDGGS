@@ -12,7 +12,7 @@
 set -eu
 cd "$(dirname "$0")"
 
-name=draft-hanley-rsdggs-00
+name=draft-hanley-rsdggs-01
 tools=.tools
 rfcxml=02dd49434445ca0498a13baf904109478251bdd7
 mkdir -p "$tools"

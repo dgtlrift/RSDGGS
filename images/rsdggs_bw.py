@@ -39,7 +39,7 @@ import rsdggs_net_page2 as fig2
 from rsdggs_net_page1 import MARGIN, PAGE_H, PAGE_W
 
 OUT = fig1.HERE / "bw"
-DRAFT = fig1.HERE.parent / "draft" / "draft-hanley-rsdggs-00.xml"
+DRAFT = fig1.HERE.parent / "draft" / "draft-hanley-rsdggs-01.xml"
 PT = 25.4 / 72                    # millimetres per point
 
 # Hatching per band class (rsdggs_net_page1.band_class): (angle in degrees, ...); "dots".

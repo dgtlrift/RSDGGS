@@ -9,7 +9,7 @@ Expires: 24 April 2027
 
 
         Regulatory Spectrum Discrete Global Grid System (RSDGGS)
-                         draft-hanley-rsdggs-00
+                         draft-hanley-rsdggs-01
 
 Abstract
 

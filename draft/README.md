@@ -1,12 +1,12 @@
-# draft-hanley-rsdggs-00
+# draft-hanley-rsdggs-01
 
-`draft-hanley-rsdggs-00.xml` is the xml2rfc v3 source of the Internet-Draft and the master copy: edit the draft here, and generate every other format (text, HTML, PDF) from it. The pre-draft docx is retired. Build the renderings with:
+`draft-hanley-rsdggs-01.xml` is the xml2rfc v3 source of the Internet-Draft and the master copy: edit the draft here, and generate every other format (text, HTML, PDF) from it. The pre-draft docx is retired. Build the renderings with:
 
 ```sh
 draft/build.sh
 ```
 
-It validates the XML against the RFCXML schema ([`rfc7991bis.rnc`](https://github.com/ietf-tools/RFCXML)) and runs [svgcheck](https://github.com/ietf-tools/svgcheck). It then writes `draft-hanley-rsdggs-00.txt` and `.html` with [xml2rfc](https://github.com/ietf-tools/xml2rfc), and `.docx` with LibreOffice from the HTML (`docx.py` cleans up the conversion). The tools are pinned in `build.sh` and installed into `draft/.tools` on first run; it needs Python 3, Java and LibreOffice. The renderings are committed for convenience; rebuild them whenever the XML changes, and never edit them by hand.
+It validates the XML against the RFCXML schema ([`rfc7991bis.rnc`](https://github.com/ietf-tools/RFCXML)) and runs [svgcheck](https://github.com/ietf-tools/svgcheck). It then writes `draft-hanley-rsdggs-01.txt` and `.html` with [xml2rfc](https://github.com/ietf-tools/xml2rfc), and `.docx` with LibreOffice from the HTML (`docx.py` cleans up the conversion). The tools are pinned in `build.sh` and installed into `draft/.tools` on first run; it needs Python 3, Java and LibreOffice. The renderings are committed for convenience; rebuild them whenever the XML changes, and never edit them by hand.
 
 The draft's `<date>` gives only the year, so each build is dated the day it runs, as an Internet-Draft submission is.
 
@@ -16,5 +16,6 @@ History of this file. RSDGGS was in a pre-draft phase until this file: the June 
 2. The 4-bit triangle selector change (sections 4.4, 5, 7, 13.2, 14, 17.2 and 18), including the section 5.2 table.
 3. The tables and lists restored from the last pre-draft docx (`draft-rsdggs-informational-00_10.docx`), copied as they were. The docx repeats the section 4.1.3 table; it appears once here. The export had replaced the section 16.11 table with a two-column ASCII summary and dropped the section's two closing paragraphs; both are restored.
 4. Renamed from the working title to `draft-hanley-rsdggs-00`, following the `draft-<surname>-<topic>` convention for individual drafts.
+5. `draft-hanley-rsdggs-00` was posted to the IETF on 2026-10-20 ([datatracker](https://datatracker.ietf.org/doc/draft-hanley-rsdggs/)), before the idnits fixes (PR #10) and the corrected Face 2 orientation in the CN101923801B comparison (PR #11) reached main. A posted revision cannot be replaced, so the file was renamed to `draft-hanley-rsdggs-01`, the next revision to submit.
 
 The two figures (Figure 1, the dodecahedron net, and Figure 2, its reference key) are images. The draft links to them in `images/` (`rsdggs_net_page1.png` and `.svg`, `rsdggs_net_page2.png` and `.svg`) instead of embedding them: they are in colour, and the RFC SVG profile (RFC 7996) allows only black and white. Both are drawn by scripts next to them, `images/rsdggs_net_page1.py` and `images/rsdggs_net_page2.py` (matplotlib), which write the PNG and an all-vector SVG; edit a script and re-run it rather than editing the output. `images/rsdggs_faces.py` draws the twelve faces one per page (`images/faces/rsdggs_face_00.svg` to `_11.svg`) for building a larger model; each edge is labelled with its face and triangle, and each glue tab names the edge it goes under. Figure 1 reads the face geometry from `src/constants.rs` and needs `numpy` and `shapely`; it downloads Natural Earth 5.1.2 country outlines once into `images/.cache/`.

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="info"
-     docName="draft-hanley-rsdggs-00"
+     docName="draft-hanley-rsdggs-01"
      ipr="trust200902"
      submissionType="independent"
      xml:lang="en"
      version="3">
   <front>
     <title abbrev="RSDGGS">Regulatory Spectrum Discrete Global Grid System (RSDGGS)</title>
-    <seriesInfo name="Internet-Draft" value="draft-hanley-rsdggs-00"/>
+    <seriesInfo name="Internet-Draft" value="draft-hanley-rsdggs-01"/>
     <author fullname="James Patrick Hanley" initials="J.P." surname="Hanley">
       <organization>Myelin Networks LLC</organization>
       <address><email>James.Hanley@DGtlRift.com</email></address>
