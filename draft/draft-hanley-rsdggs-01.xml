@@ -1704,7 +1704,8 @@ Enhanced Beacon Frame (abbreviated):
           <name>Geographic Greedy Forwarding</name>
           <t>A forwarder holding an RSDGGS geographic IPv6 address for itself and receiving a packet destined for another geographic address could make a forwarding decision purely from address arithmetic, without a routing table.</t>
           <figure><sourcecode type="pseudocode"><![CDATA[
-Forwarding algorithm:
+Forwarding algorithm (downward traffic; upward traffic follows
+the hop-count gradient toward the border router):
 
   G_self    = local RSDGGS cell (from own address IID)
   G_dest    = destination RSDGGS cell (from packet dest IID)
@@ -1716,15 +1717,35 @@ Forwarding algorithm:
   progress(A, B, target):
     common_prefix_len(A, target) > common_prefix_len(B, target)
 
-  For each candidate next hop N in neighbor table:
-    if progress(G_next(N), G_self, G_dest):
-      forward to N   // N is geographically closer to destination
+  digest(P):
+    hash over the non-mutable fields of packet P
+    (Hop Limit and other per-hop fields excluded)
 
-  If no progress possible:
-    invoke void handling (perimeter routing or buffer-and-wait)
+  seen[d]: loop table, entry = (count, next hops used);
+    entries expire after the maximum packet lifetime
+
+  On receiving packet P (link-layer duplicates already removed):
+    decrement P.hop_limit; drop P if it reaches 0
+    e = seen[digest(P)]
+    e.count = e.count + 1
+    if e.count > LOOP_THRESHOLD:     // small constant
+      exclude = e.used               // P is in a loop: escape it
+    else:
+      exclude = {}
+
+    candidates = { N in neighbor table, N not in exclude :
+                   progress(G_next(N), G_self, G_dest) }
+    if candidates is not empty:
+      N = candidate with the longest
+          common_prefix_len(G_next(N), G_dest)
+      add N to e.used; forward P to N
+    else:
+      void: enter face routing (perimeter mode), or
+      return P to the previous hop with a forwarding error
+      so that it resends through another neighbor
 ]]></sourcecode></figure>
           <t>The progress metric is purely a comparison of common prefix lengths. No trigonometric computation is required at forwarding time. The geographic distance relationship is encoded in the shared prefix structure of the RSDGGS hierarchy: a longer common prefix means a smaller shared cell, which means geographic proximity.</t>
-          <t>This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <xref target="GPSR"/> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count -- operations available as single instructions on all target architectures including constrained microcontrollers. When no neighbor makes progress, the forwarder is at a routing void and switches to a recovery mode (<xref target="s-routing-voids"/>).</t>
+          <t>This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <xref target="GPSR"/> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count -- operations available as single instructions on all target architectures including constrained microcontrollers. When no neighbor makes progress, the forwarder is at a routing void and switches to a recovery mode. The loop table, the escape from a detected loop and the recovery mode are described in <xref target="s-routing-voids"/>.</t>
         </section>
         <section anchor="s-routing-voids" numbered="true" toc="default">
           <name>Routing Voids (RF Cul-de-sacs)</name>
@@ -1775,6 +1796,7 @@ Regulatory boundary detection:
             <li>Uniqueness. Devices in the same cell at the chosen resolution would derive the same IID. Addresses must be unique, and duplicate address detection <xref target="RFC4862"/> <xref target="RFC6775"/> would reject the second device. One candidate approach for both this issue and the previous one: the upper bits of the IID carry the cell, truncated to the resolution the device chooses to disclose, and the remaining bits are an opaque value generated as in <xref target="RFC7217"/>. Greedy forwarding would then work at the disclosed resolution.</li>
             <li>Prefix. A dedicated geographic prefix needs an IETF-stream document and IETF Review (<xref target="s-address-structure"/>). Without one, the hierarchy of <xref target="s-prefix-hierarchy-and-aggregation"/> applies only within a network's own prefix.</li>
             <li>Mobility. A device that moves to another cell changes its address, with the consequences of renumbering for its neighbors' caches, its registrations, and its transport connections.</li>
+            <li>Routing voids. Geographic forwarding needs the recovery mode, the loop-detection threshold and table size, the form of the forwarding error returned to the previous hop, and the radio model it assumes to be specified (<xref target="s-routing-voids"/>).</li>
             <li>Header overhead. Geographic IIDs cannot be compressed from link-layer addresses (<xref target="s-relationship-to-existing-standards"/>), which costs up to 16 octets per packet on links where every octet counts.</li>
           </ol>
         </section>
@@ -2077,7 +2099,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
         <section anchor="s-b-1-gpsr-greedy-perimeter-stateless-routing-from-us-1" numbered="true" toc="default">
           <name>GPSR -- Greedy Perimeter Stateless Routing (from US 10,812,365)</name>
           <t>Karp, B. and H.T. Kung, 'GPSR: Greedy Perimeter Stateless Routing for Wireless Networks', MobiCom 2000. Cited as primary prior art in US 10,812,365 (geohyperbolic routing patent).</t>
-          <t>Relevance to RSDGGS: GPSR is the canonical geographic greedy forwarding algorithm for wireless networks. It defines two components: greedy forwarding (advance toward destination by geographic distance) and perimeter routing (traverse face of a planar graph when greedy forwarding is stuck at a void). RSDGGS <xref target="s-geographic-greedy-forwarding"/> defines geographic greedy forwarding using common-prefix-length as the proximity metric, and <xref target="s-routing-voids"/> documents the void-handling gap and the recovery techniques that fill it. Implementations in sparse networks where geographic voids may exist SHOULD implement a fallback void handler; GPSR's perimeter routing, planarized with CLDP <xref target="CLDP"/> on real radio links, or AODV-RPL (RFC 9854) route discovery are the recommended candidates.</t>
+          <t>Relevance to RSDGGS: GPSR is the canonical geographic greedy forwarding algorithm for wireless networks. It defines two components: greedy forwarding (advance toward destination by geographic distance) and perimeter routing (traverse face of a planar graph when greedy forwarding is stuck at a void). RSDGGS <xref target="s-geographic-greedy-forwarding"/> defines geographic greedy forwarding using common-prefix-length as the proximity metric, and <xref target="s-routing-voids"/> documents the void-handling gap and the recovery techniques that fill it. Implementations in sparse networks where geographic voids may exist SHOULD implement a fallback void handler; GPSR's perimeter routing, planarized with CLDP <xref target="CLDP"/> on real radio links, or AODV-RPL (RFC 9854) route discovery are the recommended candidates, in each case with the data-path loop detection and escape of <xref target="s-routing-voids"/>.</t>
         </section>
         <section anchor="s-b-2-ieee-802-11d-country-information-elements-from-us" numbered="true" toc="default">
           <name>IEEE 802.11d -- Country Information Elements (from US 10,306,400 family)</name>
@@ -2396,6 +2418,7 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
             <li>US 11,652,742 (Microsoft, active until 2041): No infringement risk. Ghost routing is a cloud datacenter network verification technique with zero overlap with RSDGGS. No action required.</li>
             <li>US 10,306,400 / application family (active until ~2035): No infringement risk from current RSDGGS specification. RSDGGS MUST NOT add AC power line frequency as a location verification mechanism. Any patent prosecution should distinguish the lookup table architecture using RFC 2009 (1996) as prior art predating US 9,654,965.</li>
             <li>US 4,939,726 and US 5,115,433 (both expired): Freely implementable. The link quality weighted forwarding enhancement described in <xref target="s-us-patent-4-939-726-metricom-inc-expired-2007"/> should be incorporated in a later revision of this document and explicitly credited to these expired patents as the enabling prior art in any prosecution. The same applies to their loop and dead-end mitigations (<xref target="s-routing-voids"/>).</li>
+            <li>Loop detection and escape for geographic forwarding (<xref target="s-routing-voids"/>): each element is published in RFC 6550, RFC 6553 and RFC 6621, in Hengartner et al. <xref target="LOOPS"/>, or in expired US 5,115,433. Their combination in downward geographic forwarding has not been searched for active patents; the CPC search below should add class H04W40/20 (route selection based on geographic position) for it.</li>
             <li>US Application 2010/0002700 (Cellnet, abandoned 2011): No rights in force. Cite it as prior art for geographic routing information carried in network addresses in any patent prosecution based on RSDGGS geographic IPv6 addressing.</li>
             <li>Search CPC class H04W16/14 (channel plan based on geography) and H04B1/3827 (ISM band operation) for active patents not identified here. This search should be conducted by patent counsel before commercial deployment.</li>
             <li>Search for continuation patents based on US Application 2014/0162692 beyond the identified US 10,306,400, US 9,794,738, and US 9,654,965. The application family may have additional continuations with broader claims.</li>
@@ -2989,6 +3012,7 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
         <t>RSDGGS indexes are location-bearing data. Implementers must consider the following security properties:</t>
         <t>Location Privacy: The variable-length encoding provides a natural privacy gradient. Implementations SHOULD share the minimum resolution necessary for the intended purpose. For regulatory validation purposes, 1 to 3 octets is typically sufficient and reveals no more than country-level location. Full 8-octet indexes SHOULD be treated as sensitive location data. <xref target="s-ipv6-open-issues"/> discusses the further exposure if the index were carried in IPv6 addresses.</t>
         <t>Beacon Authenticity: The peer-assisted discovery mechanism defined in <xref target="s-peer-assisted-location-discovery"/> assumes that Beacon Devices transmit their correct regulatory context. A malicious device transmitting a beacon with a false RSDGGS cell could cause Naive Devices to adopt incorrect regulatory parameters, potentially causing interference. Implementations in security-sensitive deployments SHOULD implement beacon authentication using a shared key or public key infrastructure, and SHOULD cross-validate received cells against RF propagation models or approximate location data.</t>
+        <t>Forwarding Integrity: Geographic forwarding (<xref target="s-geographic-greedy-forwarding"/>) trusts the cells neighbors advertise. A node that advertises a false cell can attract traffic for that area and drop or misdirect it, as a false beacon can in peer-assisted discovery. The loop table of <xref target="s-routing-voids"/> can be attacked too: replaying a packet makes it look trapped and diverts it from its best next hop, and a flood of distinct packets can exhaust the table. Implementations SHOULD bound the table, expire entries after the maximum packet lifetime, and, when the table is full, rely on the Hop Limit rather than discard packets they cannot record. Link-layer security (IEEE 802.15.4 frame security) limits these attacks to nodes holding network keys.</t>
         <t>Database Integrity: The regulatory database is a critical dependency. Database updates SHOULD be authenticated using code-signing mechanisms. Implementations SHOULD validate database integrity at boot using a stored hash.</t>
         <t>Regulatory Compliance: RSDGGS is an informational tool to assist devices in determining applicable regulatory parameters. It does not constitute a formal regulatory authorization. Operators remain responsible for ensuring their devices comply with applicable regulations in their jurisdiction of deployment, independent of the RSDGGS-derived rule set.</t>
           <t>Database Currency: The regulatory database is a snapshot of regulations as of its compilation date. Spectrum regulations change through national legislation, WRC decisions, and bilateral coordination agreements. Implementations MUST NOT treat an embedded database as permanently authoritative. Deployments in jurisdictions undergoing active regulatory change are at elevated risk of non-compliance if database updates are unavailable. See <xref target="s-regulatory-database-validity-limitations"/> for normative guidance on database validity limitations and recommended mitigations.</t>
