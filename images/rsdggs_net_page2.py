@@ -1,11 +1,14 @@
-"""Draw Figure 2 of draft-hanley-rsdggs-00: the dodecahedron net reference key.
+"""Draw the reference key for the dodecahedron net: band legend, face table, folding
+instructions and band quick reference. The draft links to it rather than embedding it.
 
     python images/rsdggs_net_page2.py    # writes images/rsdggs_net_page2.png and .svg
 
 Requires matplotlib (built with 3.10.8). Layout coordinates are in a 2000 x 1555
-grid with the origin at the top left.
+grid with the origin at the top left. The draft name in the labels is read from the
+draft's docName, so it follows the revision.
 """
 
+import re
 import textwrap
 from pathlib import Path
 
@@ -16,6 +19,10 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
 
 W, H = 2000, 1555
+
+HERE = Path(__file__).resolve().parent
+(DRAFT,) = (HERE.parent / "draft").glob("draft-hanley-rsdggs-*.xml")
+DRAFT_NAME = re.search(r'docName="([^"]+)"', DRAFT.read_text(encoding="utf-8")).group(1)
 INK = "#1A1A2E"
 GREY = "#555555"
 RULE = "#CCCCCC"
@@ -105,7 +112,7 @@ ABOUT = (
 )
 
 FOOTER = (
-    "RSDGGS — Regulatory Spectrum Discrete Global Grid System · draft-hanley-rsdggs-00"
+    f"RSDGGS — Regulatory Spectrum Discrete Global Grid System · {DRAFT_NAME}"
     " · Dodecahedron faces aligned to ITU Radio Regions · Gnomonic projection per face"
 )
 
@@ -212,7 +219,7 @@ def right(ax, x0, x1):
 
     heading(ax, x0, x1, 1110, "About RSDGGS")
     text(ax, x0, 1148, textwrap.fill(ABOUT, 72), size=9.5)
-    text(ax, x0, 1290, "draft-hanley-rsdggs-00 · Independent Submission\n"
+    text(ax, x0, 1290, f"{DRAFT_NAME} · Independent Submission\n"
                        "IEEE 802.15.4 MAC layer · CBOR encoded · Rust reference impl",
          size=9.5)
 

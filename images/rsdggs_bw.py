@@ -39,7 +39,7 @@ import rsdggs_net_page2 as fig2
 from rsdggs_net_page1 import MARGIN, PAGE_H, PAGE_W
 
 OUT = fig1.HERE / "bw"
-DRAFT = fig1.HERE.parent / "draft" / "draft-hanley-rsdggs-00.xml"
+DRAFT = fig2.DRAFT
 PT = 25.4 / 72                    # millimetres per point
 
 # Hatching per band class (rsdggs_net_page1.band_class): (angle in degrees, ...); "dots".
@@ -546,7 +546,7 @@ def key_page():
             k.t(x, y + 24, s, 8.5, "center")
     k.heading(x0, x1, 1110, "About RSDGGS")
     k.t(x0, 1148, textwrap.fill(fig2.ABOUT, 72), 9.5)
-    k.t(x0, 1290, "draft-hanley-rsdggs-00 · Independent Submission\n"
+    k.t(x0, 1290, f"{fig2.DRAFT_NAME} · Independent Submission\n"
                   "IEEE 802.15.4 MAC layer · CBOR encoded · Rust reference impl", 9.5)
     k.rule(50, 1950, 1500)
     k.t(W / 2, 1520, fig2.FOOTER, 8, "center", anchor="middle")

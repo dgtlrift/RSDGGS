@@ -12,7 +12,7 @@
 set -eu
 cd "$(dirname "$0")"
 
-name=draft-hanley-rsdggs-00
+name=draft-hanley-rsdggs-01
 tools=.tools
 rfcxml=02dd49434445ca0498a13baf904109478251bdd7
 mkdir -p "$tools"
@@ -52,6 +52,14 @@ for f in ../images/bw/*.svg ../images/bw/faces/*.svg; do
     "$tools/venv/bin/svgcheck" -N "$f" >/dev/null 2>&1 || { echo "$f: not RFC 7996 SVG" >&2; exit 1; }
 done
 echo "   images/bw: $(ls ../images/bw/*.svg ../images/bw/faces/*.svg | wc -l) files conform"
+# Links into this repository must name the revision's tag, not a branch, so a posted
+# revision keeps pointing at the files it was written against.
+echo "== repository links"
+if grep -o 'github\.com/dgtlrift/RSDGGS/[a-z]*/[^/"<]*' "$name.xml" | grep -v "/$name\$" >&2; then
+    echo "$name.xml: link the files at tag $name (above)" >&2
+    exit 1
+fi
+echo "   all at tag $name"
 echo "== xml2rfc"
 "$tools/venv/bin/xml2rfc" --text --html "$name.xml"
 # idnits warns about every line with a non-ASCII character (RFC 7997). Inline SVG is
