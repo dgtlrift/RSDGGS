@@ -1729,14 +1729,17 @@ Forwarding algorithm:
         <section anchor="s-routing-voids" numbered="true" toc="default">
           <name>Routing Voids (RF Cul-de-sacs)</name>
           <t>Greedy forwarding fails at a local minimum: a node none of whose neighbors shares a longer prefix with the destination than the node itself, although the destination is reachable over a longer path. Such RF cul-de-sacs arise wherever terrain, buildings, water or unpopulated land leave a gap in coverage between a forwarder and the destination, and a packet forwarded blindly from one can circulate among the nodes at the edge of the gap. The prefix metric adds a case of its own: two neighbors on either side of a cell boundary can be meters apart and still share only a short prefix (<xref target="s-recursive-subdivision"/>), so a forwarder can see no progress toward a destination just across a boundary even though a neighbor is physically closer to it. An RSDGGS forwarder therefore needs a recovery mode for voids, and every packet needs a bound on its lifetime.</t>
+          <t>Voids matter in one direction of a utility-style mesh. Traffic upward, from a node to a border router (the mesh's take-out point to the wider network), follows a hop-count gradient: the nodes within radio range of the border router know they are one hop from it, their neighbors learn from them that they are two hops away, and so on outward, so every node knows one or more border routers and its distance in hops to each, and forwards to a neighbor one layer closer. This is the RPL Rank, propagated outward from the DODAG root in DIO messages <xref target="RFC6550"/>; with Objective Function Zero and its default parameters <xref target="RFC6552"/>, Rank grows by the same step at every hop. A gradient built from neighbors actually heard has no voids. Traffic downward, from a border router to a node in a given cell, is where geographic forwarding replaces per-destination routing state, and where packets can be trapped.</t>
           <t>Recovery from local minima is well studied, and the established techniques are unencumbered:</t>
           <ul spacing="normal">
             <li>Greedy-Face-Greedy (GFG) <xref target="GFG"/>. At a local minimum the packet switches to face routing: it traverses the faces of a planar subgraph of the connectivity graph that are crossed by the line to the destination, and returns to greedy forwarding at the first node closer to the destination than the node where recovery began. On a connected unit disk graph, planarized as a Gabriel graph, GFG guarantees delivery.</li>
             <li>GPSR <xref target="GPSR"/>. The same greedy and perimeter modes, with the right-hand rule to walk the perimeter of the void, planarization by the Gabriel or relative neighborhood graph computed from neighbor positions, and the perimeter-mode state carried in the packet, so that forwarding remains stateless at each node.</li>
             <li>Cross-Link Detection Protocol (CLDP) <xref target="CLDP"/>. Planarization from neighbor positions assumes the unit disk radio model. On real links, with irregular range and obstructions, it can disconnect the graph or leave crossing links, and perimeter routing then loops or fails to deliver. CLDP removes crossing links with local probes that walk the faces on either side of each link, without a global map of the network, so that face routing stays correct on real radio graphs.</li>
             <li>Metricom's expired patents US 4,939,726 and US 5,115,433 (<xref target="s-us-patent-4-939-726-metricom-inc-expired-2007"/>) describe mitigations from a deployed packet radio mesh: a one-octet field that each repeater decrements, which discards wayward packets as the IPv6 Hop Limit does; neighbor tables that record the history of communication with each neighbor, so that a dead-end node stops being chosen as a next hop; and, when no forward progress is possible, asking the previous node to resend through another neighbor, returning the packet to its source for rerouting by another method, or raising transmit power to reach the best node.</li>
+            <li>Loop detection in the data path. Planarization errors, stale neighbor positions and asymmetric links can still trap a packet in a loop of nodes. A forwarder detects this by recognizing the packet when it comes back. It keeps a short-lived table of digests of the packets it has forwarded, computed over the fields no forwarder changes, so that the Hop Limit, which every hop decrements, does not make each lap look like a new packet. Simplified Multicast Forwarding hashes the same non-mutable fields for duplicate detection, and keeps the history for the maximum lifetime of a packet <xref target="RFC6621"/>. Measurement studies identify looping packets the same way, as packets identical except for TTL and checksum <xref target="LOOPS"/>. Duplicates the link layer has already suppressed, such as a retransmission after a lost acknowledgment, are not counted. A packet seen more than a small number of times is in a loop; RPL tolerates one Rank inconsistency on a packet's path and discards the packet at the second <xref target="RFC6550"/> <xref target="RFC6553"/>.</li>
+            <li>Escape from a loop. A forwarder that detects a loop pushes the packet out of it, onto a next hop the loop does not include, rather than only dropping it. RPL does this for stale downward routes: the router returns the packet to the parent that passed it with the Forwarding-Error flag set, and the parent removes the routing state that caused the error and sends the packet again, possibly to an alternate neighbor <xref target="RFC6550"/>. US 5,115,433 likewise has the previous node resend through another neighbor. For geographic forwarding, the forwarder excludes the neighbor it last used for that packet, or the whole loop, and chooses among the remaining neighbors, entering face routing if none makes progress.</li>
           </ul>
-          <t>Face routing needs positions, not only cells. An RSDGGS forwarder would planarize its neighbor graph from its neighbors' cell centers, at a resolution fine enough to separate them (<xref target="s-resolution-by-length"/>), or from positions found by cooperative localization (<xref target="s-cooperative-localization"/>). The IPv6 Hop Limit <xref target="RFC8200"/> bounds the lifetime of a packet caught in a loop in every case. A specification of geographic forwarding would choose the recovery mechanism and state the radio model it assumes.</t>
+          <t>Face routing needs positions, not only cells. An RSDGGS forwarder would planarize its neighbor graph from its neighbors' cell centers, at a resolution fine enough to separate them (<xref target="s-resolution-by-length"/>), or from positions found by cooperative localization (<xref target="s-cooperative-localization"/>). Whatever the detection and escape mechanism, the IPv6 Hop Limit <xref target="RFC8200"/> bounds the lifetime of a packet caught in a loop. A specification of geographic forwarding would choose the recovery mechanism and state the radio model it assumes.</t>
         </section>
         <section anchor="s-regulatory-aware-channel-selection-for-forwarding" numbered="true" toc="default">
           <name>Regulatory-Aware Channel Selection for Forwarding</name>
@@ -2369,7 +2372,7 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
             <thead><tr><th>Source</th><th>Opportunity</th><th>Section Affected</th><th>Priority</th></tr></thead>
             <tbody>
               <tr><td>US 4,939,726 / 5,115,433</td><td>Link quality weighted forwarding (distance + power + retry)</td><td><xref target="s-geographic-greedy-forwarding"/></td><td>High -- routing performance</td></tr>
-              <tr><td>GFG, GPSR, CLDP; US 5,115,433</td><td>Void recovery (face routing on a planarized graph) and packet lifetime bound</td><td><xref target="s-routing-voids"/></td><td>High -- delivery in sparse meshes</td></tr>
+              <tr><td>GFG, GPSR, CLDP; US 5,115,433; RFC 6550, RFC 6621</td><td>Void recovery (face routing on a planarized graph), data-path loop detection and escape, packet lifetime bound</td><td><xref target="s-routing-voids"/></td><td>High -- delivery in sparse meshes</td></tr>
               <tr><td>US 10,306,400 / 9,654,965</td><td>Explicit credit of lookup table architecture pattern</td><td><xref target="s-regulatory-database-structure"/>, Patent prosecution</td><td>Medium -- FTO documentation</td></tr>
               <tr><td>RFC 2009</td><td>Distinguish address adoption vs address derivation in peer location</td><td><xref target="s-peer-assisted-location-discovery"/> intro</td><td>Medium -- novelty clarity</td></tr>
               <tr><td>RFC 5870</td><td>crs=rsdggs URI extension as future work item</td><td>Future work</td><td>Low -- interoperability</td></tr>
@@ -3390,6 +3393,43 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
           <date month="February" year="2017"/>
         </front>
         <seriesInfo name="RFC" value="8064"/>
+      </reference>
+      <reference anchor="RFC6552" target="https://www.rfc-editor.org/info/rfc6552">
+        <front>
+          <title>Objective Function Zero for the Routing Protocol for Low-Power and Lossy Networks (RPL)</title>
+          <author initials="P." surname="Thubert" fullname="P. Thubert" role="editor"/>
+          <date year="2012" month="March"/>
+        </front>
+        <seriesInfo name="RFC" value="6552"/>
+        <seriesInfo name="DOI" value="10.17487/RFC6552"/>
+      </reference>
+      <reference anchor="RFC6553" target="https://www.rfc-editor.org/info/rfc6553">
+        <front>
+          <title>The Routing Protocol for Low-Power and Lossy Networks (RPL) Option for Carrying RPL Information in Data-Plane Datagrams</title>
+          <author initials="J." surname="Hui" fullname="J. Hui"/>
+          <author initials="JP." surname="Vasseur" fullname="JP. Vasseur"/>
+          <date year="2012" month="March"/>
+        </front>
+        <seriesInfo name="RFC" value="6553"/>
+        <seriesInfo name="DOI" value="10.17487/RFC6553"/>
+      </reference>
+      <reference anchor="RFC6621" target="https://www.rfc-editor.org/info/rfc6621">
+        <front>
+          <title>Simplified Multicast Forwarding</title>
+          <author initials="J." surname="Macker" fullname="J. Macker" role="editor"/>
+          <date year="2012" month="May"/>
+        </front>
+        <seriesInfo name="RFC" value="6621"/>
+        <seriesInfo name="DOI" value="10.17487/RFC6621"/>
+      </reference>
+      <reference anchor="LOOPS">
+        <front>
+          <title>Detection and Analysis of Routing Loops in Packet Traces</title>
+          <author><organization>Hengartner, U., Moon, S., Mortier, R., and C. Diot</organization></author>
+          <date year="2002" month="November"/>
+        </front>
+        <seriesInfo name="See" value="ACM SIGCOMM Internet Measurement Workshop (IMW) 2002"/>
+        <seriesInfo name="DOI" value="10.1145/637201.637217"/>
       </reference>
       <reference anchor="RFC8200" target="https://www.rfc-editor.org/info/rfc8200">
         <front>
