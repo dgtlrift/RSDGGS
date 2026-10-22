@@ -1612,13 +1612,16 @@ li > p:last-of-type:only-child {
                 <p id="section-toc.1-1.15.2.3.1"><a href="#section-15.3" class="auto internal xref">15.3</a>.  <a href="#name-geographic-greedy-forwardin" class="internal xref">Geographic Greedy Forwarding</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.4">
-                <p id="section-toc.1-1.15.2.4.1"><a href="#section-15.4" class="auto internal xref">15.4</a>.  <a href="#name-regulatory-aware-channel-se" class="internal xref">Regulatory-Aware Channel Selection for Forwarding</a></p>
+                <p id="section-toc.1-1.15.2.4.1"><a href="#section-15.4" class="auto internal xref">15.4</a>.  <a href="#name-routing-voids-rf-cul-de-sac" class="internal xref">Routing Voids (RF Cul-de-sacs)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.5">
-                <p id="section-toc.1-1.15.2.5.1"><a href="#section-15.5" class="auto internal xref">15.5</a>.  <a href="#name-relationship-to-existing-st" class="internal xref">Relationship to Existing Standards</a></p>
+                <p id="section-toc.1-1.15.2.5.1"><a href="#section-15.5" class="auto internal xref">15.5</a>.  <a href="#name-regulatory-aware-channel-se" class="internal xref">Regulatory-Aware Channel Selection for Forwarding</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.6">
-                <p id="section-toc.1-1.15.2.6.1"><a href="#section-15.6" class="auto internal xref">15.6</a>.  <a href="#name-open-issues" class="internal xref">Open Issues</a></p>
+                <p id="section-toc.1-1.15.2.6.1"><a href="#section-15.6" class="auto internal xref">15.6</a>.  <a href="#name-relationship-to-existing-st" class="internal xref">Relationship to Existing Standards</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.7">
+                <p id="section-toc.1-1.15.2.7.1"><a href="#section-15.7" class="auto internal xref">15.7</a>.  <a href="#name-open-issues" class="internal xref">Open Issues</a></p>
 </li>
             </ul>
 </li>
@@ -1782,7 +1785,10 @@ li > p:last-of-type:only-child {
                     <p id="section-toc.1-1.18.2.1.2.1.1"><a href="#section-18.1.1" class="auto internal xref">18.1.1</a>.  <a href="#name-us-patent-4939726-metricom-" class="internal xref">US Patent 4,939,726 -- Metricom, Inc. (Expired 2007)</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.1.2.2">
-                    <p id="section-toc.1-1.18.2.1.2.2.1"><a href="#section-18.1.2" class="auto internal xref">18.1.2</a>.  <a href="#name-us-patent-6982966-status-un" class="internal xref">US Patent 6,982,966 -- Status Unconfirmed</a></p>
+                    <p id="section-toc.1-1.18.2.1.2.2.1"><a href="#section-18.1.2" class="auto internal xref">18.1.2</a>.  <a href="#name-us-application-2010-0002700" class="internal xref">US Application 2010/0002700 -- Cellnet Innovations (Abandoned 2011)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.1.2.3">
+                    <p id="section-toc.1-1.18.2.1.2.3.1"><a href="#section-18.1.3" class="auto internal xref">18.1.3</a>.  <a href="#name-us-patent-6982966-status-un" class="internal xref">US Patent 6,982,966 -- Status Unconfirmed</a></p>
 </li>
                 </ul>
 </li>
@@ -1912,7 +1918,7 @@ li > p:last-of-type:only-child {
 </li>
         <li class="normal" id="section-1-6.2">Constrained networks. A 6LoWPAN <span>[<a href="#RFC4944" class="cite xref">RFC4944</a>]</span> node on an IEEE 802.15.4 link in an ISM band has to know which channels, power levels, and duty cycles are legal where it is before it transmits, and so before it can join the network and obtain IPv6 connectivity. RSDGGS lets it learn this from its neighbors, through a Location Sub-IE in 802.15.4 frames (<a href="#s-ieee-802-15-4-information-element-encoding" class="auto internal xref">Section 14</a>) and a peer-assisted bootstrap (<a href="#s-peer-assisted-location-discovery" class="auto internal xref">Section 11</a>) that follows the serverless model of IPv6 Neighbor Discovery and stateless address autoconfiguration <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span> (design goal G8, <a href="#s-motivation-and-design-goals" class="auto internal xref">Section 3</a>).<a href="#section-1-6.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-1-6.3">IPv6. <a href="#s-ipv6-geographic-addressing" class="auto internal xref">Section 15</a> outlines, as future work, IPv6 addresses whose Interface Identifier carries an RSDGGS cell, for geographic forwarding within 6LoWPAN and RPL <span>[<a href="#RFC6550" class="cite xref">RFC6550</a>]</span> meshes. It does not specify them; it lists the privacy, uniqueness, and prefix issues a specification would have to resolve (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.6</a>), which would be work for the 6man and 6lo working groups.<a href="#section-1-6.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-1-6.3">IPv6. <a href="#s-ipv6-geographic-addressing" class="auto internal xref">Section 15</a> outlines, as future work, IPv6 addresses whose Interface Identifier carries an RSDGGS cell, for geographic forwarding within 6LoWPAN and RPL <span>[<a href="#RFC6550" class="cite xref">RFC6550</a>]</span> meshes. It does not specify them; it lists the privacy, uniqueness, and prefix issues a specification would have to resolve (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.7</a>), which would be work for the 6man and 6lo working groups.<a href="#section-1-6.3" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-1-6.4">Location. <a href="#s-relationship-to-prior-geographic-addressing-work" class="auto internal xref">Section 16</a> compares RSDGGS with IETF location formats and architectures, including the geo URI <span>[<a href="#RFC5870" class="cite xref">RFC5870</a>]</span>, GEOPRIV <span>[<a href="#RFC6280" class="cite xref">RFC6280</a>]</span>, and IP geolocation feeds <span>[<a href="#RFC8805" class="cite xref">RFC8805</a>]</span> <span>[<a href="#RFC9632" class="cite xref">RFC9632</a>]</span>.<a href="#section-1-6.4" class="pilcrow">¶</a>
 </li>
@@ -4799,7 +4805,7 @@ Enhanced Beacon Frame (abbreviated):
       <h2 id="name-ipv6-geographic-addressing-">
 <a href="#section-15" class="section-number selfRef">15. </a><a href="#name-ipv6-geographic-addressing-" class="section-name selfRef">IPv6 Geographic Addressing (Future Work)</a>
       </h2>
-<p id="section-15-1">This section is informative. It outlines how the RSDGGS index could be used in IPv6 addresses, so that nodes in a constrained network can forward packets geographically, and it lists the issues a specification of that use would have to resolve (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.6</a>). It does not define an addressing scheme, nothing in the rest of this document depends on it, and it uses no BCP 14 keywords. Where other sections of this document refer to RSDGGS-IPv6 or RSDGGS geographic IPv6 addresses, they refer to this outline.<a href="#section-15-1" class="pilcrow">¶</a></p>
+<p id="section-15-1">This section is informative. It outlines how the RSDGGS index could be used in IPv6 addresses, so that nodes in a constrained network can forward packets geographically, and it lists the issues a specification of that use would have to resolve (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.7</a>). It does not define an addressing scheme, nothing in the rest of this document depends on it, and it uses no BCP 14 keywords. Where other sections of this document refer to RSDGGS-IPv6 or RSDGGS geographic IPv6 addresses, they refer to this outline.<a href="#section-15-1" class="pilcrow">¶</a></p>
 <p id="section-15-2">The full 8-octet RSDGGS index is exactly the size of the 64-bit Interface Identifier (IID) of an IPv6 address <span>[<a href="#RFC4291" class="cite xref">RFC4291</a>]</span>. That allows a class of IPv6 addresses in which the IID encodes a geographic cell rather than an identifier derived from hardware, so that a forwarder could choose a next hop by comparing addresses instead of consulting a routing table.<a href="#section-15-2" class="pilcrow">¶</a></p>
 <div id="s-address-structure">
 <section id="section-15.1">
@@ -4941,19 +4947,39 @@ Forwarding algorithm:
 </div>
 <figcaption><a href="#figure-31" class="selfRef">Figure 31</a></figcaption></figure>
 <p id="section-15.3-3">The progress metric is purely a comparison of common prefix lengths. No trigonometric computation is required at forwarding time. The geographic distance relationship is encoded in the shared prefix structure of the RSDGGS hierarchy: a longer common prefix means a smaller shared cell, which means geographic proximity.<a href="#section-15.3-3" class="pilcrow">¶</a></p>
-<p id="section-15.3-4">This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <span>[<a href="#GPSR" class="cite xref">GPSR</a>]</span> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count -- operations available as single instructions on all target architectures including constrained microcontrollers.<a href="#section-15.3-4" class="pilcrow">¶</a></p>
+<p id="section-15.3-4">This forwarding algorithm is equivalent to greedy geographic forwarding as used in GPSR <span>[<a href="#GPSR" class="cite xref">GPSR</a>]</span> and similar protocols, but operates on the RSDGGS index structure directly rather than on Euclidean or great-circle distance. The computational cost at each hop is a bitwise XOR and leading-zero count -- operations available as single instructions on all target architectures including constrained microcontrollers. When no neighbor makes progress, the forwarder is at a routing void and switches to a recovery mode (<a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>).<a href="#section-15.3-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="s-routing-voids">
+<section id="section-15.4">
+        <h3 id="name-routing-voids-rf-cul-de-sac">
+<a href="#section-15.4" class="section-number selfRef">15.4. </a><a href="#name-routing-voids-rf-cul-de-sac" class="section-name selfRef">Routing Voids (RF Cul-de-sacs)</a>
+        </h3>
+<p id="section-15.4-1">Greedy forwarding fails at a local minimum: a node none of whose neighbors shares a longer prefix with the destination than the node itself, although the destination is reachable over a longer path. Such RF cul-de-sacs arise wherever terrain, buildings, water or unpopulated land leave a gap in coverage between a forwarder and the destination, and a packet forwarded blindly from one can circulate among the nodes at the edge of the gap. The prefix metric adds a case of its own: two neighbors on either side of a cell boundary can be meters apart and still share only a short prefix (<a href="#s-recursive-subdivision" class="auto internal xref">Section 6.3</a>), so a forwarder can see no progress toward a destination just across a boundary even though a neighbor is physically closer to it. An RSDGGS forwarder therefore needs a recovery mode for voids, and every packet needs a bound on its lifetime.<a href="#section-15.4-1" class="pilcrow">¶</a></p>
+<p id="section-15.4-2">Recovery from local minima is well studied, and the established techniques are unencumbered:<a href="#section-15.4-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-15.4-3.1">Greedy-Face-Greedy (GFG) <span>[<a href="#GFG" class="cite xref">GFG</a>]</span>. At a local minimum the packet switches to face routing: it traverses the faces of a planar subgraph of the connectivity graph that are crossed by the line to the destination, and returns to greedy forwarding at the first node closer to the destination than the node where recovery began. On a connected unit disk graph, planarized as a Gabriel graph, GFG guarantees delivery.<a href="#section-15.4-3.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-15.4-3.2">GPSR <span>[<a href="#GPSR" class="cite xref">GPSR</a>]</span>. The same greedy and perimeter modes, with the right-hand rule to walk the perimeter of the void, planarization by the Gabriel or relative neighborhood graph computed from neighbor positions, and the perimeter-mode state carried in the packet, so that forwarding remains stateless at each node.<a href="#section-15.4-3.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-15.4-3.3">Cross-Link Detection Protocol (CLDP) <span>[<a href="#CLDP" class="cite xref">CLDP</a>]</span>. Planarization from neighbor positions assumes the unit disk radio model. On real links, with irregular range and obstructions, it can disconnect the graph or leave crossing links, and perimeter routing then loops or fails to deliver. CLDP removes crossing links with local probes that walk the faces on either side of each link, without a global map of the network, so that face routing stays correct on real radio graphs.<a href="#section-15.4-3.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-15.4-3.4">Metricom's expired patents US 4,939,726 and US 5,115,433 (<a href="#s-us-patent-4-939-726-metricom-inc-expired-2007" class="auto internal xref">Section 18.1.1</a>) describe mitigations from a deployed packet radio mesh: a one-octet field that each repeater decrements, which discards wayward packets as the IPv6 Hop Limit does; neighbor tables that record the history of communication with each neighbor, so that a dead-end node stops being chosen as a next hop; and, when no forward progress is possible, asking the previous node to resend through another neighbor, returning the packet to its source for rerouting by another method, or raising transmit power to reach the best node.<a href="#section-15.4-3.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-15.4-4">Face routing needs positions, not only cells. An RSDGGS forwarder would planarize its neighbor graph from its neighbors' cell centers, at a resolution fine enough to separate them (<a href="#s-resolution-by-length" class="auto internal xref">Section 5.2</a>), or from positions found by cooperative localization (<a href="#s-cooperative-localization" class="auto internal xref">Section 13</a>). The IPv6 Hop Limit <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span> bounds the lifetime of a packet caught in a loop in every case. A specification of geographic forwarding would choose the recovery mechanism and state the radio model it assumes.<a href="#section-15.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-regulatory-aware-channel-selection-for-forwarding">
-<section id="section-15.4">
+<section id="section-15.5">
         <h3 id="name-regulatory-aware-channel-se">
-<a href="#section-15.4" class="section-number selfRef">15.4. </a><a href="#name-regulatory-aware-channel-se" class="section-name selfRef">Regulatory-Aware Channel Selection for Forwarding</a>
+<a href="#section-15.5" class="section-number selfRef">15.5. </a><a href="#name-regulatory-aware-channel-se" class="section-name selfRef">Regulatory-Aware Channel Selection for Forwarding</a>
         </h3>
-<p id="section-15.4-1">The geographic address carries implicit regulatory information through the face byte of the IID. A forwarder can extract the face byte of the destination address to determine the ITU Region of the destination, and therefore the ISM band availability at the destination.<a href="#section-15.4-1" class="pilcrow">¶</a></p>
-<p id="section-15.4-2">When a packet is forwarded toward a destination in a different regulatory cell, the forwarding node would select a transmission channel that is legal in both its own regulatory cell and the next hop's regulatory cell. If no such channel exists (for example, forwarding from an EU 868 MHz network toward a US 915 MHz network), the forwarder cannot transmit on a channel that is illegal in either jurisdiction.<a href="#section-15.4-2" class="pilcrow">¶</a></p>
-<p id="section-15.4-3">In practice, cross-regulatory-region forwarding at the ISM layer requires either a gateway device provisioned for both regulatory environments, or an application-layer relay. The geographic address structure makes this boundary explicit and machine-readable: a mismatch in the face byte of the IID between source and destination indicates a cross-regulatory-region path that requires special handling.<a href="#section-15.4-3" class="pilcrow">¶</a></p>
+<p id="section-15.5-1">The geographic address carries implicit regulatory information through the face byte of the IID. A forwarder can extract the face byte of the destination address to determine the ITU Region of the destination, and therefore the ISM band availability at the destination.<a href="#section-15.5-1" class="pilcrow">¶</a></p>
+<p id="section-15.5-2">When a packet is forwarded toward a destination in a different regulatory cell, the forwarding node would select a transmission channel that is legal in both its own regulatory cell and the next hop's regulatory cell. If no such channel exists (for example, forwarding from an EU 868 MHz network toward a US 915 MHz network), the forwarder cannot transmit on a channel that is illegal in either jurisdiction.<a href="#section-15.5-2" class="pilcrow">¶</a></p>
+<p id="section-15.5-3">In practice, cross-regulatory-region forwarding at the ISM layer requires either a gateway device provisioned for both regulatory environments, or an application-layer relay. The geographic address structure makes this boundary explicit and machine-readable: a mismatch in the face byte of the IID between source and destination indicates a cross-regulatory-region path that requires special handling.<a href="#section-15.5-3" class="pilcrow">¶</a></p>
 <figure id="figure-32">
-          <div class="lang-pseudocode sourcecode" id="section-15.4-4.1">
+          <div class="lang-pseudocode sourcecode" id="section-15.5-4.1">
 <pre>
 Regulatory boundary detection:
 
@@ -4970,34 +4996,34 @@ Regulatory boundary detection:
 </section>
 </div>
 <div id="s-relationship-to-existing-standards">
-<section id="section-15.5">
+<section id="section-15.6">
         <h3 id="name-relationship-to-existing-st">
-<a href="#section-15.5" class="section-number selfRef">15.5. </a><a href="#name-relationship-to-existing-st" class="section-name selfRef">Relationship to Existing Standards</a>
+<a href="#section-15.6" class="section-number selfRef">15.6. </a><a href="#name-relationship-to-existing-st" class="section-name selfRef">Relationship to Existing Standards</a>
         </h3>
-<p id="section-15.5-1">The outline intersects with the following existing standards and efforts:<a href="#section-15.5-1" class="pilcrow">¶</a></p>
-<p id="section-15.5-2">6LoWPAN <span>[<a href="#RFC4944" class="cite xref">RFC4944</a>]</span> <span>[<a href="#RFC6282" class="cite xref">RFC6282</a>]</span>: A geographic IID would replace the IID that 6LoWPAN derives from the IEEE 802.15.4 extended or short address. Header compression <span>[<a href="#RFC6282" class="cite xref">RFC6282</a>]</span> still applies to the rest of the header, but it can elide an IID only when the IID can be derived from the link-layer address. A geographic IID cannot be, so every such address in a packet would be carried in full, 8 octets each, unless a specification defined a way to recover it.<a href="#section-15.5-2" class="pilcrow">¶</a></p>
-<p id="section-15.5-3">6LoWPAN Neighbor Discovery <span>[<a href="#RFC6775" class="cite xref">RFC6775</a>]</span> <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span>: Geographic addresses would have to be unique on the link like any other, and be registered and checked for duplicates in the same way. Two devices in the same cell at the chosen resolution would have the same cell bits, so the IID would need more than the cell to tell them apart (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.6</a>).<a href="#section-15.5-3" class="pilcrow">¶</a></p>
-<p id="section-15.5-4">RFC 9854 (AODV-RPL): Geographic greedy forwarding as described in <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a> could remove the need for route discovery in dense geographic deployments. AODV-RPL route discovery could serve as a fallback void-handling mechanism when greedy forwarding cannot make progress, for example in sparse networks with geographic holes. The RSDGGS cell could serve as the position metric in AODV-RPL's P2P route discovery in place of GPS coordinates, enabling route discovery on devices without GPS receivers.<a href="#section-15.5-4" class="pilcrow">¶</a></p>
-<p id="section-15.5-5">ETSI EN 302 931 (GeoNetworking): The European ITS GeoNetworking standard defines geographic addressing over 802.11p and LTE for vehicular networks. RSDGGS geographic IPv6 addressing is an alternative approach for low-power ISM-band IoT networks rather than vehicular ITS, with the additional property of encoding regulatory jurisdiction within the address structure.<a href="#section-15.5-5" class="pilcrow">¶</a></p>
-<p id="section-15.5-6">IEEE 802.15.4 SUN: The MAC-layer integration defined in <a href="#s-ieee-802-15-4-information-element-encoding" class="auto internal xref">Section 14</a> and the IPv6 geographic addressing outlined in this section are complementary. A SUN network using RSDGGS Location Sub-IEs at the MAC layer and RSDGGS geographic IPv6 addresses at the network layer would carry geographic addressing from the MAC frame through the IP datagram, with regulatory context embedded at both layers.<a href="#section-15.5-6" class="pilcrow">¶</a></p>
+<p id="section-15.6-1">The outline intersects with the following existing standards and efforts:<a href="#section-15.6-1" class="pilcrow">¶</a></p>
+<p id="section-15.6-2">6LoWPAN <span>[<a href="#RFC4944" class="cite xref">RFC4944</a>]</span> <span>[<a href="#RFC6282" class="cite xref">RFC6282</a>]</span>: A geographic IID would replace the IID that 6LoWPAN derives from the IEEE 802.15.4 extended or short address. Header compression <span>[<a href="#RFC6282" class="cite xref">RFC6282</a>]</span> still applies to the rest of the header, but it can elide an IID only when the IID can be derived from the link-layer address. A geographic IID cannot be, so every such address in a packet would be carried in full, 8 octets each, unless a specification defined a way to recover it.<a href="#section-15.6-2" class="pilcrow">¶</a></p>
+<p id="section-15.6-3">6LoWPAN Neighbor Discovery <span>[<a href="#RFC6775" class="cite xref">RFC6775</a>]</span> <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span>: Geographic addresses would have to be unique on the link like any other, and be registered and checked for duplicates in the same way. Two devices in the same cell at the chosen resolution would have the same cell bits, so the IID would need more than the cell to tell them apart (<a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.7</a>).<a href="#section-15.6-3" class="pilcrow">¶</a></p>
+<p id="section-15.6-4">RFC 9854 (AODV-RPL): Geographic greedy forwarding as described in <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a> could remove the need for route discovery in dense geographic deployments. AODV-RPL route discovery could serve as a fallback void-handling mechanism when greedy forwarding cannot make progress, for example in sparse networks with geographic holes. The RSDGGS cell could serve as the position metric in AODV-RPL's P2P route discovery in place of GPS coordinates, enabling route discovery on devices without GPS receivers.<a href="#section-15.6-4" class="pilcrow">¶</a></p>
+<p id="section-15.6-5">ETSI EN 302 931 (GeoNetworking): The European ITS GeoNetworking standard defines geographic addressing over 802.11p and LTE for vehicular networks. RSDGGS geographic IPv6 addressing is an alternative approach for low-power ISM-band IoT networks rather than vehicular ITS, with the additional property of encoding regulatory jurisdiction within the address structure.<a href="#section-15.6-5" class="pilcrow">¶</a></p>
+<p id="section-15.6-6">IEEE 802.15.4 SUN: The MAC-layer integration defined in <a href="#s-ieee-802-15-4-information-element-encoding" class="auto internal xref">Section 14</a> and the IPv6 geographic addressing outlined in this section are complementary. A SUN network using RSDGGS Location Sub-IEs at the MAC layer and RSDGGS geographic IPv6 addresses at the network layer would carry geographic addressing from the MAC frame through the IP datagram, with regulatory context embedded at both layers.<a href="#section-15.6-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-ipv6-open-issues">
-<section id="section-15.6">
+<section id="section-15.7">
         <h3 id="name-open-issues">
-<a href="#section-15.6" class="section-number selfRef">15.6. </a><a href="#name-open-issues" class="section-name selfRef">Open Issues</a>
+<a href="#section-15.7" class="section-number selfRef">15.7. </a><a href="#name-open-issues" class="section-name selfRef">Open Issues</a>
         </h3>
-<p id="section-15.6-1">A specification of RSDGGS geographic IPv6 addressing would have to resolve at least the following issues. Its IPv6 addressing aspects would be within the scope of the 6man working group, and its 6LoWPAN aspects within that of the 6lo working group.<a href="#section-15.6-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-15.6-2">
-            <li id="section-15.6-2.1">Privacy. An IID carrying the full 8-octet index discloses the device's location, to within centimeters (<a href="#s-resolution-by-length" class="auto internal xref">Section 5.2</a>), to every party that sees its packets, and a stable address lets them follow the device over time <span>[<a href="#RFC7721" class="cite xref">RFC7721</a>]</span>. <span>[<a href="#RFC8064" class="cite xref">RFC8064</a>]</span> recommends that stable IIDs be semantically opaque, generated as in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span>. The truncation model of <a href="#s-privacy-truncation" class="auto internal xref">Section 5.4</a> limits what an index discloses, but this outline has no counterpart to it for addresses.<a href="#section-15.6-2.1" class="pilcrow">¶</a>
+<p id="section-15.7-1">A specification of RSDGGS geographic IPv6 addressing would have to resolve at least the following issues. Its IPv6 addressing aspects would be within the scope of the 6man working group, and its 6LoWPAN aspects within that of the 6lo working group.<a href="#section-15.7-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-15.7-2">
+            <li id="section-15.7-2.1">Privacy. An IID carrying the full 8-octet index discloses the device's location, to within centimeters (<a href="#s-resolution-by-length" class="auto internal xref">Section 5.2</a>), to every party that sees its packets, and a stable address lets them follow the device over time <span>[<a href="#RFC7721" class="cite xref">RFC7721</a>]</span>. <span>[<a href="#RFC8064" class="cite xref">RFC8064</a>]</span> recommends that stable IIDs be semantically opaque, generated as in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span>. The truncation model of <a href="#s-privacy-truncation" class="auto internal xref">Section 5.4</a> limits what an index discloses, but this outline has no counterpart to it for addresses.<a href="#section-15.7-2.1" class="pilcrow">¶</a>
 </li>
-          <li id="section-15.6-2.2">Uniqueness. Devices in the same cell at the chosen resolution would derive the same IID. Addresses must be unique, and duplicate address detection <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span> <span>[<a href="#RFC6775" class="cite xref">RFC6775</a>]</span> would reject the second device. One candidate approach for both this issue and the previous one: the upper bits of the IID carry the cell, truncated to the resolution the device chooses to disclose, and the remaining bits are an opaque value generated as in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span>. Greedy forwarding would then work at the disclosed resolution.<a href="#section-15.6-2.2" class="pilcrow">¶</a>
+          <li id="section-15.7-2.2">Uniqueness. Devices in the same cell at the chosen resolution would derive the same IID. Addresses must be unique, and duplicate address detection <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span> <span>[<a href="#RFC6775" class="cite xref">RFC6775</a>]</span> would reject the second device. One candidate approach for both this issue and the previous one: the upper bits of the IID carry the cell, truncated to the resolution the device chooses to disclose, and the remaining bits are an opaque value generated as in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span>. Greedy forwarding would then work at the disclosed resolution.<a href="#section-15.7-2.2" class="pilcrow">¶</a>
 </li>
-          <li id="section-15.6-2.3">Prefix. A dedicated geographic prefix needs an IETF-stream document and IETF Review (<a href="#s-address-structure" class="auto internal xref">Section 15.1</a>). Without one, the hierarchy of <a href="#s-prefix-hierarchy-and-aggregation" class="auto internal xref">Section 15.2</a> applies only within a network's own prefix.<a href="#section-15.6-2.3" class="pilcrow">¶</a>
+          <li id="section-15.7-2.3">Prefix. A dedicated geographic prefix needs an IETF-stream document and IETF Review (<a href="#s-address-structure" class="auto internal xref">Section 15.1</a>). Without one, the hierarchy of <a href="#s-prefix-hierarchy-and-aggregation" class="auto internal xref">Section 15.2</a> applies only within a network's own prefix.<a href="#section-15.7-2.3" class="pilcrow">¶</a>
 </li>
-          <li id="section-15.6-2.4">Mobility. A device that moves to another cell changes its address, with the consequences of renumbering for its neighbors' caches, its registrations, and its transport connections.<a href="#section-15.6-2.4" class="pilcrow">¶</a>
+          <li id="section-15.7-2.4">Mobility. A device that moves to another cell changes its address, with the consequences of renumbering for its neighbors' caches, its registrations, and its transport connections.<a href="#section-15.7-2.4" class="pilcrow">¶</a>
 </li>
-          <li id="section-15.6-2.5">Header overhead. Geographic IIDs cannot be compressed from link-layer addresses (<a href="#s-relationship-to-existing-standards" class="auto internal xref">Section 15.5</a>), which costs up to 16 octets per packet on links where every octet counts.<a href="#section-15.6-2.5" class="pilcrow">¶</a>
+          <li id="section-15.7-2.5">Header overhead. Geographic IIDs cannot be compressed from link-layer addresses (<a href="#s-relationship-to-existing-standards" class="auto internal xref">Section 15.6</a>), which costs up to 16 octets per packet on links where every octet counts.<a href="#section-15.7-2.5" class="pilcrow">¶</a>
 </li>
         </ol>
 </section>
@@ -5525,7 +5551,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 <a href="#section-17.1" class="section-number selfRef">17.1. </a><a href="#name-gpsr-greedy-perimeter-state" class="section-name selfRef">GPSR -- Greedy Perimeter Stateless Routing (from US 10,812,365)</a>
         </h3>
 <p id="section-17.1-1">Karp, B. and H.T. Kung, 'GPSR: Greedy Perimeter Stateless Routing for Wireless Networks', MobiCom 2000. Cited as primary prior art in US 10,812,365 (geohyperbolic routing patent).<a href="#section-17.1-1" class="pilcrow">¶</a></p>
-<p id="section-17.1-2">Relevance to RSDGGS: GPSR is the canonical geographic greedy forwarding algorithm for wireless networks. It defines two components: greedy forwarding (advance toward destination by geographic distance) and perimeter routing (traverse face of a planar graph when greedy forwarding is stuck at a void). RSDGGS <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a> defines geographic greedy forwarding using common-prefix-length as the proximity metric but does not define a void-handling mechanism. GPSR's perimeter routing is a direct gap in RSDGGS. Implementations in sparse networks where geographic voids may exist SHOULD implement a fallback void handler; GPSR's perimeter routing or AODV-RPL (RFC 9854) route discovery are the recommended candidates. This gap should be documented as a known limitation in <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a>.<a href="#section-17.1-2" class="pilcrow">¶</a></p>
+<p id="section-17.1-2">Relevance to RSDGGS: GPSR is the canonical geographic greedy forwarding algorithm for wireless networks. It defines two components: greedy forwarding (advance toward destination by geographic distance) and perimeter routing (traverse face of a planar graph when greedy forwarding is stuck at a void). RSDGGS <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a> defines geographic greedy forwarding using common-prefix-length as the proximity metric, and <a href="#s-routing-voids" class="auto internal xref">Section 15.4</a> documents the void-handling gap and the recovery techniques that fill it. Implementations in sparse networks where geographic voids may exist SHOULD implement a fallback void handler; GPSR's perimeter routing, planarized with CLDP <span>[<a href="#CLDP" class="cite xref">CLDP</a>]</span> on real radio links, or AODV-RPL (RFC 9854) route discovery are the recommended candidates.<a href="#section-17.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-b-2-ieee-802-11d-country-information-elements-from-us">
@@ -5618,9 +5644,9 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
               <td class="text-left" rowspan="1" colspan="1">Karp &amp; Kung, GPSR (MobiCom 2000)</td>
               <td class="text-left" rowspan="1" colspan="1">US 10,812,365</td>
               <td class="text-left" rowspan="1" colspan="1">
-                <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a>
+                <a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>
 </td>
-              <td class="text-left" rowspan="1" colspan="1">Void handling gap in geographic forwarding</td>
+              <td class="text-left" rowspan="1" colspan="1">Void handling in geographic forwarding</td>
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">IEEE 802.11d-2001</td>
@@ -5696,7 +5722,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
           </tbody>
         </table>
 </div>
-<p id="section-17.9-3">Of these, RFC 3825 with its DHCP single-point-of-failure limitation, IEEE 802.11d as the direct predecessor of the RSDGGS 802.15.4 Sub-IE, and RFC 4862/4861 as the SLAAC/ND model that G8 follows are the highest-priority additions. The GPSR void-handling gap is the most significant technical limitation currently undocumented in the specification.<a href="#section-17.9-3" class="pilcrow">¶</a></p>
+<p id="section-17.9-3">Of these, RFC 3825 with its DHCP single-point-of-failure limitation, IEEE 802.11d as the direct predecessor of the RSDGGS 802.15.4 Sub-IE, and RFC 4862/4861 as the SLAAC/ND model that G8 follows are the highest-priority additions. The GPSR void-handling gap, the most significant technical limitation of the forwarding outline, is documented in <a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>.<a href="#section-17.9-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -5712,7 +5738,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
         <h3 id="name-expired-patents-public-doma">
 <a href="#section-18.1" class="section-number selfRef">18.1. </a><a href="#name-expired-patents-public-doma" class="section-name selfRef">Expired Patents -- Public Domain Prior Art</a>
         </h3>
-<p id="section-18.1-1">The following patents are expired and their full technical disclosures are in the public domain. They constitute prior art against any third-party attempt to patent the techniques they disclose, and RSDGGS implementations may freely use these techniques without license.<a href="#section-18.1-1" class="pilcrow">¶</a></p>
+<p id="section-18.1-1">The following patents are expired, and the following published application was abandoned without being granted, so no one holds enforceable rights in them. Their full technical disclosures are public. They constitute prior art against any third-party attempt to patent the techniques they disclose, and RSDGGS implementations may freely use these techniques without license.<a href="#section-18.1-1" class="pilcrow">¶</a></p>
 <div id="s-us-patent-4-939-726-metricom-inc-expired-2007">
 <section id="section-18.1.1">
           <h4 id="name-us-patent-4939726-metricom-">
@@ -5739,14 +5765,43 @@ US 5,115,433 adds (also public domain):
 </div>
 <figcaption><a href="#figure-43" class="selfRef">Figure 43</a></figcaption></figure>
 <p id="section-18.1.1-3">RSDGGS improvement opportunity -- Link Quality Weighted Forwarding: US 4,939,726 Claim 3 and US 5,115,433 define a link quality (LQ) factor incorporating distance, power, retry history, throughput, and delay. RSDGGS <a href="#s-geographic-greedy-forwarding" class="auto internal xref">Section 15.3</a> defines geographic greedy forwarding using only common-prefix-length as the progress metric. Incorporating a link quality weighting that prefers the LQ-best neighbor among those making geographic progress would improve real-world routing performance in dense ISM-band deployments where RSSI and retry rates vary significantly. This enhancement is freely implementable from the expired public domain claims and should be noted as a normative extension candidate for follow-on standards-track work.<a href="#section-18.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-18.1.1-4">RSDGGS improvement opportunity -- Loop and Dead-End Mitigation: US 5,115,433 also bounds the life of every packet with a one-octet field that each repeater decrements, records dead-end neighbors in the local table so they stop being chosen, and, when no forward progress is possible, has the previous node resend through another neighbor or returns the packet to its source for rerouting. These mitigations are freely implementable and complement face routing for RSDGGS forwarding (<a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>).<a href="#section-18.1.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="s-us-application-2010-0002700-cellnet">
+<section id="section-18.1.2">
+          <h4 id="name-us-application-2010-0002700">
+<a href="#section-18.1.2" class="section-number selfRef">18.1.2. </a><a href="#name-us-application-2010-0002700" class="section-name selfRef">US Application 2010/0002700 -- Cellnet Innovations (Abandoned 2011)</a>
+          </h4>
+<p id="section-18.1.2-1">Title: Methods and Systems for Network Packet Routing Using Embedded Geographic Routing Information. Inventor: Charles Robert Simpson, Jr. Applicant: Cellnet Innovations, Inc. (later Landis+Gyr Innovations, Inc.). Filed July 2, 2008, published January 7, 2010; PCT counterpart WO 2010/002782. Abandoned for failure to respond to an Office action, 2011. Never granted.<a href="#section-18.1.2-1" class="pilcrow">¶</a></p>
+<figure id="figure-44">
+            <div class="alignLeft art-ascii-art art-text artwork" id="section-18.1.2-2.1">
+<pre>
+Disclosure (published, no rights in force):
+  Geographic routing information embedded in the network
+    address of each packet
+  Each intermediate node selects the successor offering the
+    maximum forward geographic progress (after US 4,939,726)
+  Networks that do not use the geographic information
+    forward the packet normally
+  No recovery when no candidate makes forward progress
+
+RSDGGS distinguishing elements:
+  Hierarchical dodecahedral cell index, not coordinates
+  Progress = common-prefix-length (XOR+CLZ), not distance
+  Face assignment aligned to ITU regulatory regions
+</pre>
+</div>
+<figcaption><a href="#figure-44" class="selfRef">Figure 44</a></figcaption></figure>
+<p id="section-18.1.2-3">Relevance to RSDGGS: This is the closest prior art found to RSDGGS geographic IPv6 addressing (<a href="#s-ipv6-geographic-addressing" class="auto internal xref">Section 15</a>). Both carry location in the address and forward by geographic progress. As a published application, it has been prior art since January 7, 2010, against any later attempt to patent geographic routing information carried in network addresses. Like the Metricom patents, it leaves voids to the network; RSDGGS addresses them in <a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>.<a href="#section-18.1.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="s-us-patent-6-982-966-status-unconfirmed">
-<section id="section-18.1.2">
+<section id="section-18.1.3">
           <h4 id="name-us-patent-6982966-status-un">
-<a href="#section-18.1.2" class="section-number selfRef">18.1.2. </a><a href="#name-us-patent-6982966-status-un" class="section-name selfRef">US Patent 6,982,966 -- Status Unconfirmed</a>
+<a href="#section-18.1.3" class="section-number selfRef">18.1.3. </a><a href="#name-us-patent-6982966-status-un" class="section-name selfRef">US Patent 6,982,966 -- Status Unconfirmed</a>
           </h4>
-<p id="section-18.1.2-1">This number was not definitively identified in patent database searches. If this patent was cited in relation to geographic routing or MANET protocols, the Metricom prior art (4,939,726 and 5,115,433, both expired 2007 and 2009 respectively) predates any 2006-era geographic routing patent by 15+ years and establishes the core concepts as public domain. Independent verification at the USPTO patent database (https://patents.uspto.gov) is still recommended.<a href="#section-18.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-18.1.3-1">This number was not definitively identified in patent database searches. If this patent was cited in relation to geographic routing or MANET protocols, the Metricom prior art (4,939,726 and 5,115,433, both expired 2007 and 2009 respectively) predates any 2006-era geographic routing patent by 15+ years and establishes the core concepts as public domain. Independent verification at the USPTO patent database (https://patents.uspto.gov) is still recommended.<a href="#section-18.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -5762,7 +5817,7 @@ US 5,115,433 adds (also public domain):
 <a href="#section-18.2.1" class="section-number selfRef">18.2.1. </a><a href="#name-us-patent-10306400-applicat" class="section-name selfRef">US Patent 10,306,400 / Application 2014/0162692 -- Wireless Regulatory Compliance (Active until ~2035)</a>
           </h4>
 <p id="section-18.2.1-1">Title: Systems and Methods for Enforcing Wireless Regulatory Compliance. Assignee not publicly confirmed from application number alone; the issued patent US 10,306,400 covers a thermostat and home network device context. Filed as US Application 20140162692 approximately 2013-2014. The issued patent family includes related grants US 9,794,738 and US 9,654,965. Active.<a href="#section-18.2.1-1" class="pilcrow">¶</a></p>
-<figure id="figure-44">
+<figure id="figure-45">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.1-2.1">
 <pre>
 Core claim element (all related patents):
@@ -5780,7 +5835,7 @@ US 9,654,965 adds:
   indirect AP location, or cell tower information
 </pre>
 </div>
-<figcaption><a href="#figure-44" class="selfRef">Figure 44</a></figcaption></figure>
+<figcaption><a href="#figure-45" class="selfRef">Figure 45</a></figcaption></figure>
 <p id="section-18.2.1-3">RSDGGS freedom to operate: RSDGGS does not use power line frequency as a location verification mechanism. The core novelty of this patent family is the AC frequency verification step, which is absent from RSDGGS entirely. RSDGGS derives location from: pre-provisioned cell index (<a href="#s-manufacturing-provisioning-use-case" class="auto internal xref">Section 12</a>), peer-received RSDGGS beacons (<a href="#s-peer-assisted-location-discovery" class="auto internal xref">Section 11</a>), or cooperative ranging (<a href="#s-cooperative-localization" class="auto internal xref">Section 13</a>). None of these mechanisms involve power line analysis. No claim element reads on RSDGGS.<a href="#section-18.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-4">RSDGGS improvement opportunity -- Lookup Table Architecture: US 9,654,965 explicitly discloses the architecture of a location-to-regulations lookup table stored locally on the device, optionally small enough to fit in embedded memory, potentially updated from network. This is directly analogous to the RSDGGS regulatory database architecture defined in <a href="#s-regulatory-database-structure" class="auto internal xref">Section 8</a>. The patent discloses this as a WLAN channel compliance mechanism; RSDGGS generalizes it to ISM bands with a hierarchical geographic index as the lookup key. Because 9,654,965 is active, RSDGGS implementations MUST NOT incorporate AC power line frequency as a location verification step alongside the lookup table. The lookup table architecture itself predates 9,654,965 as prior art (RFC 2009 describes location-to-routing-table mapping from 1996), but the specific combination of local storage + network update + GNSS/MCC/AP location sources for the lookup key is a design pattern that RSDGGS implementations should credit to this work in any patent prosecution.<a href="#section-18.2.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -5791,7 +5846,7 @@ US 9,654,965 adds:
 <a href="#section-18.2.2" class="section-number selfRef">18.2.2. </a><a href="#name-us-patent-10812365-geohyper" class="section-name selfRef">US Patent 10,812,365 -- Geohyperbolic Routing (Northeastern University, Active until 2037)</a>
           </h4>
 <p id="section-18.2.2-1">Title: Geohyperbolic Routing and Addressing Schemes for Networks. Inventors: Dmitri Krioukov, Ivan Voitalov. Assignee: Northeastern University, Boston. Filed November 16, 2017. Granted October 20, 2020. Active, expires December 25, 2037.<a href="#section-18.2.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-45">
+<figure id="figure-46">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.2-2.1">
 <pre>
 Core claim elements:
@@ -5814,7 +5869,7 @@ RSDGGS distinguishing elements (no infringement):
     power-law topology reproduction
 </pre>
 </div>
-<figcaption><a href="#figure-45" class="selfRef">Figure 45</a></figcaption></figure>
+<figcaption><a href="#figure-46" class="selfRef">Figure 46</a></figcaption></figure>
 <p id="section-18.2.2-3">RSDGGS improvement opportunity -- None applicable: The geohyperbolic model is specifically optimized for large-scale Internet backbone topology reproduction, using population-density centrality to reproduce power-law degree distributions. RSDGGS targets constrained 802.15.4 IoT mesh networks with no backbone topology requirements and no population-density data available at compile time on embedded devices. The mathematical approaches are incompatible at a fundamental level: hyperbolic geometry requires floating-point (r, theta, phi) arithmetic, whereas RSDGGS's design goal G4 requires no-FPU integer arithmetic. No improvement opportunity from this patent is applicable to RSDGGS.<a href="#section-18.2.2-3" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-4">Backward citations of interest: US 10,812,365 cites US 8,284,788 (Krioukov et al., hyperbolic network embedding, 2012) as a predecessor. The academic paper by Krioukov et al. 'Hyperbolic Geometry of Complex Networks' (Physical Review E, 2010) is the underlying research. Both establish that hyperbolic geometry for Internet-scale routing is a well-developed research area distinct from RSDGGS's approach.<a href="#section-18.2.2-4" class="pilcrow">¶</a></p>
 </section>
@@ -5825,7 +5880,7 @@ RSDGGS distinguishing elements (no infringement):
 <a href="#section-18.2.3" class="section-number selfRef">18.2.3. </a><a href="#name-us-patent-11652742-ghost-ro" class="section-name selfRef">US Patent 11,652,742 -- Ghost Routing (Microsoft, Active until 2041)</a>
           </h4>
 <p id="section-18.2.3-1">Title: Ghost Routing. Assignee: Microsoft Technology Licensing LLC. Inventors: Padhye, Jayaraman, Bai, Singh, Beckett, et al. Filed October 16, 2020. Granted May 16, 2023. Active, expires January 1, 2041.<a href="#section-18.2.3-1" class="pilcrow">¶</a></p>
-<figure id="figure-46">
+<figure id="figure-47">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.3-2.1">
 <pre>
 Core claim elements:
@@ -5845,7 +5900,7 @@ RSDGGS relationship: ZERO OVERLAP
   This is a cloud network change management patent
 </pre>
 </div>
-<figcaption><a href="#figure-46" class="selfRef">Figure 46</a></figcaption></figure>
+<figcaption><a href="#figure-47" class="selfRef">Figure 47</a></figcaption></figure>
 <p id="section-18.2.3-3">RSDGGS improvement opportunity -- None: Ghost routing addresses verification of network configuration changes in cloud datacenter switching infrastructure. It has no technical concepts, no claim elements, and no CPC classifications that overlap with RSDGGS. The name superficially resembles geographic routing but the technical subject matter is entirely unrelated. No improvement opportunity exists.<a href="#section-18.2.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -5855,7 +5910,7 @@ RSDGGS relationship: ZERO OVERLAP
 <a href="#section-18.2.4" class="section-number selfRef">18.2.4. </a><a href="#name-cn101923801b-method-for-gen" class="section-name selfRef">CN101923801B -- Method for Generating a Regular Dodecahedron Map Projection (Expired)</a>
           </h4>
 <p id="section-18.2.4-1">Assignee: Wuhan University (WHU), Wuhan, China. Inventors: Hu Peng, Li Yunxiang, Zhu Fuli. Application number: CN2009100626550A. Filing and priority date: 10 June 2009. Grant date: 29 February 2012. Jurisdiction: China only (no PCT application, no US, EP, or other national-phase equivalents identified). Legal status: Expired -- Fee Related. Anticipated statutory expiration: 10 June 2029 (20-year term from filing). Actual status: lapsed prior to statutory expiration due to non-payment of annual maintenance fees.<a href="#section-18.2.4-1" class="pilcrow">¶</a></p>
-<figure id="figure-47">
+<figure id="figure-48">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.4-2.1">
 <pre>
 Legal status note:
@@ -5875,9 +5930,9 @@ Jurisdiction note:
   States, European Union, or other IETF-relevant jurisdictions.
 </pre>
 </div>
-<figcaption><a href="#figure-47" class="selfRef">Figure 47</a></figcaption></figure>
+<figcaption><a href="#figure-48" class="selfRef">Figure 48</a></figcaption></figure>
 <p id="section-18.2.4-3">The method disclosed in CN101923801B describes a cartographic rendering pipeline for producing physical dodecahedron map products. The claimed method orients the dodecahedron so that one vertex coincides with the Earth's geographic North Pole and the antipodal vertex with the South Pole, selects a user-defined region of interest to determine each face's central meridian, applies a gnomonic projection per face to transform geographic vector data, clips the result to each pentagonal boundary, and outputs twelve pentagonal paper maps for assembly into a physical dodecahedron. The implementation is explicitly tied to ArcGIS and ESRI Shapefile data formats as the required geographic data pipeline.<a href="#section-18.2.4-3" class="pilcrow">¶</a></p>
-<figure id="figure-48">
+<figure id="figure-49">
             <div class="alignLeft art-ascii-art art-text artwork" id="section-18.2.4-4.1">
 <pre>
 Core claim elements (CN101923801B):
@@ -5914,7 +5969,7 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
       CN101923801B explicitly claims a paper map assembly step
 </pre>
 </div>
-<figcaption><a href="#figure-48" class="selfRef">Figure 48</a></figcaption></figure>
+<figcaption><a href="#figure-49" class="selfRef">Figure 49</a></figcaption></figure>
 <p id="section-18.2.4-5">Freedom to operate conclusion: CN101923801B presents no freedom-to-operate concern for RSDGGS on three independent grounds, each sufficient alone. First, the patent is expired due to fee non-payment and its claims are in the public domain -- no enforcement is possible regardless of claim scope. Second, the patent is China-jurisdiction only with no international equivalents, so even if active it could not be enforced in the United States, European Union, Japan, or any other IETF-process jurisdiction. Third, no claim element of CN101923801B reads on RSDGGS: the patent covers a cartographic rendering pipeline for producing visual map products from geographic vector data using ArcGIS tooling, whereas RSDGGS is a binary integer encoding scheme for IoT device regulatory context with no map output, no GIS pipeline, and no physical artifact. The shared concept of using a dodecahedron as an Earth reference surface is established prior art predating CN101923801B by decades, with the gnomonic polyhedral map projection appearing in academic cartography literature since at least the 1940s (Fuller, 1944, US Patent 2,393,676, expired 1963) and in peer-reviewed cartographic literature through the 1990s.<a href="#section-18.2.4-5" class="pilcrow">¶</a></p>
 <p id="section-18.2.4-6">Prior art note: CN101923801B itself acknowledges that dodecahedron map projection is a known concept by framing its contribution as 'breaking through the limitation that the previous projection surface is a plane and a developable surface.' The gnomonic projection of the Earth onto a regular dodecahedron is explicitly not novel to CN101923801B -- the claimed novelty is the specific ArcGIS-based rendering workflow and the face-by-face data extraction pipeline. RSDGGS's use of the dodecahedron as a hierarchical geographic index is therefore independently supported by prior art that predates CN101923801B, in addition to the non-infringement analysis above.<a href="#section-18.2.4-6" class="pilcrow">¶</a></p>
 </section>
@@ -6035,6 +6090,14 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
               <td class="text-left" rowspan="1" colspan="1">High -- routing performance</td>
             </tr>
             <tr>
+              <td class="text-left" rowspan="1" colspan="1">GFG, GPSR, CLDP; US 5,115,433</td>
+              <td class="text-left" rowspan="1" colspan="1">Void recovery (face routing on a planarized graph) and packet lifetime bound</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>
+</td>
+              <td class="text-left" rowspan="1" colspan="1">High -- delivery in sparse meshes</td>
+            </tr>
+            <tr>
               <td class="text-left" rowspan="1" colspan="1">US 10,306,400 / 9,654,965</td>
               <td class="text-left" rowspan="1" colspan="1">Explicit credit of lookup table architecture pattern</td>
               <td class="text-left" rowspan="1" colspan="1">
@@ -6129,15 +6192,17 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
 </li>
           <li id="section-18.5-2.3">US 10,306,400 / application family (active until ~2035): No infringement risk from current RSDGGS specification. RSDGGS MUST NOT add AC power line frequency as a location verification mechanism. Any patent prosecution should distinguish the lookup table architecture using RFC 2009 (1996) as prior art predating US 9,654,965.<a href="#section-18.5-2.3" class="pilcrow">¶</a>
 </li>
-          <li id="section-18.5-2.4">US 4,939,726 and US 5,115,433 (both expired): Freely implementable. The link quality weighted forwarding enhancement described in <a href="#s-us-patent-4-939-726-metricom-inc-expired-2007" class="auto internal xref">Section 18.1.1</a> should be incorporated in a later revision of this document and explicitly credited to these expired patents as the enabling prior art in any prosecution.<a href="#section-18.5-2.4" class="pilcrow">¶</a>
+          <li id="section-18.5-2.4">US 4,939,726 and US 5,115,433 (both expired): Freely implementable. The link quality weighted forwarding enhancement described in <a href="#s-us-patent-4-939-726-metricom-inc-expired-2007" class="auto internal xref">Section 18.1.1</a> should be incorporated in a later revision of this document and explicitly credited to these expired patents as the enabling prior art in any prosecution. The same applies to their loop and dead-end mitigations (<a href="#s-routing-voids" class="auto internal xref">Section 15.4</a>).<a href="#section-18.5-2.4" class="pilcrow">¶</a>
 </li>
-          <li id="section-18.5-2.5">Search CPC class H04W16/14 (channel plan based on geography) and H04B1/3827 (ISM band operation) for active patents not identified here. This search should be conducted by patent counsel before commercial deployment.<a href="#section-18.5-2.5" class="pilcrow">¶</a>
+          <li id="section-18.5-2.5">US Application 2010/0002700 (Cellnet, abandoned 2011): No rights in force. Cite it as prior art for geographic routing information carried in network addresses in any patent prosecution based on RSDGGS geographic IPv6 addressing.<a href="#section-18.5-2.5" class="pilcrow">¶</a>
 </li>
-          <li id="section-18.5-2.6">Search for continuation patents based on US Application 2014/0162692 beyond the identified US 10,306,400, US 9,794,738, and US 9,654,965. The application family may have additional continuations with broader claims.<a href="#section-18.5-2.6" class="pilcrow">¶</a>
+          <li id="section-18.5-2.6">Search CPC class H04W16/14 (channel plan based on geography) and H04B1/3827 (ISM band operation) for active patents not identified here. This search should be conducted by patent counsel before commercial deployment.<a href="#section-18.5-2.6" class="pilcrow">¶</a>
 </li>
-          <li id="section-18.5-2.7">For the RSDGGS-IPv6 geofeed profile (improvement opportunity from RFC 9632 / 8805): verify that no active patent covers the specific combination of hierarchical geographic grid prefix as an IP geofeed CSV entry. This combination appears novel but has not been searched.<a href="#section-18.5-2.7" class="pilcrow">¶</a>
+          <li id="section-18.5-2.7">Search for continuation patents based on US Application 2014/0162692 beyond the identified US 10,306,400, US 9,794,738, and US 9,654,965. The application family may have additional continuations with broader claims.<a href="#section-18.5-2.7" class="pilcrow">¶</a>
 </li>
-          <li id="section-18.5-2.8">Posting draft-hanley-rsdggs-00 as an Internet-Draft on 20 October 2026 made the subject matter it discloses, including the improvement opportunities listed in <a href="#s-summary-of-improvement-opportunities" class="auto internal xref">Section 18.4</a>, publicly available as of that date; each later revision does the same for what it adds. This does not wait for RFC publication or for the normative follow-on work to be complete.<a href="#section-18.5-2.8" class="pilcrow">¶</a>
+          <li id="section-18.5-2.8">For the RSDGGS-IPv6 geofeed profile (improvement opportunity from RFC 9632 / 8805): verify that no active patent covers the specific combination of hierarchical geographic grid prefix as an IP geofeed CSV entry. This combination appears novel but has not been searched.<a href="#section-18.5-2.8" class="pilcrow">¶</a>
+</li>
+          <li id="section-18.5-2.9">Posting draft-hanley-rsdggs-00 as an Internet-Draft on 20 October 2026 made the subject matter it discloses, including the improvement opportunities listed in <a href="#s-summary-of-improvement-opportunities" class="auto internal xref">Section 18.4</a>, publicly available as of that date; each later revision does the same for what it adds. This does not wait for RFC publication or for the normative follow-on work to be complete.<a href="#section-18.5-2.9" class="pilcrow">¶</a>
 </li>
         </ol>
 </section>
@@ -6156,7 +6221,7 @@ RSDGGS distinguishing elements -- no claim reads on RSDGGS:
         <h3 id="name-crate-structure-and-types">
 <a href="#section-19.1" class="section-number selfRef">19.1. </a><a href="#name-crate-structure-and-types" class="section-name selfRef">Crate Structure and Types</a>
         </h3>
-<figure id="figure-49">
+<figure id="figure-50">
           <div class="lang-rust sourcecode" id="section-19.1-1.1">
 <pre>&lt;CODE BEGINS&gt;
 #![no_std]
@@ -6194,7 +6259,7 @@ type Vec3 = [f64; 3];
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-49" class="selfRef">Figure 49</a></figcaption></figure>
+<figcaption><a href="#figure-50" class="selfRef">Figure 50</a></figcaption></figure>
 </section>
 </div>
 <div id="s-compile-time-constants">
@@ -6203,7 +6268,7 @@ type Vec3 = [f64; 3];
 <a href="#section-19.2" class="section-number selfRef">19.2. </a><a href="#name-compile-time-constants" class="section-name selfRef">Compile-Time Constants</a>
         </h3>
 <p id="section-19.2-1">The twelve face center unit vectors and the sixty pentagon vertex unit vectors are precomputed constants derived from the dodecahedron orientation procedure defined in <a href="#s-face-center-orientation" class="auto internal xref">Section 4.3</a>: face 1 centered at (60.0N, 26.5E), with face 2's center at bearing 304.0 degrees from it. These constants are reproduced here to 15 decimal places and MUST be used by all conforming implementations. The rotation algorithm from <a href="#s-face-center-orientation" class="auto internal xref">Section 4.3</a> is not invoked at runtime.<a href="#section-19.2-1" class="pilcrow">¶</a></p>
-<figure id="figure-50">
+<figure id="figure-51">
           <div class="breakable lang-rust sourcecode" id="section-19.2-2.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Dodecahedron face center unit vectors, in RSDGGS face order.
@@ -6351,7 +6416,7 @@ const CHILD_CENTRAL: u8 = 0b11;
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-50" class="selfRef">Figure 50</a></figcaption></figure>
+<figcaption><a href="#figure-51" class="selfRef">Figure 51</a></figcaption></figure>
 </section>
 </div>
 <div id="s-coordinate-conversion-primitives">
@@ -6359,7 +6424,7 @@ const CHILD_CENTRAL: u8 = 0b11;
         <h3 id="name-coordinate-conversion-primi">
 <a href="#section-19.3" class="section-number selfRef">19.3. </a><a href="#name-coordinate-conversion-primi" class="section-name selfRef">Coordinate Conversion Primitives</a>
         </h3>
-<figure id="figure-51">
+<figure id="figure-52">
           <div class="breakable lang-rust sourcecode" id="section-19.3-1.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Convert WGS-84 decimal degrees to unit Cartesian vector.
@@ -6422,7 +6487,7 @@ fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -&gt; bool {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-51" class="selfRef">Figure 51</a></figcaption></figure>
+<figcaption><a href="#figure-52" class="selfRef">Figure 52</a></figcaption></figure>
 </section>
 </div>
 <div id="s-face-assignment-1">
@@ -6431,7 +6496,7 @@ fn in_sph_tri(p: Vec3, a: Vec3, b: Vec3, c: Vec3) -&gt; bool {
 <a href="#section-19.4" class="section-number selfRef">19.4. </a><a href="#name-face-assignment-2" class="section-name selfRef">Face Assignment</a>
         </h3>
 <p id="section-19.4-1">Face assignment uses a nearest-face-center lookup via dot product. The face whose center unit vector has the maximum dot product with the query point is the face containing the point. This is equivalent to finding the face whose center is closest in angular distance, and requires no table lookup or coordinate transformation beyond the initial Cartesian conversion.<a href="#section-19.4-1" class="pilcrow">¶</a></p>
-<figure id="figure-52">
+<figure id="figure-53">
           <div class="lang-rust sourcecode" id="section-19.4-2.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Return the RSDGGS face index [0..11] for a WGS-84 coordinate.
@@ -6457,7 +6522,7 @@ pub fn face_for(ll: LatLon) -&gt; u8 {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-52" class="selfRef">Figure 52</a></figcaption></figure>
+<figcaption><a href="#figure-53" class="selfRef">Figure 53</a></figcaption></figure>
 </section>
 </div>
 <div id="s-pentagon-sector-assignment">
@@ -6467,7 +6532,7 @@ pub fn face_for(ll: LatLon) -&gt; u8 {
         </h3>
 <p id="section-19.5-1">Each face is divided into 5 golden gnomon triangular sectors by connecting the face center to each of the 5 pentagon vertices. The pentagon vertices are the centroids of the 5 icosahedron triangles surrounding the face's corresponding icosahedron vertex. These vertices are precomputed as constants for each face.<a href="#section-19.5-1" class="pilcrow">¶</a></p>
 <p id="section-19.5-2">For the reference implementation, the pentagon vertices are derived from the icosahedron face topology at compile time. The sector is found by testing the query point against each of the 5 spherical triangles (face_center, pv[i], pv[(i+1)%5]).<a href="#section-19.5-2" class="pilcrow">¶</a></p>
-<figure id="figure-53">
+<figure id="figure-54">
           <div class="lang-rust sourcecode" id="section-19.5-3.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Pentagon vertices for each RSDGGS face.
@@ -6507,7 +6572,7 @@ fn sector_for(face: u8, p: Vec3) -&gt; u8 {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-53" class="selfRef">Figure 53</a></figcaption></figure>
+<figcaption><a href="#figure-54" class="selfRef">Figure 54</a></figcaption></figure>
 </section>
 </div>
 <div id="s-recursive-subdivision-1">
@@ -6517,7 +6582,7 @@ fn sector_for(face: u8, p: Vec3) -&gt; u8 {
         </h3>
 <p id="section-19.6-1">Given the face and sector, the query point is recursively assigned to child triangles. At each level the triangle is split into 4 children by connecting the midpoints of all three sides. The child containing the point is identified by the spherical containment test and its 2-bit index is recorded.<a href="#section-19.6-1" class="pilcrow">¶</a></p>
 <p id="section-19.6-2">The tangent-frame projection used in the reference encoder (projecting onto the north/east tangent plane at the face center) is replaced here by exact spherical triangle subdivision. The spherical midpoint function is used to compute child vertices exactly on the sphere, eliminating distortion accumulation across subdivision levels.<a href="#section-19.6-2" class="pilcrow">¶</a></p>
-<figure id="figure-54">
+<figure id="figure-55">
           <div class="breakable lang-rust sourcecode" id="section-19.6-3.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Recursive subdivision state: current triangle vertices.
@@ -6580,7 +6645,7 @@ fn initial_triangle(face: u8, sector: u8) -&gt; Triangle {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-54" class="selfRef">Figure 54</a></figcaption></figure>
+<figcaption><a href="#figure-55" class="selfRef">Figure 55</a></figcaption></figure>
 </section>
 </div>
 <div id="s-top-level-encode-function">
@@ -6589,7 +6654,7 @@ fn initial_triangle(face: u8, sector: u8) -&gt; Triangle {
 <a href="#section-19.7" class="section-number selfRef">19.7. </a><a href="#name-top-level-encode-function" class="section-name selfRef">Top-Level Encode Function</a>
         </h3>
 <p id="section-19.7-1">The encode function takes a WGS-84 coordinate and a desired length in bytes (1 to 8) and returns a populated RsdggsCell. The length parameter controls the resolution: 1 byte encodes face only; byte 1 carries the 4-bit sector and 2 subdivision levels, and each additional byte adds 4 subdivision levels (2 bits per level).<a href="#section-19.7-1" class="pilcrow">¶</a></p>
-<figure id="figure-55">
+<figure id="figure-56">
           <div class="breakable lang-rust sourcecode" id="section-19.7-2.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Encode a WGS-84 coordinate as an RSDGGS cell index.
@@ -6647,7 +6712,7 @@ pub fn encode(ll: LatLon, len: u8) -&gt; RsdggsCell {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-55" class="selfRef">Figure 55</a></figcaption></figure>
+<figcaption><a href="#figure-56" class="selfRef">Figure 56</a></figcaption></figure>
 </section>
 </div>
 <div id="s-decode-function">
@@ -6656,7 +6721,7 @@ pub fn encode(ll: LatLon, len: u8) -&gt; RsdggsCell {
 <a href="#section-19.8" class="section-number selfRef">19.8. </a><a href="#name-decode-function" class="section-name selfRef">Decode Function</a>
         </h3>
 <p id="section-19.8-1">The decode function extracts the face, sector, and subdivision level sequence from a populated RsdggsCell. It does not reconstruct the precise geographic coordinate -- it returns the cell information sufficient for regulatory database lookup. Geographic coordinate recovery (computing the cell center) is a separate operation not required for regulatory compliance.<a href="#section-19.8-1" class="pilcrow">¶</a></p>
-<figure id="figure-56">
+<figure id="figure-57">
           <div class="lang-rust sourcecode" id="section-19.8-2.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Decoded RSDGGS cell contents.
@@ -6700,7 +6765,7 @@ pub fn decode(cell: &amp;RsdggsCell) -&gt; DecodedCell {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-56" class="selfRef">Figure 56</a></figcaption></figure>
+<figcaption><a href="#figure-57" class="selfRef">Figure 57</a></figcaption></figure>
 </section>
 </div>
 <div id="s-boundary-proximity-helper">
@@ -6709,7 +6774,7 @@ pub fn decode(cell: &amp;RsdggsCell) -&gt; DecodedCell {
 <a href="#section-19.9" class="section-number selfRef">19.9. </a><a href="#name-boundary-proximity-helper" class="section-name selfRef">Boundary Proximity Helper</a>
         </h3>
 <p id="section-19.9-1">The boundary proximity function B(cell, band) from <a href="#s-boundary-proximity-function" class="auto internal xref">Section 10.3</a> is implemented as a database lookup returning the number of RSDGGS resolution steps to the nearest rule-set-changing boundary. The function signature is shown; the database backend is implementation-defined.<a href="#section-19.9-1" class="pilcrow">¶</a></p>
-<figure id="figure-57">
+<figure id="figure-58">
           <div class="lang-rust sourcecode" id="section-19.9-2.1">
 <pre>&lt;CODE BEGINS&gt;
 /// Regulatory band identifier.
@@ -6758,7 +6823,7 @@ pub fn boundary_power_dbm(rule: &amp;RuleSet, nbr_pwr: i8) -&gt; i8 {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-57" class="selfRef">Figure 57</a></figcaption></figure>
+<figcaption><a href="#figure-58" class="selfRef">Figure 58</a></figcaption></figure>
 </section>
 </div>
 <div id="s-worked-example">
@@ -6767,7 +6832,7 @@ pub fn boundary_power_dbm(rule: &amp;RuleSet, nbr_pwr: i8) -&gt; i8 {
 <a href="#section-19.10" class="section-number selfRef">19.10. </a><a href="#name-worked-example" class="section-name selfRef">Worked Example</a>
         </h3>
 <p id="section-19.10-1">The following verification vector is derived from the reference implementation. Implementations MUST produce identical byte values for this input to be considered conformant.<a href="#section-19.10-1" class="pilcrow">¶</a></p>
-<figure id="figure-58">
+<figure id="figure-59">
           <div class="lang-rust sourcecode" id="section-19.10-2.1">
 <pre>&lt;CODE BEGINS&gt;
 // Input:
@@ -6811,7 +6876,7 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-58" class="selfRef">Figure 58</a></figcaption></figure>
+<figcaption><a href="#figure-59" class="selfRef">Figure 59</a></figcaption></figure>
 <p id="section-19.10-3">The worked example demonstrates the encode path from floating-point coordinate to structured byte sequence. The face-0x02 byte is the ITU Region 2 determination made at single-byte resolution. Truncating to 1 byte is sufficient for ISM band availability determination anywhere in North America, as specified in <a href="#s-resolution-sufficiency-levels" class="auto internal xref">Section 8.2</a> (RSL for 902 MHz, Face 2 = 1 byte).<a href="#section-19.10-3" class="pilcrow">¶</a></p>
 <p id="section-19.10-4">The note on Tokyo illustrates that face assignment is driven by geometry: a jurisdiction near a face boundary can span two faces. The regulatory database is the authoritative source for rule set assignment; the face index is a lookup key, and its two low-order bits give the ITU Region of the face's principal population, not an encoding of administrative boundaries.<a href="#section-19.10-4" class="pilcrow">¶</a></p>
 </section>
@@ -6824,7 +6889,7 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 <a href="#section-20" class="section-number selfRef">20. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-20-1">RSDGGS indexes are location-bearing data. Implementers must consider the following security properties:<a href="#section-20-1" class="pilcrow">¶</a></p>
-<p id="section-20-2">Location Privacy: The variable-length encoding provides a natural privacy gradient. Implementations SHOULD share the minimum resolution necessary for the intended purpose. For regulatory validation purposes, 1 to 3 octets is typically sufficient and reveals no more than country-level location. Full 8-octet indexes SHOULD be treated as sensitive location data. <a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.6</a> discusses the further exposure if the index were carried in IPv6 addresses.<a href="#section-20-2" class="pilcrow">¶</a></p>
+<p id="section-20-2">Location Privacy: The variable-length encoding provides a natural privacy gradient. Implementations SHOULD share the minimum resolution necessary for the intended purpose. For regulatory validation purposes, 1 to 3 octets is typically sufficient and reveals no more than country-level location. Full 8-octet indexes SHOULD be treated as sensitive location data. <a href="#s-ipv6-open-issues" class="auto internal xref">Section 15.7</a> discusses the further exposure if the index were carried in IPv6 addresses.<a href="#section-20-2" class="pilcrow">¶</a></p>
 <p id="section-20-3">Beacon Authenticity: The peer-assisted discovery mechanism defined in <a href="#s-peer-assisted-location-discovery" class="auto internal xref">Section 11</a> assumes that Beacon Devices transmit their correct regulatory context. A malicious device transmitting a beacon with a false RSDGGS cell could cause Naive Devices to adopt incorrect regulatory parameters, potentially causing interference. Implementations in security-sensitive deployments SHOULD implement beacon authentication using a shared key or public key infrastructure, and SHOULD cross-validate received cells against RF propagation models or approximate location data.<a href="#section-20-3" class="pilcrow">¶</a></p>
 <p id="section-20-4">Database Integrity: The regulatory database is a critical dependency. Database updates SHOULD be authenticated using code-signing mechanisms. Implementations SHOULD validate database integrity at boot using a stored hash.<a href="#section-20-4" class="pilcrow">¶</a></p>
 <p id="section-20-5">Regulatory Compliance: RSDGGS is an informational tool to assist devices in determining applicable regulatory parameters. It does not constitute a formal regulatory authorization. Operators remain responsible for ensuring their devices comply with applicable regulations in their jurisdiction of deployment, independent of the RSDGGS-derived rule set.<a href="#section-20-5" class="pilcrow">¶</a></p>
@@ -6965,6 +7030,15 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
       <dd>
 <span class="refAuthor">Association of Radio Industries and Businesses (ARIB)</span>, <span class="refTitle">"920 MHz-Band Telemeter, Telecontrol and Data Transmission Radio Equipment"</span>, <span class="seriesInfo">See ARIB STD-T108, 2012</span>, <time datetime="2012" class="refDate">2012</time>. </dd>
 <dd class="break"></dd>
+<dt id="GFG">[GFG]</dt>
+      <dd>
+<span class="refAuthor">Bose, P., Morin, P., Stojmenovic, I., and J. Urrutia</span>, <span class="refTitle">"Routing with Guaranteed Delivery in Ad Hoc Wireless Networks"</span>, <span class="seriesInfo">Wireless Networks vol. 7, no. 6, pp. 609-616</span>, <span class="seriesInfo">DOI 10.1023/A:1012319418150</span>, <time datetime="2001-11" class="refDate">November 2001</time>, <span>&lt;<a href="https://doi.org/10.1023/A:1012319418150">https://doi.org/10.1023/A:1012319418150</a>&gt;</span>. <span class="annotation">First presented at DIAL M 1999.</span>
+      </dd>
+<dd class="break"></dd>
+<dt id="CLDP">[CLDP]</dt>
+      <dd>
+<span class="refAuthor">Kim, Y.-J., Govindan, R., Karp, B., and S. Shenker</span>, <span class="refTitle">"Geographic Routing Made Practical"</span>, <span class="seriesInfo">See USENIX NSDI 2005, pp. 217-230</span>, <time datetime="2005-05" class="refDate">May 2005</time>. </dd>
+<dd class="break"></dd>
 <dt id="GPSR">[GPSR]</dt>
       <dd>
 <span class="refAuthor">Karp, B. and H.T. Kung</span>, <span class="refTitle">"GPSR: Greedy Perimeter Stateless Routing for Wireless Networks"</span>, <span class="seriesInfo">See ACM MobiCom 2000, August 2000</span>, <time datetime="2000" class="refDate">2000</time>. </dd>
@@ -7032,6 +7106,10 @@ let coarse = RsdggsCell { bytes: [0x02, 0,0,0,0,0,0,0], len: 1 };
 <dt id="RFC8064">[RFC8064]</dt>
       <dd>
 <span class="refAuthor">Gont, F.</span>, <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Thaler, D.</span>, and <span class="refAuthor">W. Liu</span>, <span class="refTitle">"Recommendation on Stable IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 8064</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8064">https://www.rfc-editor.org/info/rfc8064</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8200">[RFC8200]</dt>
+      <dd>
+<span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8126">[RFC8126]</dt>
       <dd>
