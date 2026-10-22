@@ -4,8 +4,8 @@
 
 Independent Submission                                       J.P. Hanley
 Internet-Draft                                       Myelin Networks LLC
-Intended status: Informational                           21 October 2026
-Expires: 24 April 2027
+Intended status: Informational                           22 October 2026
+Expires: 25 April 2027
 
 
         Regulatory Spectrum Discrete Global Grid System (RSDGGS)
@@ -42,21 +42,36 @@ Abstract
    regulatory parameters including frequency allocation, power limits,
    duty cycle, dwell interval, channelization, and permitted modulation.
 
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 1]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   For IETF protocols, this document defines a CBOR encoding of the
+   index, requests a CBOR tag for it, and describes how the index is
+   carried in IEEE 802.15.4 frames, the link layer for which 6LoWPAN was
+   defined, so that a device can learn which channels and power levels
+   it may use before it joins such a network.  It also outlines, as
+   future work, the use of the index as an IPv6 Interface Identifier for
+   geographic forwarding within 6LoWPAN and RPL meshes, and lists the
+   privacy, address uniqueness, and prefix allocation issues that such
+   use would have to resolve.
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
    provisions of BCP 78 and BCP 79.
-
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 1]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
@@ -68,7 +83,7 @@ Internet-Draft                   RSDGGS                     October 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 April 2027.
+   This Internet-Draft will expire on 25 April 2027.
 
 Copyright Notice
 
@@ -83,234 +98,245 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   6
-   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   7
-   3.  Motivation and Design Goals . . . . . . . . . . . . . . . . .   8
-   4.  Dodecahedral Grid Geometry  . . . . . . . . . . . . . . . . .   9
-     4.1.  Rationale for the Dodecahedron  . . . . . . . . . . . . .   9
-       4.1.1.  Face Count and ITU Region Containment . . . . . . . .  10
-       4.1.2.  Map Projection Distortion at Face Boundaries  . . . .  11
-       4.1.3.  Summary of Design Decision  . . . . . . . . . . . . .  12
-     4.2.  Face Topology and ITU Region Alignment  . . . . . . . . .  13
-     4.3.  Face Center Orientation . . . . . . . . . . . . . . . . .  15
-     4.4.  Pentagonal Face Subdivision . . . . . . . . . . . . . . .  17
-     4.5.  Isosceles Triangle Hierarchy  . . . . . . . . . . . . . .  17
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   7
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   3.  Motivation and Design Goals . . . . . . . . . . . . . . . . .   9
+   4.  Dodecahedral Grid Geometry  . . . . . . . . . . . . . . . . .  10
+     4.1.  Rationale for the Dodecahedron  . . . . . . . . . . . . .  11
+       4.1.1.  Face Count and ITU Region Containment . . . . . . . .  11
+       4.1.2.  Map Projection Distortion at Face Boundaries  . . . .  12
+       4.1.3.  Summary of Design Decision  . . . . . . . . . . . . .  14
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 2]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+     4.2.  Face Topology and ITU Region Alignment  . . . . . . . . .  15
+     4.3.  Face Center Orientation . . . . . . . . . . . . . . . . .  17
+     4.4.  Pentagonal Face Subdivision . . . . . . . . . . . . . . .  19
+     4.5.  Isosceles Triangle Hierarchy  . . . . . . . . . . . . . .  19
      4.6.  RSDGGS Dodecahedron Net -- ISM Band Regulatory Coverage
-           Map . . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-       4.6.1.  ISM Band Color Coding . . . . . . . . . . . . . . . .  19
-       4.6.2.  Face Assignments and Regulatory Bodies  . . . . . . .  20
-       4.6.3.  Net Topology and Construction . . . . . . . . . . . .  22
-   5.  Index Encoding  . . . . . . . . . . . . . . . . . . . . . . .  23
-     5.1.  Octet Array Format  . . . . . . . . . . . . . . . . . . .  23
-     5.2.  Resolution by Length  . . . . . . . . . . . . . . . . . .  24
-     5.3.  Bit-Field Layout  . . . . . . . . . . . . . . . . . . . .  25
-     5.4.  Privacy Truncation  . . . . . . . . . . . . . . . . . . .  26
-   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  27
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 2]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
-     6.1.  Face Assignment . . . . . . . . . . . . . . . . . . . . .  27
-     6.2.  Triangle Assignment Within Face . . . . . . . . . . . . .  28
-     6.3.  Recursive Subdivision . . . . . . . . . . . . . . . . . .  28
-   7.  CBOR Wire Encoding  . . . . . . . . . . . . . . . . . . . . .  29
-     7.1.  Compact Form  . . . . . . . . . . . . . . . . . . . . . .  29
-     7.2.  Tagged Form . . . . . . . . . . . . . . . . . . . . . . .  29
-     7.3.  CDDL Schema . . . . . . . . . . . . . . . . . . . . . . .  29
-   8.  Regulatory Database Structure . . . . . . . . . . . . . . . .  30
-     8.1.  Band Entry Schema . . . . . . . . . . . . . . . . . . . .  30
-     8.2.  Resolution Sufficiency Levels . . . . . . . . . . . . . .  31
-     8.3.  Exception Overlay Table . . . . . . . . . . . . . . . . .  32
-     8.4.  Regulatory Database Validity Limitations  . . . . . . . .  33
-   9.  ISM Band Reference  . . . . . . . . . . . . . . . . . . . . .  35
-     9.1.  433.05-434.79 MHz (Center: 433.92 MHz)  . . . . . . . . .  35
-     9.2.  863-870 MHz (ETSI SRD Sub-bands)  . . . . . . . . . . . .  35
-     9.3.  902-928 MHz (Center: 915 MHz) . . . . . . . . . . . . . .  36
-     9.4.  920-928 MHz Regional Variants . . . . . . . . . . . . . .  37
-     9.5.  TV Whitespace Bands (174-216 MHz, 470-608 MHz)  . . . . .  38
-   10. Regulatory Boundary Zones and Adaptive Compliance . . . . . .  38
-     10.1.  Cross-Border Spectrum Governance Framework . . . . . . .  38
-       10.1.1.  ITU Radio Regulations  . . . . . . . . . . . . . . .  39
+           Map . . . . . . . . . . . . . . . . . . . . . . . . . . .  20
+       4.6.1.  ISM Band Color Coding . . . . . . . . . . . . . . . .  21
+       4.6.2.  Face Assignments and Regulatory Bodies  . . . . . . .  22
+       4.6.3.  Net Topology and Construction . . . . . . . . . . . .  24
+   5.  Index Encoding  . . . . . . . . . . . . . . . . . . . . . . .  25
+     5.1.  Octet Array Format  . . . . . . . . . . . . . . . . . . .  25
+     5.2.  Resolution by Length  . . . . . . . . . . . . . . . . . .  26
+     5.3.  Bit-Field Layout  . . . . . . . . . . . . . . . . . . . .  27
+     5.4.  Privacy Truncation  . . . . . . . . . . . . . . . . . . .  28
+   6.  Coordinate Encoding Algorithm . . . . . . . . . . . . . . . .  29
+     6.1.  Face Assignment . . . . . . . . . . . . . . . . . . . . .  29
+     6.2.  Triangle Assignment Within Face . . . . . . . . . . . . .  30
+     6.3.  Recursive Subdivision . . . . . . . . . . . . . . . . . .  30
+   7.  CBOR Wire Encoding  . . . . . . . . . . . . . . . . . . . . .  31
+     7.1.  Compact Form  . . . . . . . . . . . . . . . . . . . . . .  31
+     7.2.  Tagged Form . . . . . . . . . . . . . . . . . . . . . . .  31
+     7.3.  CDDL Schema . . . . . . . . . . . . . . . . . . . . . . .  31
+   8.  Regulatory Database Structure . . . . . . . . . . . . . . . .  32
+     8.1.  Band Entry Schema . . . . . . . . . . . . . . . . . . . .  32
+     8.2.  Resolution Sufficiency Levels . . . . . . . . . . . . . .  33
+     8.3.  Exception Overlay Table . . . . . . . . . . . . . . . . .  34
+     8.4.  Regulatory Database Validity Limitations  . . . . . . . .  35
+   9.  ISM Band Reference  . . . . . . . . . . . . . . . . . . . . .  37
+     9.1.  433.05-434.79 MHz (Center: 433.92 MHz)  . . . . . . . . .  37
+     9.2.  863-870 MHz (ETSI SRD Sub-bands)  . . . . . . . . . . . .  37
+     9.3.  902-928 MHz (Center: 915 MHz) . . . . . . . . . . . . . .  38
+     9.4.  920-928 MHz Regional Variants . . . . . . . . . . . . . .  39
+     9.5.  TV Whitespace Bands (174-216 MHz, 470-608 MHz)  . . . . .  40
+   10. Regulatory Boundary Zones and Adaptive Compliance . . . . . .  40
+     10.1.  Cross-Border Spectrum Governance Framework . . . . . . .  40
+       10.1.1.  ITU Radio Regulations  . . . . . . . . . . . . . . .  41
        10.1.2.  Bilateral and Multilateral Coordination
-               Agreements  . . . . . . . . . . . . . . . . . . . . .  39
-       10.1.3.  Technical Mitigation Mechanisms  . . . . . . . . . .  40
-     10.2.  Coordination Zone Geometry and RSDGGS Resolution . . . .  41
-     10.3.  Boundary Proximity Function  . . . . . . . . . . . . . .  42
-     10.4.  Adaptive Power Control at Regulatory Boundaries  . . . .  43
-       10.4.1.  Power Reduction Profile  . . . . . . . . . . . . . .  43
-       10.4.2.  Duty Cycle and Dwell Constraints . . . . . . . . . .  44
-     10.5.  RSDGGS Resolution Escalation Near Boundaries . . . . . .  45
-     10.6.  CDDL Schema for Boundary-Aware Operation . . . . . . . .  46
-   11. Peer-Assisted Location Discovery  . . . . . . . . . . . . . .  47
-     11.1.  Beacon Frame Format  . . . . . . . . . . . . . . . . . .  47
-     11.2.  Channel Scanning Protocol  . . . . . . . . . . . . . . .  48
-     11.3.  Regulatory Bootstrap Procedure . . . . . . . . . . . . .  48
-   12. Manufacturing Provisioning Use Case . . . . . . . . . . . . .  49
-   13. Cooperative Localization  . . . . . . . . . . . . . . . . . .  51
-     13.1.  Localization Method Hierarchy  . . . . . . . . . . . . .  51
-     13.2.  RSDGGS Cell Intersection . . . . . . . . . . . . . . . .  52
-     13.3.  Round-Trip RSSI Range Estimation . . . . . . . . . . . .  53
-       13.3.1.  Round-Trip RSSI Exchange Procedure . . . . . . . . .  53
-       13.3.2.  Range Estimation . . . . . . . . . . . . . . . . . .  53
-     13.4.  IEEE 802.15.4a/z UWB Precision Ranging . . . . . . . . .  54
-       13.4.1.  Double-Sided Two-Way Ranging (DS-TWR)  . . . . . . .  54
-       13.4.2.  STS Authentication (802.15.4z) . . . . . . . . . . .  55
+               Agreements  . . . . . . . . . . . . . . . . . . . . .  41
+       10.1.3.  Technical Mitigation Mechanisms  . . . . . . . . . .  42
+     10.2.  Coordination Zone Geometry and RSDGGS Resolution . . . .  43
+     10.3.  Boundary Proximity Function  . . . . . . . . . . . . . .  44
+     10.4.  Adaptive Power Control at Regulatory Boundaries  . . . .  45
+       10.4.1.  Power Reduction Profile  . . . . . . . . . . . . . .  45
+       10.4.2.  Duty Cycle and Dwell Constraints . . . . . . . . . .  46
+     10.5.  RSDGGS Resolution Escalation Near Boundaries . . . . . .  47
+     10.6.  CDDL Schema for Boundary-Aware Operation . . . . . . . .  48
+   11. Peer-Assisted Location Discovery  . . . . . . . . . . . . . .  49
+     11.1.  Beacon Frame Format  . . . . . . . . . . . . . . . . . .  49
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 3]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+     11.2.  Channel Scanning Protocol  . . . . . . . . . . . . . . .  50
+     11.3.  Regulatory Bootstrap Procedure . . . . . . . . . . . . .  50
+   12. Manufacturing Provisioning Use Case . . . . . . . . . . . . .  51
+   13. Cooperative Localization  . . . . . . . . . . . . . . . . . .  53
+     13.1.  Localization Method Hierarchy  . . . . . . . . . . . . .  53
+     13.2.  RSDGGS Cell Intersection . . . . . . . . . . . . . . . .  54
+     13.3.  Round-Trip RSSI Range Estimation . . . . . . . . . . . .  55
+       13.3.1.  Round-Trip RSSI Exchange Procedure . . . . . . . . .  55
+       13.3.2.  Range Estimation . . . . . . . . . . . . . . . . . .  55
+     13.4.  IEEE 802.15.4a/z UWB Precision Ranging . . . . . . . . .  56
+       13.4.1.  Double-Sided Two-Way Ranging (DS-TWR)  . . . . . . .  56
+       13.4.2.  STS Authentication (802.15.4z) . . . . . . . . . . .  57
        13.4.3.  Phase Difference of Arrival (PDOA) Angle
-               Estimation  . . . . . . . . . . . . . . . . . . . . .  55
-     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  56
+               Estimation  . . . . . . . . . . . . . . . . . . . . .  57
+     13.5.  RSDGGS as Position State Space . . . . . . . . . . . . .  58
+     13.6.  Weighted Multilateration Engine  . . . . . . . . . . . .  59
+       13.6.1.  Measurement Model  . . . . . . . . . . . . . . . . .  59
+       13.6.2.  Weighted Least Squares Position Update . . . . . . .  59
+     13.7.  Extended Kalman Filter Integration . . . . . . . . . . .  60
+       13.7.1.  State Vector . . . . . . . . . . . . . . . . . . . .  60
+       13.7.2.  Prediction Step  . . . . . . . . . . . . . . . . . .  60
+       13.7.3.  Update Step  . . . . . . . . . . . . . . . . . . . .  61
+     13.8.  Security Considerations for Cooperative Ranging  . . . .  61
+   14. IEEE 802.15.4 Information Element Encoding  . . . . . . . . .  62
+     14.1.  IE Structure and Constraints . . . . . . . . . . . . . .  62
+     14.2.  RSDGGS Location Sub-IE Definition  . . . . . . . . . . .  63
+     14.3.  SUN Device Description Integration . . . . . . . . . . .  64
+     14.4.  MAC-Layer Regulatory Bootstrap . . . . . . . . . . . . .  64
+   15. IPv6 Geographic Addressing (Future Work)  . . . . . . . . . .  65
+     15.1.  Address Structure  . . . . . . . . . . . . . . . . . . .  66
+     15.2.  Prefix Hierarchy and Aggregation . . . . . . . . . . . .  66
+     15.3.  Geographic Greedy Forwarding . . . . . . . . . . . . . .  68
+     15.4.  Regulatory-Aware Channel Selection for Forwarding  . . .  69
+     15.5.  Relationship to Existing Standards . . . . . . . . . . .  69
+     15.6.  Open Issues  . . . . . . . . . . . . . . . . . . . . . .  70
+   16. Relationship to Prior Geographic Addressing Work  . . . . . .  71
+     16.1.  RFC 2009: GPS-Based Addressing and Routing . . . . . . .  72
+       16.1.1.  RFC 2009 Technical Approach  . . . . . . . . . . . .  72
+       16.1.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  72
+     16.2.  RFC 5870: The 'geo' URI Scheme . . . . . . . . . . . . .  73
+       16.2.1.  RFC 5870 Technical Approach  . . . . . . . . . . . .  73
+       16.2.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  73
+     16.3.  RFC 6442: Location Conveyance for SIP  . . . . . . . . .  74
+       16.3.1.  RFC 6442 Technical Approach  . . . . . . . . . . . .  75
+       16.3.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  75
+     16.4.  RFC 9179: A YANG Grouping for Geographic Locations . . .  76
+       16.4.1.  RFC 9179 Technical Approach  . . . . . . . . . . . .  76
+       16.4.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
 
 
 
-Hanley                    Expires 24 April 2027                 [Page 3]
+Hanley                    Expires 25 April 2027                 [Page 4]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-     13.6.  Weighted Multilateration Engine  . . . . . . . . . . . .  57
-       13.6.1.  Measurement Model  . . . . . . . . . . . . . . . . .  57
-       13.6.2.  Weighted Least Squares Position Update . . . . . . .  57
-     13.7.  Extended Kalman Filter Integration . . . . . . . . . . .  58
-       13.7.1.  State Vector . . . . . . . . . . . . . . . . . . . .  58
-       13.7.2.  Prediction Step  . . . . . . . . . . . . . . . . . .  58
-       13.7.3.  Update Step  . . . . . . . . . . . . . . . . . . . .  59
-     13.8.  Security Considerations for Cooperative Ranging  . . . .  59
-   14. IEEE 802.15.4 Information Element Encoding  . . . . . . . . .  60
-     14.1.  IE Structure and Constraints . . . . . . . . . . . . . .  60
-     14.2.  RSDGGS Location Sub-IE Definition  . . . . . . . . . . .  61
-     14.3.  SUN Device Description Integration . . . . . . . . . . .  62
-     14.4.  MAC-Layer Regulatory Bootstrap . . . . . . . . . . . . .  62
-   15. IPv6 Geographic Addressing  . . . . . . . . . . . . . . . . .  63
-     15.1.  Address Structure  . . . . . . . . . . . . . . . . . . .  63
-     15.2.  Prefix Hierarchy and Aggregation . . . . . . . . . . . .  64
-     15.3.  Geographic Greedy Forwarding . . . . . . . . . . . . . .  66
-     15.4.  Regulatory-Aware Channel Selection for Forwarding  . . .  67
-     15.5.  Relationship to Existing Standards . . . . . . . . . . .  67
-   16. Relationship to Prior Geographic Addressing Work  . . . . . .  68
-     16.1.  RFC 2009: GPS-Based Addressing and Routing . . . . . . .  69
-       16.1.1.  RFC 2009 Technical Approach  . . . . . . . . . . . .  69
-       16.1.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  69
-     16.2.  RFC 5870: The 'geo' URI Scheme . . . . . . . . . . . . .  70
-       16.2.1.  RFC 5870 Technical Approach  . . . . . . . . . . . .  70
-       16.2.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  71
-     16.3.  RFC 6442: Location Conveyance for SIP  . . . . . . . . .  71
-       16.3.1.  RFC 6442 Technical Approach  . . . . . . . . . . . .  72
-       16.3.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  72
-     16.4.  RFC 9179: A YANG Grouping for Geographic Locations . . .  73
-       16.4.1.  RFC 9179 Technical Approach  . . . . . . . . . . . .  73
-       16.4.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  73
-     16.5.  RFC 9632: Finding and Using Geofeed Data . . . . . . . .  74
-       16.5.1.  RFC 9632 Technical Approach  . . . . . . . . . . . .  74
-       16.5.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  74
+     16.5.  RFC 9632: Finding and Using Geofeed Data . . . . . . . .  77
+       16.5.1.  RFC 9632 Technical Approach  . . . . . . . . . . . .  77
+       16.5.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  77
      16.6.  RFC 8805: A Format for Self-Published IP Geolocation
-             Feeds . . . . . . . . . . . . . . . . . . . . . . . . .  75
-       16.6.1.  RFC 8805 Technical Approach  . . . . . . . . . . . .  76
-       16.6.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  76
+             Feeds . . . . . . . . . . . . . . . . . . . . . . . . .  78
+       16.6.1.  RFC 8805 Technical Approach  . . . . . . . . . . . .  79
+       16.6.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  79
      16.7.  RFC 5808: Requirements for a Location-by-Reference
-             Mechanism . . . . . . . . . . . . . . . . . . . . . . .  77
-       16.7.1.  RFC 5808 Technical Approach  . . . . . . . . . . . .  77
-       16.7.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  77
+             Mechanism . . . . . . . . . . . . . . . . . . . . . . .  80
+       16.7.1.  RFC 5808 Technical Approach  . . . . . . . . . . . .  80
+       16.7.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  80
      16.8.  RFC 5491: GEOPRIV PIDF-LO Usage Clarification,
-             Considerations, and Recommendations . . . . . . . . . .  78
-       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  78
-       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  78
-
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 4]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
+             Considerations, and Recommendations . . . . . . . . . .  81
+       16.8.1.  RFC 5491 Technical Approach  . . . . . . . . . . . .  81
+       16.8.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  81
      16.9.  RFC 6280: An Architecture for Location and Location
-             Privacy in Internet Applications  . . . . . . . . . . .  79
-       16.9.1.  RFC 6280 Technical Approach  . . . . . . . . . . . .  79
-       16.9.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  80
+             Privacy in Internet Applications  . . . . . . . . . . .  82
+       16.9.1.  RFC 6280 Technical Approach  . . . . . . . . . . . .  82
+       16.9.2.  Gaps Addressed by RSDGGS . . . . . . . . . . . . . .  83
      16.10. RFC 6772: Geolocation Policy: A Document Format for
              Expressing Privacy Preferences for Location
-             Information . . . . . . . . . . . . . . . . . . . . . .  80
-       16.10.1.  RFC 6772 Technical Approach . . . . . . . . . . . .  81
-       16.10.2.  Gaps Addressed by RSDGGS  . . . . . . . . . . . . .  81
-     16.11. Gap Analysis Summary . . . . . . . . . . . . . . . . . .  82
+             Information . . . . . . . . . . . . . . . . . . . . . .  83
+       16.10.1.  RFC 6772 Technical Approach . . . . . . . . . . . .  84
+       16.10.2.  Gaps Addressed by RSDGGS  . . . . . . . . . . . . .  84
+     16.11. Gap Analysis Summary . . . . . . . . . . . . . . . . . .  85
    17. Backward Citations: Relevant References Within Cited
-           Documents . . . . . . . . . . . . . . . . . . . . . . . .  84
+           Documents . . . . . . . . . . . . . . . . . . . . . . . .  87
      17.1.  GPSR -- Greedy Perimeter Stateless Routing (from US
-            10,812,365)  . . . . . . . . . . . . . . . . . . . . . .  84
+            10,812,365)  . . . . . . . . . . . . . . . . . . . . . .  87
      17.2.  IEEE 802.11d -- Country Information Elements (from US
-            10,306,400 family) . . . . . . . . . . . . . . . . . . .  85
+            10,306,400 family) . . . . . . . . . . . . . . . . . . .  88
      17.3.  IEEE 802.11h -- DFS and TPC (from US 10,306,400
-            family)  . . . . . . . . . . . . . . . . . . . . . . . .  85
+            family)  . . . . . . . . . . . . . . . . . . . . . . . .  88
      17.4.  RFC 3693 -- GEOPRIV Requirements (from RFC 6442 and RFC
-            6280)  . . . . . . . . . . . . . . . . . . . . . . . . .  85
+            6280)  . . . . . . . . . . . . . . . . . . . . . . . . .  88
      17.5.  RFC 3825 -- DHCP Geodetic Location Option (from RFC 5870
-            and RFC 5808)  . . . . . . . . . . . . . . . . . . . . .  86
+            and RFC 5808)  . . . . . . . . . . . . . . . . . . . . .  89
      17.6.  RFC 4632 -- CIDR: Classless Inter-Domain Routing (from RFC
-            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  87
+            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  90
      17.7.  RFC 6269 -- Issues with IP Address Sharing (from RFC
-            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  87
+            9632)  . . . . . . . . . . . . . . . . . . . . . . . . .  90
      17.8.  GeoCast -- Geographic Addressing and Routing (from RFC
-            2009)  . . . . . . . . . . . . . . . . . . . . . . . . .  87
-     17.9.  Summary of Newly Identified References . . . . . . . . .  88
-   18. Freedom to Operate and Prior Art Considerations . . . . . . .  90
-     18.1.  Expired Patents -- Public Domain Prior Art . . . . . . .  90
+            2009)  . . . . . . . . . . . . . . . . . . . . . . . . .  90
+     17.9.  Summary of Newly Identified References . . . . . . . . .  91
+   18. Freedom to Operate and Prior Art Considerations . . . . . . .  93
+     18.1.  Expired Patents -- Public Domain Prior Art . . . . . . .  93
        18.1.1.  US Patent 4,939,726 -- Metricom, Inc. (Expired
-               2007) . . . . . . . . . . . . . . . . . . . . . . . .  90
-       18.1.2.  US Patent 6,982,966 -- Status Unconfirmed  . . . . .  91
-     18.2.  Active Patents -- Detailed Analysis  . . . . . . . . . .  91
-       18.2.1.  US Patent 10,306,400 / Application 2014/0162692 --
-               Wireless Regulatory Compliance (Active until ~2035) .  91
-       18.2.2.  US Patent 10,812,365 -- Geohyperbolic Routing
-               (Northeastern University, Active until 2037)  . . . .  92
-       18.2.3.  US Patent 11,652,742 -- Ghost Routing (Microsoft,
-               Active until 2041)  . . . . . . . . . . . . . . . . .  93
-       18.2.4.  CN101923801B -- Method for Generating a Regular
-               Dodecahedron Map Projection (Expired) . . . . . . . .  94
-     18.3.  RFC Citation Improvement Opportunities . . . . . . . . .  97
-       18.3.1.  RFC 2009 -- GPS-Based Addressing (1996, Experimental/
-               Legacy) . . . . . . . . . . . . . . . . . . . . . . .  97
-       18.3.2.  RFC 5870 -- geo URI Scheme (2010, Standards
-               Track)  . . . . . . . . . . . . . . . . . . . . . . .  98
+               2007) . . . . . . . . . . . . . . . . . . . . . . . .  93
 
 
 
-Hanley                    Expires 24 April 2027                 [Page 5]
+Hanley                    Expires 25 April 2027                 [Page 5]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-       18.3.3.  RFC 6442 -- Location Conveyance for SIP (2011,
-               Standards Track)  . . . . . . . . . . . . . . . . . .  98
-       18.3.4.  RFC 9179 -- YANG Grouping for Geographic Locations
-               (2022, Standards Track) . . . . . . . . . . . . . . .  99
-       18.3.5.  RFC 9632 / RFC 8805 -- Geofeed Data (2024 / 2020)  .  99
-       18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
-               Informational)  . . . . . . . . . . . . . . . . . . . 100
-       18.3.7.  RFC 5491 -- PIDF-LO Usage (2009, Standards Track)  . 100
-       18.3.8.  RFC 6280 -- GEOPRIV Architecture (2011, BCP) . . . . 100
-       18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards
+       18.1.2.  US Patent 6,982,966 -- Status Unconfirmed  . . . . .  94
+     18.2.  Active Patents -- Detailed Analysis  . . . . . . . . . .  94
+       18.2.1.  US Patent 10,306,400 / Application 2014/0162692 --
+               Wireless Regulatory Compliance (Active until ~2035) .  94
+       18.2.2.  US Patent 10,812,365 -- Geohyperbolic Routing
+               (Northeastern University, Active until 2037)  . . . .  95
+       18.2.3.  US Patent 11,652,742 -- Ghost Routing (Microsoft,
+               Active until 2041)  . . . . . . . . . . . . . . . . .  96
+       18.2.4.  CN101923801B -- Method for Generating a Regular
+               Dodecahedron Map Projection (Expired) . . . . . . . .  97
+     18.3.  RFC Citation Improvement Opportunities . . . . . . . . . 100
+       18.3.1.  RFC 2009 -- GPS-Based Addressing (1996, Experimental/
+               Legacy) . . . . . . . . . . . . . . . . . . . . . . . 100
+       18.3.2.  RFC 5870 -- geo URI Scheme (2010, Standards
                Track)  . . . . . . . . . . . . . . . . . . . . . . . 101
-     18.4.  Summary of Improvement Opportunities . . . . . . . . . . 101
-     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 103
-   19. Reference Implementation (Rust Pseudocode)  . . . . . . . . . 104
-     19.1.  Crate Structure and Types  . . . . . . . . . . . . . . . 104
-     19.2.  Compile-Time Constants . . . . . . . . . . . . . . . . . 105
-     19.3.  Coordinate Conversion Primitives . . . . . . . . . . . . 109
-     19.4.  Face Assignment  . . . . . . . . . . . . . . . . . . . . 110
-     19.5.  Pentagon Sector Assignment . . . . . . . . . . . . . . . 111
-     19.6.  Recursive Subdivision  . . . . . . . . . . . . . . . . . 112
-     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 114
-     19.8.  Decode Function  . . . . . . . . . . . . . . . . . . . . 115
-     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 117
-     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 119
-   20. Security Considerations . . . . . . . . . . . . . . . . . . . 120
-   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 121
-   22. Normative References  . . . . . . . . . . . . . . . . . . . . 122
-   23. Informative References  . . . . . . . . . . . . . . . . . . . 122
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 124
+       18.3.3.  RFC 6442 -- Location Conveyance for SIP (2011,
+               Standards Track)  . . . . . . . . . . . . . . . . . . 101
+       18.3.4.  RFC 9179 -- YANG Grouping for Geographic Locations
+               (2022, Standards Track) . . . . . . . . . . . . . . . 102
+       18.3.5.  RFC 9632 / RFC 8805 -- Geofeed Data (2024 / 2020)  . 102
+       18.3.6.  RFC 5808 -- Location-by-Reference Requirements (2010,
+               Informational)  . . . . . . . . . . . . . . . . . . . 103
+       18.3.7.  RFC 5491 -- PIDF-LO Usage (2009, Standards Track)  . 103
+       18.3.8.  RFC 6280 -- GEOPRIV Architecture (2011, BCP) . . . . 103
+       18.3.9.  RFC 6772 -- Geolocation Policy (2013, Standards
+               Track)  . . . . . . . . . . . . . . . . . . . . . . . 104
+     18.4.  Summary of Improvement Opportunities . . . . . . . . . . 104
+     18.5.  Recommended Clearance Actions  . . . . . . . . . . . . . 106
+   19. Reference Implementation (Rust Pseudocode)  . . . . . . . . . 107
+     19.1.  Crate Structure and Types  . . . . . . . . . . . . . . . 107
+     19.2.  Compile-Time Constants . . . . . . . . . . . . . . . . . 108
+     19.3.  Coordinate Conversion Primitives . . . . . . . . . . . . 112
+     19.4.  Face Assignment  . . . . . . . . . . . . . . . . . . . . 113
+     19.5.  Pentagon Sector Assignment . . . . . . . . . . . . . . . 114
+     19.6.  Recursive Subdivision  . . . . . . . . . . . . . . . . . 115
+     19.7.  Top-Level Encode Function  . . . . . . . . . . . . . . . 117
+     19.8.  Decode Function  . . . . . . . . . . . . . . . . . . . . 118
+     19.9.  Boundary Proximity Helper  . . . . . . . . . . . . . . . 120
+     19.10. Worked Example . . . . . . . . . . . . . . . . . . . . . 122
+   20. Security Considerations . . . . . . . . . . . . . . . . . . . 123
+   21. IANA Considerations . . . . . . . . . . . . . . . . . . . . . 124
+   22. Normative References  . . . . . . . . . . . . . . . . . . . . 125
+   23. Informative References  . . . . . . . . . . . . . . . . . . . 125
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . 129
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 6]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 1.  Introduction
 
@@ -328,16 +354,6 @@ Internet-Draft                   RSDGGS                     October 2026
    to regulatory boundaries.  They also lack a mechanism for embedding
    regulatory context within the index itself.
 
-
-
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 6]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    RSDGGS addresses this gap by defining a hierarchical grid whose
    coarsest level directly encodes ITU Radio Region membership, and
    whose progressive refinement resolves national and sub-national
@@ -349,6 +365,48 @@ Internet-Draft                   RSDGGS                     October 2026
    majority of the world's surface area, while the full eight-octet form
    provides sub-decimeter resolution adequate for the most complex
    geopolitical edge cases.
+
+   RSDGGS relates to IETF work in four places:
+
+   *  Encoding.  The index is a CBOR [RFC8949] byte string with a CDDL
+      [RFC8610] schema (Section 7), and this document requests a CBOR
+      tag for it (Section 21).
+
+   *  Constrained networks.  A 6LoWPAN [RFC4944] node on an IEEE
+      802.15.4 link in an ISM band has to know which channels, power
+      levels, and duty cycles are legal where it is before it transmits,
+      and so before it can join the network and obtain IPv6
+      connectivity.  RSDGGS lets it learn this from its neighbors,
+      through a Location Sub-IE in 802.15.4 frames (Section 14) and a
+      peer-assisted bootstrap (Section 11) that follows the serverless
+      model of IPv6 Neighbor Discovery and stateless address
+      autoconfiguration [RFC4862] (design goal G8, Section 3).
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 7]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   *  IPv6.  Section 15 outlines, as future work, IPv6 addresses whose
+      Interface Identifier carries an RSDGGS cell, for geographic
+      forwarding within 6LoWPAN and RPL [RFC6550] meshes.  It does not
+      specify them; it lists the privacy, uniqueness, and prefix issues
+      a specification would have to resolve (Section 15.6), which would
+      be work for the 6man and 6lo working groups.
+
+   *  Location.  Section 16 compares RSDGGS with IETF location formats
+      and architectures, including the geo URI [RFC5870], GEOPRIV
+      [RFC6280], and IP geolocation feeds [RFC8805] [RFC9632].
+
+   This document is an Independent Submission intended for Informational
+   status.  It does not update any IETF protocol.
 
 2.  Terminology
 
@@ -381,18 +439,21 @@ Internet-Draft                   RSDGGS                     October 2026
    length to base length equals the golden ratio phi (~1.618).  These
    triangles tile the pentagonal faces of the dodecahedron.
 
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 8]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    Beacon Device: An IoT device that has determined its regulatory
    context, either through GPS, tethered smartphone, or prior bootstrap,
    and broadcasts its RSDGGS index within ISM band transmissions to
    assist peers.
-
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 7]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
    Naive Device: An IoT device that has not yet determined its
    regulatory context and performs channel scanning to discover a Beacon
@@ -434,6 +495,17 @@ Internet-Draft                   RSDGGS                     October 2026
    beacon from a location-aware peer, using only the ISM channels
    permitted at the beacon device's location.
 
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                 [Page 9]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    G7 -- Manufacturing Provisionability: Fixed-deployment IoT devices
    SHALL be provisionable with their RSDGGS index at manufacturing time,
    enabling a single hardware SKU to configure itself correctly based on
@@ -442,14 +514,6 @@ Internet-Draft                   RSDGGS                     October 2026
    G8 -- Decentralized, Infrastructure-Independent Operation: RSDGGS
    regulatory context discovery MUST NOT require any centralized server,
    directory, or management system.  All mechanisms for a device to
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 8]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    acquire its RSDGGS cell index and associated regulatory rule set
    SHALL be fully operational in the absence of any network
    infrastructure beyond the device and its immediate radio neighbors.
@@ -487,6 +551,17 @@ Internet-Draft                   RSDGGS                     October 2026
 
 4.  Dodecahedral Grid Geometry
 
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 10]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
 4.1.  Rationale for the Dodecahedron
 
    The choice of a regular dodecahedron as the root polyhedron for
@@ -495,16 +570,6 @@ Internet-Draft                   RSDGGS                     October 2026
    coarsest resolution level, and the minimization of map projection
    distortion variance across cell boundaries relative to the
    triangular-face alternative.
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                 [Page 9]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 4.1.1.  Face Count and ITU Region Containment
 
@@ -543,6 +608,16 @@ Internet-Draft                   RSDGGS                     October 2026
 
                                   Figure 1
 
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 11]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    The icosahedron's 20 faces would require fragmenting each ITU Region
    across multiple faces at the coarsest level, destroying the direct
    face-to-region correspondence that is a primary design goal (G1) of
@@ -554,14 +629,6 @@ Internet-Draft                   RSDGGS                     October 2026
    the two low-order bits of every face index give the ITU Region of the
    face's principal population: faces 5 and 9 (Region 1: Africa and the
    Middle East, West Africa), faces 6 and 10 (Region 2: South America,
-
-
-
-Hanley                    Expires 24 April 2027                [Page 10]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    the Central Pacific), and faces 7 and 11 (Region 3: Eastern
    Australia, the North Pacific).  Faces 0, 4, and 8 cover Antarctica
    and the southern oceans and carry no Region.  Section 4.2 lists the
@@ -588,6 +655,25 @@ Internet-Draft                   RSDGGS                     October 2026
    each face type is computed from the angular radii to the vertex and
    edge midpoint respectively.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 12]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    Icosahedron triangular face:
      Angular radius, face center to edge midpoint:  ~20.9 deg
      Angular radius, face center to vertex:         ~41.8 deg
@@ -610,14 +696,6 @@ Internet-Draft                   RSDGGS                     October 2026
    (~1.80x gnomonic scale factor at ~41.8 degrees angular radius),
    because the vertices of the dodecahedron and the vertices of its dual
    icosahedron lie at the same angular distance from their respective
-
-
-
-Hanley                    Expires 24 April 2027                [Page 11]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    face centers on the unit sphere.  The critical difference is the
    vertex-to-edge-midpoint distance ratio: 2.00 for the equilateral
    triangle versus 1.24 for the regular pentagon.
@@ -641,6 +719,16 @@ Internet-Draft                   RSDGGS                     October 2026
    triangle apices at the face center -- a fixed interior point --
    rather than at face corners, further reducing the population of high-
    distortion boundary cells in the subdivision hierarchy.
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 13]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
    For regulatory compliance applications, distortion at cell boundaries
    is specifically relevant at the Resolution Sufficiency Level (RSL,
@@ -666,14 +754,6 @@ Internet-Draft                   RSDGGS                     October 2026
    | sub-regions |                    | three with      |              |
    |             |                    | none)           |              |
    +-------------+--------------------+-----------------+--------------+
-
-
-
-Hanley                    Expires 24 April 2027                [Page 12]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    | Face area   | ~25.5M km^2 (tight | ~42M km^2       | Dodecahedron |
    | vs. Region  | fit)               | (ample          |              |
    | 2           |                    | margin)         |              |
@@ -697,6 +777,14 @@ Internet-Draft                   RSDGGS                     October 2026
    |             |                    | apex at         | placement)   |
    |             |                    | center)         |              |
    +-------------+--------------------+-----------------+--------------+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 14]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
                    Table 1: Icosahedron vs. Dodecahedron
 
@@ -722,14 +810,6 @@ Internet-Draft                   RSDGGS                     October 2026
    | 0    | --         | Antarctica  | ITU Special  | Antarctic        |
    |      |            | / New       | Zone         | Treaty, ITU Art. |
    |      |            | Zealand     |              | 48; RSM (NZ)     |
-
-
-
-Hanley                    Expires 24 April 2027                [Page 13]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    +------+------------+-------------+--------------+------------------+
    | 1    | R1         | ITU Region  | ETSI / CEPT  | ETSI, Ofcom,     |
    |      |            | 1 --        |              | ARCEP, BNetzA    |
@@ -754,6 +834,14 @@ Internet-Draft                   RSDGGS                     October 2026
    | 6    | R2         | Region 2    | ANATEL /     | Anatel (BR),     |
    |      |            | -- South    | ENACOM       | ENACOM (AR)      |
    |      |            | America     |              |                  |
+
+
+
+Hanley                    Expires 25 April 2027                [Page 15]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
    +------+------------+-------------+--------------+------------------+
    | 7    | R3         | Region 3    | ACMA         | ACMA (AU), SPC   |
    |      |            | -- Eastern  |              |                  |
@@ -779,13 +867,6 @@ Internet-Draft                   RSDGGS                     October 2026
 
                          Table 2: Face Assignments
 
-
-
-Hanley                    Expires 24 April 2027                [Page 14]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    Face indices 1, 2, and 3 carry the ITU Region number directly,
    establishing a direct correspondence between a single-octet RSDGGS
    index and ITU Region membership for the most populous zone of each
@@ -806,6 +887,16 @@ Internet-Draft                   RSDGGS                     October 2026
    regulatory frameworks; faces 4 and 8 hold most of the rest.  Face 0
    also contains New Zealand, whose rules come from the regulatory
    database like those of any other jurisdiction.
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 16]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 4.3.  Face Center Orientation
 
@@ -837,7 +928,28 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 17]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -893,7 +1005,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 16]
+Hanley                    Expires 25 April 2027                [Page 18]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -906,9 +1018,9 @@ Internet-Draft                   RSDGGS                     October 2026
 
    This rotation procedure is normative for the purpose of independently
    verifying or regenerating the FACE_CENTERS and FACE_PENTAGON_VERTS
-   compile-time constants defined in Section 18.2, and for deriving face
-   orientations for non-Earth celestial bodies (Section 5.5).
-   Implementations MUST use the precomputed constants in Section 18.2
+   compile-time constants defined in Section 19.2, and for deriving face
+   orientations for non-Earth celestial bodies (Section 5.1).
+   Implementations MUST use the precomputed constants in Section 19.2
    for all runtime face and triangle assignment.  The rotation itself is
    never performed at runtime.  The reference implementation generates
    its constants with tools/gen_constants.py.
@@ -949,7 +1061,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 17]
+Hanley                    Expires 25 April 2027                [Page 19]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1005,7 +1117,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 18]
+Hanley                    Expires 25 April 2027                [Page 20]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1061,7 +1173,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 19]
+Hanley                    Expires 25 April 2027                [Page 21]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1117,7 +1229,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 20]
+Hanley                    Expires 25 April 2027                [Page 22]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1173,7 +1285,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 21]
+Hanley                    Expires 25 April 2027                [Page 23]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1229,7 +1341,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 22]
+Hanley                    Expires 25 April 2027                [Page 24]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1285,7 +1397,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 23]
+Hanley                    Expires 25 April 2027                [Page 25]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1297,9 +1409,10 @@ Internet-Draft                   RSDGGS                     October 2026
    frameworks.  The dodecahedral grid geometry is body-agnostic: the
    same 12-face topology and subdivision hierarchy applies to any
    approximately spherical body, with face assignments and regulatory
-   databases defined independently per body.  New body selector values
-   are assigned by IANA under the "RSDGGS Celestial Body Selector" sub-
-   registry defined in Section 20.
+   databases defined independently per body.  This document assigns only
+   value 0 (Earth).  How further values are assigned, for example
+   through an IANA registry, is future work; this document creates no
+   registry (Section 21).
 
 5.2.  Resolution by Length
 
@@ -1340,8 +1453,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-Hanley                    Expires 24 April 2027                [Page 24]
+Hanley                    Expires 25 April 2027                [Page 26]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1397,7 +1509,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 25]
+Hanley                    Expires 25 April 2027                [Page 27]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1453,7 +1565,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 26]
+Hanley                    Expires 25 April 2027                [Page 28]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1509,7 +1621,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 27]
+Hanley                    Expires 25 April 2027                [Page 29]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1565,7 +1677,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 28]
+Hanley                    Expires 25 April 2027                [Page 30]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1621,7 +1733,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 29]
+Hanley                    Expires 25 April 2027                [Page 31]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1677,7 +1789,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 30]
+Hanley                    Expires 25 April 2027                [Page 32]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1733,7 +1845,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 31]
+Hanley                    Expires 25 April 2027                [Page 33]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1789,7 +1901,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 32]
+Hanley                    Expires 25 April 2027                [Page 34]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1845,7 +1957,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 33]
+Hanley                    Expires 25 April 2027                [Page 35]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1901,7 +2013,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 34]
+Hanley                    Expires 25 April 2027                [Page 36]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -1957,7 +2069,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 35]
+Hanley                    Expires 25 April 2027                [Page 37]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2013,7 +2125,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 36]
+Hanley                    Expires 25 April 2027                [Page 38]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2069,7 +2181,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 37]
+Hanley                    Expires 25 April 2027                [Page 39]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2125,7 +2237,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 38]
+Hanley                    Expires 25 April 2027                [Page 40]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2181,7 +2293,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 39]
+Hanley                    Expires 25 April 2027                [Page 41]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2237,7 +2349,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 40]
+Hanley                    Expires 25 April 2027                [Page 42]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2293,7 +2405,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 41]
+Hanley                    Expires 25 April 2027                [Page 43]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2349,7 +2461,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 42]
+Hanley                    Expires 25 April 2027                [Page 44]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2405,7 +2517,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 43]
+Hanley                    Expires 25 April 2027                [Page 45]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2461,7 +2573,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 44]
+Hanley                    Expires 25 April 2027                [Page 46]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2517,7 +2629,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 45]
+Hanley                    Expires 25 April 2027                [Page 47]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2527,7 +2639,7 @@ Internet-Draft                   RSDGGS                     October 2026
    The resolution escalation requirement means that a device moving
    toward a regulatory boundary will autonomously increase its index
    precision as it approaches, consuming more power in the cooperative
-   localization process (Section 12) but ensuring that its compliance
+   localization process (Section 13) but ensuring that its compliance
    determination remains accurate.  For fixed devices, this escalation
    occurs once at commissioning and the resulting high-resolution index
    is stored permanently.
@@ -2573,7 +2685,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 46]
+Hanley                    Expires 25 April 2027                [Page 48]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2629,7 +2741,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 47]
+Hanley                    Expires 25 April 2027                [Page 49]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2678,14 +2790,14 @@ Internet-Draft                   RSDGGS                     October 2026
 
    1.  Power on.  No regulatory context assumed.
 
-   2.  Begin channel scan as defined in Section 10.2.
+   2.  Begin channel scan as defined in Section 11.2.
 
    3.  On receiving a beacon frame with a valid RSDGGS cell:
 
 
 
 
-Hanley                    Expires 24 April 2027                [Page 48]
+Hanley                    Expires 25 April 2027                [Page 50]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2723,10 +2835,10 @@ Internet-Draft                   RSDGGS                     October 2026
    eliminating the need for hardware or firmware variants differentiated
    by target market.  Pre-provisioning at manufacturing time is one of
    three equally valid provisioning paths; the others are peer-assisted
-   bootstrap (Section 11) and tethered-device provisioning
-   (Section 11.3).  In all three cases, the provisioned RSDGGS cell is
-   stored in non-volatile device memory and does not require ongoing
-   connectivity to any server to be applied.
+   bootstrap (Section 11) and tethered-device provisioning (Section 3).
+   In all three cases, the provisioned RSDGGS cell is stored in non-
+   volatile device memory and does not require ongoing connectivity to
+   any server to be applied.
 
    This section does not preclude optional use of infrastructure-based
    provisioning mechanisms such as DHCPv6 (analogous to RFC 3825, which
@@ -2741,7 +2853,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 49]
+Hanley                    Expires 25 April 2027                [Page 51]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2797,7 +2909,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 50]
+Hanley                    Expires 25 April 2027                [Page 52]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2825,7 +2937,7 @@ Internet-Draft                   RSDGGS                     October 2026
    finest achievable precision.  The methods are composable: a device
    SHOULD apply all available methods simultaneously, using each as a
    weighted input to the unified estimation engine defined in
-   Section 11.6.
+   Section 13.6.
 
    +=================+===============+===================+============+
    | Method          | Input         | Typical Precision | 802.15.4   |
@@ -2853,7 +2965,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 51]
+Hanley                    Expires 25 April 2027                [Page 53]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2909,7 +3021,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 52]
+Hanley                    Expires 25 April 2027                [Page 54]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -2965,14 +3077,14 @@ Initiator A                          Responder B
 
 
 
-Hanley                    Expires 24 April 2027                [Page 53]
+Hanley                    Expires 25 April 2027                [Page 55]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
    The range estimate d and uncertainty sigma_d from each peer
    constitute one range measurement for input to the multilateration
-   engine in Section 11.6.  Multiple round-trip exchanges with the same
+   engine in Section 13.6.  Multiple round-trip exchanges with the same
    peer SHOULD be averaged to reduce the contribution of sigma_PL.  The
    minimum recommended number of exchanges per peer before using the
    range in multilateration is three.
@@ -3021,7 +3133,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 54]
+Hanley                    Expires 25 April 2027                [Page 56]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3077,7 +3189,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 55]
+Hanley                    Expires 25 April 2027                [Page 57]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3133,7 +3245,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 56]
+Hanley                    Expires 25 April 2027                [Page 58]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3170,13 +3282,13 @@ Internet-Draft                   RSDGGS                     October 2026
       C_i and the current position cell.
 
    *  RSSI range r_i with uncertainty sigma_i: derived from round-trip
-      RSSI exchange per Section 11.3.
+      RSSI exchange per Section 13.3.
 
    *  UWB range R_i with uncertainty epsilon_i: derived from DS-TWR per
-      Section 11.4.1.
+      Section 13.4.1.
 
    *  PDOA angle theta_i with uncertainty delta_i: derived from PDOA per
-      Section 11.4.3.
+      Section 13.4.3.
 
 13.6.2.  Weighted Least Squares Position Update
 
@@ -3189,7 +3301,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 57]
+Hanley                    Expires 25 April 2027                [Page 59]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3245,7 +3357,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 58]
+Hanley                    Expires 25 April 2027                [Page 60]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3301,7 +3413,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 59]
+Hanley                    Expires 25 April 2027                [Page 61]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3310,7 +3422,7 @@ Internet-Draft                   RSDGGS                     October 2026
    RSDGGS cell, causing the Naive Device to adopt an incorrect
    regulatory rule set.  Mitigation: require cell assertions from a
    minimum of three independent peers before adopting a regulatory
-   context (Section 10.3).  Cells from multiple independent peers that
+   context (Section 11.3).  Cells from multiple independent peers that
    are mutually consistent are significantly harder to spoof
    collectively.
 
@@ -3324,7 +3436,7 @@ Internet-Draft                   RSDGGS                     October 2026
    UWB Timestamp Manipulation: Without STS authentication, a malicious
    node could inject false timestamps in the DS-TWR exchange, inducing a
    false range measurement.  Mitigation: use STS-authenticated ranging
-   (SP1 or SP3 packet formats) as REQUIRED in Section 11.4.2.  Discard
+   (SP1 or SP3 packet formats) as REQUIRED in Section 13.4.2.  Discard
    all UWB range measurements from peers that fail STS authentication.
 
    Regulatory Boundary Induction: A coordinated attack by multiple
@@ -3357,7 +3469,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 60]
+Hanley                    Expires 25 April 2027                [Page 62]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3413,7 +3525,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 61]
+Hanley                    Expires 25 April 2027                [Page 63]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3469,13 +3581,13 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 62]
+Hanley                    Expires 25 April 2027                [Page 64]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
    1.  A Naive Device scans for Enhanced Beacon frames on candidate ISM
-       channels as defined in Section 10.2.
+       channels as defined in Section 11.2.
 
    2.  On receiving an Enhanced Beacon containing a SUN Device
        Description with an RSDGGS Location Sub-IE, the Naive Device
@@ -3503,85 +3615,85 @@ Internet-Draft                   RSDGGS                     October 2026
    regulatory context resolved as a side effect of the standard
    association procedure.
 
-15.  IPv6 Geographic Addressing
+15.  IPv6 Geographic Addressing (Future Work)
 
-   The full 8-octet RSDGGS index fits precisely within the 64-bit
-   Interface Identifier (IID) field of an IPv6 address.  This alignment
-   enables a class of IPv6 addresses in which the IID encodes a
-   geographic cell rather than a hardware identifier, enabling
-   geographic routing without a routing table.
+   This section is informative.  It outlines how the RSDGGS index could
+   be used in IPv6 addresses, so that nodes in a constrained network can
+   forward packets geographically, and it lists the issues a
+   specification of that use would have to resolve (Section 15.6).  It
+   does not define an addressing scheme, nothing in the rest of this
+   document depends on it, and it uses no BCP 14 keywords.  Where other
+   sections of this document refer to RSDGGS-IPv6 or RSDGGS geographic
+   IPv6 addresses, they refer to this outline.
 
-15.1.  Address Structure
-
-   An RSDGGS Geographic IPv6 address is structured as follows:
-
-
-
-
-
-
-
-
+   The full 8-octet RSDGGS index is exactly the size of the 64-bit
+   Interface Identifier (IID) of an IPv6 address [RFC4291].  That allows
+   a class of IPv6 addresses in which the IID encodes a geographic cell
+   rather than an identifier derived from hardware, so that a forwarder
+   could choose a next hop by comparing addresses instead of consulting
+   a routing table.
 
 
 
-Hanley                    Expires 24 April 2027                [Page 63]
+
+
+Hanley                    Expires 25 April 2027                [Page 65]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+15.1.  Address Structure
+
+   In this outline, an RSDGGS geographic IPv6 address is structured as
+   follows:
+
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |         RSDGGS Geographic Prefix (64 bits)                    |
-   |         Identifies this as a geographic address space          |
+   |         Network Prefix (64 bits)                              |
+   |                                                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |         RSDGGS Cell Index -- Interface Identifier (64 bits)    |
+   |         RSDGGS Cell Index -- Interface Identifier (64 bits)   |
    |  [face][triangle][subdiv level 1]..[subdiv level 26][rsvd]    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
                                  Figure 30
-
-   The upper 64 bits form the network prefix, which identifies the
-   address as belonging to the RSDGGS geographic address space.  This
-   prefix is to be assigned from the IANA Special-Purpose Address
-   Registry [RFC6890] for use with this specification.  The placeholder
-   prefix GEO::/64 is used in this document pending IANA assignment.
 
    The lower 64 bits are the RSDGGS cell index in the 8-octet encoding
    defined in Section 5, with the most significant byte (Octet 0, the
    face byte) placed in the most significant octet of the IID.  Unused
    subdivision bits in the terminal resolution level are set to zero.
 
+   The upper 64 bits are the network prefix.  A dedicated prefix that
+   marks an address as geographic, and that would make the aggregation
+   of Section 15.2 possible across networks, would be an allocation from
+   the IANA IPv6 Special-Purpose Address Registry [RFC6890].
+   Allocations there require IETF Review [RFC8126], which an Independent
+   Submission cannot obtain, so this document does not request one
+   (Section 21).  Requesting such a prefix is future work for an IETF-
+   stream document.  Without it, a network would use the prefix it
+   already has, and the geographic structure would apply only within
+   that prefix.
+
+   Examples in this section use the documentation prefix 2001:db8::/32
+   [RFC3849].  For example, the 3-octet country-level cell 0x02 0x21
+   0xF7 (Section 7.1) in the network 2001:db8:0:1::/64 gives the address
+   2001:db8:0:1:221:f700::.
+
    The address is self-describing at any prefix length: the geographic
-   region corresponding to a /N prefix is the set of RSDGGS cells
-   sharing the same upper N bits of their IID.  This is directly
+   region corresponding to a /N prefix (N greater than 64) is the set of
+   RSDGGS cells sharing the same upper N-64 bits of their IID.  This is
    equivalent to RSDGGS index truncation at the corresponding resolution
    level.
 
 15.2.  Prefix Hierarchy and Aggregation
 
-   The RSDGGS hierarchical structure maps directly onto IPv6 prefix
-   aggregation.  The following prefix lengths correspond to RSDGGS
-   resolution levels:
+   The RSDGGS hierarchical structure maps onto IPv6 prefix lengths.  The
+   following prefix lengths correspond to RSDGGS resolution levels:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 64]
+Hanley                    Expires 25 April 2027                [Page 66]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -3619,17 +3731,13 @@ Internet-Draft                   RSDGGS                     October 2026
 
                  Table 17: Prefix Hierarchy and Aggregation
 
-   A /72 prefix encompasses all devices in a single ITU Region.  A /88
-   prefix encompasses all devices within a single country-scale cell.
-   This aggregation is lossless: any RSDGGS cell address is aggregatable
-   at any of the above prefix boundaries without loss of hierarchical
+   If a dedicated geographic prefix were allocated (Section 15.1), a /72
+   prefix would encompass all devices in a single ITU Region and a /88
+   prefix all devices within a single country-scale cell.  This
+   aggregation is lossless: any RSDGGS cell address is aggregatable at
+   any of the above prefix boundaries without loss of hierarchical
    information.
 
-   Routing tables for geographic address spaces can therefore aggregate
-   aggressively.  A continental backbone router needs only /72 or /80
-   routes.  A national backbone router needs only /88 routes.  A
-   metropolitan router needs only /96 routes.  Leaf-level routing to
-   specific devices uses the full /128.
 
 
 
@@ -3637,17 +3745,31 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 65]
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 67]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
+   Routing tables for such an address space could then aggregate
+   aggressively.  A continental backbone router would need only /72 or
+   /80 routes, a national backbone router only /88 routes, and a
+   metropolitan router only /96 routes.  Leaf-level routing to specific
+   devices would use the full /128.  This is an aspiration rather than a
+   property of IPv6 routing today: one /64 prefix is one subnet, so
+   under a network's own prefix the hierarchy organizes routing among
+   the hosts of that subnet, such as the nodes of a RPL mesh [RFC6550],
+   rather than routing in the global Internet.
+
 15.3.  Geographic Greedy Forwarding
 
-   A forwarder holding an RSDGGS Geographic IPv6 address for itself and
-   receiving a packet destined for another geographic address can make a
-   forwarding decision purely from address arithmetic, without a routing
-   table.
+   A forwarder holding an RSDGGS geographic IPv6 address for itself and
+   receiving a packet destined for another geographic address could make
+   a forwarding decision purely from address arithmetic, without a
+   routing table.
 
    Forwarding algorithm:
 
@@ -3674,29 +3796,23 @@ Internet-Draft                   RSDGGS                     October 2026
    No trigonometric computation is required at forwarding time.  The
    geographic distance relationship is encoded in the shared prefix
    structure of the RSDGGS hierarchy: a longer common prefix means a
-   smaller shared cell means geographic proximity.
+   smaller shared cell, which means geographic proximity.
 
    This forwarding algorithm is equivalent to greedy geographic
    forwarding as used in GPSR [GPSR] and similar protocols, but operates
    on the RSDGGS index structure directly rather than on Euclidean or
    great-circle distance.  The computational cost at each hop is a
-   bitwise XOR and leading-zero count -- operations available as single
-   instructions on all target architectures including constrained
-   microcontrollers.
 
 
 
-
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 66]
+Hanley                    Expires 25 April 2027                [Page 68]
 
 Internet-Draft                   RSDGGS                     October 2026
 
+
+   bitwise XOR and leading-zero count -- operations available as single
+   instructions on all target architectures including constrained
+   microcontrollers.
 
 15.4.  Regulatory-Aware Channel Selection for Forwarding
 
@@ -3707,12 +3823,12 @@ Internet-Draft                   RSDGGS                     October 2026
    destination.
 
    When a packet is forwarded toward a destination in a different
-   regulatory cell, the forwarding node SHOULD select a transmission
-   channel that is legal in both its own regulatory cell and the next-
+   regulatory cell, the forwarding node would select a transmission
+   channel that is legal in both its own regulatory cell and the next
    hop's regulatory cell.  If no such channel exists (for example,
    forwarding from an EU 868 MHz network toward a US 915 MHz network),
-   the forwarder MUST NOT transmit on a channel that is illegal in
-   either jurisdiction.
+   the forwarder cannot transmit on a channel that is illegal in either
+   jurisdiction.
 
    In practice, cross-regulatory-region forwarding at the ISM layer
    requires either a gateway device provisioned for both regulatory
@@ -3736,63 +3852,106 @@ Internet-Draft                   RSDGGS                     October 2026
 
 15.5.  Relationship to Existing Standards
 
-   The RSDGGS Geographic IPv6 addressing scheme intersects with the
-   following existing standards and efforts, from which it draws and to
-   which it contributes:
+   The outline intersects with the following existing standards and
+   efforts:
+
+   6LoWPAN [RFC4944] [RFC6282]: A geographic IID would replace the IID
+   that 6LoWPAN derives from the IEEE 802.15.4 extended or short
+   address.  Header compression [RFC6282] still applies to the rest of
 
 
 
-
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 67]
+Hanley                    Expires 25 April 2027                [Page 69]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-   RFC 4944 / RFC 6282 (6LoWPAN): The IID derivation from EUI-64 defined
-   in RFC 4944 is not applicable to geographic addresses.
-   Implementations using RSDGGS Geographic addressing over 802.15.4
-   SHALL use the RSDGGS cell as the IID directly and MUST NOT apply the
-   EUI-64 IID derivation procedure.  The 6LoWPAN header compression
-   schemes defined in RFC 6282 are applicable to geographic addresses
-   with the understanding that the IID carries geographic rather than
-   hardware identity.
+   the header, but it can elide an IID only when the IID can be derived
+   from the link-layer address.  A geographic IID cannot be, so every
+   such address in a packet would be carried in full, 8 octets each,
+   unless a specification defined a way to recover it.
 
-   RFC 6775 (6LoWPAN-ND): The Neighbor Discovery optimization defined in
-   RFC 6775 for low-power networks applies to geographic addresses.  The
-   geographic IID provides a natural mechanism for duplicate address
-   detection in dense deployments: two devices with the same geographic
-   cell at maximum resolution are, by definition, co-located within
-   approximately 3 centimeters and may legitimately share an address for
-   aggregated sensing applications.
+   6LoWPAN Neighbor Discovery [RFC6775] [RFC8505]: Geographic addresses
+   would have to be unique on the link like any other, and be registered
+   and checked for duplicates in the same way.  Two devices in the same
+   cell at the chosen resolution would have the same cell bits, so the
+   IID would need more than the cell to tell them apart (Section 15.6).
 
-   RFC 9854 (AODV-RPL): Geographic greedy forwarding as defined in
-   Section 13.3 eliminates the need for route discovery in dense
-   geographic deployments.  AODV-RPL route discovery MAY be used as a
+   RFC 9854 (AODV-RPL): Geographic greedy forwarding as described in
+   Section 15.3 could remove the need for route discovery in dense
+   geographic deployments.  AODV-RPL route discovery could serve as a
    fallback void-handling mechanism when greedy forwarding cannot make
    progress, for example in sparse networks with geographic holes.  The
-   RSDGGS cell can serve as the position metric in AODV-RPL's P2P route
-   discovery in place of GPS coordinates, enabling route discovery on
-   devices without GPS receivers.
+   RSDGGS cell could serve as the position metric in AODV-RPL's P2P
+   route discovery in place of GPS coordinates, enabling route discovery
+   on devices without GPS receivers.
 
    ETSI EN 302 931 (GeoNetworking): The European ITS GeoNetworking
    standard defines geographic addressing over 802.11p and LTE for
-   vehicular networks.  RSDGGS Geographic IPv6 addressing is an
-   alternative approach designed for low-power ISM-band IoT networks
-   rather than vehicular ITS, with the additional property of encoding
-   regulatory jurisdiction within the address structure.
+   vehicular networks.  RSDGGS geographic IPv6 addressing is an
+   alternative approach for low-power ISM-band IoT networks rather than
+   vehicular ITS, with the additional property of encoding regulatory
+   jurisdiction within the address structure.
 
-   IEEE 802.15.4 SUN: The MAC-layer integration defined in Section 12
-   and the IPv6 geographic addressing defined in this section are
+   IEEE 802.15.4 SUN: The MAC-layer integration defined in Section 14
+   and the IPv6 geographic addressing outlined in this section are
    complementary.  A SUN network using RSDGGS Location Sub-IEs at the
-   MAC layer and RSDGGS Geographic IPv6 addresses at the network layer
-   achieves end-to-end geographic addressing from the MAC frame through
-   the IP datagram, with regulatory context embedded at both layers.
+   MAC layer and RSDGGS geographic IPv6 addresses at the network layer
+   would carry geographic addressing from the MAC frame through the IP
+   datagram, with regulatory context embedded at both layers.
+
+15.6.  Open Issues
+
+   A specification of RSDGGS geographic IPv6 addressing would have to
+   resolve at least the following issues.  Its IPv6 addressing aspects
+   would be within the scope of the 6man working group, and its 6LoWPAN
+   aspects within that of the 6lo working group.
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 70]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   1.  Privacy.  An IID carrying the full 8-octet index discloses the
+       device's location, to within centimeters (Section 5.2), to every
+       party that sees its packets, and a stable address lets them
+       follow the device over time [RFC7721].  [RFC8064] recommends that
+       stable IIDs be semantically opaque, generated as in [RFC7217].
+       The truncation model of Section 5.4 limits what an index
+       discloses, but this outline has no counterpart to it for
+       addresses.
+
+   2.  Uniqueness.  Devices in the same cell at the chosen resolution
+       would derive the same IID.  Addresses must be unique, and
+       duplicate address detection [RFC4862] [RFC6775] would reject the
+       second device.  One candidate approach for both this issue and
+       the previous one: the upper bits of the IID carry the cell,
+       truncated to the resolution the device chooses to disclose, and
+       the remaining bits are an opaque value generated as in [RFC7217].
+       Greedy forwarding would then work at the disclosed resolution.
+
+   3.  Prefix.  A dedicated geographic prefix needs an IETF-stream
+       document and IETF Review (Section 15.1).  Without one, the
+       hierarchy of Section 15.2 applies only within a network's own
+       prefix.
+
+   4.  Mobility.  A device that moves to another cell changes its
+       address, with the consequences of renumbering for its neighbors'
+       caches, its registrations, and its transport connections.
+
+   5.  Header overhead.  Geographic IIDs cannot be compressed from link-
+       layer addresses (Section 15.5), which costs up to 16 octets per
+       packet on links where every octet counts.
 
 16.  Relationship to Prior Geographic Addressing Work
 
@@ -3800,15 +3959,6 @@ Internet-Draft                   RSDGGS                     October 2026
    conveyance, and routing.  This section compares each to RSDGGS,
    identifying the gaps that RSDGGS addresses and the areas where these
    prior works remain authoritative and complementary.
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 68]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
    The fundamental distinction between RSDGGS and all prior work is axis
    of design: the existing RFCs treat geographic location as a property
@@ -3819,6 +3969,14 @@ Internet-Draft                   RSDGGS                     October 2026
    regulatory jurisdiction, enables address-arithmetic routing, and is
    optimized for constrained IoT devices operating without floating-
    point arithmetic or external infrastructure.
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 71]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 16.1.  RFC 2009: GPS-Based Addressing and Routing
 
@@ -3845,7 +4003,7 @@ Internet-Draft                   RSDGGS                     October 2026
    weak radio beacons that broadcast a GPS address, allowing mobile
    devices to adopt the beacon's address as their own.  This is
    structurally analogous to the peer-assisted discovery mechanism
-   defined in Section 10 of this document.
+   defined in Section 11 of this document.
 
    RFC 2009 also proposes a DNS-based application-layer solution, adding
    a geographic first-level domain with hierarchical sub-domains for
@@ -3854,17 +4012,6 @@ Internet-Draft                   RSDGGS                     October 2026
    of router hops based on IGPSMP service area tables.
 
 16.1.2.  Gaps Addressed by RSDGGS
-
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 69]
-
-Internet-Draft                   RSDGGS                     October 2026
-
 
 Dimension            RFC 2009                  RSDGGS
 -------------------  ------------------------  -------------------------
@@ -3878,6 +4025,14 @@ Privacy              Not addressed             Truncation gradient
 Status               Experimental / Legacy     Informational (this doc)
 
                               Figure 33
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 72]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
    RFC 2009's polygon-based service areas require floating-point
    computation for containment tests and polygon intersection, making
@@ -3911,23 +4066,29 @@ Status               Experimental / Legacy     Informational (this doc)
    coordinate values MUST NOT be interpreted as an indication of
    accuracy; uncertainty is carried only in the explicit u= parameter.
 
-
-
-
-
-
-
-Hanley                    Expires 24 April 2027                [Page 70]
-
-Internet-Draft                   RSDGGS                     October 2026
-
-
    The scheme is CRS-agnostic: while WGS-84 is the default, alternative
    coordinate reference systems may be specified using the crs=
    parameter.  The scheme is protocol-independent and may appear in any
    context supporting arbitrary URIs.
 
 16.2.2.  Gaps Addressed by RSDGGS
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 73]
+
+Internet-Draft                   RSDGGS                     October 2026
+
 
 Dimension            RFC 5870 'geo' URI        RSDGGS
 -------------------  ------------------------  -------------------------
@@ -3936,7 +4097,7 @@ Encoding size        20-30 bytes typical       1-8 bytes
 Uncertainty          Float param (u=)          Implicit in byte length
 Privacy control      Digit trunc (lossy)       Byte trunc (lossless)
 Regulatory context   Absent                    Primary design goal
-Routing use          Not defined               See Section 13
+Routing use          Not defined               See Section 15
 Constrained devices  Text parsing required     Integer extraction only
 Hierarchical index   None                      Full hier. in bits
 
@@ -3973,7 +4134,14 @@ Hierarchical index   None                      Full hier. in bits
 
 
 
-Hanley                    Expires 24 April 2027                [Page 71]
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027                [Page 74]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4003,7 +4171,7 @@ Target protocol      SIP (session signal.)     802.15.4 MAC, CBOR, IPv6
 Location format      PIDF-LO (~500 bytes)      CBOR bstr (1-8 bytes)
 Regulatory context   Absent                    Primary design goal
 Device class         SIP UA (smartphone)       Constrained IoT (M)
-Routing use          Geoloc-Routing hdr        See Section 13
+Routing use          Geoloc-Routing hdr        See Section 15
 Privacy              Consent/by-ref URI        Trunc., RSL disclosure
 Uncertainty          PIDF-LO conf/method       Implicit in byte length
 Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
@@ -4022,14 +4190,14 @@ Acquisition method   GPS, cell-tower, manual   Sec.11 coop. local.
    RFC 6442's Geolocation-Routing header enables SIP routing based on
    location.  This is a routing hint at the application layer, not an
    address-arithmetic property of the network address itself.  RSDGGS
-   geographic IPv6 addressing (Section 13) achieves location-based
+   geographic IPv6 addressing (Section 15) achieves location-based
    routing at the network layer without any signaling overhead, as the
    routing metric is embedded in the destination address.
 
 
 
 
-Hanley                    Expires 24 April 2027                [Page 72]
+Hanley                    Expires 25 April 2027                [Page 75]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4075,7 +4243,7 @@ Target context       YANG/NETCONF mgmt         802.15.4 / CBOR / IPv6
 Encoding             XML/JSON (NETCONF)        CBOR bstr (1-8 bytes)
 Precision            decimal64 (16 frac)       6 cm at 8 bytes
 Regulatory context   Absent                    Primary design goal
-Routing use          Not defined               See Section 13
+Routing use          Not defined               See Section 15
 Constrained devices  Not applicable            Primary target
 Uncertainty          coord-accuracy (m)        Implicit in byte length
 Velocity             v-north, v-east, v-up     EKF state (Sec.11)
@@ -4085,7 +4253,7 @@ Velocity             v-north, v-east, v-up     EKF state (Sec.11)
 
 
 
-Hanley                    Expires 24 April 2027                [Page 73]
+Hanley                    Expires 25 April 2027                [Page 76]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4141,7 +4309,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 74]
+Hanley                    Expires 25 April 2027                [Page 77]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4155,7 +4323,7 @@ Discovery            RPSL inetnum + RPKI       MAC bcn/RSDGGS IPv6
 Regulatory context   Absent                    Primary design goal
 Real-time use        Batch/periodic fetch      Per-frame/per-packet
 Device class         BGP routers, servers      Constrained IoT (M)
-Routing              Not defined               See Section 13
+Routing              Not defined               See Section 15
 
                               Figure 37
 
@@ -4169,7 +4337,7 @@ Routing              Not defined               See Section 13
    the purpose of regulatory compliance determination at the MAC layer.
 
    A meaningful integration point exists: RSDGGS-IPv6 geographic
-   addresses (Section 13) are by definition location-accurate.  An
+   addresses (Section 15) are by definition location-accurate.  An
    operator deploying RSDGGS-IPv6 addresses could publish a geofeed file
    trivially, as the address prefix directly encodes the geographic
    region.  A /72 RSDGGS-IPv6 prefix geofeed entry maps to a single
@@ -4197,7 +4365,7 @@ Routing              Not defined               See Section 13
 
 
 
-Hanley                    Expires 24 April 2027                [Page 75]
+Hanley                    Expires 25 April 2027                [Page 78]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4241,19 +4409,19 @@ Precision            Administrative boundary   Physical loc, metered
    authenticity in RFC 8805 relies on RPKI (via RFC 9632) binding the
    file to the address holder's certificate; RSDGGS cell authenticity in
    peer-assisted scenarios relies on the MAC-layer STS authentication
-   defined in Section 11.4.2 and the multi-peer confidence model of
-   Section 10.3.
+   defined in Section 13.4.2 and the multi-peer confidence model of
+   Section 11.3.
 
-   As noted in Section 15.5, RSDGGS-IPv6 geographic addresses
-   (Section 13) are inherently geofeed-compatible: the address prefix
-   encodes geographic location by definition, eliminating the mismatch
-   between administratively assigned IP prefixes and their physical
-   locations that RFC 8805 was designed to correct.
-
-
+   As noted in Section 15, RSDGGS-IPv6 geographic addresses are
+   inherently geofeed-compatible: the address prefix encodes geographic
+   location by definition, eliminating the mismatch between
+   administratively assigned IP prefixes and their physical locations
+   that RFC 8805 was designed to correct.
 
 
-Hanley                    Expires 24 April 2027                [Page 76]
+
+
+Hanley                    Expires 25 April 2027                [Page 79]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4309,14 +4477,14 @@ Location form        PIDF-LO (after deref)     CBOR bstr (direct)
 
 
 
-Hanley                    Expires 24 April 2027                [Page 77]
+Hanley                    Expires 25 April 2027                [Page 80]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
    RSDGGS takes the Location-by-Value position for IoT: the location
    index is carried directly in the MAC frame or IPv6 address.  The
-   RSDGGS cooperative localization mechanism (Section 11) is analogous
+   RSDGGS cooperative localization mechanism (Section 13) is analogous
    to the LIS in the RFC 5808 architecture, but is fully distributed and
    requires no server infrastructure: the network of peers collectively
    provides the location determination function that RFC 5808
@@ -4365,7 +4533,7 @@ Constrained devices  Not addressed             Primary target
 
 
 
-Hanley                    Expires 24 April 2027                [Page 78]
+Hanley                    Expires 25 April 2027                [Page 81]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4421,7 +4589,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 79]
+Hanley                    Expires 25 April 2027                [Page 82]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4477,7 +4645,7 @@ Trust model          Centralized (LS)          Distributed (peer mesh)
 
 
 
-Hanley                    Expires 24 April 2027                [Page 80]
+Hanley                    Expires 25 April 2027                [Page 83]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4533,7 +4701,7 @@ Policy expressive.   High (identity+loc.)      Single dim (resolution)
 
 
 
-Hanley                    Expires 24 April 2027                [Page 81]
+Hanley                    Expires 25 April 2027                [Page 84]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4589,7 +4757,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 82]
+Hanley                    Expires 25 April 2027                [Page 85]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4645,7 +4813,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 83]
+Hanley                    Expires 25 April 2027                [Page 86]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4701,7 +4869,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 84]
+Hanley                    Expires 25 April 2027                [Page 87]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4757,7 +4925,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 85]
+Hanley                    Expires 25 April 2027                [Page 88]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4813,7 +4981,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 86]
+Hanley                    Expires 25 April 2027                [Page 89]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4869,7 +5037,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 87]
+Hanley                    Expires 25 April 2027                [Page 90]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -4887,8 +5055,8 @@ Internet-Draft                   RSDGGS                     October 2026
 17.9.  Summary of Newly Identified References
 
    The following references, surfaced from the backward citation chains
-   of documents already examined, should be added to Section 21
-   (References) of this draft as informative references:
+   of documents already examined, should be added to the references of
+   this draft (Section 22 and Section 23) as informative references:
 
 
 
@@ -4925,63 +5093,63 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 88]
+Hanley                    Expires 25 April 2027                [Page 91]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
-    +================+============+=========+=========================+
-    | Reference      | Surfaced   | Section | Relevance               |
-    |                | From       | to Cite |                         |
-    |                |            | In      |                         |
-    +================+============+=========+=========================+
-    | Karp & Kung,   | US         | Section | Void handling gap in    |
-    | GPSR (MobiCom  | 10,812,365 | 15.3    | geographic forwarding   |
-    | 2000)          |            |         |                         |
-    +----------------+------------+---------+-------------------------+
-    | IEEE           | US         | Section | 802.11 predecessor of   |
-    | 802.11d-2001   | 10,306,400 | 14      | RSDGGS 802.15.4 Sub-IE  |
-    |                | family     |         |                         |
-    +----------------+------------+---------+-------------------------+
-    | IEEE           | US         | Section | 802.11 predecessor of   |
-    | 802.11h-2003   | 10,306,400 | 10.4    | RSDGGS boundary power   |
-    |                | family     |         | control                 |
-    +----------------+------------+---------+-------------------------+
-    | RFC 3693       | RFC 6442,  | Section | Using protocol          |
-    | (GEOPRIV       | RFC 6280   | 14      | requirements; RSDGGS    |
-    | Requirements)  |            |         | compliance              |
-    +----------------+------------+---------+-------------------------+
-    | RFC 3825 (DHCP | RFC 5870,  | Section | Infrastructure          |
-    | Geodetic)      | RFC 5808   | 12      | provisioning path;      |
-    |                |            |         | single point of failure |
-    +----------------+------------+---------+-------------------------+
-    | RFC 4862       | Design     | Section | Serverless              |
-    | (SLAAC)        | goal G8    | 11, 12  | autoconfiguration model |
-    +----------------+------------+---------+-------------------------+
-    | RFC 4861       | Design     | Section | Serverless neighbor-    |
-    | (Neighbor      | goal G8    | 11      | based discovery model   |
-    | Discovery)     |            |         |                         |
-    +----------------+------------+---------+-------------------------+
-    | RFC 4632       | RFC 9632   | Section | Prefix aggregation      |
-    | (CIDR)         |            | 15.2    | conceptual ancestor     |
-    +----------------+------------+---------+-------------------------+
-    | RFC 6269 (IP   | RFC 9632   | Section | Problem RSDGGS-IPv6     |
-    | address        |            | 15      | solves categorically    |
-    | sharing)       |            |         |                         |
-    +----------------+------------+---------+-------------------------+
-    | Navas &        | RFC 2009   | Section | Geographic multicast    |
-    | Imielinski,    |            | 15      | ancestor                |
-    | GeoCast (1997) |            |         |                         |
-    +----------------+------------+---------+-------------------------+
+   +================+============+==========+=========================+
+   | Reference      | Surfaced   | Section  | Relevance               |
+   |                | From       | to Cite  |                         |
+   |                |            | In       |                         |
+   +================+============+==========+=========================+
+   | Karp & Kung,   | US         | Section  | Void handling gap in    |
+   | GPSR (MobiCom  | 10,812,365 | 15.3     | geographic forwarding   |
+   | 2000)          |            |          |                         |
+   +----------------+------------+----------+-------------------------+
+   | IEEE           | US         | Section  | 802.11 predecessor of   |
+   | 802.11d-2001   | 10,306,400 | 14       | RSDGGS 802.15.4 Sub-IE  |
+   |                | family     |          |                         |
+   +----------------+------------+----------+-------------------------+
+   | IEEE           | US         | Section  | 802.11 predecessor of   |
+   | 802.11h-2003   | 10,306,400 | 10.4     | RSDGGS boundary power   |
+   |                | family     |          | control                 |
+   +----------------+------------+----------+-------------------------+
+   | RFC 3693       | RFC 6442,  | Section  | Using protocol          |
+   | (GEOPRIV       | RFC 6280   | 14       | requirements; RSDGGS    |
+   | Requirements)  |            |          | compliance              |
+   +----------------+------------+----------+-------------------------+
+   | RFC 3825 (DHCP | RFC 5870,  | Section  | Infrastructure          |
+   | Geodetic)      | RFC 5808   | 12       | provisioning path;      |
+   |                |            |          | single point of failure |
+   +----------------+------------+----------+-------------------------+
+   | RFC 4862       | Design     | Sections | Serverless              |
+   | (SLAAC)        | goal G8    | 11, 12   | autoconfiguration model |
+   +----------------+------------+----------+-------------------------+
+   | RFC 4861       | Design     | Section  | Serverless neighbor-    |
+   | (Neighbor      | goal G8    | 11       | based discovery model   |
+   | Discovery)     |            |          |                         |
+   +----------------+------------+----------+-------------------------+
+   | RFC 4632       | RFC 9632   | Section  | Prefix aggregation      |
+   | (CIDR)         |            | 15.2     | conceptual ancestor     |
+   +----------------+------------+----------+-------------------------+
+   | RFC 6269 (IP   | RFC 9632   | Section  | Problem RSDGGS-IPv6     |
+   | address        |            | 15       | solves categorically    |
+   | sharing)       |            |          |                         |
+   +----------------+------------+----------+-------------------------+
+   | Navas &        | RFC 2009   | Section  | Geographic multicast    |
+   | Imielinski,    |            | 15       | ancestor                |
+   | GeoCast (1997) |            |          |                         |
+   +----------------+------------+----------+-------------------------+
 
-              Table 19: Summary of Newly Identified References
-
-
+             Table 19: Summary of Newly Identified References
 
 
 
 
-Hanley                    Expires 24 April 2027                [Page 89]
+
+
+Hanley                    Expires 25 April 2027                [Page 92]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5037,7 +5205,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 90]
+Hanley                    Expires 25 April 2027                [Page 93]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5093,7 +5261,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 91]
+Hanley                    Expires 25 April 2027                [Page 94]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5149,7 +5317,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 92]
+Hanley                    Expires 25 April 2027                [Page 95]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5205,7 +5373,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 93]
+Hanley                    Expires 25 April 2027                [Page 96]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5261,7 +5429,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 94]
+Hanley                    Expires 25 April 2027                [Page 97]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5317,7 +5485,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 95]
+Hanley                    Expires 25 April 2027                [Page 98]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5373,7 +5541,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 96]
+Hanley                    Expires 25 April 2027                [Page 99]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5429,7 +5597,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 97]
+Hanley                    Expires 25 April 2027               [Page 100]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5485,7 +5653,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 98]
+Hanley                    Expires 25 April 2027               [Page 101]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5541,7 +5709,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027                [Page 99]
+Hanley                    Expires 25 April 2027               [Page 102]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5597,7 +5765,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 100]
+Hanley                    Expires 25 April 2027               [Page 103]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5653,7 +5821,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 101]
+Hanley                    Expires 25 April 2027               [Page 104]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5709,7 +5877,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 102]
+Hanley                    Expires 25 April 2027               [Page 105]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5765,7 +5933,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 103]
+Hanley                    Expires 25 April 2027               [Page 106]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5788,7 +5956,7 @@ Internet-Draft                   RSDGGS                     October 2026
    This is pseudocode intended to specify behavior precisely.  A
    production implementation would require additional error handling,
    const evaluation of intermediate values, and platform-specific
-   optimizations.  The worked example at Section 20.10 provides a
+   optimizations.  The worked example in Section 19.10 provides a
    concrete verification vector.
 
 19.1.  Crate Structure and Types
@@ -5821,7 +5989,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 104]
+Hanley                    Expires 25 April 2027               [Page 107]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5877,7 +6045,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 105]
+Hanley                    Expires 25 April 2027               [Page 108]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5933,7 +6101,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 106]
+Hanley                    Expires 25 April 2027               [Page 109]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -5989,7 +6157,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 107]
+Hanley                    Expires 25 April 2027               [Page 110]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6045,7 +6213,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 108]
+Hanley                    Expires 25 April 2027               [Page 111]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6101,7 +6269,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 109]
+Hanley                    Expires 25 April 2027               [Page 112]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6157,7 +6325,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 110]
+Hanley                    Expires 25 April 2027               [Page 113]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6213,7 +6381,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 111]
+Hanley                    Expires 25 April 2027               [Page 114]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6269,7 +6437,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 112]
+Hanley                    Expires 25 April 2027               [Page 115]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6325,7 +6493,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 113]
+Hanley                    Expires 25 April 2027               [Page 116]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6381,7 +6549,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 114]
+Hanley                    Expires 25 April 2027               [Page 117]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6437,7 +6605,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 115]
+Hanley                    Expires 25 April 2027               [Page 118]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6493,14 +6661,14 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 116]
+Hanley                    Expires 25 April 2027               [Page 119]
 
 Internet-Draft                   RSDGGS                     October 2026
 
 
 19.9.  Boundary Proximity Helper
 
-   The boundary proximity function B(cell, band) from Section 9.3 is
+   The boundary proximity function B(cell, band) from Section 10.3 is
    implemented as a database lookup returning the number of RSDGGS
    resolution steps to the nearest rule-set-changing boundary.  The
    function signature is shown; the database backend is implementation-
@@ -6549,7 +6717,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 117]
+Hanley                    Expires 25 April 2027               [Page 120]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6605,7 +6773,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 118]
+Hanley                    Expires 25 April 2027               [Page 121]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6661,7 +6829,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 119]
+Hanley                    Expires 25 April 2027               [Page 122]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6670,7 +6838,7 @@ Internet-Draft                   RSDGGS                     October 2026
    coordinate to structured byte sequence.  The face-0x02 byte is the
    ITU Region 2 determination made at single-byte resolution.
    Truncating to 1 byte is sufficient for ISM band availability
-   determination anywhere in North America, as specified in Section 9
+   determination anywhere in North America, as specified in Section 8.2
    (RSL for 902 MHz, Face 2 = 1 byte).
 
    The note on Tokyo illustrates that face assignment is driven by
@@ -6690,10 +6858,11 @@ Internet-Draft                   RSDGGS                     October 2026
    resolution necessary for the intended purpose.  For regulatory
    validation purposes, 1 to 3 octets is typically sufficient and
    reveals no more than country-level location.  Full 8-octet indexes
-   SHOULD be treated as sensitive location data.
+   SHOULD be treated as sensitive location data.  Section 15.6 discusses
+   the further exposure if the index were carried in IPv6 addresses.
 
    Beacon Authenticity: The peer-assisted discovery mechanism defined in
-   Section 10 assumes that Beacon Devices transmit their correct
+   Section 11 assumes that Beacon Devices transmit their correct
    regulatory context.  A malicious device transmitting a beacon with a
    false RSDGGS cell could cause Naive Devices to adopt incorrect
    regulatory parameters, potentially causing interference.
@@ -6716,8 +6885,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-Hanley                    Expires 24 April 2027               [Page 120]
+Hanley                    Expires 25 April 2027               [Page 123]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6758,6 +6926,8 @@ Internet-Draft                   RSDGGS                     October 2026
    first-come-first-served range.  The tag is used to identify a CBOR
    byte string as an RSDGGS cell index as defined in this document.
 
+   This document requests no IPv6 address allocation (Section 15.1) and
+   creates no registry for celestial body selector values (Section 5.1).
 
 
 
@@ -6771,9 +6941,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-
-
-Hanley                    Expires 24 April 2027               [Page 121]
+Hanley                    Expires 25 April 2027               [Page 124]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6829,7 +6997,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 122]
+Hanley                    Expires 25 April 2027               [Page 125]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6885,7 +7053,7 @@ Internet-Draft                   RSDGGS                     October 2026
 
 
 
-Hanley                    Expires 24 April 2027               [Page 123]
+Hanley                    Expires 25 April 2027               [Page 126]
 
 Internet-Draft                   RSDGGS                     October 2026
 
@@ -6927,6 +7095,81 @@ Internet-Draft                   RSDGGS                     October 2026
               DOI 10.17487/RFC8628, August 2019,
               <https://www.rfc-editor.org/info/rfc8628>.
 
+   [RFC3849]  Huston, G., Lord, A., and P. Smith, "IPv6 Address Prefix
+              Reserved for Documentation", RFC 3849, July 2004,
+              <https://www.rfc-editor.org/info/rfc3849>.
+
+   [RFC4291]  Hinden, R. and S. Deering, "IP Version 6 Addressing
+              Architecture", RFC 4291, February 2006,
+              <https://www.rfc-editor.org/info/rfc4291>.
+
+   [RFC4862]  Thomson, S., Narten, T., and T. Jinmei, "IPv6 Stateless
+              Address Autoconfiguration", RFC 4862, September 2007,
+              <https://www.rfc-editor.org/info/rfc4862>.
+
+
+
+Hanley                    Expires 25 April 2027               [Page 127]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
+   [RFC4944]  Montenegro, G., Kushalnagar, N., Hui, J., and D. Culler,
+              "Transmission of IPv6 Packets over IEEE 802.15.4
+              Networks", RFC 4944, September 2007,
+              <https://www.rfc-editor.org/info/rfc4944>.
+
+   [RFC6282]  Hui, J., Ed. and P. Thubert, "Compression Format for IPv6
+              Datagrams over IEEE 802.15.4-Based Networks", RFC 6282,
+              September 2011, <https://www.rfc-editor.org/info/rfc6282>.
+
+   [RFC6550]  Winter, T., Ed., Thubert, P., Ed., Brandt, A., Hui, J.,
+              Kelsey, R., Levis, P., Pister, K., Struik, R., Vasseur,
+              JP., and R. Alexander, "RPL: IPv6 Routing Protocol for
+              Low-Power and Lossy Networks", RFC 6550, March 2012,
+              <https://www.rfc-editor.org/info/rfc6550>.
+
+   [RFC6775]  Shelby, Z., Ed., Chakrabarti, S., Nordmark, E., and C.
+              Bormann, "Neighbor Discovery Optimization for IPv6 over
+              Low-Power Wireless Personal Area Networks (6LoWPANs)",
+              RFC 6775, November 2012,
+              <https://www.rfc-editor.org/info/rfc6775>.
+
+   [RFC7217]  Gont, F., "A Method for Generating Semantically Opaque
+              Interface Identifiers with IPv6 Stateless Address
+              Autoconfiguration (SLAAC)", RFC 7217, April 2014,
+              <https://www.rfc-editor.org/info/rfc7217>.
+
+   [RFC7721]  Cooper, A., Gont, F., and D. Thaler, "Security and Privacy
+              Considerations for IPv6 Address Generation Mechanisms",
+              RFC 7721, March 2016,
+              <https://www.rfc-editor.org/info/rfc7721>.
+
+   [RFC8064]  Gont, F., Cooper, A., Thaler, D., and W. Liu,
+              "Recommendation on Stable IPv6 Interface Identifiers",
+              RFC 8064, February 2017,
+              <https://www.rfc-editor.org/info/rfc8064>.
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, June 2017,
+              <https://www.rfc-editor.org/info/rfc8126>.
+
+   [RFC8505]  Thubert, P., Ed., Nordmark, E., Chakrabarti, S., and C.
+              Perkins, "Registration Extensions for IPv6 over Low-Power
+              Wireless Personal Area Network (6LoWPAN) Neighbor
+              Discovery", RFC 8505, November 2018,
+              <https://www.rfc-editor.org/info/rfc8505>.
+
+
+
+
+
+Hanley                    Expires 25 April 2027               [Page 128]
+
+Internet-Draft                   RSDGGS                     October 2026
+
+
 Author's Address
 
    James Patrick Hanley
@@ -6941,4 +7184,41 @@ Author's Address
 
 
 
-Hanley                    Expires 24 April 2027               [Page 124]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanley                    Expires 25 April 2027               [Page 129]
