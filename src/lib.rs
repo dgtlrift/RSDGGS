@@ -10,7 +10,7 @@ pub mod wire;
 
 pub use decode::{decode, cell_center};
 pub use encode::encode;
-pub use types::{BandEntry, Body, BoundingCell, RsdggsIndex};
+pub use types::{BandEntry, Body, BoundingCell, ExceptionEntry, RsdggsIndex};
 pub use wire::{from_wire, to_wire, truncate};
 
 #[derive(Debug)]
@@ -23,6 +23,8 @@ pub enum Error {
     BufferTooShort,
     BandNotFound { face: u8, band_id: u32 },
     NonEarthNotSupported,
+    /// The index is shorter than the resolution sufficiency level a lookup needs.
+    InsufficientResolution { needed: usize },
 }
 
 impl std::fmt::Display for Error {
@@ -37,6 +39,8 @@ impl std::fmt::Display for Error {
             Error::BandNotFound { face, band_id } =>
                 write!(f, "no band {band_id} for face {face}"),
             Error::NonEarthNotSupported => write!(f, "only Earth body is supported"),
+            Error::InsufficientResolution { needed } =>
+                write!(f, "the lookup needs an index of at least {needed} octets"),
         }
     }
 }
