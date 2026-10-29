@@ -147,9 +147,16 @@ the 1–8 octet range is enforced at runtime in `from_wire()`.
 
 | Tool | Source | Purpose |
 |------|--------|---------|
-| `cddlc` | Internal — `cddlc-projects/cddlc` | CDDL compiler that generates Rust minicbor code from `.cddl` schemas.  Must be on `PATH` or pointed to via the `CDDLC` environment variable. |
+| `cddlc` | [`dgtlrift/cddlc`](https://github.com/dgtlrift/cddlc) | CDDL compiler that generates Rust minicbor code from `.cddl` schemas at build time. |
 
-No external network services are used at build time or runtime.  All geographic constants, the regulatory database, and the metro reference data are embedded as static arrays.
+`build.rs` uses, in order:
+1. the binary the `CDDLC` environment variable names;
+2. `cddlc` on the `PATH`;
+3. the pinned release candidate, [`v1.1.0-rc.1`](https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.1): a static x86-64 Linux binary that `build.rs` downloads with `curl` into `$OUT_DIR`, checks against its pinned SHA-256 with `sha256sum`, and unpacks with `tar`. On other hosts, install `cddlc` or set `CDDLC`.
+
+The generated code is never checked in: the `.cddl` files are the source of truth, and what `cddlc` makes from them is an intermediate in `$OUT_DIR`.
+
+The only network access is that download, at build time, when no `cddlc` is installed. At runtime there is none: all geographic constants, the regulatory database, and the metro reference data are embedded as static arrays.
 
 ---
 
