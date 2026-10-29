@@ -8,8 +8,11 @@ use std::{
 fn main() {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
 
-    // Locate the cddlc binary: CDDLC env var overrides PATH lookup.
-    let cddlc = env::var("CDDLC").unwrap_or_else(|_| "cddlc".to_string());
+    // Locate the cddlc binary: the CDDLC environment variable, else `cddlc` on the PATH,
+    // else the pinned release candidate, downloaded and checked against its SHA-256.
+    println!("cargo:rerun-if-env-changed=CDDLC");
+    let cddlc = find_cddlc(&out_dir);
+    let cddlc = cddlc.to_str().expect("UTF-8 path");
 
     let schemas: &[(&str, &str)] = &[
         ("cddl/rsdggs.cddl",    "rsdggs"),
@@ -35,6 +38,65 @@ fn main() {
         let dest = out_dir.join(format!("{stem}_cbor.rs"));
         fs::write(&dest, stripped)
             .unwrap_or_else(|e| panic!("cannot write {}: {e}", dest.display()));
+    }
+}
+
+/// The cddlc release this crate builds with when none is installed: a static x86-64
+/// Linux binary (https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.1).
+const CDDLC_RELEASE: &str = "v1.1.0-rc.1";
+const CDDLC_ASSET: &str = "cddlc-v1.1.0-rc.1-x86_64-unknown-linux-musl";
+const CDDLC_SHA256: &str = "50d0adac09a7bb2a7a88df41599e283e3469b09eec6d09b8b1c4b2df5e3554b6";
+
+/// `$CDDLC`, else `cddlc` on the PATH, else the release in `out_dir`, fetched with
+/// `curl`, checked with `sha256sum` and unpacked with `tar` if it isn't there yet.
+fn find_cddlc(out_dir: &Path) -> PathBuf {
+    if let Ok(path) = env::var("CDDLC") {
+        return PathBuf::from(path);
+    }
+    let on_path = Command::new("cddlc")
+        .arg("--version")
+        .output()
+        .is_ok_and(|o| o.status.success());
+    if on_path {
+        return PathBuf::from("cddlc");
+    }
+    let host = env::var("HOST").unwrap_or_default();
+    if !(host.starts_with("x86_64-") && host.contains("-linux-")) {
+        panic!(
+            "no cddlc found, and the release ({CDDLC_RELEASE}) is built for x86-64 Linux only, \
+             not {host}.\nHint: install cddlc, or set CDDLC to its full path."
+        );
+    }
+    let dir = out_dir.join("cddlc-release");
+    let binary = dir.join(CDDLC_ASSET).join("cddlc");
+    if binary.exists() {
+        return binary;
+    }
+    fs::create_dir_all(&dir).expect("create the cddlc download directory");
+    let archive = format!("{CDDLC_ASSET}.tar.gz");
+    let url = format!(
+        "https://github.com/dgtlrift/cddlc/releases/download/{CDDLC_RELEASE}/{archive}"
+    );
+    run(Command::new("curl").args(["-sSfL", "-o", &archive, &url]).current_dir(&dir));
+    let sum = Command::new("sha256sum")
+        .arg(&archive)
+        .current_dir(&dir)
+        .output()
+        .expect("run sha256sum");
+    let got = String::from_utf8_lossy(&sum.stdout);
+    if got.split_whitespace().next() != Some(CDDLC_SHA256) {
+        panic!("{url}: SHA-256 {got} is not the pinned {CDDLC_SHA256}");
+    }
+    run(Command::new("tar").args(["-xzf", &archive]).current_dir(&dir));
+    binary
+}
+
+fn run(cmd: &mut Command) {
+    let status = cmd
+        .status()
+        .unwrap_or_else(|e| panic!("failed to run {cmd:?}: {e}"));
+    if !status.success() {
+        panic!("{cmd:?} exited with {status}");
     }
 }
 
