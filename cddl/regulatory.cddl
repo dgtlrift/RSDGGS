@@ -23,7 +23,7 @@ band-entry = {
   citation:        tstr,
   freq-lo-khz:     uint,
   freq-hi-khz:     uint,
-  power-mw:        uint,
+  power-mw:        float,
   power-ref:       power-reference,
   ? duty-cycle:    float,
   ? dwell-s:       float,
@@ -35,10 +35,38 @@ band-entry = {
   ? whitespace-db: tstr,
   available:       bool,
   exception:       bool,
+  ? min-bw-khz:              uint,   ; applies only to emissions at least this wide
+  ? psd-mw-per-mhz:          float,  ; power spectral density limit, by power-ref
+  ? duty-cycle-above-mw:     float,  ; duty-cycle applies only above this power
+  ? dwell-window-s:          float,  ; dwell-s is per channel within this sliding window
+  ? single-channel-power-mw: float,  ; limit when no other channel was used within ...
+  ? single-channel-power-ref: power-reference,
+  ? single-channel-window-s: float,  ; ... this sliding window
 }
 
 ; @capacity 32
 band-list = [* band-entry]
+
+; A location the face-level entries get wrong (draft section 8.3): its own bands for
+; cells at its RSL whose centre is inside its box (and on its face and triangles).
+; @capacity 8
+triangle-list = [* uint]
+
+exception-entry = {
+  location:     tstr,
+  authority:    tstr,
+  ? face:       uint,
+  ? triangles:  triangle-list,
+  lat-min:      float,
+  lat-max:      float,
+  lon-min:      float,  ; lon-min > lon-max crosses the antimeridian
+  lon-max:      float,
+  rsl:          uint,
+  bands:        band-list,  ; empty: no band known to be available
+}
+
+; @capacity 32
+exception-list = [* exception-entry]
 
 ; Regulatory entries for one face on one body
 face-regulatory = {
@@ -47,6 +75,11 @@ face-regulatory = {
   bands: band-list,
 }
 
-; Complete regulatory database (all bodies × faces with entries)
 ; @capacity 144
-regulatory-db = [* face-regulatory]
+face-list = [* face-regulatory]
+
+; Complete regulatory database: face-level entries and the exception overlay
+regulatory-db = {
+  faces:      face-list,
+  exceptions: exception-list,
+}

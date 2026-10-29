@@ -68,7 +68,7 @@ pub struct BandEntry {
     pub citation:      &'static str,
     pub freq_lo_khz:   u32,
     pub freq_hi_khz:   u32,
-    pub power_mw:      u32,
+    pub power_mw:      f32,
     pub power_ref:     PowerRef,
     pub duty_cycle:    Option<f32>,
     pub dwell_s:       Option<f32>,
@@ -80,6 +80,42 @@ pub struct BandEntry {
     pub whitespace_db: Option<&'static str>,
     pub available:     bool,
     pub exception:     bool,
+    /// The entry applies only to emissions at least this wide (kHz): FCC 15.247(a)(2)'s
+    /// 500 kHz for digital modulation, for example.
+    pub min_bw_khz:    Option<u32>,
+    /// Power spectral density limit, mW per MHz, by `power_ref`.
+    pub psd_mw_per_mhz: Option<f32>,
+    /// `duty_cycle` applies only above this power (mW, by `power_ref`): EN 300 328's
+    /// medium utilisation limit for non-adaptive equipment above 10 dBm e.i.r.p.
+    pub duty_cycle_above_mw: Option<f32>,
+    /// The window `dwell_s` is measured in, seconds: at most `dwell_s` of air time on
+    /// any one channel within any sliding window of this length.
+    pub dwell_window_s: Option<f32>,
+    /// The power limit (mW, by `single_channel_power_ref`) for a transmitter that has
+    /// used no other channel in the band within the last `single_channel_window_s`.
+    pub single_channel_power_mw: Option<f32>,
+    pub single_channel_power_ref: Option<PowerRef>,
+    pub single_channel_window_s: Option<f32>,
+}
+
+/// A location the face-level database gets wrong (draft section 8.3): its own band
+/// entries, for cells at its resolution sufficiency level whose centre falls inside its
+/// bounding box (and, where given, on its face and triangles).
+#[derive(Debug, Clone)]
+pub struct ExceptionEntry {
+    pub location:  &'static str,
+    pub authority: &'static str,
+    /// The face it is on; `None`: any whose cell centre falls in `bbox`.
+    pub face:      Option<u8>,
+    /// The face's triangles it covers; `None`: any.
+    pub triangles: Option<&'static [u8]>,
+    /// [lat_min, lat_max, lon_min, lon_max], degrees; lon_min > lon_max crosses the
+    /// antimeridian.
+    pub bbox:      [f64; 4],
+    /// Resolution sufficiency level: the index depth, octets, the test is made at.
+    pub rsl:       usize,
+    /// The bands in force there; empty if none is known to be available.
+    pub bands:     &'static [&'static BandEntry],
 }
 
 /// Bounding cell returned by decode().

@@ -1,6 +1,6 @@
 # RSDGGS — Radio Spectrum Discrete Global Grid System
 
-Rust reference implementation of the RSDGGS wire format, encoder, decoder, and sub-GHz regulatory lookup database.
+Rust reference implementation of the RSDGGS wire format, encoder, decoder, and ISM-band regulatory lookup database (sub-GHz and 2.4 GHz).
 
 ---
 
@@ -13,7 +13,7 @@ This crate provides:
 - **Encode** — convert (lat, lon, depth) → `RsdggsIndex`
 - **Decode** — convert `RsdggsIndex` → geographic bounding cell and center
 - **Wire I/O** — pack/unpack a 64-bit big-endian wire value
-- **Regulatory lookup** — query the sub-GHz ISM band database for a face
+- **Regulatory lookup** — the band entries in force in a cell: its face's, or the exception overlay's where one applies
 - **CBOR schema** — CDDL-driven minicbor serializers for all index and cell types
 - **CLI test tool** — interactive encode/decode with regulatory and metro context output
 
@@ -46,16 +46,18 @@ Every field ends on a nibble boundary: octet 1 holds the triangle and levels 1�
 
 Octet depth (1–8) determines how many bits are significant.  Depth 1 encodes body+face only (continental resolution).  Depth 8 encodes all 26 subdivision levels (~centimeter resolution).
 
-| Depth | Bits used | Approx. cell diameter |
-|------:|----------:|----------------------:|
-|     1 |         8 | ~3 000 km             |
-|     2 |        16 | ~600 km               |
-|     3 |        24 | ~150 km               |
-|     4 |        32 | ~40 km                |
-|     5 |        40 | ~10 km                |
-|     6 |        48 | ~2.5 km               |
-|     7 |        56 | ~600 m                |
-|     8 |        64 | ~150 m                |
+| Depth | Bits used | Approx. cell size |
+|------:|----------:|------------------:|
+|     1 |         8 | ~7 000 km (face)  |
+|     2 |        16 | ~1 000 km         |
+|     3 |        24 | ~65 km            |
+|     4 |        32 | ~4 km             |
+|     5 |        40 | ~260 m            |
+|     6 |        48 | ~16 m             |
+|     7 |        56 | ~1 m              |
+|     8 |        64 | ~6 cm             |
+
+Each octet after the first adds four levels, each halving the cell's edge, so a cell is about a sixteenth the size of its parent octet's (the draft's Table 5; checked with `examples/lookup` at 52°N 4°E).
 
 ---
 
@@ -94,11 +96,11 @@ Face centers and pentagon vertices are stored as f64 unit-vector triples in `src
 | `src/wire.rs` | `to_wire` / `from_wire` / `truncate` — 64-bit pack/unpack |
 | `src/bits.rs` | `BitReader` / `BitWriter` — MSB-first bit I/O primitives |
 | `src/cbor.rs` | `include!()` wrappers for cddlc-generated minicbor code |
-| `src/regulatory/mod.rs` | `lookup` and `bands_for_face` entry points |
-| `src/regulatory/earth.rs` | Static `BandEntry` records and face→band lookup table |
+| `src/regulatory/mod.rs` | `lookup`, `bands_for_face`, and the cell-level `bands_for_index`, `bands_for_location` and `exception_for_index` |
+| `src/regulatory/earth.rs` | Static `BandEntry` records, the face-level table and the exception overlay |
 | `src/cities.rs` | ~280-entry world metro database; `metro_context` lookup |
 | `cddl/rsdggs.cddl` | CDDL schema for index, wire, bounding cell, lookup messages |
-| `cddl/regulatory.cddl` | CDDL schema for band entry and regulatory response |
+| `cddl/regulatory.cddl` | CDDL schema for band entries, exception entries and the database |
 | `build.rs` | Runs `cddlc` at build time; strips crate-level attrs from output |
 | `src/bin/rsdggs-tool.rs` | CLI test tool (encode / decode subcommands) |
 
@@ -210,14 +212,43 @@ when that resolution is too coarse for reliable regulatory determination.
 
 ## Regulatory Database
 
-The regulatory database in `src/regulatory/earth.rs` covers the sub-GHz ISM
-bands relevant to unlicensed LPWAN and short-range device operation.  Each entry
-is a static `BandEntry` struct, keyed by RSDGGS face number.
+The regulatory database in `src/regulatory/earth.rs` (draft sections 8 and 9) has two parts:
+- **face-level entries:** each face's dominant regime;
+- **the exception overlay** (draft Table 7): locations the face-level entries get wrong, each with its own entries. A cell takes an exception's entries when, at the exception's resolution sufficiency level (RSL), its centre falls inside the exception's bounding box (and on its face and triangles, where given). The deepest RSL wins.
 
-### Populated Entries
+`regulatory::bands_for_index(&idx)` or `bands_for_location(lat, lon)` return the entries in force. An index shorter than an applicable exception's RSL is refused (`Error::InsufficientResolution`). An emission complies if it meets at least one entry that contains it.
 
-| Band ID | Face | Authority | Frequency | Citation |
-|--------:|-----:|-----------|-----------|---------|
+### Face-level entries
+
+| Face | Authority | Bands | Source |
+|-----:|-----------|-------|--------|
+| 1 (Europe) | ETSI | 433.05–434.79 MHz; the 863–870 MHz sub-bands (twelve entries, each with its own power and duty cycle); 2400–2483.5 MHz | EN 300 220-2 V3.2.1 Table B.1; EN 300 220-3-1 V2.1.1; EN 300 220-3-2 V1.1.1; EN 300 328 V2.2.2 |
+| 2 (N. America) | FCC | 902–928 MHz hopping (1 W conducted, ≥ 50 channels, 0.4 s per channel in 20 s; 0.75 mW e.i.r.p. without another channel in 20 s), 902–928 MHz and 2400–2483.5 MHz digital modulation (1 W, ≥ 500 kHz), 2400–2483.5 MHz under 15.249 (0.75 mW e.i.r.p.) | 47 CFR 15.247, 15.249 |
+| 7 (E. Australia) | ACMA | 915–928 MHz (1 W e.i.r.p.), 2400–2483.5 MHz (4 W e.i.r.p., ≥ 500 kHz) | LIPD Class Licence 2015 (not yet checked against the instrument) |
+
+### The exception overlay
+
+Hong Kong (OFCA, 920–925 MHz), Macau (ETSI), Singapore (IMDA, 920–925 MHz), the British Virgin Islands (none known), French Guiana (ETSI), Ceuta and Melilla (ETSI), Guam and the Northern Mariana Islands (FCC), Alaska and Yukon (FCC, face 11 triangles 2–4), the Russian Far East (none known, face 11 triangle 0), the Alaska North Slope and Canadian Arctic (FCC, east of 169° W in triangle 0), and the French Pacific (ETSI). The boxes approximate the territories and don't follow borders: Hong Kong's includes the edge of Shenzhen.
+
+### Coverage gaps
+
+Faces with no entries return none: a band there is not known to be available.
+
+| Face | Region | Notes |
+|-----:|--------|-------|
+| 0 | Antarctica / New Zealand | Antarctic Treaty System; New Zealand (RSM) is on this face. |
+| 3 | Asia | MIIT (China), WPC (India), MIC (Japan), MSIT (Korea), NCC (Taiwan): distinct national frameworks, not yet entered. |
+| 4 | South Atlantic | ICASA (South Africa: Cape Town); otherwise ocean and Antarctica. |
+| 5 | Africa / Middle East | ATU members and the Gulf states (TDRA, CST) differ; many lack published ISM rules. |
+| 6 | South America | ANATEL (Brazil), ENACOM (Argentina), SUBTEL (Chile). |
+| 8 | Southern Indian Ocean | ACMA (Melbourne, Adelaide, Perth) and Indonesia; the ACMA entries are on face 7 only. |
+| 9 | West Africa | ECOWAS regulators; French Guiana is in the overlay. |
+| 10 | Central Pacific | FCC (Hawaii) and Pacific island regulators; French Polynesia is in the overlay. |
+| 11 | North Pacific | MIC (northern Japan); Alaska, Yukon and the Russian Far East are in the overlay. |
+
+**Contributing regulatory data:** add a `BandEntry` to `src/regulatory/earth.rs` with the clause it comes from, and list it in its face's or exception's band list.
+
+--------:|-----:|-----------|-----------|---------|
 | 1 | 2 (N. America) | FCC | 902–928 MHz | [47 CFR §15.247](https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-C/section-15.247) |
 | 2 | 1 (Europe) | ETSI | 433.05–434.79 MHz | [ETSI EN 300 220-1](https://www.etsi.org/deliver/etsi_en/300200_300299/30022001/) |
 | 3 | 1 (Europe) | ETSI | 863–870 MHz | [ETSI EN 300 220-2](https://www.etsi.org/deliver/etsi_en/300200_300299/30022002/) |
@@ -291,7 +322,7 @@ Unit and integration tests live in `tests/`.  Run with:
 cargo test
 ```
 
-Current coverage (13 tests):
+Current coverage (18 tests):
 
 | Test | What it verifies |
 |------|-----------------|
@@ -305,6 +336,11 @@ Current coverage (13 tests):
 | `reference_cities` (`faces.rs`) | Reference cities land on the faces of the draft section 4.3 orientation |
 | `vertices_counter_clockwise` (`faces.rs`) | Every face's vertices run counter-clockwise seen from outside |
 | `regulatory_missing_returns_err` | Unknown band ID returns `Err(BandNotFound)` |
+| `faces_give_their_regime` (`regulatory.rs`) | Delft, New York and Sydney get the ETSI, FCC and ACMA entries; São Paulo none |
+| `the_exception_overlay` (`regulatory.rs`) | Twelve reference points land in their exceptions, the Diomede Islands on either side of the border |
+| `a_short_index_is_refused_where_an_exception_may_apply` (`regulatory.rs`) | A 3-octet index in Hong Kong needs RSL 5 |
+| `the_etsi_868_sub_bands` (`regulatory.rs`) | The twelve 863–870 MHz entries, e.r.p. |
+| `the_fcc_902_entries` (`regulatory.rs`) | 1 W conducted, 50 channels, 0.4 s in 20 s, 0.75 mW single-channel |
 
 ---
 
