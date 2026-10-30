@@ -42,10 +42,10 @@ fn main() {
 }
 
 /// The cddlc release this crate builds with when none is installed: a static x86-64
-/// Linux binary (https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.1).
-const CDDLC_RELEASE: &str = "v1.1.0-rc.1";
-const CDDLC_ASSET: &str = "cddlc-v1.1.0-rc.1-x86_64-unknown-linux-musl";
-const CDDLC_SHA256: &str = "50d0adac09a7bb2a7a88df41599e283e3469b09eec6d09b8b1c4b2df5e3554b6";
+/// Linux binary (https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.2).
+const CDDLC_RELEASE: &str = "v1.1.0-rc.2";
+const CDDLC_ASSET: &str = "cddlc-v1.1.0-rc.2-x86_64-unknown-linux-musl";
+const CDDLC_SHA256: &str = "9d29584f6371059f7567053d9f4405ba664de7df4aa27eea5957c210b8a0499d";
 
 /// `$CDDLC`, else `cddlc` on the PATH, else the release in `out_dir`, fetched with
 /// `curl`, checked with `sha256sum` and unpacked with `tar` if it isn't there yet.

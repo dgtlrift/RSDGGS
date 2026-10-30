@@ -152,7 +152,7 @@ the 1–8 octet range is enforced at runtime in `from_wire()`.
 `build.rs` uses, in order:
 1. the binary the `CDDLC` environment variable names;
 2. `cddlc` on the `PATH`;
-3. the pinned release candidate, [`v1.1.0-rc.1`](https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.1): a static x86-64 Linux binary that `build.rs` downloads with `curl` into `$OUT_DIR`, checks against its pinned SHA-256 with `sha256sum`, and unpacks with `tar`. On other hosts, install `cddlc` or set `CDDLC`.
+3. the pinned release candidate, [`v1.1.0-rc.2`](https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.2): a static x86-64 Linux binary that `build.rs` downloads with `curl` into `$OUT_DIR`, checks against its pinned SHA-256 with `sha256sum`, and unpacks with `tar`. On other hosts, install `cddlc` or set `CDDLC`.
 
 The generated code is never checked in: the `.cddl` files are the source of truth, and what `cddlc` makes from them is an intermediate in `$OUT_DIR`.
 
