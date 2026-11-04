@@ -1,6 +1,7 @@
 # On every push to main, release-plz releases if the push is a merged release PR (a
 # release-plz-* branch; release_always = false): the tag and the GitHub release. Nothing
-# goes to crates.io (release-plz.toml). Release PRs are opened with `scripts/release.sh
+# goes to crates.io (release-plz.toml). The draft's renderings and the images are then
+# attached to the release (scripts/release.sh assets); the draft's XML source is not. Release PRs are opened with `scripts/release.sh
 # pr`, never from here: that would need the repository setting that lets Actions create
 # and approve pull requests, which this project leaves off.
 name: Release-plz
@@ -27,6 +28,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Run release-plz
+        id: release-plz
         # v0.5.141, with release-plz 0.3.171: the musl builds of 0.3.172 to 0.4.2 fail on
         # any changelog ("stack limit reached", release-plz/release-plz#3299).
         uses: release-plz/action@f393a7b38aca9d9b4c58447b291dbac963901df6
@@ -35,3 +37,12 @@ jobs:
           version: 0.3.171
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Attach the generated documents and images
+        if: ${{ steps.release-plz.outputs.releases_created == 'true' }}
+        env:
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASES: ${{ steps.release-plz.outputs.releases }}
+        run: |
+          tag="$(echo "$RELEASES" | jq -r '.[0].tag')"
+          git checkout -q "$tag"
+          scripts/release.sh assets
