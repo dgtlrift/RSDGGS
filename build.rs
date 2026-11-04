@@ -9,7 +9,7 @@ fn main() {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
 
     // Locate the cddlc binary: the CDDLC environment variable, else `cddlc` on the PATH,
-    // else the pinned release candidate, downloaded and checked against its SHA-256.
+    // else the pinned release, downloaded and checked against its SHA-256.
     println!("cargo:rerun-if-env-changed=CDDLC");
     let cddlc = find_cddlc(&out_dir);
     let cddlc = cddlc.to_str().expect("UTF-8 path");
@@ -42,10 +42,10 @@ fn main() {
 }
 
 /// The cddlc release this crate builds with when none is installed: a static x86-64
-/// Linux binary (https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0-rc.3).
-const CDDLC_RELEASE: &str = "v1.1.0-rc.3";
-const CDDLC_ASSET: &str = "cddlc-v1.1.0-rc.3-x86_64-unknown-linux-musl";
-const CDDLC_SHA256: &str = "ba208e5394c0aa43e88221dd968d2c68ecb53ac03f77ae446386bd8e3291b08c";
+/// Linux binary (https://github.com/dgtlrift/cddlc/releases/tag/v1.1.0).
+const CDDLC_RELEASE: &str = "v1.1.0";
+const CDDLC_ASSET: &str = "cddlc-v1.1.0-x86_64-unknown-linux-musl";
+const CDDLC_SHA256: &str = "17033715821f5e8525173445a4433b5ec9f8443b429a63de121d77cdc9d1811d";
 
 /// `$CDDLC`, else `cddlc` on the PATH, else the release in `out_dir`, fetched with
 /// `curl`, checked with `sha256sum` and unpacked with `tar` if it isn't there yet.
