@@ -3,6 +3,9 @@ name    = "rsdggs"
 version = "0.1.0"
 edition = "2024"
 build   = "build.rs"
+# The draft's XML source and the scripts that render it are not part of a release; its
+# renderings and the images are (scripts/release.sh assets).
+exclude = ["draft/*.xml", "draft/build.sh", "draft/docx.py"]
 
 [dependencies]
 libm     = "0.2"

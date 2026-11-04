@@ -456,3 +456,22 @@ cargo run -- decode 0x012ec125b61fd811
 # Decode with known depth and truncation
 cargo run -- decode 0x012ec125b61fd811 --depth 7 --truncate 4
 ```
+
+---
+
+## Releasing
+
+Releases are made with [release-plz](https://release-plz.dev): a release PR bumps the crate's version and writes `CHANGELOG.md` from the commit messages, and merging it tags `v<version>` and makes the GitHub release. Nothing is published to crates.io. Each release carries the generated documents: the draft's text, HTML and Word renderings (the revision `draft/build.sh` renders), the images (PNG and SVG) as one archive, and their `SHA256SUMS`. The draft's XML source stays in the repository only. Commit messages are conventional (`feat(scope): …`, `fix(scope): …`, `docs(draft): …`), as they become the changelog.
+
+Release PRs are opened with `scripts/release.sh pr`, with release-plz and a Rust toolchain installed (the ariel-sim dev image, `arisim-dev`, has both). When one is merged, `.github/workflows/release-plz.yml` makes the release and attaches the documents; `scripts/release.sh release` and `scripts/release.sh assets` (with gh) do the same by hand. The workflow never opens pull requests, as that needs the repository setting that lets Actions create and approve them, which stays off.
+
+```bash
+export GIT_TOKEN="$(gh auth token)"
+# From the dev image, with this repository mounted:
+docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -e GIT_TOKEN \
+  -v "$PWD":/work -w /work arisim-dev scripts/release.sh pr       # review and merge it
+# The workflow then releases. Without GitHub Actions, by hand:
+docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -e GIT_TOKEN \
+  -v "$PWD":/work -w /work arisim-dev scripts/release.sh release
+git checkout v0.1.0 && scripts/release.sh assets   # on the host, with gh
+```
