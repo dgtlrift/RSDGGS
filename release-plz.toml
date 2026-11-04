@@ -1,0 +1,20 @@
+# release-plz makes RSDGGS's GitHub releases: the `rsdggs` crate, tagged `v<version>`,
+# with CHANGELOG.md from the commit messages. Nothing goes to crates.io; versions come
+# from git tags. Release PRs are opened with scripts/release.sh.
+
+[workspace]
+git_only = true
+publish = false
+# Release only when a release PR (branch release-plz-*) is merged, never on other
+# pushes: with git_only, an untagged version is otherwise released at once.
+release_always = false
+semver_check = false
+dependencies_update = false
+pr_branch_prefix = "release-plz-"
+pr_labels = ["release"]
+
+[[package]]
+name = "rsdggs"
+changelog_path = "CHANGELOG.md"
+git_tag_name = "v{{ version }}"
+git_release_name = "rsdggs v{{ version }}"

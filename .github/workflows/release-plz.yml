@@ -1,0 +1,37 @@
+# On every push to main, release-plz releases if the push is a merged release PR (a
+# release-plz-* branch; release_always = false): the tag and the GitHub release. Nothing
+# goes to crates.io (release-plz.toml). Release PRs are opened with `scripts/release.sh
+# pr`, never from here: that would need the repository setting that lets Actions create
+# and approve pull requests, which this project leaves off.
+name: Release-plz
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-plz-release:
+    name: Release-plz release
+    if: ${{ github.repository_owner == 'dgtlrift' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Run release-plz
+        # v0.5.141, with release-plz 0.3.171: the musl builds of 0.3.172 to 0.4.2 fail on
+        # any changelog ("stack limit reached", release-plz/release-plz#3299).
+        uses: release-plz/action@f393a7b38aca9d9b4c58447b291dbac963901df6
+        with:
+          command: release
+          version: 0.3.171
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
