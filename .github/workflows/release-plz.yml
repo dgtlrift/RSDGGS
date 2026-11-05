@@ -44,5 +44,7 @@ jobs:
           RELEASES: ${{ steps.release-plz.outputs.releases }}
         run: |
           tag="$(echo "$RELEASES" | jq -r '.[0].tag')"
+          # release-plz made the tag through the API, so it isn't in this checkout yet.
+          git fetch -q origin "refs/tags/$tag:refs/tags/$tag"
           git checkout -q "$tag"
           scripts/release.sh assets
