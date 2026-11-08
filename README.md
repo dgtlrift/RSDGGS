@@ -93,6 +93,7 @@ Face centers and pentagon vertices are stored as f64 unit-vector triples in `src
 | `src/constants.rs` | Icosahedron face centers and pentagon vertices (static f64 arrays) |
 | `src/encode.rs` | lat/lon → `RsdggsIndex` via spherical triangle subdivision |
 | `src/decode.rs` | `RsdggsIndex` → `BoundingCell` (vertices + geographic bbox) |
+| `src/geometry.rs` | Cell geometry for drawing and covering an area (section 6): `face_pentagon`, `children`, `cap` (a spherical cap holding a cell), `cover` (the cells at a level that may touch a latitude and longitude box, across the antimeridian too), `latlon` and `unit` |
 | `src/wire.rs` | `to_wire` / `from_wire` / `truncate` — 64-bit pack/unpack |
 | `src/bits.rs` | `BitReader` / `BitWriter` — MSB-first bit I/O primitives |
 | `src/cbor.rs` | `include!()` wrappers for cddlc-generated minicbor code |

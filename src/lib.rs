@@ -4,6 +4,7 @@ pub mod cities;
 pub mod constants;
 pub mod decode;
 pub mod encode;
+pub mod geometry;
 pub mod regulatory;
 pub mod types;
 pub mod wire;
